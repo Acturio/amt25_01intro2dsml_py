@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning con Python</title>
+  <meta name="description" content="Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning con Python" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning con Python" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning con Python" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning con Python" />
+  
+  <meta name="twitter:description" content="Capítulo 4 Introducción a Machine Learning | Introducción a Ciencia de Datos y Machine Learning con Python" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="visualización.html"/>
+<link rel="next" href="regresión-lineal.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./"><img src="img/amat-logo.png" width="280"></a></li|
+|:-:|  
+<center>Introducción a Ciencia de Datos y Machine Learning</center>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>BIENVENIDA</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#objetivo"><i class="fa fa-check"></i>Objetivo</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#instructores"><i class="fa fa-check"></i>Instructores</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#alcances-del-curso"><i class="fa fa-check"></i>Alcances del curso</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#temario"><i class="fa fa-check"></i>Temario:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#duración-y-evaluación-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recursos-y-dinámica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asesorías"><i class="fa fa-check"></i>Asesorías</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> Conceptos de Ciencia de Datos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#qué-es-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es Ciencia de Datos?</a>
+<ul>
+<li class="chapter" data-level="" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#definiendo-conceptos"><i class="fa fa-check"></i>Definiendo conceptos:</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#objetivos"><i class="fa fa-check"></i><b>1.2</b> Objetivos</a></li>
+<li class="chapter" data-level="1.3" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#requisitos"><i class="fa fa-check"></i><b>1.3</b> Requisitos</a></li>
+<li class="chapter" data-level="1.4" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aplicaciones"><i class="fa fa-check"></i><b>1.4</b> Aplicaciones</a></li>
+<li class="chapter" data-level="1.5" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#tipos-de-algoritmos"><i class="fa fa-check"></i><b>1.5</b> Tipos de algoritmos</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-supervisado"><i class="fa fa-check"></i><b>1.5.1</b> Aprendizaje supervisado</a></li>
+<li class="chapter" data-level="1.5.2" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-no-supervisado"><i class="fa fa-check"></i><b>1.5.2</b> Aprendizaje no supervisado</a></li>
+<li class="chapter" data-level="1.5.3" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-por-refuerzo"><i class="fa fa-check"></i><b>1.5.3</b> Aprendizaje por refuerzo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#ciclo-de-un-proyecto"><i class="fa fa-check"></i><b>1.6</b> Ciclo de un proyecto</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducción-a-python.html"><a href="introducción-a-python.html"><i class="fa fa-check"></i><b>2</b> Introducción a Python</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-python.html"><a href="introducción-a-python.html#cómo-obtener-python"><i class="fa fa-check"></i><b>2.1</b> ¿Cómo obtener <em>Python</em>?</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-python.html"><a href="introducción-a-python.html#qué-es-rstudio"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es RStudio?</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-python.html"><a href="introducción-a-python.html#uso-de-python-en-rstudio"><i class="fa fa-check"></i><b>2.3</b> Uso de python en Rstudio</a></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-python.html"><a href="introducción-a-python.html#lectura-de-datos"><i class="fa fa-check"></i><b>2.4</b> Lectura de datos</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introducción-a-python.html"><a href="introducción-a-python.html#archivos-csv"><i class="fa fa-check"></i><b>2.4.1</b> Archivos <em>csv</em></a></li>
+<li class="chapter" data-level="2.4.2" data-path="introducción-a-python.html"><a href="introducción-a-python.html#archivos-txt"><i class="fa fa-check"></i><b>2.4.2</b> Archivos txt</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introducción-a-python.html"><a href="introducción-a-python.html#archivos-xls-y-xlsx"><i class="fa fa-check"></i><b>2.4.3</b> Archivos <em>xls</em> y <em>xlsx</em></a></li>
+<li class="chapter" data-level="2.4.4" data-path="introducción-a-python.html"><a href="introducción-a-python.html#archivos-pickle"><i class="fa fa-check"></i><b>2.4.4</b> Archivos pickle</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-python.html"><a href="introducción-a-python.html#consultas-de-datos"><i class="fa fa-check"></i><b>2.5</b> Consultas de datos</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="introducción-a-python.html"><a href="introducción-a-python.html#seleccionar-columnas"><i class="fa fa-check"></i><b>2.5.1</b> Seleccionar columnas</a></li>
+<li class="chapter" data-level="2.5.2" data-path="introducción-a-python.html"><a href="introducción-a-python.html#filtrar-observaciones"><i class="fa fa-check"></i><b>2.5.2</b> Filtrar observaciones</a></li>
+<li class="chapter" data-level="2.5.3" data-path="introducción-a-python.html"><a href="introducción-a-python.html#ordenar-registros"><i class="fa fa-check"></i><b>2.5.3</b> Ordenar registros</a></li>
+<li class="chapter" data-level="2.5.4" data-path="introducción-a-python.html"><a href="introducción-a-python.html#agregar-modificar"><i class="fa fa-check"></i><b>2.5.4</b> Agregar / Modificar</a></li>
+<li class="chapter" data-level="2.5.5" data-path="introducción-a-python.html"><a href="introducción-a-python.html#resumen-estadístico"><i class="fa fa-check"></i><b>2.5.5</b> Resumen estadístico</a></li>
+<li class="chapter" data-level="2.5.6" data-path="introducción-a-python.html"><a href="introducción-a-python.html#agrupamiento"><i class="fa fa-check"></i><b>2.5.6</b> Agrupamiento</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="introducción-a-python.html"><a href="introducción-a-python.html#orden-y-estructura"><i class="fa fa-check"></i><b>2.6</b> Orden y estructura</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introducción-a-python.html"><a href="introducción-a-python.html#pivote-horizontal"><i class="fa fa-check"></i><b>2.6.1</b> Pivote horizontal</a></li>
+<li class="chapter" data-level="2.6.2" data-path="introducción-a-python.html"><a href="introducción-a-python.html#pivote-vertical"><i class="fa fa-check"></i><b>2.6.2</b> Pivote vertical</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="visualización.html"><a href="visualización.html"><i class="fa fa-check"></i><b>3</b> Visualización</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="visualización.html"><a href="visualización.html#eda-análisis-exploratorio-de-datos"><i class="fa fa-check"></i><b>3.1</b> EDA: Análisis Exploratorio de Datos</a></li>
+<li class="chapter" data-level="3.2" data-path="visualización.html"><a href="visualización.html#geda-análisis-exploratorio-de-datos-gráficos"><i class="fa fa-check"></i><b>3.2</b> GEDA: Análisis Exploratorio de Datos Gráficos</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="visualización.html"><a href="visualización.html#lo-que-no-se-debe-hacer"><i class="fa fa-check"></i><b>3.2.1</b> Lo que no se debe hacer…</a></li>
+<li class="chapter" data-level="3.2.2" data-path="visualización.html"><a href="visualización.html#principios-de-visualización"><i class="fa fa-check"></i><b>3.2.2</b> Principios de visualización</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="visualización.html"><a href="visualización.html#ggplot-plotnine"><i class="fa fa-check"></i><b>3.3</b> Ggplot / plotnine</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="visualización.html"><a href="visualización.html#capas-estéticas"><i class="fa fa-check"></i><b>3.3.1</b> Capas Estéticas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="visualización.html"><a href="visualización.html#capas-geométricas"><i class="fa fa-check"></i><b>3.3.2</b> Capas geométricas</a></li>
+<li class="chapter" data-level="3.3.3" data-path="visualización.html"><a href="visualización.html#facetas"><i class="fa fa-check"></i><b>3.3.3</b> Facetas</a></li>
+<li class="chapter" data-level="3.3.4" data-path="visualización.html"><a href="visualización.html#más-sobre-estéticas"><i class="fa fa-check"></i><b>3.3.4</b> Más sobre estéticas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="visualización.html"><a href="visualización.html#análisis-univariado"><i class="fa fa-check"></i><b>3.4</b> Análisis univariado</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="visualización.html"><a href="visualización.html#variables-numéricas"><i class="fa fa-check"></i><b>3.4.1</b> Variables numéricas</a></li>
+<li class="chapter" data-level="3.4.2" data-path="visualización.html"><a href="visualización.html#variables-nominalescategóricas"><i class="fa fa-check"></i><b>3.4.2</b> Variables nominales/categóricas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="visualización.html"><a href="visualización.html#análisis-multivariado"><i class="fa fa-check"></i><b>3.5</b> Análisis multivariado</a>
+<ul>
+<li class="chapter" data-level="" data-path="visualización.html"><a href="visualización.html#ejercicios"><i class="fa fa-check"></i>Ejercicios</a></li>
+<li class="chapter" data-level="" data-path="visualización.html"><a href="visualización.html#warning"><i class="fa fa-check"></i>¡ Warning !</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="visualización.html"><a href="visualización.html#reporte-interactivos"><i class="fa fa-check"></i><b>3.6</b> Reporte interactivos</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html"><i class="fa fa-check"></i><b>4</b> Introducción a Machine Learning</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#análisis-supervisado-vs-no-supervisado"><i class="fa fa-check"></i><b>4.1</b> Análisis Supervisado vs No supervisado</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#regresión-vs-clasificación"><i class="fa fa-check"></i><b>4.1.1</b> Regresión vs clasificación</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#sesgo-vs-varianza"><i class="fa fa-check"></i><b>4.2</b> Sesgo vs varianza</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#balance-entre-sesgo-y-varianza-o-trade-off"><i class="fa fa-check"></i><b>4.2.1</b> Balance entre sesgo y varianza o Trade-off</a></li>
+<li class="chapter" data-level="4.2.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#error-total"><i class="fa fa-check"></i><b>4.2.2</b> Error total</a></li>
+<li class="chapter" data-level="4.2.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#overfitting"><i class="fa fa-check"></i><b>4.2.3</b> Overfitting</a></li>
+<li class="chapter" data-level="4.2.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#underfitting"><i class="fa fa-check"></i><b>4.2.4</b> Underfitting</a></li>
+<li class="chapter" data-level="4.2.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#error-irreducible"><i class="fa fa-check"></i><b>4.2.5</b> Error irreducible</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#partición-de-datos"><i class="fa fa-check"></i><b>4.3</b> Partición de datos</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#métodos-comunes-para-particionar-datos"><i class="fa fa-check"></i><b>4.3.1</b> Métodos comunes para particionar datos</a></li>
+<li class="chapter" data-level="4.3.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#conjunto-de-validación"><i class="fa fa-check"></i><b>4.3.2</b> Conjunto de validación</a></li>
+<li class="chapter" data-level="4.3.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#leave-one-out-cross-validation"><i class="fa fa-check"></i><b>4.3.3</b> Leave-one-out cross-validation</a></li>
+<li class="chapter" data-level="4.3.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#k-fold-cross-validation"><i class="fa fa-check"></i><b>4.3.4</b> K Fold Cross Validation</a></li>
+<li class="chapter" data-level="4.3.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#validación-cruzada-para-series-de-tiempo"><i class="fa fa-check"></i><b>4.3.5</b> Validación cruzada para series de tiempo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#feature-engineering"><i class="fa fa-check"></i><b>4.4</b> Feature engineering</a></li>
+<li class="chapter" data-level="4.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#pipeline"><i class="fa fa-check"></i><b>4.5</b> Pipeline</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#normalizar-columnas-numéricas"><i class="fa fa-check"></i><b>4.5.1</b> Normalizar columnas numéricas</a></li>
+<li class="chapter" data-level="4.5.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#dicotomización-de-categorías"><i class="fa fa-check"></i><b>4.5.2</b> Dicotomización de categorías</a></li>
+<li class="chapter" data-level="4.5.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#imputación-de-datos-faltantes"><i class="fa fa-check"></i><b>4.5.3</b> Imputación de datos faltantes</a></li>
+<li class="chapter" data-level="4.5.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#transformaciones-personalizadas"><i class="fa fa-check"></i><b>4.5.4</b> Transformaciones personalizadas</a></li>
+<li class="chapter" data-level="4.5.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#interacciones"><i class="fa fa-check"></i><b>4.5.5</b> Interacciones</a></li>
+<li class="chapter" data-level="4.5.6" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#renombramiento-de-nuevos-datos"><i class="fa fa-check"></i><b>4.5.6</b> Renombramiento de nuevos datos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>5</b> Regresión Lineal</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#regresión-lineal-simple"><i class="fa fa-check"></i><b>5.1</b> Regresión lineal simple</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#interpretación"><i class="fa fa-check"></i><b>5.1.1</b> Interpretación</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#regresión-lineal-múltiple"><i class="fa fa-check"></i><b>5.2</b> Regresión lineal múltiple</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#interpretación-1"><i class="fa fa-check"></i><b>5.2.1</b> Interpretación</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#ajuste-de-modelo"><i class="fa fa-check"></i><b>5.3</b> Ajuste de modelo</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-simple"><i class="fa fa-check"></i><b>5.3.1</b> Estimación de parámetros: Regresión lineal simple</a></li>
+<li class="chapter" data-level="5.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-múltiple"><i class="fa fa-check"></i><b>5.3.2</b> Estimación de parámetros: Regresión lineal múltiple</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#residuos-del-modelo"><i class="fa fa-check"></i><b>5.4</b> Residuos del modelo</a>
+<ul>
+<li class="chapter" data-level="" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones-para-el-ajuste-de-una-regresión-lineal"><i class="fa fa-check"></i>Condiciones para el ajuste de una regresión lineal:</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#implementación-con-python"><i class="fa fa-check"></i><b>5.5</b> Implementación con Python</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#carga-y-partición-de-datos"><i class="fa fa-check"></i><b>5.5.1</b> Carga y partición de datos</a></li>
+<li class="chapter" data-level="5.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#pipeline-de-transformación-de-datos"><i class="fa fa-check"></i><b>5.5.2</b> Pipeline de transformación de datos</a></li>
+<li class="chapter" data-level="5.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#creación-y-ajuste-de-modelo"><i class="fa fa-check"></i><b>5.5.3</b> Creación y ajuste de modelo</a></li>
+<li class="chapter" data-level="5.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-con-nuevos-datos"><i class="fa fa-check"></i><b>5.5.4</b> Predicción con nuevos datos</a></li>
+<li class="chapter" data-level="5.5.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#extracción-de-coeficientes"><i class="fa fa-check"></i><b>5.5.5</b> Extracción de coeficientes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métricas-de-desempeño"><i class="fa fa-check"></i><b>5.6</b> Métricas de desempeño</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#implementación-con-python-1"><i class="fa fa-check"></i><b>5.6.1</b> Implementación con python</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#validación-cruzada"><i class="fa fa-check"></i><b>5.7</b> Validación cruzada</a></li>
+<li class="chapter" data-level="5.8" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métodos-se-selección-de-variables"><i class="fa fa-check"></i><b>5.8</b> Métodos se selección de variables</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#forward-selection-selección-hacia-adelante"><i class="fa fa-check"></i><b>5.8.1</b> Forward selection (selección hacia adelante)</a></li>
+<li class="chapter" data-level="5.8.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#backward-selection-selección-hacia-atrás"><i class="fa fa-check"></i><b>5.8.2</b> Backward selection (selección hacia atrás)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="regresión-lineal.html"><a href="regresión-lineal.html#ejercicio"><i class="fa fa-check"></i><b>5.9</b> Ejercicio</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>6</b> Regresión Logística</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="regresión-logística.html"><a href="regresión-logística.html#función-sigmoide"><i class="fa fa-check"></i><b>6.1</b> Función sigmoide</a></li>
+<li class="chapter" data-level="6.2" data-path="regresión-logística.html"><a href="regresión-logística.html#ajuste-del-modelo"><i class="fa fa-check"></i><b>6.2</b> Ajuste del modelo</a></li>
+<li class="chapter" data-level="6.3" data-path="regresión-logística.html"><a href="regresión-logística.html#clasificación-2"><i class="fa fa-check"></i><b>6.3</b> Clasificación</a></li>
+<li class="chapter" data-level="6.4" data-path="regresión-logística.html"><a href="regresión-logística.html#implementación-en-python"><i class="fa fa-check"></i><b>6.4</b> Implementación en python</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="regresión-logística.html"><a href="regresión-logística.html#pipeline-de-transformación-de-datos-1"><i class="fa fa-check"></i><b>6.4.1</b> Pipeline de transformación de datos</a></li>
+<li class="chapter" data-level="6.4.2" data-path="regresión-logística.html"><a href="regresión-logística.html#creación-y-ajuste-de-modelo-1"><i class="fa fa-check"></i><b>6.4.2</b> Creación y ajuste de modelo</a></li>
+<li class="chapter" data-level="6.4.3" data-path="regresión-logística.html"><a href="regresión-logística.html#predicción-con-nuevos-datos-1"><i class="fa fa-check"></i><b>6.4.3</b> Predicción con nuevos datos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="regresión-logística.html"><a href="regresión-logística.html#métricas-de-desempeño-1"><i class="fa fa-check"></i><b>6.5</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="6.6" data-path="regresión-logística.html"><a href="regresión-logística.html#estimación-de-probabilidades"><i class="fa fa-check"></i><b>6.6</b> Estimación de probabilidades</a></li>
+<li class="chapter" data-level="6.7" data-path="regresión-logística.html"><a href="regresión-logística.html#validación-cruzada-1"><i class="fa fa-check"></i><b>6.7</b> Validación cruzada</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html"><i class="fa fa-check"></i><b>7</b> K-Nearest-Neighbor</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#clasificación-3"><i class="fa fa-check"></i><b>7.1</b> Clasificación</a></li>
+<li class="chapter" data-level="7.2" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#regresión-2"><i class="fa fa-check"></i><b>7.2</b> Regresión</a></li>
+<li class="chapter" data-level="7.3" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#ajuste-del-modelo-1"><i class="fa fa-check"></i><b>7.3</b> Ajuste del modelo</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#selección-de-hiper-parámetro-k"><i class="fa fa-check"></i><b>7.3.1</b> Selección de Hiper-parámetro K</a></li>
+<li class="chapter" data-level="7.3.2" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#métodos-de-cálculo-de-la-distancia-entre-observaciones"><i class="fa fa-check"></i><b>7.3.2</b> Métodos de cálculo de la distancia entre observaciones</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#implementación-en-python-1"><i class="fa fa-check"></i><b>7.4</b> Implementación en Python</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#regresión-3"><i class="fa fa-check"></i><b>7.4.1</b> Regresión</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html"><i class="fa fa-check"></i><b>8</b> Árboles de decisión</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#ajuste-del-modelo-2"><i class="fa fa-check"></i><b>8.1</b> Ajuste del modelo</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#attribute-selective-measure-asm"><i class="fa fa-check"></i><b>8.1.1</b> Attribute Selective Measure (ASM)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#regularización-de-árboles"><i class="fa fa-check"></i><b>8.2</b> Regularización de árboles</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#nivel-de-profundidad-de-árbol"><i class="fa fa-check"></i><b>8.2.1</b> Nivel de profundidad de árbol</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#aprendizaje-conjunto"><i class="fa fa-check"></i><b>8.3</b> Aprendizaje conjunto</a></li>
+<li class="chapter" data-level="8.4" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#bagging"><i class="fa fa-check"></i><b>8.4</b> Bagging</a></li>
+<li class="chapter" data-level="8.5" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#random-forest"><i class="fa fa-check"></i><b>8.5</b> Random Forest</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#qué-es"><i class="fa fa-check"></i><b>8.5.1</b> ¿Qué es?</a></li>
+<li class="chapter" data-level="8.5.2" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#características-de-los-bosques-aleatorios"><i class="fa fa-check"></i><b>8.5.2</b> Características de los bosques aleatorios</a></li>
+<li class="chapter" data-level="8.5.3" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#aplicar-árboles-de-decisión-en-un-bosque-aleatorio"><i class="fa fa-check"></i><b>8.5.3</b> Aplicar árboles de decisión en un bosque aleatorio</a></li>
+<li class="chapter" data-level="8.5.4" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#ventajas-y-desventjas-de-bosques-aleatorios"><i class="fa fa-check"></i><b>8.5.4</b> Ventajas y desventjas de bosques aleatorios</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#implementación-en-python-2"><i class="fa fa-check"></i><b>8.6</b> Implementación en Python</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#regresión-4"><i class="fa fa-check"></i><b>8.6.1</b> Regresión</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="./"><img src="img/amat-logo.png" width="280"></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introducción a Ciencia de Datos y Machine Learning con Python</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introducción-a-machine-learning" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Capítulo 4</span> Introducción a Machine Learning<a href="introducción-a-machine-learning.html#introducción-a-machine-learning" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Como se había mencionado, el Machine Learning es una disciplina del campo de la
+Inteligencia Artificial que, a través de algoritmos, dota a los ordenadores de
+la capacidad de identificar patrones en datos para hacer predicciones. Este
+aprendizaje permite a los computadores realizar tareas específicas de forma
+autónoma.</p>
+<p>El término se utilizó por primera vez en 1959. Sin embargo, ha ganado relevancia
+en los últimos años debido al aumento de la capacidad de computación y al <em>BOOM</em>
+de los datos.</p>
+<p>Un algoritmo para computadoras puede ser pensado como una receta. Describe
+exactamente qué pasos se realizan uno tras otro. Los ordenadores no entienden
+las recetas de cocina, sino los lenguajes de programación: En ellos, el
+algoritmo se descompone en pasos formales (comandos) que el ordenador puede
+entender.</p>
+<p><img src="img/04-ml/01_WebQuest.gif" width="400pt" style="display: block; margin: auto;" /></p>
+<p>La cuestión no es solo saber para qué sirve el Machine Learning, sino que saber
+cómo funciona y cómo poder implementarlo en la industria para aprovecharse de
+sus beneficios. Hay ciertos pasos que usualmente se siguen para crear un modelo
+de Machine Learning. Estos son típicamente realizados por científicos de los
+datos que trabajan en estrecha colaboración con los profesionales de los
+negocios para los que se está desarrollando el modelo.</p>
+<ul>
+<li><strong>Seleccionar y preparar un conjunto de datos de entrenamiento</strong></li>
+</ul>
+<p>Los <strong>datos de entrenamiento</strong> son un conjunto de datos representativos de los
+datos que el modelo de Machine Learning ingerirá para resolver el problema que
+está diseñado para resolver.</p>
+<p>Los datos de entrenamiento deben prepararse adecuadamente: aleatorizados y
+comprobados en busca de desequilibrios o sesgos que puedan afectar al
+entrenamiento. También deben dividirse en dos subconjuntos: el <strong>subconjunto de
+entrenamiento</strong>, que se utilizará para entrenar el algoritmo, y el <strong>subconjunto
+de validación</strong>, que se utilizará para probarlo y perfeccionarlo.</p>
+<p><img src="img/04-ml/02_train-and-test.png" width="600pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Elegir un algoritmo para ejecutarlo en el conjunto de datos de
+entrenamiento</strong></li>
+</ul>
+<p>Este es uno de los pasos más importantes, ya que se debe elegir qué algoritmo
+utilizar, siendo este un conjunto de pasos de procesamiento estadístico. El tipo
+de algoritmo depende del tipo (supervisado o no supervisado), la cantidad de
+datos del conjunto de datos de entrenamiento y del tipo de problema que se debe
+resolver.</p>
+<p><img src="img/04-ml/03_robots_modelos.png" width="600pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Entrenamiento del algoritmo para crear el modelo</strong></li>
+</ul>
+<p>El entrenamiento del algoritmo es un proceso iterativo: implica ejecutar las
+variables a través del algoritmo, comparar el resultado con los resultados que
+debería haber producido, ajustar los pesos y los sesgos dentro del algoritmo que
+podrían dar un resultado más exacto, y ejecutar las variables de nuevo hasta que
+el algoritmo devuelva el resultado correcto la mayoría de las veces. El
+algoritmo resultante, entrenado y preciso, es el modelo de Machine Learning.</p>
+<p><img src="img/04-ml/04_entrenamiento.png" width="600pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Usar y mejorar el modelo</strong></li>
+</ul>
+<p>El paso final es utilizar el modelo con nuevos datos y, en el mejor de los
+casos, para que mejore en precisión y eficacia con el tiempo. De dónde procedan
+los nuevos datos dependerá del problema que se resuelva. Por ejemplo, un modelo
+de Machine Learning diseñado para identificar el spam ingerirá mensajes de
+correo electrónico, mientras que un modelo de Machine Learning que maneja una
+aspiradora robot ingerirá datos que resulten de la interacción en el mundo real
+con muebles movidos o nuevos objetos en la habitación.</p>
+<p><img src="img/04-ml/05_competencia.webp" width="600pt" style="display: block; margin: auto;" /></p>
+<div id="análisis-supervisado-vs-no-supervisado" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Análisis Supervisado vs No supervisado<a href="introducción-a-machine-learning.html#análisis-supervisado-vs-no-supervisado" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los algoritmos de Machine Learning se dividen en tres categorías, siendo las dos
+primeras las más comunes:</p>
+<p><img src="img/04-ml/06_ml2.png" width="750pt" height="500pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Aprendizaje supervisado</strong>: estos algoritmos cuentan con un aprendizaje
+previo basado en un sistema de etiquetas asociadas a unos datos que les
+permiten tomar decisiones o hacer predicciones.</li>
+</ul>
+<p>Algunos ejemplos son:</p>
+<pre><code>- Un detector de spam que etiqueta un e-mail como spam o no.
+
+- Predecir precios de casas
+
+- Clasificación de imagenes
+
+- Predecir el clima
+
+- ¿Quiénes son los clientes descontentos?</code></pre>
+<ul>
+<li><strong>Aprendizaje no supervisado:</strong> en el aprendizaje supervisado, la idea
+principal es aprender bajo supervisión, donde la señal de supervisión se
+nombra como valor objetivo o etiqueta. En el aprendizaje no supervisado,
+carecemos de este tipo de etiqueta. Por lo tanto, necesitamos encontrar
+nuestro camino sin ninguna supervisión ni guía. Esto simplemente significa
+que necesitamos descubrir qué es qué por nosotros mismos.</li>
+</ul>
+<p>Algunos ejemplos son:</p>
+<pre><code>- Encontrar segmentos de clientes.
+
+- Reducir la complejidad de un problema
+
+- Selección de variables
+
+- Encontrar grupos
+
+- Reducción de dimensionalidad</code></pre>
+<ul>
+<li><strong>Aprendizaje por refuerzo:</strong> su objetivo es que un algoritmo aprenda a
+partir de la propia experiencia. Esto es, que sea capaz de tomar la mejor
+decisión ante diferentes situaciones de acuerdo a un proceso de prueba y
+error en el que se recompensan las decisiones correctas.</li>
+</ul>
+<p>Algunos ejemplos son:</p>
+<pre><code>- Reconocimiento facial
+
+- Diagnósticos médicos
+
+- Clasificar secuencias de ADN</code></pre>
+<div id="regresión-vs-clasificación" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Regresión vs clasificación<a href="introducción-a-machine-learning.html#regresión-vs-clasificación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Existen dos tipos principales de aprendizaje supervisado, esto depende del tipo
+de la variable respuesta:</p>
+<div id="clasificación-1" class="section level4 unnumbered hasAnchor">
+<h4>Clasificación<a href="introducción-a-machine-learning.html#clasificación-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>En el aprendizaje supervisado, los algoritmos de clasificación se usan cuando el
+resultado es una etiqueta discreta. Esto quiere decir que se utilizan cuando la
+respuesta se fundamenta en conjunto finito de resultados.</p>
+</div>
+<div id="regresión-1" class="section level4 unnumbered hasAnchor">
+<h4>Regresión<a href="introducción-a-machine-learning.html#regresión-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>El análisis de regresión es un subcampo del aprendizaje automático supervisado
+cuyo objetivo es establecer un método para la relación entre un cierto número de
+características y una variable objetivo continua.</p>
+<p><br/></p>
+<p><img src="img/04-ml/07_regresion_clasificacion.png" width="700pt" height="450pt" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+</div>
+<div id="sesgo-vs-varianza" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Sesgo vs varianza<a href="introducción-a-machine-learning.html#sesgo-vs-varianza" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En el mundo de Machine Learning cuando desarrollamos un modelo nos esforzamos
+para hacer que sea lo más preciso, ajustando los parámetros, pero la realidad es
+que no se puede construir un modelo 100% preciso ya que nunca pueden estar
+libres de errores.</p>
+<p>Comprender cómo las diferentes fuentes de error generan sesgo y varianza nos
+ayudará a mejorar el proceso de ajuste de datos, lo que resulta en modelos más
+precisos, adicionalmente también evitará el error de sobre-ajuste y falta de
+ajuste.</p>
+<div id="balance-entre-sesgo-y-varianza-o-trade-off" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Balance entre sesgo y varianza o Trade-off<a href="introducción-a-machine-learning.html#balance-entre-sesgo-y-varianza-o-trade-off" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El objetivo de cualquier algoritmo supervisado de Machine Learning es lograr un
+sesgo bajo, una baja varianza y a su vez el algoritmo debe lograr un buen
+rendimiento de predicción.</p>
+<p><img src="img/04-ml/08_tradeoff.jpeg" width="650pt" height="450pt" style="display: block; margin: auto;" /></p>
+<p>El sesgo frente a la varianza se refiere a la precisión frente a la consistencia
+de los modelos entrenados por su algoritmo. Podemos diagnosticarlos de la
+siguiente manera:</p>
+<p><img src="img/04-ml/09_altobias.jpeg" width="650pt" height="350pt" style="display: block; margin: auto;" /></p>
+<p>Los algoritmos de baja varianza (alto sesgo) tienden a ser menos complejos, con
+una estructura subyacente simple o rígida.</p>
+<p><img src="img/04-ml/10_bajobias.jpeg" width="650pt" height="350pt" style="display: block; margin: auto;" /></p>
+<p>Los algoritmos de bajo sesgo (alta varianza) tienden a ser más complejos, con
+una estructura subyacente flexible.</p>
+<p>No hay escapatoria a la relación entre el sesgo y la varianza en Machine
+Learning, aumentar el sesgo disminuirá la varianza, aumentar la varianza
+disminuirá el sesgo.</p>
+</div>
+<div id="error-total" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Error total<a href="introducción-a-machine-learning.html#error-total" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Comprender el sesgo y la varianza es fundamental para comprender el
+comportamiento de los modelos de predicción, pero en general lo que realmente
+importa es el error general, no la descomposición específica. El punto ideal
+para cualquier modelo es el nivel de complejidad en el que el aumento en el
+sesgo es equivalente a la reducción en la varianza.</p>
+<p>Para construir un buen modelo, necesitamos encontrar un buen equilibrio entre el
+sesgo y la varianza de manera que minimice el error total.</p>
+<p><img src="img/04-ml/11_biasvar.png" width="650pt" height="350pt" style="display: block; margin: auto;" /></p>
+</div>
+<div id="overfitting" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Overfitting<a href="introducción-a-machine-learning.html#overfitting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>El modelo es muy particular.</p></li>
+<li><p>Error debido a la varianza</p></li>
+<li><p>Durante el entrenamiento tiene un desempeño muy bueno, pero al pasar nuevos
+datos su desempeño es malo.</p></li>
+</ul>
+</div>
+<div id="underfitting" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Underfitting<a href="introducción-a-machine-learning.html#underfitting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>El modelo es demasiado general.</p></li>
+<li><p>Error debido al sesgo.</p></li>
+<li><p>Durante el entrenamiento no tiene un buen desempeño.</p></li>
+</ul>
+<p><img src="img/04-ml/12_over_under.jpg" width="600pt" height="350pt" style="display: block; margin: auto;" /></p>
+</div>
+<div id="error-irreducible" class="section level3 hasAnchor" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> Error irreducible<a href="introducción-a-machine-learning.html#error-irreducible" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El error irreducible no se puede reducir, independientemente de qué algoritmo se
+usa. También se le conoce como ruido y, por lo general, proviene por factores
+como variables desconocidas que influyen en el mapeo de las variables de entrada
+a la variable de salida, un conjunto de características incompleto o un problema
+mal enmarcado. Acá es importante comprender que no importa cuán bueno hagamos
+nuestro modelo, nuestros datos tendrán cierta cantidad de ruido o un error
+irreductible que no se puede eliminar.</p>
+</div>
+</div>
+<div id="partición-de-datos" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Partición de datos<a href="introducción-a-machine-learning.html#partición-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="img/04-ml/01_train_vs_test.jpeg" width="600pt" height="300pt" style="display: block; margin: auto;" /></p>
+<p>Cuando hay una gran cantidad de datos disponibles, una estrategia inteligente es
+asignar subconjuntos específicos de datos para diferentes tareas, en lugar de
+asignar la mayor cantidad posible solo a la estimación de los parámetros del
+modelo.</p>
+<p>Si el conjunto inicial de datos no es lo suficientemente grande, habrá cierta
+superposición de cómo y cuándo se asignan nuestros datos, y es importante contar
+con una metodología sólida para la partición de datos.</p>
+<div id="métodos-comunes-para-particionar-datos" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Métodos comunes para particionar datos<a href="introducción-a-machine-learning.html#métodos-comunes-para-particionar-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El enfoque principal para la validación del modelo es dividir el conjunto de
+datos existente en dos conjuntos distintos:</p>
+<ul>
+<li><p><strong>Entrenamiento:</strong> Este conjunto suele contener la mayoría de los datos, los
+cuales sirven para la construcción de modelos donde se pueden ajustar
+diferentes modelos, se investigan estrategias de ingeniería de
+características, etc.</p>
+<p>La mayor parte del proceso de modelado se utiliza este conjunto.</p></li>
+<li><p><strong>Prueba:</strong> La otra parte de las observaciones se coloca en este conjunto.
+Estos datos se mantienen en reserva hasta que se elijan uno o dos modelos
+como los de mejor rendimiento.</p>
+<p>El conjunto de prueba se utiliza como árbitro final para determinar la
+eficiencia del modelo, por lo que es fundamental mirar el conjunto de prueba
+una sola vez.</p></li>
+</ul>
+<p>Supongamos que asignamos el <span class="math inline">\(80\%\)</span> de los datos al conjunto de entrenamiento y
+el <span class="math inline">\(20\%\)</span> restante a las pruebas. El método más común es utilizar un muestreo
+aleatorio simple. En python existe un módulo de <em>sklearn</em> que permite hacer tal separación de datos:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb108-1"><a href="introducción-a-machine-learning.html#cb108-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb108-2"><a href="introducción-a-machine-learning.html#cb108-2" tabindex="-1"></a><span class="im">from</span> siuba <span class="im">import</span> select, _</span>
+<span id="cb108-3"><a href="introducción-a-machine-learning.html#cb108-3" tabindex="-1"></a><span class="im">from</span> plydata.one_table_verbs <span class="im">import</span> pull</span>
+<span id="cb108-4"><a href="introducción-a-machine-learning.html#cb108-4" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb108-5"><a href="introducción-a-machine-learning.html#cb108-5" tabindex="-1"></a></span>
+<span id="cb108-6"><a href="introducción-a-machine-learning.html#cb108-6" tabindex="-1"></a>ames <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/ames.csv&quot;</span>)</span>
+<span id="cb108-7"><a href="introducción-a-machine-learning.html#cb108-7" tabindex="-1"></a></span>
+<span id="cb108-8"><a href="introducción-a-machine-learning.html#cb108-8" tabindex="-1"></a>y <span class="op">=</span> ames <span class="op">&gt;&gt;</span> pull(<span class="st">&quot;Sale_Price&quot;</span>)</span>
+<span id="cb108-9"><a href="introducción-a-machine-learning.html#cb108-9" tabindex="-1"></a>X <span class="op">=</span> select(ames, <span class="op">-</span>_.Sale_Price)</span>
+<span id="cb108-10"><a href="introducción-a-machine-learning.html#cb108-10" tabindex="-1"></a></span>
+<span id="cb108-11"><a href="introducción-a-machine-learning.html#cb108-11" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb108-12"><a href="introducción-a-machine-learning.html#cb108-12" tabindex="-1"></a> X, y, </span>
+<span id="cb108-13"><a href="introducción-a-machine-learning.html#cb108-13" tabindex="-1"></a> test_size <span class="op">=</span> <span class="fl">0.20</span>, </span>
+<span id="cb108-14"><a href="introducción-a-machine-learning.html#cb108-14" tabindex="-1"></a> random_state <span class="op">=</span> <span class="dv">12345</span></span>
+<span id="cb108-15"><a href="introducción-a-machine-learning.html#cb108-15" tabindex="-1"></a> )</span>
+<span id="cb108-16"><a href="introducción-a-machine-learning.html#cb108-16" tabindex="-1"></a></span>
+<span id="cb108-17"><a href="introducción-a-machine-learning.html#cb108-17" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Tamaño de conjunto de entrenamiento: &quot;</span>, X_train.shape)</span></code></pre></div>
+<pre><code>## Tamaño de conjunto de entrenamiento:  (2344, 73)</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb110-1"><a href="introducción-a-machine-learning.html#cb110-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Tamaño de conjunto de prueba: &quot;</span>, X_test.shape)</span></code></pre></div>
+<pre><code>## Tamaño de conjunto de prueba:  (586, 73)</code></pre>
+<p>El muestreo aleatorio simple es apropiado en muchos casos, pero hay excepciones.</p>
+<p>Cuando hay un desbalance de clases en los problemas de clasificación, el uso de una muestra aleatoria simple puede asignar al azar estas muestras poco frecuentes de manera desproporcionada al conjunto de entrenamiento o prueba.</p>
+<p>Para evitar esto, se puede utilizar un muestreo estratificado. La división de entrenamiento/prueba se lleva a cabo por separado dentro de cada clase y luego estas submuestras se combinan en el conjunto general de entrenamiento y prueba.</p>
+<p>Para los problemas de regresión, los datos de los resultados se pueden agrupar artificialmente en cuartiles y luego realizar un muestreo estratificado cuatro veces por separado. Este es un método eficaz para mantener similares las distribuciones del resultado entre el conjunto de entrenamiento y prueba.</p>
+<p><img src="img/04-ml/02_strata.png" width="600pt" height="300pt" style="display: block; margin: auto;" /></p>
+<p>Observamos que la distribución del precio de venta está sesgada a la derecha.
+Las casas más caras no estarían bien representadas en el conjunto de
+entrenamiento con una simple partición; esto aumentaría el riesgo de que nuestro
+modelo sea ineficaz para predecir el precio de dichas propiedades.</p>
+<p>Las líneas verticales punteadas indican los cuatro cuartiles para estos datos.
+Una muestra aleatoria estratificada llevaría a cabo la división 80/20 dentro de
+cada uno de estos subconjuntos de datos y luego combinaría los resultados. En
+<em>sklearn</em>, esto se logra usando el argumento de estratos:</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb112-1"><a href="introducción-a-machine-learning.html#cb112-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb112-2"><a href="introducción-a-machine-learning.html#cb112-2" tabindex="-1"></a></span>
+<span id="cb112-3"><a href="introducción-a-machine-learning.html#cb112-3" tabindex="-1"></a>numeric_column <span class="op">=</span> ames <span class="op">&gt;&gt;</span> pull(<span class="st">&quot;Sale_Price&quot;</span>)</span>
+<span id="cb112-4"><a href="introducción-a-machine-learning.html#cb112-4" tabindex="-1"></a>quartiles <span class="op">=</span> np.percentile(numeric_column, [<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>])</span>
+<span id="cb112-5"><a href="introducción-a-machine-learning.html#cb112-5" tabindex="-1"></a></span>
+<span id="cb112-6"><a href="introducción-a-machine-learning.html#cb112-6" tabindex="-1"></a><span class="co"># Crea una nueva variable categórica basada en los cuartiles</span></span>
+<span id="cb112-7"><a href="introducción-a-machine-learning.html#cb112-7" tabindex="-1"></a>stratify_variable <span class="op">=</span> pd.cut(</span>
+<span id="cb112-8"><a href="introducción-a-machine-learning.html#cb112-8" tabindex="-1"></a> numeric_column, </span>
+<span id="cb112-9"><a href="introducción-a-machine-learning.html#cb112-9" tabindex="-1"></a> bins<span class="op">=</span>[<span class="bu">float</span>(<span class="st">&#39;-inf&#39;</span>), quartiles[<span class="dv">0</span>], quartiles[<span class="dv">1</span>], quartiles[<span class="dv">2</span>], <span class="bu">float</span>(<span class="st">&#39;inf&#39;</span>)],</span>
+<span id="cb112-10"><a href="introducción-a-machine-learning.html#cb112-10" tabindex="-1"></a> labels<span class="op">=</span>[<span class="st">&quot;Q1&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q3&quot;</span>, <span class="st">&quot;Q4&quot;</span>]</span>
+<span id="cb112-11"><a href="introducción-a-machine-learning.html#cb112-11" tabindex="-1"></a> )</span>
+<span id="cb112-12"><a href="introducción-a-machine-learning.html#cb112-12" tabindex="-1"></a></span>
+<span id="cb112-13"><a href="introducción-a-machine-learning.html#cb112-13" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb112-14"><a href="introducción-a-machine-learning.html#cb112-14" tabindex="-1"></a> X, y, </span>
+<span id="cb112-15"><a href="introducción-a-machine-learning.html#cb112-15" tabindex="-1"></a> test_size <span class="op">=</span> <span class="fl">0.20</span>, </span>
+<span id="cb112-16"><a href="introducción-a-machine-learning.html#cb112-16" tabindex="-1"></a> random_state <span class="op">=</span> <span class="dv">12345</span>, </span>
+<span id="cb112-17"><a href="introducción-a-machine-learning.html#cb112-17" tabindex="-1"></a> stratify <span class="op">=</span> stratify_variable</span>
+<span id="cb112-18"><a href="introducción-a-machine-learning.html#cb112-18" tabindex="-1"></a> )</span>
+<span id="cb112-19"><a href="introducción-a-machine-learning.html#cb112-19" tabindex="-1"></a> </span></code></pre></div>
+<div id="qué-proporción-debería-ser-usada" class="section level4 unnumbered hasAnchor">
+<h4>¿Qué proporción debería ser usada?<a href="introducción-a-machine-learning.html#qué-proporción-debería-ser-usada" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>No hay un porcentaje de división óptimo para el conjunto de entrenamiento y
+prueba. Muy pocos datos en el conjunto de entrenamiento obstaculizan la
+capacidad del modelo para encontrar estimaciones de parámetros adecuadas y muy
+pocos datos en el conjunto de prueba reducen la calidad de las estimaciones de
+rendimiento.</p>
+<p>Se debe elegir un porcentaje que cumpla con los objetivos de nuestro proyecto
+con consideraciones que incluyen:</p>
+<ul>
+<li>Costo computacional en el entrenamiento del modelo.</li>
+<li>Costo computacional en la evaluación del modelo.</li>
+<li>Representatividad del conjunto de formación.</li>
+<li>Representatividad del conjunto de pruebas.</li>
+</ul>
+<p>Los porcentajes de división más comunes comunes son:</p>
+<ul>
+<li>Entrenamiento: <span class="math inline">\(80\%\)</span>, Prueba: <span class="math inline">\(20\%\)</span></li>
+<li>Entrenamiento: <span class="math inline">\(67\%\)</span>, Prueba: <span class="math inline">\(33\%\)</span></li>
+<li>Entrenamiento: <span class="math inline">\(50\%\)</span>, Prueba: <span class="math inline">\(50\%\)</span></li>
+</ul>
+</div>
+</div>
+<div id="conjunto-de-validación" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Conjunto de validación<a href="introducción-a-machine-learning.html#conjunto-de-validación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El conjunto de validación se definió originalmente cuando los investigadores se
+dieron cuenta de que medir el rendimiento del conjunto de entrenamiento conducía
+a resultados que eran demasiado optimistas.</p>
+<p>Esto llevó a modelos que se sobre-ajustaban, lo que significa que se
+desempeñaron muy bien en el conjunto de entrenamiento pero mal en el conjunto de
+prueba.</p>
+<p>Para combatir este problema, se retuvo un pequeño conjunto de datos de
+<em>validación</em> y se utilizó para medir el rendimiento del modelo mientras este
+está siendo entrenado. Una vez que la tasa de error del conjunto de validación
+comenzara a aumentar, la capacitación se detendría.</p>
+<p>En otras palabras, el conjunto de validación es un medio para tener una idea
+aproximada de qué tan bien se desempeñó el modelo antes del conjunto de prueba.</p>
+<p><img src="img/04-ml/3-5-3-conjunto-validacion.png" width="500pt" height="250pt" style="display: block; margin: auto;" /></p>
+<p>Los conjuntos de validación se utilizan a menudo cuando el conjunto de datos
+original es muy grande. En este caso, una sola partición grande puede ser
+adecuada para caracterizar el rendimiento del modelo sin tener que realizar
+múltiples iteraciones de remuestreo.</p>
+<p>Con <em>sklearn</em>, un conjunto de validación es como cualquier otro objeto de
+remuestreo; este tipo es diferente solo en que tiene una sola iteración</p>
+<p><img src="img/04-ml/3-5-3-conjunto-validacion-2.png" width="500pt" height="350pt" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb113-1"><a href="introducción-a-machine-learning.html#cb113-1" tabindex="-1"></a><span class="co"># Dividir los datos en entrenamiento (60%) y el resto (40%)</span></span>
+<span id="cb113-2"><a href="introducción-a-machine-learning.html#cb113-2" tabindex="-1"></a>X_train, X_temp, y_train, y_temp <span class="op">=</span> train_test_split(</span>
+<span id="cb113-3"><a href="introducción-a-machine-learning.html#cb113-3" tabindex="-1"></a> X, y, </span>
+<span id="cb113-4"><a href="introducción-a-machine-learning.html#cb113-4" tabindex="-1"></a> test_size <span class="op">=</span> <span class="fl">0.4</span>, </span>
+<span id="cb113-5"><a href="introducción-a-machine-learning.html#cb113-5" tabindex="-1"></a> random_state <span class="op">=</span> <span class="dv">12345</span></span>
+<span id="cb113-6"><a href="introducción-a-machine-learning.html#cb113-6" tabindex="-1"></a> )</span>
+<span id="cb113-7"><a href="introducción-a-machine-learning.html#cb113-7" tabindex="-1"></a></span>
+<span id="cb113-8"><a href="introducción-a-machine-learning.html#cb113-8" tabindex="-1"></a><span class="co"># Dividir el resto en conjuntos de prueba (15%) y validación (25%)</span></span>
+<span id="cb113-9"><a href="introducción-a-machine-learning.html#cb113-9" tabindex="-1"></a>X_test, X_val, y_test, y_val <span class="op">=</span> train_test_split(</span>
+<span id="cb113-10"><a href="introducción-a-machine-learning.html#cb113-10" tabindex="-1"></a> X_temp, y_temp, </span>
+<span id="cb113-11"><a href="introducción-a-machine-learning.html#cb113-11" tabindex="-1"></a> test_size <span class="op">=</span> <span class="fl">0.625</span>, </span>
+<span id="cb113-12"><a href="introducción-a-machine-learning.html#cb113-12" tabindex="-1"></a> random_state <span class="op">=</span> <span class="dv">42</span></span>
+<span id="cb113-13"><a href="introducción-a-machine-learning.html#cb113-13" tabindex="-1"></a> )</span>
+<span id="cb113-14"><a href="introducción-a-machine-learning.html#cb113-14" tabindex="-1"></a></span>
+<span id="cb113-15"><a href="introducción-a-machine-learning.html#cb113-15" tabindex="-1"></a><span class="co"># Training (60%), testing (15%), validation (25%)</span></span>
+<span id="cb113-16"><a href="introducción-a-machine-learning.html#cb113-16" tabindex="-1"></a></span>
+<span id="cb113-17"><a href="introducción-a-machine-learning.html#cb113-17" tabindex="-1"></a><span class="co"># Imprimir los tamaños de los conjuntos resultantes</span></span>
+<span id="cb113-18"><a href="introducción-a-machine-learning.html#cb113-18" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Tamaño de conjunto de entrenamiento: &quot;</span>, X_train.shape)</span></code></pre></div>
+<pre><code>## Tamaño de conjunto de entrenamiento:  (1758, 73)</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb115-1"><a href="introducción-a-machine-learning.html#cb115-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Tamaño de conjunto de prueba: &quot;</span>, X_test.shape)</span></code></pre></div>
+<pre><code>## Tamaño de conjunto de prueba:  (439, 73)</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb117-1"><a href="introducción-a-machine-learning.html#cb117-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Tamaño de conjunto de validación: &quot;</span>, X_val.shape)</span></code></pre></div>
+<pre><code>## Tamaño de conjunto de validación:  (733, 73)</code></pre>
+<p>Esta función regresa una columna para los objetos de división de datos y una
+columna llamada id que tiene una cadena de caracteres con el identificador de
+remuestreo.</p>
+<p>El argumento de estratos hace que el muestreo aleatorio se lleve a cabo dentro
+de la variable de estratificación. Esto puede ayudar a garantizar que el número
+de datos en los datos del análisis sea equivalente a las proporciones del
+conjunto de datos original. (Los estratos inferiores al 10% del total se
+agrupan).</p>
+<p>Otra opción de muestreo bastante común es la realizada mediante múltiples
+submuestras de los datos originales.</p>
+<p><img src="img/04-ml/18_1_cross_validation.png" width="500pt" height="350pt" style="display: block; margin: auto;" /></p>
+<p>Diversos métodos se revisarán a lo largo del curso.</p>
+</div>
+<div id="leave-one-out-cross-validation" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Leave-one-out cross-validation<a href="introducción-a-machine-learning.html#leave-one-out-cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La validación cruzada es una manera de predecir el ajuste de un modelo a un hipotético conjunto de datos de prueba cuando no disponemos del conjunto explícito de datos de prueba.</p>
+<p>El método <em>LOOCV</em> en un método iterativo que se inicia empleando como conjunto de entrenamiento todas las observaciones disponibles excepto una, que se excluye para emplearla como validación.</p>
+<p>Si se emplea una única observación para calcular el error, este varía mucho dependiendo de qué observación se haya seleccionado. Para evitarlo, el proceso se repite tantas veces como observaciones disponibles se tengan, excluyendo en cada iteración una observación distinta, ajustando el modelo con el resto y calculando el error con dicha observación.</p>
+<p>Finalmente, el error estimado por el es el promedio de todos lo <span class="math inline">\(i\)</span> errores calculados.</p>
+<p>La principal desventaja de este método es su costo computacional. El proceso requiere que el modelo sea reajustado y validado tantas veces como observaciones disponibles se tengan lo que en algunos casos puede ser muy complicado.</p>
+<p><em>sklearn</em> contiene la función <code>LeaveOneOut()</code>.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb119-1"><a href="introducción-a-machine-learning.html#cb119-1" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> LeaveOneOut, cross_val_score</span>
+<span id="cb119-2"><a href="introducción-a-machine-learning.html#cb119-2" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb119-3"><a href="introducción-a-machine-learning.html#cb119-3" tabindex="-1"></a></span>
+<span id="cb119-4"><a href="introducción-a-machine-learning.html#cb119-4" tabindex="-1"></a>y <span class="op">=</span> ames <span class="op">&gt;&gt;</span> pull(<span class="st">&quot;Sale_Price&quot;</span>)  <span class="co">## Otra forma: ames[&quot;Sale_Price&quot;]</span></span>
+<span id="cb119-5"><a href="introducción-a-machine-learning.html#cb119-5" tabindex="-1"></a>X <span class="op">=</span> select(ames, _.Gr_Liv_Area)</span>
+<span id="cb119-6"><a href="introducción-a-machine-learning.html#cb119-6" tabindex="-1"></a></span>
+<span id="cb119-7"><a href="introducción-a-machine-learning.html#cb119-7" tabindex="-1"></a><span class="co"># Crea el regresor lineal que deseas evaluar</span></span>
+<span id="cb119-8"><a href="introducción-a-machine-learning.html#cb119-8" tabindex="-1"></a>regressor <span class="op">=</span> LinearRegression()</span>
+<span id="cb119-9"><a href="introducción-a-machine-learning.html#cb119-9" tabindex="-1"></a></span>
+<span id="cb119-10"><a href="introducción-a-machine-learning.html#cb119-10" tabindex="-1"></a><span class="co"># Crea el objeto Leave-One-Out Cross-Validation</span></span>
+<span id="cb119-11"><a href="introducción-a-machine-learning.html#cb119-11" tabindex="-1"></a>loo <span class="op">=</span> LeaveOneOut()</span>
+<span id="cb119-12"><a href="introducción-a-machine-learning.html#cb119-12" tabindex="-1"></a></span>
+<span id="cb119-13"><a href="introducción-a-machine-learning.html#cb119-13" tabindex="-1"></a><span class="co"># Realiza la validación cruzada LOOCV y obtén los scores de cada iteración</span></span>
+<span id="cb119-14"><a href="introducción-a-machine-learning.html#cb119-14" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(</span>
+<span id="cb119-15"><a href="introducción-a-machine-learning.html#cb119-15" tabindex="-1"></a> regressor, X, y, cv <span class="op">=</span> loo, </span>
+<span id="cb119-16"><a href="introducción-a-machine-learning.html#cb119-16" tabindex="-1"></a> scoring<span class="op">=</span><span class="st">&#39;neg_mean_squared_error&#39;</span>,</span>
+<span id="cb119-17"><a href="introducción-a-machine-learning.html#cb119-17" tabindex="-1"></a> error_score <span class="op">=</span> <span class="st">&#39;raise&#39;</span>)</span>
+<span id="cb119-18"><a href="introducción-a-machine-learning.html#cb119-18" tabindex="-1"></a></span>
+<span id="cb119-19"><a href="introducción-a-machine-learning.html#cb119-19" tabindex="-1"></a><span class="co"># Calcula el promedio y la desviación estándar de los scores</span></span>
+<span id="cb119-20"><a href="introducción-a-machine-learning.html#cb119-20" tabindex="-1"></a>mean_score <span class="op">=</span> <span class="op">-</span>scores.mean()</span>
+<span id="cb119-21"><a href="introducción-a-machine-learning.html#cb119-21" tabindex="-1"></a>std_score <span class="op">=</span> scores.std()</span>
+<span id="cb119-22"><a href="introducción-a-machine-learning.html#cb119-22" tabindex="-1"></a></span>
+<span id="cb119-23"><a href="introducción-a-machine-learning.html#cb119-23" tabindex="-1"></a><span class="co"># Imprime los resultados</span></span>
+<span id="cb119-24"><a href="introducción-a-machine-learning.html#cb119-24" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Scores de cada iteración:&quot;</span>, scores)</span></code></pre></div>
+<pre><code>## Scores de cada iteración: [-2.80608203e+08 -7.01304898e+07 -1.05533389e+08 ... -1.07632629e+08
+##  -2.45849621e+06 -2.37271777e+09]</code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb121-1"><a href="introducción-a-machine-learning.html#cb121-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Promedio del score:&quot;</span>, mean_score)</span></code></pre></div>
+<pre><code>## Promedio del score: 3206707385.6871295</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb123-1"><a href="introducción-a-machine-learning.html#cb123-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Desviación estándar del score:&quot;</span>, std_score)</span></code></pre></div>
+<pre><code>## Desviación estándar del score: 9431124835.276945</code></pre>
+</div>
+<div id="k-fold-cross-validation" class="section level3 hasAnchor" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> K Fold Cross Validation<a href="introducción-a-machine-learning.html#k-fold-cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En la validación cruzada de K iteraciones (K Fold Cross Validation) los datos de
+muestra se dividen en K subconjuntos. Uno de los subconjuntos se utiliza como
+datos de prueba y el resto como datos de entrenamiento. El proceso de
+validación cruzada es repetido durante <span class="math inline">\(k\)</span> iteraciones, con cada uno de los
+posibles subconjuntos de datos de prueba.</p>
+<p>Finalmente se obtiene el promedio de los rendimientos de cada iteración para
+obtener un único resultado. Lo más común es utilizar la validación cruzada de 10
+iteraciones.</p>
+<p><img src="img/04-ml/3-5-4-VFCV.jpg" width="550pt" height="250pt" style="display: block; margin: auto;" /></p>
+<p>Este método de validación cruzada se utiliza principalmente para:</p>
+<ul>
+<li><p><strong>Estimar el error</strong> cuando nuestro conjunto de prueba es muy pequeño. Es decir,
+se tiene la misma configuración de parámetros y solamente cambia el conjunto
+de prueba y validación.</p></li>
+<li><p><strong>Encontrar lo mejores hiperparámetros</strong> que ajusten mejor el modelo. Es decir,
+en cada bloque se tiene una configuración de hiperparámetros distinto y se
+seleccionará aquellos hiperparámetros que hayan producido el error más
+pequeño.</p></li>
+</ul>
+<p><img src="img/04-ml/3-5-4-VFCV-tune.png" width="550pt" height="250pt" style="display: block; margin: auto;" /></p>
+<p>En python, esto se logra mediante las siguiente función:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb125-1"><a href="introducción-a-machine-learning.html#cb125-1" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> KFold</span>
+<span id="cb125-2"><a href="introducción-a-machine-learning.html#cb125-2" tabindex="-1"></a></span>
+<span id="cb125-3"><a href="introducción-a-machine-learning.html#cb125-3" tabindex="-1"></a><span class="co"># Crea el objeto K-Fold Cross-Validation con K=5 (puedes cambiar el valor de K según tus necesidades)</span></span>
+<span id="cb125-4"><a href="introducción-a-machine-learning.html#cb125-4" tabindex="-1"></a>kf <span class="op">=</span> KFold(n_splits <span class="op">=</span> <span class="dv">10</span>, shuffle <span class="op">=</span> <span class="va">True</span>, random_state <span class="op">=</span> <span class="dv">42</span>)</span>
+<span id="cb125-5"><a href="introducción-a-machine-learning.html#cb125-5" tabindex="-1"></a></span>
+<span id="cb125-6"><a href="introducción-a-machine-learning.html#cb125-6" tabindex="-1"></a><span class="co"># Realiza la validación cruzada KFCV y obtén los scores de cada iteración</span></span>
+<span id="cb125-7"><a href="introducción-a-machine-learning.html#cb125-7" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(</span>
+<span id="cb125-8"><a href="introducción-a-machine-learning.html#cb125-8" tabindex="-1"></a> regressor, X, y, cv <span class="op">=</span> kf, </span>
+<span id="cb125-9"><a href="introducción-a-machine-learning.html#cb125-9" tabindex="-1"></a> scoring<span class="op">=</span><span class="st">&#39;neg_mean_squared_error&#39;</span></span>
+<span id="cb125-10"><a href="introducción-a-machine-learning.html#cb125-10" tabindex="-1"></a> )</span>
+<span id="cb125-11"><a href="introducción-a-machine-learning.html#cb125-11" tabindex="-1"></a></span>
+<span id="cb125-12"><a href="introducción-a-machine-learning.html#cb125-12" tabindex="-1"></a><span class="co"># Calcula el promedio y la desviación estándar de los scores</span></span>
+<span id="cb125-13"><a href="introducción-a-machine-learning.html#cb125-13" tabindex="-1"></a>mean_score <span class="op">=</span> <span class="op">-</span>scores.mean()</span>
+<span id="cb125-14"><a href="introducción-a-machine-learning.html#cb125-14" tabindex="-1"></a>std_score <span class="op">=</span> scores.std()</span>
+<span id="cb125-15"><a href="introducción-a-machine-learning.html#cb125-15" tabindex="-1"></a></span>
+<span id="cb125-16"><a href="introducción-a-machine-learning.html#cb125-16" tabindex="-1"></a><span class="co"># Imprime los resultados</span></span>
+<span id="cb125-17"><a href="introducción-a-machine-learning.html#cb125-17" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Scores de cada iteración:&quot;</span>, scores)</span></code></pre></div>
+<pre><code>## Scores de cada iteración: [-3.94519600e+09 -3.61280406e+09 -2.60703956e+09 -3.56455494e+09
+##  -3.10455928e+09 -3.08042248e+09 -2.79329524e+09 -3.61684676e+09
+##  -3.00764032e+09 -2.75338281e+09]</code></pre>
+<div class="sourceCode" id="cb127"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb127-1"><a href="introducción-a-machine-learning.html#cb127-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Promedio del score:&quot;</span>, mean_score)</span></code></pre></div>
+<pre><code>## Promedio del score: 3208574145.632535</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb129-1"><a href="introducción-a-machine-learning.html#cb129-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Desviación estándar del score:&quot;</span>, std_score)</span></code></pre></div>
+<pre><code>## Desviación estándar del score: 425269133.96291786</code></pre>
+<p>Éste método nos permite detectar el nivel de error para diferentes conjuntos de entrenamiento y validación. El modelo es el mismo, pero existen pequeñas perturbaciones en los datos que ayudan a estimar el promedio y desviación estándar del nivel de precisión del modelo.</p>
+</div>
+<div id="validación-cruzada-para-series-de-tiempo" class="section level3 hasAnchor" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Validación cruzada para series de tiempo<a href="introducción-a-machine-learning.html#validación-cruzada-para-series-de-tiempo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En este procedimiento, hay una serie de conjuntos de prueba, cada uno de los
+cuales consta de una única observación. El conjunto de entrenamiento
+correspondiente consta solo de observaciones que ocurrieron antes de la
+observación que forma el conjunto de prueba. Por lo tanto, no se pueden utilizar
+observaciones futuras para construir el pronóstico.</p>
+<p>El siguiente diagrama ilustra la serie de conjuntos de entrenamiento y prueba,
+donde las observaciones azules forman los conjuntos de entrenamiento y las
+observaciones rojas forman los conjuntos de prueba.</p>
+<p><img src="img/04-ml/3-5-6-validacion-cruzada-series-tiempo.png" width="550pt" height="300pt" style="display: block; margin: auto;" /></p>
+<p>La precisión del pronóstico se calcula promediando los conjuntos de prueba. Este
+procedimiento a veces se conoce como “evaluación en un origen de pronóstico
+continuo” porque el “origen” en el que se basa el pronóstico avanza en el
+tiempo.</p>
+<p>Con los pronósticos de series de tiempo, los pronósticos de un paso pueden no
+ser tan relevantes como los pronósticos de varios pasos. En este caso, el
+procedimiento de validación cruzada basado en un origen de pronóstico continuo
+se puede modificar para permitir el uso de errores de varios pasos.</p>
+<p>Suponga que estamos interesados en modelos que producen buenos pronósticos de 4
+pasos por delante. Entonces el diagrama correspondiente se muestra a
+continuación.</p>
+<p><img src="img/04-ml/3-5-6-validacion-cruzada-series-tiempo-2.png" width="550pt" height="300pt" style="display: block; margin: auto;" /></p>
+<div class="infobox important">
+<p><strong>¡¡ I M P O R T A N T E !!</strong></p>
+<p>El modo de entrenar un modelo debe hacerse imitando la manera en que se realizarán las predicciones posteriormente. Es decir:</p>
+<p>Si se pretenden hacer predicciones de eventos futuros (dentro de un mes), al momento de entrenar el modelo los datos deben corresponder al estatus en que se encontraban 1 mes antes de observar la variable de respuesta y la variable de respuesta debe ser el valor real que se deseaba predecir.</p>
+</div>
+</div>
+</div>
+<div id="feature-engineering" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Feature engineering<a href="introducción-a-machine-learning.html#feature-engineering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Hay varios pasos que se deben de seguir para crear un modelo útil:</p>
+<ul>
+<li>Recopilación de datos.</li>
+<li>Limpieza de datos.</li>
+<li>Creación de nuevas variables.</li>
+<li>Estimación de parámetros.</li>
+<li>Selección y ajuste del modelo.</li>
+<li>Evaluación del rendimiento.</li>
+</ul>
+<p>Al comienzo de un proyecto, generalmente hay un conjunto finito de datos
+disponibles para todas estas tareas.</p>
+<p><strong>OJO:</strong> A medida que los datos se reutilizan para múltiples tareas, aumentan
+los riesgos de agregar sesgos o grandes efectos de errores metodológicos.</p>
+<p>Como punto de partida para nuestro flujo de trabajo de aprendizaje automático,
+necesitaremos datos de entrada. En la mayoría de los casos, estos datos se
+cargarán y almacenarán en forma de <em>data frames</em>. Incluirán una
+o varias variables predictivas y, en caso de aprendizaje supervisado, también
+incluirán un resultado conocido.</p>
+<p>Sin embargo, no todos los modelos pueden lidiar con diferentes problemas de
+datos y, a menudo, necesitamos transformar los datos para obtener el mejor
+rendimiento posible del modelo. Este proceso se denomina <strong>pre-procesamiento</strong> y
+puede incluir una amplia gama de pasos, como:</p>
+<ul>
+<li><strong>Dicotomización de variables:</strong> Variables cualitativas que solo pueden
+tomar el valor <span class="math inline">\(0\)</span> o <span class="math inline">\(1\)</span> para indicar la ausencia o presencia de una
+condición específica. Estas variables se utilizan para clasificar los datos
+en categorías mutuamente excluyentes o para activar comandos de encendido /
+apagado</li>
+</ul>
+<p><img src="img/04-ml/hombre-mujer.jpg" width="400pt" height="200pt" style="display: block; margin: auto;" /><img src="img/04-ml/sino.jpg" width="400pt" height="200pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Near Zero Value (nzv) o Varianza Cero:</strong> En algunas situaciones, el
+mecanismo de generación de datos puede crear predictores que solo tienen un
+valor único (es decir, un “predictor de varianza cercando a cero”). Para
+muchos modelos (excluidos los modelos basados en árboles), esto puede hacer
+que el modelo se bloquee o que el ajuste sea inestable.</li>
+</ul>
+<p>De manera similar, los predictores pueden tener solo una pequeña cantidad de
+valores únicos que ocurren con frecuencias muy bajas.</p>
+<p><img src="img/04-ml/hombres.jpg" width="500pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Imputaciones:</strong> Si faltan algunos predictores, ¿deberían estimarse
+mediante imputación?</li>
+</ul>
+<p><img src="img/04-ml/imputar.jpg" width="400pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Des-correlacionar:</strong> Si hay predictores correlacionados, ¿debería
+mitigarse esta correlación? Esto podría significar filtrar predictores, usar
+análisis de componentes principales o una técnica basada en modelos (por
+ejemplo, regularización).</li>
+</ul>
+<p><img src="img/04-ml/descorrelaciones.jpg" width="400pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Normalizar:</strong> ¿Deben centrarse y escalar los predictores?</li>
+</ul>
+<p><img src="img/04-ml/estandarizar-reescalar.jpg" width="800pt" style="display: block; margin: auto;" /></p>
+<ul>
+<li><strong>Transformar:</strong> ¿Es útil transformar los predictores para que sean más
+simétricos? (por ejemplo, escala logarítmica).</li>
+</ul>
+<p>Dependiendo del caso de uso, algunos pasos de pre-procesamiento pueden ser
+indispensables para pasos posteriores, mientras que otros solo son opcionales.
+Sin embargo, dependiendo de los pasos de pre-procesamiento elegidos, el
+rendimiento del modelo puede cambiar significativamente en pasos posteriores.
+Por lo tanto, es muy común probar varias configuraciones.</p>
+<p><strong>La ingeniería de datos</strong> abarca actividades que dan formato a los valores de los
+predictores para que se puedan utilizar de manera eficaz para nuestro modelo.
+Esto incluye transformaciones y codificaciones de los datos para representar
+mejor sus características importantes.</p>
+<p>Por ejemplo:</p>
+<blockquote>
+<p><strong>1.-</strong> Supongamos que un conjunto de datos tiene dos predictores que se
+pueden representar de manera más eficaz en nuestro modelo como una proporción,
+así, tendríamos un nuevo predictor a partir de la proporción de los dos
+predictores originales.</p>
+</blockquote>
+<table class=" lightable-classic-2" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+X
+</th>
+<th style="text-align:right;">
+Proporción (X)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+691
+</td>
+<td style="text-align:right;">
+0.1836789
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+639
+</td>
+<td style="text-align:right;">
+0.1698565
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+969
+</td>
+<td style="text-align:right;">
+0.2575758
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+955
+</td>
+<td style="text-align:right;">
+0.2538543
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+508
+</td>
+<td style="text-align:right;">
+0.1350346
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>2.-</strong> Al elegir cómo codificar nuestros datos en el modelado, podríamos
+elegir una opción que creemos que está más asociada con el resultado. El
+formato original de los datos, por ejemplo numérico (edad) versus categórico
+(grupo).</p>
+</blockquote>
+<table class=" lightable-classic-2" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Edad
+</th>
+<th style="text-align:left;">
+Grupo
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Niños
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;">
+Adultos mayores
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Adolescentes
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+Adultos
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:left;">
+Adultos mayores
+</td>
+</tr>
+</tbody>
+</table>
+<p>La ingeniería y el pre-procesamiento de datos también pueden implicar el cambio
+de formato requerido por el modelo. Algunos modelos utilizan métricas de
+distancia geométrica y, en consecuencia, los predictores numéricos deben
+centrarse y escalar para que estén todos en las mismas unidades. De lo
+contrario, los valores de distancia estarían sesgados por la escala de cada
+columna.</p>
+</div>
+<div id="pipeline" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Pipeline<a href="introducción-a-machine-learning.html#pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se le conoce como pipeline, workflow o recipe a una serie de instrucciones para el procesamiento de datos. El pipeline define los pasos sin ejecutarlos inmediatamente; es sólo una especificación de lo que se debe hacer cada vez que se entrene el modelo. Este procesamiento de datos se realiza en cada conjunto de entrenamiento, ya sea 1 solo o varios como el caso de LOOCV o KFCV.</p>
+<p><strong>Ventajas de usar un pipeline:</strong></p>
+<ul>
+<li><p>Los cálculos se pueden reciclar entre modelos ya que no están estrechamente acoplados a la función de modelado.</p></li>
+<li><p>Una receta permite un conjunto más amplio de opciones de procesamiento de datos que las que pueden ofrecer las fórmulas.</p></li>
+<li><p>La sintaxis puede ser muy compacta.</p></li>
+<li><p>Todo el procesamiento de datos se puede capturar en un solo objeto en lugar de tener scripts que se repiten o incluso se distribuyen en diferentes archivos.</p></li>
+</ul>
+<p>La siguiente sección explica la estructura y flujo de transformaciones:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb131-1"><a href="introducción-a-machine-learning.html#cb131-1" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb131-2"><a href="introducción-a-machine-learning.html#cb131-2" tabindex="-1"></a></span>
+<span id="cb131-3"><a href="introducción-a-machine-learning.html#cb131-3" tabindex="-1"></a><span class="co"># Crear el pipeline con las mismas transformaciones</span></span>
+<span id="cb131-4"><a href="introducción-a-machine-learning.html#cb131-4" tabindex="-1"></a>pipeline <span class="op">=</span> Pipeline([</span>
+<span id="cb131-5"><a href="introducción-a-machine-learning.html#cb131-5" tabindex="-1"></a>    (<span class="st">&#39;transformer_1&#39;</span>, transformer1),</span>
+<span id="cb131-6"><a href="introducción-a-machine-learning.html#cb131-6" tabindex="-1"></a>    (<span class="st">&#39;transformer_2&#39;</span>, transformer2),</span>
+<span id="cb131-7"><a href="introducción-a-machine-learning.html#cb131-7" tabindex="-1"></a>    (<span class="st">&#39;transformer_3&#39;</span>, transformer3),</span>
+<span id="cb131-8"><a href="introducción-a-machine-learning.html#cb131-8" tabindex="-1"></a>    (<span class="st">&#39;transformer_4&#39;</span>, transformer4),</span>
+<span id="cb131-9"><a href="introducción-a-machine-learning.html#cb131-9" tabindex="-1"></a>    .</span>
+<span id="cb131-10"><a href="introducción-a-machine-learning.html#cb131-10" tabindex="-1"></a>    .</span>
+<span id="cb131-11"><a href="introducción-a-machine-learning.html#cb131-11" tabindex="-1"></a>    .</span>
+<span id="cb131-12"><a href="introducción-a-machine-learning.html#cb131-12" tabindex="-1"></a>    (<span class="st">&#39;transformer_n_1&#39;</span>, transformer_n_1),</span>
+<span id="cb131-13"><a href="introducción-a-machine-learning.html#cb131-13" tabindex="-1"></a>    (<span class="st">&#39;transformer_n&#39;</span>, transformer_n)</span>
+<span id="cb131-14"><a href="introducción-a-machine-learning.html#cb131-14" tabindex="-1"></a>])</span>
+<span id="cb131-15"><a href="introducción-a-machine-learning.html#cb131-15" tabindex="-1"></a></span>
+<span id="cb131-16"><a href="introducción-a-machine-learning.html#cb131-16" tabindex="-1"></a><span class="co"># Ajustar el pipeline al conjunto de entrenamiento</span></span>
+<span id="cb131-17"><a href="introducción-a-machine-learning.html#cb131-17" tabindex="-1"></a>pipeline.fit(X_train)</span>
+<span id="cb131-18"><a href="introducción-a-machine-learning.html#cb131-18" tabindex="-1"></a></span>
+<span id="cb131-19"><a href="introducción-a-machine-learning.html#cb131-19" tabindex="-1"></a><span class="co"># Aplicar el pipeline al conjunto de prueba</span></span>
+<span id="cb131-20"><a href="introducción-a-machine-learning.html#cb131-20" tabindex="-1"></a>X_test_transformed <span class="op">=</span> pipeline.transform(X_test)</span></code></pre></div>
+<p>Existe otra función que ayuda a la creación de un pipeline, su nombre es: <code>make_pipeline</code>.</p>
+<p>Tanto la función Pipeline como la función make_pipeline en scikit-learn son utilizadas para construir pipelines de procesamiento y modelado. Sin embargo, tienen algunas diferencias clave en cuanto a cómo se definen y gestionan los nombres de los pasos en el pipeline:</p>
+<ul>
+<li><strong>Pipeline:</strong> Con la función Pipeline, debes proporcionar explícitamente un nombre para cada paso en el pipeline. Estos nombres son necesarios para acceder a los atributos específicos de cada paso y para referirse a ellos al realizar tareas como la búsqueda de hiperparámetros.</li>
+</ul>
+<p>Sintaxis:</p>
+<p>La sintaxis de la función Pipeline requiere que proporciones una lista de tuplas donde cada tupla consiste en un nombre de paso y una instancia del estimador o transformador correspondiente.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb132-1"><a href="introducción-a-machine-learning.html#cb132-1" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb132-2"><a href="introducción-a-machine-learning.html#cb132-2" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb132-3"><a href="introducción-a-machine-learning.html#cb132-3" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb132-4"><a href="introducción-a-machine-learning.html#cb132-4" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb132-5"><a href="introducción-a-machine-learning.html#cb132-5" tabindex="-1"></a></span>
+<span id="cb132-6"><a href="introducción-a-machine-learning.html#cb132-6" tabindex="-1"></a>pipeline <span class="op">=</span> Pipeline([</span>
+<span id="cb132-7"><a href="introducción-a-machine-learning.html#cb132-7" tabindex="-1"></a>    (<span class="st">&#39;scaler&#39;</span>, StandardScaler()),</span>
+<span id="cb132-8"><a href="introducción-a-machine-learning.html#cb132-8" tabindex="-1"></a>    (<span class="st">&#39;pca&#39;</span>, PCA(n_components<span class="op">=</span><span class="dv">2</span>)),</span>
+<span id="cb132-9"><a href="introducción-a-machine-learning.html#cb132-9" tabindex="-1"></a>    (<span class="st">&#39;svm&#39;</span>, SVC())</span>
+<span id="cb132-10"><a href="introducción-a-machine-learning.html#cb132-10" tabindex="-1"></a>])</span></code></pre></div>
+<ul>
+<li><strong>make_pipeline:</strong> Con la función make_pipeline, los nombres de los pasos se generan automáticamente utilizando los nombres de las clases en minúsculas. Esto significa que no tienes que proporcionar nombres explícitos para cada paso, lo que puede ser conveniente para flujos de trabajo simples donde los nombres no son críticos.</li>
+</ul>
+<p>Sintaxis:</p>
+<p>La función make_pipeline toma una serie de argumentos que son simplemente las instancias de los estimadores o transformadores que deseas encadenar en el pipeline. Los nombres de los pasos se generan automáticamente.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb133-1"><a href="introducción-a-machine-learning.html#cb133-1" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb133-2"><a href="introducción-a-machine-learning.html#cb133-2" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb133-3"><a href="introducción-a-machine-learning.html#cb133-3" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb133-4"><a href="introducción-a-machine-learning.html#cb133-4" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb133-5"><a href="introducción-a-machine-learning.html#cb133-5" tabindex="-1"></a></span>
+<span id="cb133-6"><a href="introducción-a-machine-learning.html#cb133-6" tabindex="-1"></a>pipeline <span class="op">=</span> make_pipeline(</span>
+<span id="cb133-7"><a href="introducción-a-machine-learning.html#cb133-7" tabindex="-1"></a>    StandardScaler(),</span>
+<span id="cb133-8"><a href="introducción-a-machine-learning.html#cb133-8" tabindex="-1"></a>    PCA(n_components<span class="op">=</span><span class="dv">2</span>),</span>
+<span id="cb133-9"><a href="introducción-a-machine-learning.html#cb133-9" tabindex="-1"></a>    SVC()</span>
+<span id="cb133-10"><a href="introducción-a-machine-learning.html#cb133-10" tabindex="-1"></a>)</span></code></pre></div>
+<p>A continuación se muestran distintos ejemplos de transformaciones realizadas comúnmente en el pre-procesamiento de modelos predictivos. Como ejemplo, utilizaremos el subconjunto de predictores disponibles en los datos de vivienda: <code>Ames</code></p>
+<p>En cuanto a las transformaciones posibles, existe una gran cantidad de funciones que soportan este proceso. En esta sección se muestran algunas de las transformación más comunes, entre ellas:</p>
+<ul>
+<li>Normalización</li>
+<li>Dicotomización</li>
+<li>Creación de nuevas columnas</li>
+<li>Datos faltantes</li>
+<li>Imputaciones</li>
+<li>Interacciones</li>
+<li>Etc.</li>
+</ul>
+<div id="normalizar-columnas-numéricas" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Normalizar columnas numéricas<a href="introducción-a-machine-learning.html#normalizar-columnas-numéricas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Quizá la transformación numérica más usada en todos los modelos es la estandarización o normalización de variables numéricas. <strong>Este proceso se realiza para homologar la escala de las variables numéricas</strong>, de modo que no predomine una sobre otra debido a la diferencia de magnitudes o escalas. Este proceso se tiene de fondo el siguiente proceso estadístico:</p>
+<p><span class="math display">\[Z=\frac{X-\hat{\mu}_x}{\hat{\sigma}_x}\]</span></p>
+<p><strong>Donde:</strong></p>
+<ul>
+<li><p>X = Es una variable o columna numérica</p></li>
+<li><p><span class="math inline">\(\hat{\mu}_x\)</span> = Es la estimación de la media de la variable <em>X</em></p></li>
+<li><p><span class="math inline">\(\hat{\sigma}_x\)</span> = Es la estimación de la desviación estándar de la variable
+<em>X</em></p></li>
+</ul>
+<div class="sourceCode" id="cb134"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb134-1"><a href="introducción-a-machine-learning.html#cb134-1" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> preprocessing</span>
+<span id="cb134-2"><a href="introducción-a-machine-learning.html#cb134-2" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb134-3"><a href="introducción-a-machine-learning.html#cb134-3" tabindex="-1"></a></span>
+<span id="cb134-4"><a href="introducción-a-machine-learning.html#cb134-4" tabindex="-1"></a>X_train <span class="op">=</span> np.array([[ <span class="fl">1.</span>, <span class="op">-</span><span class="fl">1.</span>,  <span class="fl">5.</span>],</span>
+<span id="cb134-5"><a href="introducción-a-machine-learning.html#cb134-5" tabindex="-1"></a>                    [ <span class="fl">0.</span>,  <span class="fl">0.</span>, <span class="fl">10.</span>],</span>
+<span id="cb134-6"><a href="introducción-a-machine-learning.html#cb134-6" tabindex="-1"></a>                    [ <span class="fl">1.</span>, <span class="op">-</span><span class="fl">1.</span>,  <span class="fl">5.</span>],</span>
+<span id="cb134-7"><a href="introducción-a-machine-learning.html#cb134-7" tabindex="-1"></a>                    [ <span class="fl">0.</span>,  <span class="fl">0.</span>, <span class="fl">10.</span>],</span>
+<span id="cb134-8"><a href="introducción-a-machine-learning.html#cb134-8" tabindex="-1"></a>                    [ <span class="fl">1.</span>, <span class="op">-</span><span class="fl">1.</span>,  <span class="fl">5.</span>],</span>
+<span id="cb134-9"><a href="introducción-a-machine-learning.html#cb134-9" tabindex="-1"></a>                    [ <span class="fl">0.</span>,  <span class="fl">0.</span>, <span class="fl">10.</span>],</span>
+<span id="cb134-10"><a href="introducción-a-machine-learning.html#cb134-10" tabindex="-1"></a>                    [ <span class="fl">1.</span>, <span class="op">-</span><span class="fl">1.</span>,  <span class="fl">5.</span>],</span>
+<span id="cb134-11"><a href="introducción-a-machine-learning.html#cb134-11" tabindex="-1"></a>                    [ <span class="fl">0.</span>,  <span class="fl">0.</span>, <span class="dv">10</span>]])</span>
+<span id="cb134-12"><a href="introducción-a-machine-learning.html#cb134-12" tabindex="-1"></a></span>
+<span id="cb134-13"><a href="introducción-a-machine-learning.html#cb134-13" tabindex="-1"></a>scaler <span class="op">=</span> preprocessing.StandardScaler().fit(X_train)</span>
+<span id="cb134-14"><a href="introducción-a-machine-learning.html#cb134-14" tabindex="-1"></a></span>
+<span id="cb134-15"><a href="introducción-a-machine-learning.html#cb134-15" tabindex="-1"></a>scaler.mean_</span></code></pre></div>
+<pre><code>## array([ 0.5, -0.5,  7.5])</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb136-1"><a href="introducción-a-machine-learning.html#cb136-1" tabindex="-1"></a>scaler.scale_</span></code></pre></div>
+<pre><code>## array([0.5, 0.5, 2.5])</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb138-1"><a href="introducción-a-machine-learning.html#cb138-1" tabindex="-1"></a>X_scaled <span class="op">=</span> scaler.transform(X_train)</span>
+<span id="cb138-2"><a href="introducción-a-machine-learning.html#cb138-2" tabindex="-1"></a>X_scaled</span></code></pre></div>
+<pre><code>## array([[ 1., -1., -1.],
+##        [-1.,  1.,  1.],
+##        [ 1., -1., -1.],
+##        [-1.,  1.,  1.],
+##        [ 1., -1., -1.],
+##        [-1.,  1.,  1.],
+##        [ 1., -1., -1.],
+##        [-1.,  1.,  1.]])</code></pre>
+<p>Si deseamos ahora calcular la media y desviación de los datos ya escalados, obtenemos lo siguiente:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb140-1"><a href="introducción-a-machine-learning.html#cb140-1" tabindex="-1"></a>X_scaled.mean(axis<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## array([0., 0., 0.])</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb142-1"><a href="introducción-a-machine-learning.html#cb142-1" tabindex="-1"></a>X_scaled.std(axis<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## array([1., 1., 1.])</code></pre>
+<div class="infobox important">
+<p><strong>¡¡ R E C O R D A R !!</strong></p>
+<p>Los transformadores que se incluyen en el pipeline se ajustan al conjunto de entrenamiento utilizando el método <strong>.fit()</strong>, lo que permite que las transformaciones posteriores se calculen basándose en los datos de entrenamiento.</p>
+<p>Luego, aplicamos el mismo pipeline ajustado al conjunto de prueba utilizando el método <strong>.transform()</strong> para obtener los datos transformados de manera coherente.</p>
+</div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb144-1"><a href="introducción-a-machine-learning.html#cb144-1" tabindex="-1"></a>X_test <span class="op">=</span> np.array([[ <span class="fl">0.</span>, <span class="fl">1.</span>,  <span class="fl">1.</span>],</span>
+<span id="cb144-2"><a href="introducción-a-machine-learning.html#cb144-2" tabindex="-1"></a>                   [ <span class="fl">2.</span>, <span class="fl">0.</span>,  <span class="fl">1.</span>],</span>
+<span id="cb144-3"><a href="introducción-a-machine-learning.html#cb144-3" tabindex="-1"></a>                   [ <span class="fl">0.</span>, <span class="fl">1.</span>,  <span class="fl">1.</span>]])</span>
+<span id="cb144-4"><a href="introducción-a-machine-learning.html#cb144-4" tabindex="-1"></a></span>
+<span id="cb144-5"><a href="introducción-a-machine-learning.html#cb144-5" tabindex="-1"></a>X_test_scaled <span class="op">=</span> scaler.transform(X_test)</span>
+<span id="cb144-6"><a href="introducción-a-machine-learning.html#cb144-6" tabindex="-1"></a>X_test_scaled</span></code></pre></div>
+<pre><code>## array([[-1. ,  3. , -2.6],
+##        [ 3. ,  1. , -2.6],
+##        [-1. ,  3. , -2.6]])</code></pre>
+</div>
+<div id="dicotomización-de-categorías" class="section level3 hasAnchor" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Dicotomización de categorías<a href="introducción-a-machine-learning.html#dicotomización-de-categorías" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Otra transformación necesaria en la mayoría de los modelos predictivos es la creación de las variables dummy. Se mencionó anteriormente que los modelos requieren de una matriz numérica de características explicativas que permita calcular patrones estadísticos para predecir la variable de respuesta. El proceso de dicotomización consiste en crear una variable dicotómica por cada categoría de una columna con valores nominales.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb146-1"><a href="introducción-a-machine-learning.html#cb146-1" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder</span>
+<span id="cb146-2"><a href="introducción-a-machine-learning.html#cb146-2" tabindex="-1"></a></span>
+<span id="cb146-3"><a href="introducción-a-machine-learning.html#cb146-3" tabindex="-1"></a><span class="co"># Datos de entrenamiento</span></span>
+<span id="cb146-4"><a href="introducción-a-machine-learning.html#cb146-4" tabindex="-1"></a></span>
+<span id="cb146-5"><a href="introducción-a-machine-learning.html#cb146-5" tabindex="-1"></a>X_train_cat <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb146-6"><a href="introducción-a-machine-learning.html#cb146-6" tabindex="-1"></a> <span class="st">&quot;Cat&quot;</span>: [<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;B&#39;</span>]</span>
+<span id="cb146-7"><a href="introducción-a-machine-learning.html#cb146-7" tabindex="-1"></a>})</span>
+<span id="cb146-8"><a href="introducción-a-machine-learning.html#cb146-8" tabindex="-1"></a>X_train_cat</span></code></pre></div>
+<pre><code>##   Cat
+## 0   A
+## 1   B
+## 2   A
+## 3   C
+## 4   B
+## 5   B</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb148-1"><a href="introducción-a-machine-learning.html#cb148-1" tabindex="-1"></a><span class="co"># Crear una instancia de OneHotEncoder</span></span>
+<span id="cb148-2"><a href="introducción-a-machine-learning.html#cb148-2" tabindex="-1"></a>encoder <span class="op">=</span> OneHotEncoder(</span>
+<span id="cb148-3"><a href="introducción-a-machine-learning.html#cb148-3" tabindex="-1"></a> drop<span class="op">=</span><span class="va">None</span>, </span>
+<span id="cb148-4"><a href="introducción-a-machine-learning.html#cb148-4" tabindex="-1"></a> handle_unknown<span class="op">=</span><span class="st">&#39;ignore&#39;</span>, </span>
+<span id="cb148-5"><a href="introducción-a-machine-learning.html#cb148-5" tabindex="-1"></a> sparse_output<span class="op">=</span><span class="va">False</span></span>
+<span id="cb148-6"><a href="introducción-a-machine-learning.html#cb148-6" tabindex="-1"></a> ).set_output(transform <span class="op">=</span><span class="st">&#39;pandas&#39;</span>)</span>
+<span id="cb148-7"><a href="introducción-a-machine-learning.html#cb148-7" tabindex="-1"></a></span>
+<span id="cb148-8"><a href="introducción-a-machine-learning.html#cb148-8" tabindex="-1"></a><span class="co"># Ajustar y transformar el encoder en los datos de entrenamiento</span></span>
+<span id="cb148-9"><a href="introducción-a-machine-learning.html#cb148-9" tabindex="-1"></a>X_train_encoded <span class="op">=</span> encoder.fit_transform(X_train_cat)</span>
+<span id="cb148-10"><a href="introducción-a-machine-learning.html#cb148-10" tabindex="-1"></a>X_train_encoded</span></code></pre></div>
+<pre><code>##    Cat_A  Cat_B  Cat_C
+## 0    1.0    0.0    0.0
+## 1    0.0    1.0    0.0
+## 2    1.0    0.0    0.0
+## 3    0.0    0.0    1.0
+## 4    0.0    1.0    0.0
+## 5    0.0    1.0    0.0</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb150-1"><a href="introducción-a-machine-learning.html#cb150-1" tabindex="-1"></a><span class="co"># Datos de prueba</span></span>
+<span id="cb150-2"><a href="introducción-a-machine-learning.html#cb150-2" tabindex="-1"></a>X_test_cat <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb150-3"><a href="introducción-a-machine-learning.html#cb150-3" tabindex="-1"></a> <span class="st">&quot;Cat&quot;</span>: [<span class="st">&#39;A&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;B&#39;</span>]</span>
+<span id="cb150-4"><a href="introducción-a-machine-learning.html#cb150-4" tabindex="-1"></a>})</span>
+<span id="cb150-5"><a href="introducción-a-machine-learning.html#cb150-5" tabindex="-1"></a></span>
+<span id="cb150-6"><a href="introducción-a-machine-learning.html#cb150-6" tabindex="-1"></a><span class="co"># Transformar los datos de prueba utilizando el encoder ajustado</span></span>
+<span id="cb150-7"><a href="introducción-a-machine-learning.html#cb150-7" tabindex="-1"></a>X_test_encoded <span class="op">=</span> encoder.transform(X_test_cat)</span>
+<span id="cb150-8"><a href="introducción-a-machine-learning.html#cb150-8" tabindex="-1"></a>X_test_encoded</span></code></pre></div>
+<pre><code>##    Cat_A  Cat_B  Cat_C
+## 0    1.0    0.0    0.0
+## 1    0.0    0.0    1.0
+## 2    0.0    1.0    0.0</code></pre>
+</div>
+<div id="imputación-de-datos-faltantes" class="section level3 hasAnchor" number="4.5.3">
+<h3><span class="header-section-number">4.5.3</span> Imputación de datos faltantes<a href="introducción-a-machine-learning.html#imputación-de-datos-faltantes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La función <code>SimpleImputer</code> crea una imputación sobre los datos faltantes. Las imputaciones o sustituciones más comunes son realizadas a través de medidas de tendencia central tales como la media y mediana. Para poder usar una transformación distinta a cada una de las columnas vamos a hacer uso de una función auxiliar muuuuuuy importante. Su nombre es: <code>ColumnTransformer</code>.</p>
+<p>El <strong>ColumnTransformer</strong> es una clase en scikit-learn que permite aplicar diferentes transformaciones a diferentes columnas o conjuntos de columnas en los datos de manera independiente y luego combinar los resultados en un solo conjunto de datos.</p>
+<p>Es útil cuando tienes un conjunto de datos que contiene diferentes tipos de características (numéricas, categóricas, texto, etc.) y deseas aplicar diferentes transformaciones a cada tipo de característica de manera eficiente.</p>
+<div id="caso-numérico" class="section level4 unnumbered hasAnchor">
+<h4>Caso numérico:<a href="introducción-a-machine-learning.html#caso-numérico" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb152"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb152-1"><a href="introducción-a-machine-learning.html#cb152-1" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb152-2"><a href="introducción-a-machine-learning.html#cb152-2" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb152-3"><a href="introducción-a-machine-learning.html#cb152-3" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb152-4"><a href="introducción-a-machine-learning.html#cb152-4" tabindex="-1"></a></span>
+<span id="cb152-5"><a href="introducción-a-machine-learning.html#cb152-5" tabindex="-1"></a><span class="co"># Datos de ejemplo con valores faltantes</span></span>
+<span id="cb152-6"><a href="introducción-a-machine-learning.html#cb152-6" tabindex="-1"></a>data <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, np.nan],</span>
+<span id="cb152-7"><a href="introducción-a-machine-learning.html#cb152-7" tabindex="-1"></a>                 [<span class="dv">2</span>, <span class="dv">2</span>, np.nan, <span class="dv">1</span>],</span>
+<span id="cb152-8"><a href="introducción-a-machine-learning.html#cb152-8" tabindex="-1"></a>                 [<span class="dv">1</span>, np.nan, <span class="dv">6</span>, <span class="dv">5</span>],</span>
+<span id="cb152-9"><a href="introducción-a-machine-learning.html#cb152-9" tabindex="-1"></a>                 [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">5</span>],</span>
+<span id="cb152-10"><a href="introducción-a-machine-learning.html#cb152-10" tabindex="-1"></a>                 [np.nan, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">0</span>]])</span>
+<span id="cb152-11"><a href="introducción-a-machine-learning.html#cb152-11" tabindex="-1"></a></span>
+<span id="cb152-12"><a href="introducción-a-machine-learning.html#cb152-12" tabindex="-1"></a>data</span></code></pre></div>
+<pre><code>## array([[ 1.,  1.,  3., nan],
+##        [ 2.,  2., nan,  1.],
+##        [ 1., nan,  6.,  5.],
+##        [ 2.,  3.,  6.,  5.],
+##        [nan,  4.,  9.,  0.]])</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb154-1"><a href="introducción-a-machine-learning.html#cb154-1" tabindex="-1"></a><span class="co"># Definir las estrategias de imputación</span></span>
+<span id="cb154-2"><a href="introducción-a-machine-learning.html#cb154-2" tabindex="-1"></a></span>
+<span id="cb154-3"><a href="introducción-a-machine-learning.html#cb154-3" tabindex="-1"></a>imputer_mean <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">&#39;mean&#39;</span>)  <span class="co"># Imputación con la media</span></span>
+<span id="cb154-4"><a href="introducción-a-machine-learning.html#cb154-4" tabindex="-1"></a>imputer_median <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">&#39;median&#39;</span>)  <span class="co"># Imputación con la mediana</span></span>
+<span id="cb154-5"><a href="introducción-a-machine-learning.html#cb154-5" tabindex="-1"></a>imputer_mode <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">&#39;most_frequent&#39;</span>)  <span class="co"># Imputación con la moda</span></span>
+<span id="cb154-6"><a href="introducción-a-machine-learning.html#cb154-6" tabindex="-1"></a>imputer_arbitrary <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">&#39;constant&#39;</span>, fill_value<span class="op">=</span><span class="dv">0</span>)  <span class="co"># Imputación constante</span></span>
+<span id="cb154-7"><a href="introducción-a-machine-learning.html#cb154-7" tabindex="-1"></a></span>
+<span id="cb154-8"><a href="introducción-a-machine-learning.html#cb154-8" tabindex="-1"></a><span class="co"># Crear un ColumnTransformer para aplicar diferentes estrategias a diferentes columnas</span></span>
+<span id="cb154-9"><a href="introducción-a-machine-learning.html#cb154-9" tabindex="-1"></a>column_transformer <span class="op">=</span> ColumnTransformer(transformers<span class="op">=</span>[</span>
+<span id="cb154-10"><a href="introducción-a-machine-learning.html#cb154-10" tabindex="-1"></a>    (<span class="st">&#39;mean_imputer&#39;</span>, imputer_mean, [<span class="dv">0</span>]),</span>
+<span id="cb154-11"><a href="introducción-a-machine-learning.html#cb154-11" tabindex="-1"></a>    (<span class="st">&#39;median_imputer&#39;</span>, imputer_median, [<span class="dv">1</span>]),</span>
+<span id="cb154-12"><a href="introducción-a-machine-learning.html#cb154-12" tabindex="-1"></a>    (<span class="st">&#39;mode_imputer&#39;</span>, imputer_mode, [<span class="dv">2</span>]),</span>
+<span id="cb154-13"><a href="introducción-a-machine-learning.html#cb154-13" tabindex="-1"></a>    (<span class="st">&#39;arbitrary_imputer&#39;</span>, imputer_arbitrary, [<span class="dv">3</span>]) </span>
+<span id="cb154-14"><a href="introducción-a-machine-learning.html#cb154-14" tabindex="-1"></a>]).set_output(transform <span class="op">=</span><span class="st">&#39;pandas&#39;</span>)</span>
+<span id="cb154-15"><a href="introducción-a-machine-learning.html#cb154-15" tabindex="-1"></a></span>
+<span id="cb154-16"><a href="introducción-a-machine-learning.html#cb154-16" tabindex="-1"></a><span class="co"># Crear el pipeline con el ColumnTransformer</span></span>
+<span id="cb154-17"><a href="introducción-a-machine-learning.html#cb154-17" tabindex="-1"></a>pipeline <span class="op">=</span> Pipeline(steps<span class="op">=</span>[</span>
+<span id="cb154-18"><a href="introducción-a-machine-learning.html#cb154-18" tabindex="-1"></a>    (<span class="st">&#39;column_transformer&#39;</span>, column_transformer)</span>
+<span id="cb154-19"><a href="introducción-a-machine-learning.html#cb154-19" tabindex="-1"></a>])</span>
+<span id="cb154-20"><a href="introducción-a-machine-learning.html#cb154-20" tabindex="-1"></a></span>
+<span id="cb154-21"><a href="introducción-a-machine-learning.html#cb154-21" tabindex="-1"></a><span class="co"># Aplicar el pipeline a los datos</span></span>
+<span id="cb154-22"><a href="introducción-a-machine-learning.html#cb154-22" tabindex="-1"></a>imputed_data <span class="op">=</span> pipeline.fit_transform(data)</span>
+<span id="cb154-23"><a href="introducción-a-machine-learning.html#cb154-23" tabindex="-1"></a>imputed_data</span></code></pre></div>
+<pre><code>##    mean_imputer__x0  median_imputer__x1  mode_imputer__x2  \
+## 0               1.0                 1.0               3.0   
+## 1               2.0                 2.0               6.0   
+## 2               1.0                 2.5               6.0   
+## 3               2.0                 3.0               6.0   
+## 4               1.5                 4.0               9.0   
+## 
+##    arbitrary_imputer__x3  
+## 0                    0.0  
+## 1                    1.0  
+## 2                    5.0  
+## 3                    5.0  
+## 4                    0.0</code></pre>
+</div>
+<div id="caso-categórico" class="section level4 unnumbered hasAnchor">
+<h4>Caso categórico:<a href="introducción-a-machine-learning.html#caso-categórico" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb156"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb156-1"><a href="introducción-a-machine-learning.html#cb156-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb156-2"><a href="introducción-a-machine-learning.html#cb156-2" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb156-3"><a href="introducción-a-machine-learning.html#cb156-3" tabindex="-1"></a></span>
+<span id="cb156-4"><a href="introducción-a-machine-learning.html#cb156-4" tabindex="-1"></a><span class="co"># Datos de ejemplo con valores faltantes</span></span>
+<span id="cb156-5"><a href="introducción-a-machine-learning.html#cb156-5" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb156-6"><a href="introducción-a-machine-learning.html#cb156-6" tabindex="-1"></a>    <span class="st">&#39;Columna1&#39;</span>: [<span class="st">&#39;A&#39;</span>, <span class="st">&#39;A&#39;</span>, <span class="st">&#39;A&#39;</span>, np.nan, <span class="st">&#39;B&#39;</span>],</span>
+<span id="cb156-7"><a href="introducción-a-machine-learning.html#cb156-7" tabindex="-1"></a>    <span class="st">&#39;Columna2&#39;</span>: [<span class="st">&#39;X&#39;</span>, np.nan, <span class="st">&#39;Y&#39;</span>, <span class="st">&#39;Z&#39;</span>, <span class="st">&#39;Z&#39;</span>]</span>
+<span id="cb156-8"><a href="introducción-a-machine-learning.html#cb156-8" tabindex="-1"></a>})</span>
+<span id="cb156-9"><a href="introducción-a-machine-learning.html#cb156-9" tabindex="-1"></a></span>
+<span id="cb156-10"><a href="introducción-a-machine-learning.html#cb156-10" tabindex="-1"></a><span class="co"># Definir las estrategias de imputación</span></span>
+<span id="cb156-11"><a href="introducción-a-machine-learning.html#cb156-11" tabindex="-1"></a>imputer_most_frequent <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">&#39;most_frequent&#39;</span>)</span>
+<span id="cb156-12"><a href="introducción-a-machine-learning.html#cb156-12" tabindex="-1"></a>imputer_constant <span class="op">=</span> SimpleImputer(strategy<span class="op">=</span><span class="st">&#39;constant&#39;</span>, fill_value<span class="op">=</span><span class="st">&#39;Unknown&#39;</span>)</span>
+<span id="cb156-13"><a href="introducción-a-machine-learning.html#cb156-13" tabindex="-1"></a></span>
+<span id="cb156-14"><a href="introducción-a-machine-learning.html#cb156-14" tabindex="-1"></a><span class="co"># Crear un ColumnTransformer para aplicar diferentes estrategias a diferentes columnas</span></span>
+<span id="cb156-15"><a href="introducción-a-machine-learning.html#cb156-15" tabindex="-1"></a>column_transformer <span class="op">=</span> ColumnTransformer(transformers<span class="op">=</span>[</span>
+<span id="cb156-16"><a href="introducción-a-machine-learning.html#cb156-16" tabindex="-1"></a>    (<span class="st">&#39;most_frequent_imputer&#39;</span>, imputer_most_frequent, [<span class="st">&#39;Columna1&#39;</span>]),  </span>
+<span id="cb156-17"><a href="introducción-a-machine-learning.html#cb156-17" tabindex="-1"></a>    (<span class="st">&#39;constant_imputer&#39;</span>, imputer_constant, [<span class="st">&#39;Columna2&#39;</span>]) </span>
+<span id="cb156-18"><a href="introducción-a-machine-learning.html#cb156-18" tabindex="-1"></a>]).set_output(transform <span class="op">=</span><span class="st">&#39;pandas&#39;</span>)</span>
+<span id="cb156-19"><a href="introducción-a-machine-learning.html#cb156-19" tabindex="-1"></a></span>
+<span id="cb156-20"><a href="introducción-a-machine-learning.html#cb156-20" tabindex="-1"></a><span class="co"># Aplicar el ColumnTransformer a los datos</span></span>
+<span id="cb156-21"><a href="introducción-a-machine-learning.html#cb156-21" tabindex="-1"></a>imputed_data <span class="op">=</span> column_transformer.fit_transform(data)</span>
+<span id="cb156-22"><a href="introducción-a-machine-learning.html#cb156-22" tabindex="-1"></a>imputed_data</span></code></pre></div>
+<pre><code>##   most_frequent_imputer__Columna1 constant_imputer__Columna2
+## 0                               A                          X
+## 1                               A                    Unknown
+## 2                               A                          Y
+## 3                               A                          Z
+## 4                               B                          Z</code></pre>
+</div>
+</div>
+<div id="transformaciones-personalizadas" class="section level3 hasAnchor" number="4.5.4">
+<h3><span class="header-section-number">4.5.4</span> Transformaciones personalizadas<a href="introducción-a-machine-learning.html#transformaciones-personalizadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Podría pensarse en una infinidad de transformaciones a aplicar a los datos. Transformaciones de escala, de suavizamiento, estadísticas e incluso personalizadas. Existen métodos simples y métodos avanzados para realizar este proceso. A continuación, se muestra el método simple:</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb158-1"><a href="introducción-a-machine-learning.html#cb158-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb158-2"><a href="introducción-a-machine-learning.html#cb158-2" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> FunctionTransformer, StandardScaler</span>
+<span id="cb158-3"><a href="introducción-a-machine-learning.html#cb158-3" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb158-4"><a href="introducción-a-machine-learning.html#cb158-4" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb158-5"><a href="introducción-a-machine-learning.html#cb158-5" tabindex="-1"></a></span>
+<span id="cb158-6"><a href="introducción-a-machine-learning.html#cb158-6" tabindex="-1"></a><span class="co"># Datos de ejemplo en forma de DataFrame</span></span>
+<span id="cb158-7"><a href="introducción-a-machine-learning.html#cb158-7" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb158-8"><a href="introducción-a-machine-learning.html#cb158-8" tabindex="-1"></a>    <span class="st">&#39;Column1&#39;</span>: [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>,   <span class="dv">0</span>,  <span class="dv">3</span>,  <span class="dv">7</span>],</span>
+<span id="cb158-9"><a href="introducción-a-machine-learning.html#cb158-9" tabindex="-1"></a>    <span class="st">&#39;Column2&#39;</span>: [ <span class="dv">2</span>,  <span class="dv">6</span>,  <span class="dv">10</span>, <span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">8</span>],</span>
+<span id="cb158-10"><a href="introducción-a-machine-learning.html#cb158-10" tabindex="-1"></a>    <span class="st">&#39;Column3&#39;</span>: [<span class="op">-</span><span class="dv">3</span>,  <span class="dv">7</span>, <span class="op">-</span><span class="dv">11</span>,  <span class="dv">5</span>, <span class="op">-</span><span class="dv">9</span>]</span>
+<span id="cb158-11"><a href="introducción-a-machine-learning.html#cb158-11" tabindex="-1"></a>})</span>
+<span id="cb158-12"><a href="introducción-a-machine-learning.html#cb158-12" tabindex="-1"></a></span>
+<span id="cb158-13"><a href="introducción-a-machine-learning.html#cb158-13" tabindex="-1"></a><span class="co"># Definir una función personalizada que suma dos columnas y divide por una tercera</span></span>
+<span id="cb158-14"><a href="introducción-a-machine-learning.html#cb158-14" tabindex="-1"></a><span class="kw">def</span> custom_function(X, c1, c2, feature_name):</span>
+<span id="cb158-15"><a href="introducción-a-machine-learning.html#cb158-15" tabindex="-1"></a> X[feature_name] <span class="op">=</span> X[c1]<span class="op">/</span> X[c2]</span>
+<span id="cb158-16"><a href="introducción-a-machine-learning.html#cb158-16" tabindex="-1"></a> <span class="cf">return</span> X</span>
+<span id="cb158-17"><a href="introducción-a-machine-learning.html#cb158-17" tabindex="-1"></a></span>
+<span id="cb158-18"><a href="introducción-a-machine-learning.html#cb158-18" tabindex="-1"></a></span>
+<span id="cb158-19"><a href="introducción-a-machine-learning.html#cb158-19" tabindex="-1"></a><span class="co"># Crear el transformador de función personalizada</span></span>
+<span id="cb158-20"><a href="introducción-a-machine-learning.html#cb158-20" tabindex="-1"></a>custom_transformer <span class="op">=</span> FunctionTransformer(</span>
+<span id="cb158-21"><a href="introducción-a-machine-learning.html#cb158-21" tabindex="-1"></a> custom_function,</span>
+<span id="cb158-22"><a href="introducción-a-machine-learning.html#cb158-22" tabindex="-1"></a> feature_names_out <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb158-23"><a href="introducción-a-machine-learning.html#cb158-23" tabindex="-1"></a> kw_args<span class="op">=</span>{<span class="st">&#39;c1&#39;</span>: <span class="st">&#39;Column1&#39;</span>, <span class="st">&#39;c2&#39;</span>: <span class="st">&#39;Column2&#39;</span>, <span class="st">&#39;feature_name&#39;</span>: <span class="st">&#39;c1_over_c2&#39;</span>}</span>
+<span id="cb158-24"><a href="introducción-a-machine-learning.html#cb158-24" tabindex="-1"></a> )</span>
+<span id="cb158-25"><a href="introducción-a-machine-learning.html#cb158-25" tabindex="-1"></a></span>
+<span id="cb158-26"><a href="introducción-a-machine-learning.html#cb158-26" tabindex="-1"></a><span class="co"># Crear un ColumnTransformer para aplicar el transformador personalizado a las columnas</span></span>
+<span id="cb158-27"><a href="introducción-a-machine-learning.html#cb158-27" tabindex="-1"></a>column_transformer <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb158-28"><a href="introducción-a-machine-learning.html#cb158-28" tabindex="-1"></a> transformers<span class="op">=</span>[</span>
+<span id="cb158-29"><a href="introducción-a-machine-learning.html#cb158-29" tabindex="-1"></a>    (<span class="st">&#39;custom&#39;</span>, custom_transformer, [<span class="st">&quot;Column1&quot;</span>, <span class="st">&quot;Column2&quot;</span>])],</span>
+<span id="cb158-30"><a href="introducción-a-machine-learning.html#cb158-30" tabindex="-1"></a> remainder<span class="op">=</span><span class="st">&#39;passthrough&#39;</span>,</span>
+<span id="cb158-31"><a href="introducción-a-machine-learning.html#cb158-31" tabindex="-1"></a> verbose_feature_names_out <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb158-32"><a href="introducción-a-machine-learning.html#cb158-32" tabindex="-1"></a> ).set_output(transform <span class="op">=</span><span class="st">&#39;pandas&#39;</span>)</span>
+<span id="cb158-33"><a href="introducción-a-machine-learning.html#cb158-33" tabindex="-1"></a></span>
+<span id="cb158-34"><a href="introducción-a-machine-learning.html#cb158-34" tabindex="-1"></a>transformed <span class="op">=</span> column_transformer.fit_transform(data)</span>
+<span id="cb158-35"><a href="introducción-a-machine-learning.html#cb158-35" tabindex="-1"></a>transformed</span></code></pre></div>
+<pre><code>##    Column1  Column2  c1_over_c2  Column3
+## 0       -1        2   -0.500000       -3
+## 1       -5        6   -0.833333        7
+## 2        0       10    0.000000      -11
+## 3        3       -4   -0.750000        5
+## 4        7       -8   -0.875000       -9</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb160-1"><a href="introducción-a-machine-learning.html#cb160-1" tabindex="-1"></a>test <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb160-2"><a href="introducción-a-machine-learning.html#cb160-2" tabindex="-1"></a>    <span class="st">&#39;Column1&#39;</span>: [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>, <span class="dv">9</span>, <span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">7</span>],</span>
+<span id="cb160-3"><a href="introducción-a-machine-learning.html#cb160-3" tabindex="-1"></a>    <span class="st">&#39;Column2&#39;</span>: [<span class="dv">25</span>, <span class="dv">6</span>, <span class="op">-</span><span class="dv">10</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">8</span>],</span>
+<span id="cb160-4"><a href="introducción-a-machine-learning.html#cb160-4" tabindex="-1"></a>    <span class="st">&#39;Column3&#39;</span>: [<span class="dv">31</span>, <span class="op">-</span><span class="dv">7</span>, <span class="dv">11</span>, <span class="op">-</span><span class="dv">5</span>, <span class="dv">9</span>]</span>
+<span id="cb160-5"><a href="introducción-a-machine-learning.html#cb160-5" tabindex="-1"></a>})</span>
+<span id="cb160-6"><a href="introducción-a-machine-learning.html#cb160-6" tabindex="-1"></a></span>
+<span id="cb160-7"><a href="introducción-a-machine-learning.html#cb160-7" tabindex="-1"></a><span class="co"># Aplicar el pipeline a los datos de prueba</span></span>
+<span id="cb160-8"><a href="introducción-a-machine-learning.html#cb160-8" tabindex="-1"></a>X_test_transformed <span class="op">=</span> column_transformer.transform(test)</span>
+<span id="cb160-9"><a href="introducción-a-machine-learning.html#cb160-9" tabindex="-1"></a>X_test_transformed</span></code></pre></div>
+<pre><code>##    Column1  Column2  c1_over_c2  Column3
+## 0       -1       25   -0.040000       31
+## 1       -5        6   -0.833333       -7
+## 2        9      -10   -0.900000       11
+## 3       -3        4   -0.750000       -5
+## 4       -7       -8    0.875000        9</code></pre>
+</div>
+<div id="interacciones" class="section level3 hasAnchor" number="4.5.5">
+<h3><span class="header-section-number">4.5.5</span> Interacciones<a href="introducción-a-machine-learning.html#interacciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Entre las transformaciones más útiles que pueden implementarse en el proceso de ingeniería de datos se encuentran las interacciones.</p>
+<p>Estas se refieren a las relaciones combinadas entre dos o más variables que pueden afectar a la variable objetivo de un modelo. En otras palabras, <strong>una interacción ocurre cuando el efecto de una característica en la variable objetivo depende de los valores combinados de otra(s) característica(s).</strong></p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb162-1"><a href="introducción-a-machine-learning.html#cb162-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb162-2"><a href="introducción-a-machine-learning.html#cb162-2" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb162-3"><a href="introducción-a-machine-learning.html#cb162-3" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb162-4"><a href="introducción-a-machine-learning.html#cb162-4" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb162-5"><a href="introducción-a-machine-learning.html#cb162-5" tabindex="-1"></a></span>
+<span id="cb162-6"><a href="introducción-a-machine-learning.html#cb162-6" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb162-7"><a href="introducción-a-machine-learning.html#cb162-7" tabindex="-1"></a><span class="im">from</span> mizani.formatters <span class="im">import</span> comma_format, dollar_format</span>
+<span id="cb162-8"><a href="introducción-a-machine-learning.html#cb162-8" tabindex="-1"></a></span>
+<span id="cb162-9"><a href="introducción-a-machine-learning.html#cb162-9" tabindex="-1"></a>(</span>
+<span id="cb162-10"><a href="introducción-a-machine-learning.html#cb162-10" tabindex="-1"></a>ggplot(ames, aes(x <span class="op">=</span> <span class="st">&quot;Gr_Liv_Area&quot;</span>, y <span class="op">=</span> <span class="st">&quot;Sale_Price&quot;</span>) ) <span class="op">+</span> </span>
+<span id="cb162-11"><a href="introducción-a-machine-learning.html#cb162-11" tabindex="-1"></a>  geom_point(alpha <span class="op">=</span> <span class="fl">.2</span>) <span class="op">+</span></span>
+<span id="cb162-12"><a href="introducción-a-machine-learning.html#cb162-12" tabindex="-1"></a>  facet_wrap(<span class="st">&quot;Bldg_Type&quot;</span>) <span class="op">+</span> </span>
+<span id="cb162-13"><a href="introducción-a-machine-learning.html#cb162-13" tabindex="-1"></a>  geom_smooth(method <span class="op">=</span> <span class="st">&quot;lm&quot;</span>, se <span class="op">=</span> <span class="va">False</span>, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>, alpha <span class="op">=</span> <span class="fl">0.1</span>)  <span class="op">+</span> </span>
+<span id="cb162-14"><a href="introducción-a-machine-learning.html#cb162-14" tabindex="-1"></a>  scale_x_log10(labels <span class="op">=</span> comma_format()) <span class="op">+</span> </span>
+<span id="cb162-15"><a href="introducción-a-machine-learning.html#cb162-15" tabindex="-1"></a>  scale_y_log10(labels <span class="op">=</span> dollar_format(prefix<span class="op">=</span><span class="st">&#39;$&#39;</span>, digits<span class="op">=</span><span class="dv">0</span>, big_mark<span class="op">=</span><span class="st">&#39;,&#39;</span>)) <span class="op">+</span> </span>
+<span id="cb162-16"><a href="introducción-a-machine-learning.html#cb162-16" tabindex="-1"></a>  labs(</span>
+<span id="cb162-17"><a href="introducción-a-machine-learning.html#cb162-17" tabindex="-1"></a>   title <span class="op">=</span> <span class="st">&quot;Relación entre precio y tamaño con tipo de vivienda&quot;</span>,</span>
+<span id="cb162-18"><a href="introducción-a-machine-learning.html#cb162-18" tabindex="-1"></a>   x <span class="op">=</span> <span class="st">&quot;Gross Living Area&quot;</span>, </span>
+<span id="cb162-19"><a href="introducción-a-machine-learning.html#cb162-19" tabindex="-1"></a>   y <span class="op">=</span> <span class="st">&quot;Sale Price (USD)&quot;</span>)</span>
+<span id="cb162-20"><a href="introducción-a-machine-learning.html#cb162-20" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-142-1.png" width="614" /></p>
+<p>Las interacciones son útiles porque muchas veces las relaciones entre características y la variable objetivo no son lineales ni independientes. La presencia de interacciones puede capturar patrones más complejos y proporcionar una mejor representación de los datos, lo que lleva a modelos más precisos y ajustados.</p>
+<p>Las interacciones pueden mejorar la calidad de las predicciones y el entendimiento de los factores que influyen en el resultado deseado.</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb164-1"><a href="introducción-a-machine-learning.html#cb164-1" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
+<span id="cb164-2"><a href="introducción-a-machine-learning.html#cb164-2" tabindex="-1"></a></span>
+<span id="cb164-3"><a href="introducción-a-machine-learning.html#cb164-3" tabindex="-1"></a><span class="co"># Ejemplo de datos</span></span>
+<span id="cb164-4"><a href="introducción-a-machine-learning.html#cb164-4" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb164-5"><a href="introducción-a-machine-learning.html#cb164-5" tabindex="-1"></a>    <span class="st">&#39;C1&#39;</span>: [<span class="dv">1</span>, <span class="dv">0</span>,  <span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>,  <span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>],</span>
+<span id="cb164-6"><a href="introducción-a-machine-learning.html#cb164-6" tabindex="-1"></a>    <span class="st">&#39;C2&#39;</span>: [<span class="dv">1</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">10</span>]</span>
+<span id="cb164-7"><a href="introducción-a-machine-learning.html#cb164-7" tabindex="-1"></a>})</span>
+<span id="cb164-8"><a href="introducción-a-machine-learning.html#cb164-8" tabindex="-1"></a></span>
+<span id="cb164-9"><a href="introducción-a-machine-learning.html#cb164-9" tabindex="-1"></a><span class="co"># Crear interacciones polinómicas</span></span>
+<span id="cb164-10"><a href="introducción-a-machine-learning.html#cb164-10" tabindex="-1"></a>interaction_transformer <span class="op">=</span> PolynomialFeatures(</span>
+<span id="cb164-11"><a href="introducción-a-machine-learning.html#cb164-11" tabindex="-1"></a> degree <span class="op">=</span> <span class="dv">2</span>, </span>
+<span id="cb164-12"><a href="introducción-a-machine-learning.html#cb164-12" tabindex="-1"></a> interaction_only <span class="op">=</span> <span class="va">True</span>, </span>
+<span id="cb164-13"><a href="introducción-a-machine-learning.html#cb164-13" tabindex="-1"></a> include_bias <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb164-14"><a href="introducción-a-machine-learning.html#cb164-14" tabindex="-1"></a> )</span>
+<span id="cb164-15"><a href="introducción-a-machine-learning.html#cb164-15" tabindex="-1"></a></span>
+<span id="cb164-16"><a href="introducción-a-machine-learning.html#cb164-16" tabindex="-1"></a><span class="co"># ColumnTransformer para aplicar transformaciones</span></span>
+<span id="cb164-17"><a href="introducción-a-machine-learning.html#cb164-17" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb164-18"><a href="introducción-a-machine-learning.html#cb164-18" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
+<span id="cb164-19"><a href="introducción-a-machine-learning.html#cb164-19" tabindex="-1"></a>        (<span class="st">&#39;interactions&#39;</span>, interaction_transformer, [<span class="st">&#39;C1&#39;</span>, <span class="st">&#39;C2&#39;</span>])</span>
+<span id="cb164-20"><a href="introducción-a-machine-learning.html#cb164-20" tabindex="-1"></a>    ],</span>
+<span id="cb164-21"><a href="introducción-a-machine-learning.html#cb164-21" tabindex="-1"></a>    remainder<span class="op">=</span><span class="st">&#39;passthrough&#39;</span>  <span class="co"># Mantener las columnas restantes sin cambios</span></span>
+<span id="cb164-22"><a href="introducción-a-machine-learning.html#cb164-22" tabindex="-1"></a>).set_output(transform <span class="op">=</span><span class="st">&#39;pandas&#39;</span>)</span>
+<span id="cb164-23"><a href="introducción-a-machine-learning.html#cb164-23" tabindex="-1"></a></span>
+<span id="cb164-24"><a href="introducción-a-machine-learning.html#cb164-24" tabindex="-1"></a><span class="co"># Ajustar el pipeline y transformar a los datos</span></span>
+<span id="cb164-25"><a href="introducción-a-machine-learning.html#cb164-25" tabindex="-1"></a>preprocessor.fit_transform(data)</span></code></pre></div>
+<pre><code>##    interactions__C1  interactions__C2  interactions__C1 C2
+## 0               1.0               1.0                  1.0
+## 1               0.0               5.0                  0.0
+## 2               1.0              -5.0                 -5.0
+## 3               0.0               3.0                  0.0
+## 4              -1.0              -1.0                  1.0
+## 5               2.0               0.5                  1.0
+## 6              -2.0               1.0                 -2.0
+## 7               5.0              10.0                 50.0</code></pre>
+<div class="sourceCode" id="cb166"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb166-1"><a href="introducción-a-machine-learning.html#cb166-1" tabindex="-1"></a>test <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb166-2"><a href="introducción-a-machine-learning.html#cb166-2" tabindex="-1"></a>    <span class="st">&#39;C1&#39;</span>: [<span class="dv">1</span>,  <span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">5</span>],</span>
+<span id="cb166-3"><a href="introducción-a-machine-learning.html#cb166-3" tabindex="-1"></a>    <span class="st">&#39;C2&#39;</span>: [<span class="dv">5</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>]</span>
+<span id="cb166-4"><a href="introducción-a-machine-learning.html#cb166-4" tabindex="-1"></a>})</span>
+<span id="cb166-5"><a href="introducción-a-machine-learning.html#cb166-5" tabindex="-1"></a></span>
+<span id="cb166-6"><a href="introducción-a-machine-learning.html#cb166-6" tabindex="-1"></a><span class="co"># aplicar en el conjunto de prueba</span></span>
+<span id="cb166-7"><a href="introducción-a-machine-learning.html#cb166-7" tabindex="-1"></a>preprocessor.transform(test)</span></code></pre></div>
+<pre><code>##    interactions__C1  interactions__C2  interactions__C1 C2
+## 0               1.0               5.0                  5.0
+## 1               2.0              -4.0                 -8.0
+## 2               3.0               3.0                  9.0
+## 3              -4.0              -2.0                  8.0
+## 4               5.0               1.0                  5.0</code></pre>
+</div>
+<div id="renombramiento-de-nuevos-datos" class="section level3 hasAnchor" number="4.5.6">
+<h3><span class="header-section-number">4.5.6</span> Renombramiento de nuevos datos<a href="introducción-a-machine-learning.html#renombramiento-de-nuevos-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para concluir el proceso de transformación de datos en un dataframe luego de haber sido procesados por un transformador de columnas, es importante obtener uno nuevo con sus respectivos nombres de columnas.</p>
+<p>Para lograrlo, se realiza lo siguiente:</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb168-1"><a href="introducción-a-machine-learning.html#cb168-1" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb168-2"><a href="introducción-a-machine-learning.html#cb168-2" tabindex="-1"></a> <span class="st">&#39;edad&#39;</span>: [<span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>], </span>
+<span id="cb168-3"><a href="introducción-a-machine-learning.html#cb168-3" tabindex="-1"></a> <span class="st">&#39;ingreso&#39;</span>: [<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">70000</span>],</span>
+<span id="cb168-4"><a href="introducción-a-machine-learning.html#cb168-4" tabindex="-1"></a> <span class="st">&#39;sexo&#39;</span>: [<span class="st">&#39;M&#39;</span>, <span class="st">&#39;F&#39;</span>, <span class="st">&#39;M&#39;</span>],</span>
+<span id="cb168-5"><a href="introducción-a-machine-learning.html#cb168-5" tabindex="-1"></a> <span class="st">&#39;educacion&#39;</span>: [<span class="st">&#39;secundaria&#39;</span>, <span class="st">&#39;universidad&#39;</span>, <span class="st">&#39;preparatoria&#39;</span>]</span>
+<span id="cb168-6"><a href="introducción-a-machine-learning.html#cb168-6" tabindex="-1"></a> })</span>
+<span id="cb168-7"><a href="introducción-a-machine-learning.html#cb168-7" tabindex="-1"></a></span>
+<span id="cb168-8"><a href="introducción-a-machine-learning.html#cb168-8" tabindex="-1"></a><span class="co"># ColumnTransformer para características numéricas y categóricas</span></span>
+<span id="cb168-9"><a href="introducción-a-machine-learning.html#cb168-9" tabindex="-1"></a>ct <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb168-10"><a href="introducción-a-machine-learning.html#cb168-10" tabindex="-1"></a> transformers<span class="op">=</span>[ </span>
+<span id="cb168-11"><a href="introducción-a-machine-learning.html#cb168-11" tabindex="-1"></a>  (<span class="st">&#39;num&#39;</span>, StandardScaler(), [<span class="st">&#39;edad&#39;</span>, <span class="st">&#39;ingreso&#39;</span>]),</span>
+<span id="cb168-12"><a href="introducción-a-machine-learning.html#cb168-12" tabindex="-1"></a>  (<span class="st">&#39;cat&#39;</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">&#39;first&#39;</span>), [<span class="st">&#39;sexo&#39;</span>, <span class="st">&#39;educacion&#39;</span>])],</span>
+<span id="cb168-13"><a href="introducción-a-machine-learning.html#cb168-13" tabindex="-1"></a>  verbose_feature_names_out <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb168-14"><a href="introducción-a-machine-learning.html#cb168-14" tabindex="-1"></a>  ) </span>
+<span id="cb168-15"><a href="introducción-a-machine-learning.html#cb168-15" tabindex="-1"></a></span>
+<span id="cb168-16"><a href="introducción-a-machine-learning.html#cb168-16" tabindex="-1"></a><span class="co"># Ajuste y transformación en data</span></span>
+<span id="cb168-17"><a href="introducción-a-machine-learning.html#cb168-17" tabindex="-1"></a>transformed_data <span class="op">=</span> ct.fit_transform(data)</span>
+<span id="cb168-18"><a href="introducción-a-machine-learning.html#cb168-18" tabindex="-1"></a></span>
+<span id="cb168-19"><a href="introducción-a-machine-learning.html#cb168-19" tabindex="-1"></a><span class="co"># Abtener los nombres de las características de salida del transformador</span></span>
+<span id="cb168-20"><a href="introducción-a-machine-learning.html#cb168-20" tabindex="-1"></a>new_column_names <span class="op">=</span> ct.get_feature_names_out()</span>
+<span id="cb168-21"><a href="introducción-a-machine-learning.html#cb168-21" tabindex="-1"></a></span>
+<span id="cb168-22"><a href="introducción-a-machine-learning.html#cb168-22" tabindex="-1"></a><span class="co"># Crear un DataFrame con los datos transformados y los nuevos nombres de las columnas</span></span>
+<span id="cb168-23"><a href="introducción-a-machine-learning.html#cb168-23" tabindex="-1"></a>transformed_df <span class="op">=</span> pd.DataFrame(transformed_data, columns<span class="op">=</span>new_column_names)</span>
+<span id="cb168-24"><a href="introducción-a-machine-learning.html#cb168-24" tabindex="-1"></a></span>
+<span id="cb168-25"><a href="introducción-a-machine-learning.html#cb168-25" tabindex="-1"></a><span class="co"># Imprimir el DataFrame resultante</span></span>
+<span id="cb168-26"><a href="introducción-a-machine-learning.html#cb168-26" tabindex="-1"></a><span class="bu">print</span>(transformed_df)</span></code></pre></div>
+<pre><code>##        edad   ingreso  sexo_M  educacion_secundaria  educacion_universidad
+## 0 -1.224745 -1.224745     1.0                   1.0                    0.0
+## 1  0.000000  0.000000     0.0                   0.0                    1.0
+## 2  1.224745  1.224745     1.0                   0.0                    0.0</code></pre>
+<!-- ### Actividad de refuerzo -->
+<!-- Al hacer un modelo de machine learning es importante tener un dominio del fenómeno que se está analizando. Ya sea un tema médico, bancario, asegurador, comercial, demográfico, etc.  -->
+<!-- Los mejores modelos de ML suelen tener diversas características e interacciones creadas en la ingeniería de variables. -->
+<!-- Para reforzar lo aprendido, deberá realizar los siguientes ejercicios: -->
+<!-- 1. Crear e integrar a un pipeline una función que agrupe todas las categorías que tengan **menos del 10%** de representación sobre el total de categorías. Nombrar a esta nueva categoría: "otros". Esta función debe ser útil para cualquier columna categórica que sea elegida. -->
+<!-- 2. Crear e integrar a un pipeline una función que **agrupe arbitrariamente dos o más categorías** definidas dentro de una lista y posteriormente deberán ser recodificadas en una nueva etiqueta. Esta función debe ser útil para cualquier columna categórica que sea elegida con sus respectivas categorías. *Hint: estudiar la función FunctionTransformer y usar el parámetro 'kw_args'.* -->
+<!-- 3. Aplicar a 2 columnas categóricas cada uno de los pasos creados anteriormente. -->
+<!-- 4. Para cada una de las columnas reagrupadas anteriormente, realizar un gráfico de barras que refleje el antes y después en la distribución de las categorías. -->
+<!-- 5. Revisar la documentación de los transformadores predefinidos en sklearn: [link](https://scikit-learn.org/stable/modules/preprocessing.html#). -->
+<p>Revisar la documentación de los transformadores predefinidos en sklearn: <a href="https://scikit-learn.org/stable/modules/preprocessing.html#">link</a>.</p>
+
+<div class="watermark">
+<p><img src="img/header.png" width="400"/></p>
+</div>
+</div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$('.pipehover_incremental tr').hover(function() {
+  $(this).removeClass()
+  $(this).prevAll().removeClass()
+  $(this).nextAll().removeClass()
+  $(this).addClass('hover');
+  $(this).prevAll().addClass('hover');
+  $(this).closest('div').next().find('img').attr("src", $(this).attr("link"));
+});
+
+
+$('.pipehover_select_one_row tr').hover(function() {
+  $(this).removeClass()
+  $(this).prevAll().removeClass()
+  $(this).nextAll().removeClass()
+  $(this).addClass('hover');
+  $(this).closest('div').next().find('img').attr("src", $(this).attr("link"));
+});
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visualización.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regresión-lineal.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["amt23_01intro2dsml_py.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
