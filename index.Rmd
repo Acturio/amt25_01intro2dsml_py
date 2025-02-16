@@ -99,9 +99,9 @@ Requisitos:
 
 ## Duración y evaluación del curso {-}
 
-* El programa tiene una duración de 48 hrs.
+* El programa tiene una duración de 30 hrs.
 
-* Las clases serán impartidas los días sábado, de 9:00 am a 1:00 pm 
+* Las clases serán impartidas los días sábado, de 9:00 am a 12:00 pm 
 
 * Serán asignados ejercicios que el participante deberá resolver entre una semana y otra.
 
