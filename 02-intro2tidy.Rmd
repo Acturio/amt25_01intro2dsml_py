@@ -115,7 +115,7 @@ Veamos un ejemplo:
 ```{r, echo=FALSE}
 library(reticulate)
 
-use_virtualenv("venv_dsml_py3_10")
+use_virtualenv("venv_dsml_py3_11")
 ```
 
 
