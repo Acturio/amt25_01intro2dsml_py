@@ -15,10 +15,13 @@ ames_housing.describe()
 
 #ames_housing.Lot_Area
 
+ames_housing.Sale_Price
+
 select(ames_housing, _.Lot_Area, _.Neighborhood, _.Year_Sold, _.Sale_Price)
 #sa.select(ames_housing, _.Lot_Area, _.Neighborhood, _.Year_Sold, _.Sale_Price)
 
 5 + 1
+1 * 10
 
 (
 ames_housing >>
@@ -53,7 +56,7 @@ nueva_tabla
 
 ames_housing[['Sale_Condition', 'Sale_Price']]
 ames_housing['Sale_Condition'].value_counts()
-ames_housing['Street'].value_counts()
+ames_housing['Misc_Feature'].value_counts(dropna=False)
 
 #ames_housing.Sale_Condition
 (
@@ -62,6 +65,14 @@ ames_housing['Street'].value_counts()
   select(_.Sale_Condition)
 )
 
+
+(
+  ames_housing >> 
+  filter(_.Sale_Condition == "Partial") >>
+  select(_.Sale_Price, _.Longitude)
+)
+
+ames_housing.columns
 (
   ames_housing >> 
   filter( (_.Lot_Area > 1000) & 
@@ -71,18 +82,26 @@ ames_housing['Street'].value_counts()
 
 (
   ames_housing >> 
-  filter((_.Lot_Area < 1000) | 
-         (_.Sale_Price <= 150000)) >>
-  select(_.Lot_Area, _.Sale_Price) 
+  filter( 
+   _.Lot_Area > 1000, 
+  _.Sale_Price >= 150000 ) >>
+  select(_.Lot_Area, _.Sale_Price)   
 )
 
+(
+  ames_housing >> 
+  filter((_.Lot_Area < 10000)| 
+         (_.Sale_Price <= 15000)) > >
+  select(_.Lot_Area, _.Sale_Price) 
+)
 
 (
 ames_housing >>
   filter( ((_.Street.isin(["Pave", "Grvl"]) ) & (_.Sale_Price < 10000000)) | 
-           (_.Lot_Area < 1000) ) >>
-  select(_.Street, _.Lot_Area, _.Sale_Price, _.Latitude) >>
-  filter(_.Longitude > 99.176)
+           ((_.Lot_Area < 1000) |
+           (_.Latitude >= 42.98)) ) >>
+  select(_.Street, _.Lot_Area, _.Sale_Price, _.Latitude, _.Longitude) >>
+  filter(_.Longitude > -99.176)
 )
 
 #### Ordenar registros ####
@@ -131,6 +150,14 @@ ames_housing >>
  arrange(_.Antique)
  )
 
+
+(
+ames_housing >> 
+ select(_.Year_Sold, _.Year_Remod_Add) >>
+ mutate(Antique = _.Year_Sold - _.Year_Remod_Add) >>
+ arrange(_.Antique)
+)
+
 (
 ames_housing >> 
  select(_.Year_Sold, _.Year_Remod_Add) >>
@@ -145,7 +172,25 @@ ames_housing >>
 )
 
 
+(
+ames_housing >> 
+ select(_.Year_Sold, _.Year_Remod_Add) >>
+ mutate(Antique = _.Year_Sold - _.Year_Remod_Add) >>
+ summarize(
+  Mean_Antique = _.Antique.mean(),
+  Median_Antique = _.Antique.median(),
+  First_Antique = _.Antique.min(),
+  Last_Antique = _.Antique.max(),
+  )
+)
+
+
+ames_housing.iloc[0]
+ames_housing.iloc[50]
+ames_housing.iloc[-1]
+
 #### Agrupamiento ####
+
 
 (
 ames_housing >> 
@@ -154,6 +199,13 @@ ames_housing >>
  summarize(Mean_Antique = _.Antique.mean().round(0) )
 )
 
+(
+ames_housing >> 
+ mutate(Antique = _.Year_Sold - _.Year_Remod_Add) >> 
+ group_by(_.Neighborhood) >> 
+ summarize(Mean_Antique = _.Antique.mean().round(0) ) >>
+ arrange(_.Mean_Antique)
+)
 
 (
 ames_housing >> 

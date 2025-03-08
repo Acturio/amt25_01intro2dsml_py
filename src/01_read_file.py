@@ -1,5 +1,5 @@
-import pandas as pd
 import pandas
+import pandas as pd
 import numpy as np
 from pandas import read_csv, read_excel
 
@@ -14,7 +14,7 @@ data_csv = read_csv("data/ames.csv")
 pd.read_csv
 ko.read_csv
 
-#del data_csv
+del data_csv
 data_csv
 
 data_csv.info()
@@ -28,7 +28,7 @@ data_csv.describe()
 
 #### lectura de archivo .txt ####
 
-ames_txt = pd.read_csv("data/ames.txt", delimiter = ";")
+ames_txt = pd.read_csv("data/ames.txt", delimiter = "")
 ames_txt.head(3)
 
 
