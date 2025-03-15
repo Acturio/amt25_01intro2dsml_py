@@ -473,51 +473,6 @@ knitr::include_graphics("img/04-ml/18_1_cross_validation.png")
 Diversos métodos se revisarán a lo largo del curso.
 
 
-### Leave-one-out cross-validation
-
-La validación cruzada es una manera de predecir el ajuste de un modelo a un hipotético conjunto de datos de prueba cuando no disponemos del conjunto explícito de datos de prueba.
-
-El método *LOOCV* en un método iterativo que se inicia empleando como conjunto de entrenamiento todas las observaciones disponibles excepto una, que se excluye para emplearla como validación.
-
-Si se emplea una única observación para calcular el error, este varía mucho dependiendo de qué observación se haya seleccionado. Para evitarlo, el proceso se repite tantas veces como observaciones disponibles se tengan, excluyendo en cada iteración una observación distinta, ajustando el modelo con el resto y calculando el error con dicha observación.
-
-Finalmente, el error estimado por el es el promedio de todos lo $i$ errores calculados.
-
-La principal desventaja de este método es su costo computacional. El proceso requiere que el modelo sea reajustado y validado tantas veces como observaciones disponibles se tengan lo que en algunos casos puede ser muy complicado.
-
-*sklearn* contiene la función `LeaveOneOut()`.
-
-```{python, eval}
-from sklearn.model_selection import LeaveOneOut, cross_val_score
-from sklearn.linear_model import LinearRegression
-
-y = ames >> select(_.Sale_Price)  ## Otra forma: ames["Sale_Price"]
-X = select(ames, _.Gr_Liv_Area)
-
-# Crea el regresor lineal que deseas evaluar
-regressor = LinearRegression()
-
-# Crea el objeto Leave-One-Out Cross-Validation
-loo = LeaveOneOut()
-
-# Realiza la validación cruzada LOOCV y obtén los scores de cada iteración
-scores = cross_val_score(
- regressor, X, y, cv = loo, 
- scoring='neg_mean_squared_error',
- error_score = 'raise')
-
-# Calcula el promedio y la desviación estándar de los scores
-mean_score = -scores.mean()
-std_score = scores.std()
-
-# Imprime los resultados
-print("Scores de cada iteración:", scores)
-print("Promedio del score:", mean_score)
-print("Desviación estándar del score:", std_score)
-
-```
-
-
 ### K Fold Cross Validation
 
 En la validación cruzada de K iteraciones (K Fold Cross Validation) los datos de
@@ -552,7 +507,14 @@ knitr::include_graphics("img/04-ml/3-5-4-VFCV-tune.png")
 En python, esto se logra mediante las siguiente función:
 
 ```{python}
-from sklearn.model_selection import KFold
+from sklearn.model_selection import cross_val_score, KFold
+from sklearn.linear_model import LinearRegression
+
+y = select(ames, _.Sale_Price)
+X = select(ames, _.Gr_Liv_Area)
+
+# Crea el regresor lineal que deseas evaluar
+regressor = LinearRegression()
 
 # Crea el objeto K-Fold Cross-Validation con K=5 (puedes cambiar el valor de K según tus necesidades)
 kf = KFold(n_splits = 10, shuffle = True, random_state = 42)

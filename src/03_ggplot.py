@@ -13,13 +13,14 @@ diamonds
 (
  diamonds >>
  ggplot(aes(x = "cut", y = "price")) +
- geom_boxplot(aes(color = "cut"), fill = "#0c315e") +
+ geom_boxplot(aes(fill = "cut"), color = "#2994b8") +
  labs(title = "Precio por calidad de corte",
       x = "corte",
       y = "precio") +
  guides(color = guide_legend(title = "Calidad de corte")) +
- theme(axis_text_x=element_text(angle=20, size = 5)) +
- scale_y_continuous(labels=comma_format(), limits = np.array([0, 20000]))
+ theme(axis_text_x=element_text(angle=20, size = 10)) +
+ scale_y_continuous(labels=comma_format(), limits = np.array([0, 20000])) +
+ theme(plot_title = element_text(hjust = 0.5))
 )
 
 
@@ -28,12 +29,12 @@ diamonds
 (
 diamonds >>
   ggplot(aes(x = "price")) +
-  geom_histogram(color = "pink", fill = "purple", bins=50) +
+  geom_histogram(color = "pink", fill = "purple", bins=30) +
   scale_x_continuous(labels=dollar_format(big_mark=',')) + 
   scale_y_continuous(labels=comma_format()) + 
   ggtitle("Distribución de precio") +
   labs(x = "Precio", y = "Conteo") + 
-  theme(axis_text_x=element_text(angle=10))
+  theme(axis_text_x=element_text(angle=0))
 )
 
 
@@ -98,7 +99,7 @@ diamonds >>
      nudge_x=0,
      nudge_y=5,
      va='bottom',
-     size = 5,
+     size = 10,
      format_string='{:,.0f}') +
   scale_y_continuous(labels = comma_format(), 
   limits = np.array([0, 15000])) +
@@ -122,12 +123,19 @@ diamonds >>
      format_string='{:.1f}%') +
   scale_y_continuous(labels = comma_format()) +
   coord_flip() +
-  facet_wrap("cut", scales = "free", ncol = 2) +
+  facet_wrap("cut", scales = "free_y", nrow = 3) +
   ggtitle("Distribución claridad") #+
 )
 
 
 #### ANÁLISIS MULTIVARIADO ####
+
+(
+diamonds >> 
+  ggplot(aes(y = "price", x = "cut", color = "cut"))  + 
+  geom_point(size = 0.3, alpha = 0.3)
+)
+
 
 (
 diamonds >> 
@@ -139,8 +147,9 @@ diamonds >>
 
 (
 diamonds >> 
-  ggplot(aes(y = "price", x = "cut", color = "cut"))  + 
-  geom_boxplot(size=1, alpha= 0.3)
+  ggplot(aes(y = "price", x = "cut"))  + 
+  stat_boxplot(geom ='errorbar', width = 0.3) +
+  geom_boxplot(aes(fill = "cut"), size=1, color = "black", alpha = 0.9 )
 )
 
 
@@ -150,8 +159,8 @@ diamonds >>
   ggplot(aes(x = "price" ,fill = "cut"))  + 
   geom_histogram(position = 'identity', alpha = 0.5) +
   theme(
-   axis_text_x=element_text(size = 5),
-   axis_text_y=element_text(size = 5),
+   axis_text_x=element_text(size = 10),
+   axis_text_y=element_text(size = 10),
    ) +
   facet_wrap("cut", scales = "free_y", ncol =2) +
   scale_fill_discrete(guide=False)
@@ -187,23 +196,4 @@ diamonds >>
   geom_smooth() +
   ylim(0, 20000)
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

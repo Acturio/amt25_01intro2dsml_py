@@ -51,7 +51,6 @@ error-irreducible
 partición-de-datos
 métodos-comunes-para-particionar-datos
 conjunto-de-validación
-leave-one-out-cross-validation
 k-fold-cross-validation
 validación-cruzada-para-series-de-tiempo
 feature-engineering
