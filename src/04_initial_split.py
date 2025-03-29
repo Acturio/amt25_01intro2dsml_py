@@ -1,17 +1,18 @@
 import pandas as pd
 import numpy as np
 from siuba import select, _
-from sklearn.model_selection import train_test_split, LeaveOneOut, cross_val_score, KFold
+from sklearn.model_selection import train_test_split, cross_val_score, KFold
 from sklearn.linear_model import LinearRegression
 
 ames = pd.read_csv("data/ames.csv")
 print("Tamaño de conjunto completo: ", ames.shape)
 
-y = select(ames, "Sale_Price")
+Y = select(ames, _.Sale_Price)
+Y = select(ames, "Sale_Price")
 X = select(ames, -_.Sale_Price)
 
 X_train, X_test, y_train, y_test = train_test_split(
- X, y, 
+ X, Y, 
  test_size = 0.20, 
  #train_size = 0.80, 
  random_state = 12345
@@ -34,7 +35,7 @@ stratify_variable = pd.cut(
  )
 
 X_train, X_test, y_train, y_test = train_test_split(
- X, y, 
+ X, Y, 
  test_size = 0.20, 
  random_state = 12345, 
  stratify = stratify_variable
@@ -45,7 +46,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 # Dividir los datos en entrenamiento (60%) y el resto (40%)
 X_train, X_temp, y_train, y_temp = train_test_split(
- X, y, 
+ X, Y, 
  test_size = 0.4, 
  random_state = 12345
  )
@@ -79,7 +80,10 @@ kf = KFold(n_splits = 10, shuffle = True, random_state = 42)
 
 # Realiza la validación cruzada KFCV y obtén los scores de cada iteración
 scores = cross_val_score(
- regressor, X, y, cv = kf, 
+ estimator = regressor, 
+ X = X, 
+ y = y, 
+ cv = kf, 
  scoring='neg_mean_squared_error'
  )
 

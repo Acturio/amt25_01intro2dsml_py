@@ -2,11 +2,29 @@ from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.svm import SVC
+import pandas as pd
+
+# function(par1, par2, par3, .....)
+
+# par1: "texto" str
+# par2: 10  int
+# par3: 15.37   float
+# par4: [1, 2, 3, 4, 5] list
+# par4: [(clave1, valor1), (clave2, valor2), (clave3, valor3)] list
+# par4: [[clave1, valor1], [clave2, valor2], [clave3, valor3] list
 
 pipeline1 = Pipeline([
-    ('scaler', StandardScaler()),
+    ('standardscaler', StandardScaler()),
     ('pca', PCA(n_components=2)),
     ('svm', SVC())
+])
+pipeline1
+
+
+pipeline1 = Pipeline([
+    ('paso1', StandardScaler()),
+    ('paso2', PCA(n_components=2)),
+    ('paso3', SVC())
 ])
 pipeline1
 
@@ -65,25 +83,32 @@ from sklearn.preprocessing import OneHotEncoder
 
 X_train_cat = pd.DataFrame({
  "Cat1": ['A', 'B', 'A', 'C', 'B', 'B'],
- "Cat2": ['A2', 'B2', 'A2', 'C2', 'B2', 'B2']
+ "Cat2": ['Z2', 'X2', 'W2', 'W2', 'X2', 'Z2']
 })
 X_train_cat
 
 # Crear una instancia de OneHotEncoder
-encoder = OneHotEncoder(
+encoder1 = OneHotEncoder(
  drop=None, 
  handle_unknown='ignore', 
  sparse_output=False
  ).set_output(transform ='pandas')
 
+encoder2 = OneHotEncoder(
+ drop='first', 
+ handle_unknown='ignore', 
+ sparse_output=False
+ ).set_output(transform ='pandas')
+
+
 # Ajustar y transformar el encoder en los datos de entrenamiento
-X_train_encoded = encoder.fit_transform(X_train_cat)
+X_train_encoded = encoder2.fit_transform(X_train_cat)
 X_train_encoded
 
 # Datos de prueba
 X_test_cat = pd.DataFrame({
  "Cat1": ['A', 'C', 'B', 'D'],
- "Cat2": ['A2', 'C2', 'B2', 'D2']
+ "Cat2": ['X2', 'Z2', 'Z2', 'W2']
 })
 
 # Transformar los datos de prueba utilizando el encoder ajustado
@@ -92,18 +117,20 @@ X_test_encoded
 
 ######### IMPUTACIÓN ############
 
-from sklearn.impute import SimpleImputer
+from sklearn.impute import SimpleImputer, KNNImputer
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 
 # Caso numérico:
 
 # Datos de ejemplo con valores faltantes
-data = np.array([[1, 1, 30, np.nan],
-                 [2, 2, np.nan, 100],
-                 [1, np.nan, 6, 15],
-                 [2, 3, 6, 50],
-                 [np.nan, 4, 19, 0]])
+data = np.array([[1, 1, 30, np.nan, 1],
+                 [2, 2, np.nan, 100, 3],
+                 [1, 5, 6, 15, np.nan],
+                 [1, 5, 6, 15, 8],
+                 [1, 5, 6, 15, 9],
+                 [2, 3, 6, 50, -7],
+                 [np.nan, 4, 19, 0, 5]])
 
 data
 
@@ -113,31 +140,27 @@ imputer_mean = SimpleImputer(strategy='mean')  # Imputación con la media
 imputer_median = SimpleImputer(strategy='median')  # Imputación con la mediana
 imputer_mode = SimpleImputer(strategy='most_frequent')  # Imputación con la moda
 imputer_arbitrary = SimpleImputer(strategy='constant', fill_value=0)  # Imputación constante
-
-
+imputer_knn2 = KNNImputer(n_neighbors=2)
 
 # Crear un ColumnTransformer para aplicar diferentes estrategias a diferentes columnas
-column_transformer = ColumnTransformer(
+column_transformer2 = ColumnTransformer(
  transformers=[
     ('mean_imputer', imputer_mean, [0]),
     ('median_imputer', imputer_median, [1]),
-    ('mean_imputer2', imputer_mean, [2]),
-#    ('mode_imputer', imputer_mode, [2]),
-    ('arbitrary_imputer', imputer_arbitrary, [3]) 
+    ('mode_imputer', imputer_mode, [2]),
+    ('arbitrary_imputer', imputer_arbitrary, [3])
 ]).set_output(transform ='pandas')
 
-
-
 # Crear el pipeline con el ColumnTransformer
-pipeline = Pipeline(steps=[
-    ('column_transformer', column_transformer)
+pipeline2 = Pipeline(steps=[
+    ('column_transformer', column_transformer2)
 ])
 
 # Aplicar el pipeline a los datos
-pd.set_option('display.max_columns', 4)
+pd.set_option('display.max_columns', 5)
 
-pipeline.fit(data)
-pipeline.transform(data)
+pipeline2.fit(data)
+pipeline2.transform(data)
 
 imputed_data = pipeline.fit_transform(data)
 imputed_data
@@ -146,8 +169,17 @@ params = pipeline.fit(data)
 imputer = params.named_steps['column_transformer'].named_transformers_['median_imputer']
 imputer.statistics_
 
+imputer = params.named_steps['column_transformer'].named_transformers_['knn_imputer']
+imputer.
+
 imputed_data = pipeline.transform(data)
 imputed_data
+
+### Otro ejemplo de imputación basado en KNN
+X = np.array([[1, 2, np.nan], [3, 4, 3], [np.nan, 6, 5], [8, 8, 7]])
+imputer = KNNImputer(n_neighbors=2)
+imputer.fit_transform(X)
+
 
 # Caso categórico:
 
@@ -247,7 +279,7 @@ transformed_data = ct.fit_transform(data)
 
 # Abtener los nombres de las características de salida del transformador
 new_column_names = ct.get_feature_names_out()
-
+new_column_names
 # Crear un DataFrame con los datos transformados y los nuevos nombres de las columnas
 transformed_df = pd.DataFrame(transformed_data, columns=new_column_names)
 

@@ -29,6 +29,8 @@ virtualenv_install("venv_dsml_py3_10", "plydata")
 virtualenv_install("venv_dsml_py3_10", "scikit-learn")
 virtualenv_install("venv_dsml_py3_10", "plotnine")
 virtualenv_install("venv_dsml_py3_10", "mizani==0.9.2")
+virtualenv_install("venv_dsml_py3_11", "mlxtend==0.23.0")
+virtualenv_install("venv_dsml_py3_11", "seaborn==0.13.0")
 
 
 # import pandas 
