@@ -8,7 +8,6 @@ from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 from sklearn.metrics import mean_squared_error, r2_score, make_scorer
 from sklearn.model_selection import train_test_split, KFold, cross_val_score, cross_validate
 
-from plydata.one_table_verbs import pull
 from mizani.formatters import comma_format, dollar_format
 from plotnine import *
 from siuba import *
@@ -22,7 +21,7 @@ import statsmodels.api as sm
 #### CARGA DE DATOS ####
 ames = pd.read_csv("data/ames.csv")
 
-ames_y = ames >> pull("Sale_Price")    # ames[["Sale_Price"]]
+ames_y = ames >> select("Sale_Price")    # ames[["Sale_Price"]]
 ames_x = select(ames, -_.Sale_Price)   # ames.drop('Sale_Price', axis=1)
 
 #### DIVISIÓN DE DATOS ####
@@ -63,6 +62,8 @@ def custom_function(X, col="columna1"):
   X[col] = np.log1p(X[col].astype(float)) # esta función calcula el logaritmo de x+1. 
   # Evita problemas al calcular log(0)
   return X
+
+#ln(x+1) = log1p(x)
 
   
 custom_transformer = FunctionTransformer(
@@ -125,7 +126,10 @@ ames_test >>
 ##### Extracción de coeficientes
 
 X_train_with_intercept = sm.add_constant(transformed_data)
-model = sm.OLS(ames_y_train, X_train_with_intercept).fit()
+model = sm.OLS(
+ ames_y_train.reset_index(drop=True),
+ X_train_with_intercept.reset_index(drop=True)
+ ).fit()
 
 model.summary()
 

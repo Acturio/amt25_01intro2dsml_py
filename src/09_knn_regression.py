@@ -69,12 +69,6 @@ preprocessor = ColumnTransformer(
 ).set_output(transform ='pandas')
 
 transformed_df = preprocessor.fit_transform(ames_train_selected)
-#new_column_names = preprocessor.get_feature_names_out()
-
-# transformed_df = pd.DataFrame(
-#   transformed_data,
-#   columns=new_column_names
-#   )
 
 transformed_df
 transformed_df.info()
@@ -216,6 +210,7 @@ def adjusted_r2_score(y_true, y_pred, n, p):
   adjusted_r2 = 1 - (1 - r2) * (n - 1) / (n - p - 1)
   return adjusted_r2
 
+
 scoring = {
     'neg_mean_squared_error': make_scorer(mean_squared_error, greater_is_better=False),
     'r2': make_scorer(adjusted_r2_score, 
@@ -302,7 +297,7 @@ final_knn_pipeline = Pipeline([
 final_knn_pipeline.fit(ames_train_selected, ames_y_train)
 
 ## Predicciones finales
-y_pred_knn = final_knn_pipeline.predict(ames_x_test)
+y_pred_knn = final_knn_pipeline.predict(ames_x_test)[:, 0]
 
 results_reg = (
   ames_x_test >>
@@ -357,6 +352,7 @@ for i in range(ames_x_test[columnas_seleccionadas].shape[1]):
     y_pred_permuted = final_knn_pipeline.predict(ames_x_test_permuted)
     mse_permuted = mean_squared_error(ames_y_test, y_pred_permuted)
     importance[i] = mse_permuted - mse
+    
 
 # Calcula la importancia relativa
 importance = importance / importance.sum()
@@ -391,6 +387,7 @@ for i in range(ames_x_test[columnas_seleccionadas].shape[1]):
         mse_permuted = mean_squared_error(ames_y_test, y_pred_permuted)
         loss.append(mse_permuted)
     performance_losses.append(loss)
+
 
 performance_losses = performance_losses/np.sum(performance_losses, axis=0)
 mean_losses = np.mean(performance_losses, axis=1)

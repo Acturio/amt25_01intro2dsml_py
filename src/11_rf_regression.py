@@ -9,7 +9,6 @@ from sklearn.model_selection import train_test_split, KFold
 from sklearn.model_selection import GridSearchCV
 from sklearn.utils import shuffle
 
-from plydata.one_table_verbs import pull
 from plydata.tidy import pivot_longer
 from mizani.formatters import comma_format, dollar_format
 from plotnine import *
@@ -29,7 +28,7 @@ ames = (ames >>
   Half_Bath = _.Half_Bath.astype(int))
  )
 
-ames_y = ames >> pull("Sale_Price")    # ames[["Sale_Price"]]
+ames_y = ames >> select("Sale_Price")    # ames[["Sale_Price"]]
 ames_x = select(ames, -_.Sale_Price)   # ames.drop('Sale_Price', axis=1)
 
 #### DIVISIÓN DE DATOS ####
@@ -79,12 +78,6 @@ preprocessor = ColumnTransformer(
 ).set_output(transform ='pandas')
 
 transformed_df = preprocessor.fit_transform(ames_train_selected)
-#new_column_names = preprocessor.get_feature_names_out()
-
-#transformed_df = pd.DataFrame(
-#  transformed_data,
-#  columns=new_column_names
-#  )
 
 transformed_df
 transformed_df.info()
@@ -275,14 +268,24 @@ summary_df
   ylab("R^2 promedio")
 )
 
+
+selected_df = (
+    summary_df >>
+    select(_.param_max_depth, _.param_max_features, _.param_min_samples_leaf, 
+           _.param_min_samples_split, _.mean_test_r2)
+)
+
+# Aplicar melt de pandas directamente
+melted_df = pd.melt(
+    selected_df,
+    id_vars=["mean_test_r2"],
+    value_vars=["param_max_depth", "param_max_features", "param_min_samples_leaf", "param_min_samples_split"],
+    var_name="parameter",
+    value_name="value"
+)
+
 (
-  summary_df >>
-  select(_.param_max_depth, _.param_max_features, _.param_min_samples_leaf, 
-         _.param_min_samples_split, _.mean_test_r2) >>
-  pivot_longer(
-    cols = ["param_max_depth", "param_max_features", "param_min_samples_leaf", "param_min_samples_split"],
-    names_to="parameter",
-    values_to="value") >>
+ melted_df >>
   ggplot(aes(x = "value", y = "mean_test_r2")) +
   geom_point(size = 1, ) +
   facet_wrap("~parameter", scales = "free_x") +

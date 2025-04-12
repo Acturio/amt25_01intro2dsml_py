@@ -14,7 +14,6 @@ from mlxtend.feature_selection import ColumnSelector
 
 import pandas as pd
 from siuba import *
-from plydata.one_table_verbs import pull
 
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -31,7 +30,7 @@ telco.info()
 
 
 # Segmentacion de datos 
-telco_y = telco >> pull("Churn")    # telco[["Churn"]]
+telco_y = telco >> select("Churn")    # telco[["Churn"]]
 telco_x = select(telco, -_.Churn, -_.customerID)   # telco.drop('Churn', axis=1)
 
 telco_x_train, telco_x_test, telco_y_train, telco_y_test = train_test_split(
@@ -104,7 +103,7 @@ y_pred = results.predict(telco_x_test)
 
 telco_test = (
   telco_x_test >>
-  mutate(Churn_Pred = y_pred, Churn = telco_y_test)
+  mutate(Churn_Pred = y_pred, Churn_Real = telco_y_test)
 )
 
 (
