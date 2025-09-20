@@ -9,7 +9,6 @@ from sklearn.model_selection import train_test_split, KFold, cross_val_score, cr
 from sklearn.model_selection import GridSearchCV
 from sklearn.utils import shuffle
 
-from plydata.one_table_verbs import pull
 from mizani.formatters import comma_format, dollar_format
 from plotnine import *
 from siuba import *
@@ -21,7 +20,7 @@ import numpy as np
 #### CARGA DE DATOS ####
 ames = pd.read_csv("data/ames.csv")
 
-ames_y = ames >> pull("Sale_Price")    # ames[["Sale_Price"]]
+ames_y = ames >> select("Sale_Price")    # ames[["Sale_Price"]]
 ames_x = select(ames, -_.Sale_Price)   # ames.drop('Sale_Price', axis=1)
 
 #### DIVISIÓN DE DATOS ####
@@ -76,7 +75,7 @@ transformed_df.info()
 
 #### PIPELINE Y MODELADO
 
-# Crear el pipeline con la regresión lineal
+# Crear el pipeline con la regresión KNN
 pipeline = Pipeline([
    ('preprocessor', preprocessor),
    ('regressor', KNeighborsRegressor(n_neighbors=5))
@@ -194,10 +193,10 @@ k = 10
 kf = KFold(n_splits=k, shuffle=True, random_state=42)
 
 param_grid = {
- 'n_neighbors': range(2, 21),
+ 'n_neighbors': range(8, 100, 5),
  'weights': ['uniform', 'distance'],
  'metric': ['euclidean', 'manhattan']
- #'p': [1, 2]
+ #'p': [1, 2, 3, 5, 7]
 }
 
 # Algunas otras posibles distancias son:

@@ -17,7 +17,6 @@ knitr::opts_chunk$set(
  message = FALSE
  )
 
-library(lubridate)
 ```
 
 # BIENVENIDA {-}
@@ -35,7 +34,7 @@ knitr::include_graphics("img/00-presentacion/MIT-Python.png")
 **ACT. ARTURO BRINGAS** 
 
 **LinkedIn:** [arturo-bringas](https://www.linkedin.com/in/arturo-bringas/)
-**Email:** act.arturo.b@ciencias.unam.mx
+**Email:** acturio.b@gmail.com
 
 Actuario egresado de la Facultad de Ciencias con maestría en Ciencia de Datos por el ITAM. 
 
@@ -43,12 +42,10 @@ Se especializa en modelos predictivos y de clasificación de *machine learning* 
 
 Ha contribuido en más de 30 proyectos de impacto nacional con diferentes institutos de investigación de la UNAM como el Instituto de Investigaciones Sociales, Instituto de Geografía, Instituto de Investigaciones Jurídicas, Programa Universitario de Estudios sobre la Ciudad, Fundación UNAM y Rectoría.
 
-Actualmente es *Data Scientist Expert* en la fábrica de inteligencia artifical en BBVA (AI Factory), es profesor de *Ciencia de datos y Machine Learning* en AMAT, y consultor estadístico de encuestas nacionales de investigación social realizadas por la UNAM.
-
-Adicionalmente, participa en el Laboratorio Nacional de Observación de la Tierra (LANOT) en la detección en tiempo real de contaminación del mar por sargazo a través de algoritmos de IA y percepción remota aplicados a los datos proveidos por el satélite Landsat9.
+Actualmente es *Data Scientist Senior Expert* en la fábrica de inteligencia artifical en BBVA (AI Factory), es profesor de *Ciencia de datos y Machine Learning* en AMAT, y consultor estadístico de encuestas nacionales de investigación social realizadas por la UNAM.
 
 ```{r echo=FALSE,fig.align='center',  out.width='250pt'}
-knitr::include_graphics("img/00-presentacion/arturo.png")
+knitr::include_graphics("img/00-presentacion/arturo.jpeg")
 ```
 
 ## Alcances del curso {-}
@@ -58,8 +55,8 @@ Al finalizar este curso, el participante será capaz de consumir, manipular y vi
 Requisitos: 
 
 - Computadora con al menos 8Gb Ram 
-- Instalar Python con versión 3.8 o superior
-- Instalar un IDE preferido. Jupyter, RStudio, Spyder, VSCode, Colab
+- Instalar Python con versión 3.11
+- Instalar un IDE preferido. Jupyter, RStudio, Spyder, PyCharm, VSCode, Colab, Positron
 
 ### Temario: {-}
 
@@ -114,14 +111,15 @@ En esta clase estaremos usando:
 
 * Python [da click aquí si aún no lo descargas](https://www.python.org/downloads/)
 * RStudio [da click aquí también](https://www.rstudio.com/products/rstudio/download/)
+* Positron [da click aquí si quieres descargar](https://positron.posit.co/)
 * VSCode [da click aquí si quieres descargar](https://code.visualstudio.com/download)
 * Anaconda [da click aquí si quieres descargar](https://www.anaconda.com/download)
 <!-- * R [da click para descargar](https://cran.itam.mx/) -->
-* Zoom [Clases](https://us02web.zoom.us/j/5155440751?pwd=YzJCOGF0VnlZdlZlS0Fpc3MvZEhadz09)
+* Zoom [Clases](https://us02web.zoom.us/j/5055440751?pwd=SlEvdTBvazNndkxnd1lRSzFlNVp0Zz09)
   - Pulgar arriba: Voy bien, estoy entendiendo! 
   - Pulgar abajo: Eso no quedó muy claro
   - Mano arriba: Quiero participar/preguntar ó Ya estoy listo para iniciar 
-* [Google Drive](https://drive.google.com/drive/folders/1bsl4FXGXI3AvTMPSnWIEV9GRDwmL6elG?usp=sharing)
+* [Google Drive](https://drive.google.com/drive/folders/15oEAezXyAm-_c90iG0LJ-pbtSREywxIm?usp=sharing)
 * Notas de clase [Revisame si quieres aprender](https://acturio.github.io/amt25_01intro2dsml_py/) 
 
 

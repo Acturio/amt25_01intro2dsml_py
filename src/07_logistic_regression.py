@@ -108,7 +108,7 @@ telco_test = (
 
 (
 telco_test >>
-  select(_.Churn, _.Churn_Pred)
+  select(_.Churn_Real, _.Churn_Pred)
 )
 
 
@@ -236,7 +236,10 @@ pr_thresholds = pd.DataFrame({
 )
 
 
-average_precision_score(np.where(telco_y_test == "Yes", 0, 1), y_pred)
+average_precision_score(
+ np.where(
+  telco_y_test == "Yes", 0, 1), 
+  y_pred)
 
 # ----------------------------------------------#
 #         VALIDACION CRUZADA 
@@ -253,7 +256,7 @@ dicc = {
  'administrativos': ["pao", "diego"]
 }
 
-dicc["profesores"]
+dicc["administrativos"]
 dicc2 = {
  'español': 9,
  'mat': 10,
@@ -282,9 +285,6 @@ results = cross_validate(
 
 auc_roc_scores = results['test_roc_auc']
 auc_roc_scores
-
-
-
 
 auc_pr_scores = results['test_average_precision']
 auc_pr_scores

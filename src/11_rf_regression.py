@@ -92,8 +92,8 @@ pipeline = Pipeline([
    ('regressor', RandomForestRegressor(
      n_estimators=10,
      max_depth = 3,
-     min_samples_split=2,
-     min_samples_leaf=2,
+     min_samples_split=10,
+     min_samples_leaf=3,
      random_state=12345))
 ])
 
@@ -199,7 +199,7 @@ ames_test >>
 
 
 # Definir el objeto K-Fold Cross Validator
-k = 5
+k = 10
 kf = KFold(n_splits=k, shuffle=True, random_state=42)
 
 param_grid = {
@@ -239,7 +239,7 @@ pipeline = Pipeline([
      )
 ])
 
-pipeline.fit(ames_train_selected, ames_y_train)
+#pipeline.fit(ames_train_selected, ames_y_train)
 pickle.dump(pipeline, open('models/grid_search_random_forest.pkl', 'wb'))
 
 pipeline = pickle.load(open('models/grid_search_random_forest.pkl', 'rb'))
@@ -435,6 +435,46 @@ columns = final_rf_pipeline["preprocessor"].get_feature_names_out()
   labs(title='Importancia de las Variables', x='Variable', y='Importancia') +
   coord_flip()
 )
+
+R2
+mod1 = 0.38
+mod2 = 0.20
+mod3 = 0.29
+mod4 = 0.45
+mod5 = 0.54
+
+
+MAPE
+mod1 = 0.55
+mod2 = 0.44
+mod3 = 0.31
+mod4 = 0.15
+mod5 = 0.23
+
+
+
+Clasificación:
+ 
+ 
+ AUC_ROC
+mod1 = 0.5
+mod2 = 0.55
+mod3 = 0.60
+mod4 = 0.63
+mod5 = 0.7
+ 
+ 
+ AUC_PR
+mod1 = 0.6
+mod2 = 0.63
+mod3 = 0.65
+mod4 = 0.7
+mod5 = 0.71
+
+
+
+
+
 
 
 

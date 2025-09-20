@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 8 Árboles de decisión | Introducción a Ciencia de Datos y Machine Learning con Python</title>
   <meta name="description" content="Capítulo 8 Árboles de decisión | Introducción a Ciencia de Datos y Machine Learning con Python" />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 8 Árboles de decisión | Introducción a Ciencia de Datos y Machine Learning con Python" />
   <meta property="og:type" content="book" />
@@ -52,16 +52,18 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -157,13 +159,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#temario"><i class="fa fa-check"></i>Temario:</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#duración-y-evaluación-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recursos-y-dinámica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asesorías"><i class="fa fa-check"></i>Asesorías</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#duraci%C3%B3n-y-evaluaci%C3%B3n-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#recursos-y-din%C3%A1mica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#asesor%C3%ADas"><i class="fa fa-check"></i>Asesorías</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> Conceptos de Ciencia de Datos</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#qué-es-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es Ciencia de Datos?</a>
+<li class="chapter" data-level="1.1" data-path="08-ml-random-forest.html"><a href="#qu%C3%A9-es-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es Ciencia de Datos?</a>
 <ul>
 <li class="chapter" data-level="" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#definiendo-conceptos"><i class="fa fa-check"></i>Definiendo conceptos:</a></li>
 </ul></li>
@@ -177,11 +179,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5.3" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-por-refuerzo"><i class="fa fa-check"></i><b>1.5.3</b> Aprendizaje por refuerzo</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="introducción-a-python.html"><a href="introducción-a-python.html"><i class="fa fa-check"></i><b>2</b> Introducción a Python</a>
+<li class="chapter" data-level="2" data-path="08-ml-random-forest.html"><a href="#introducci%C3%B3n-a-python"><i class="fa fa-check"></i><b>2</b> Introducción a Python</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="introducción-a-python.html"><a href="introducción-a-python.html#cómo-obtener-python"><i class="fa fa-check"></i><b>2.1</b> ¿Cómo obtener <em>Python</em>?</a></li>
-<li class="chapter" data-level="2.2" data-path="introducción-a-python.html"><a href="introducción-a-python.html#qué-es-rstudio"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es RStudio?</a></li>
-<li class="chapter" data-level="2.3" data-path="introducción-a-python.html"><a href="introducción-a-python.html#uso-de-python-en-rstudio"><i class="fa fa-check"></i><b>2.3</b> Uso de python en Rstudio</a></li>
+<li class="chapter" data-level="2.1" data-path="08-ml-random-forest.html"><a href="#c%C3%B3mo-obtener-python"><i class="fa fa-check"></i><b>2.1</b> ¿Cómo obtener <em>Python</em>?</a></li>
+<li class="chapter" data-level="2.2" data-path="08-ml-random-forest.html"><a href="#qu%C3%A9-es-rstudio"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es RStudio?</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-python.html"><a href="introducción-a-python.html"><i class="fa fa-check"></i><b>2.3</b> Uso de python en Rstudio</a></li>
 <li class="chapter" data-level="2.4" data-path="introducción-a-python.html"><a href="introducción-a-python.html#lectura-de-datos"><i class="fa fa-check"></i><b>2.4</b> Lectura de datos</a>
 <ul>
 <li class="chapter" data-level="2.4.1" data-path="introducción-a-python.html"><a href="introducción-a-python.html#archivos-csv"><i class="fa fa-check"></i><b>2.4.1</b> Archivos <em>csv</em></a></li>
@@ -195,44 +197,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.2" data-path="introducción-a-python.html"><a href="introducción-a-python.html#filtrar-observaciones"><i class="fa fa-check"></i><b>2.5.2</b> Filtrar observaciones</a></li>
 <li class="chapter" data-level="2.5.3" data-path="introducción-a-python.html"><a href="introducción-a-python.html#ordenar-registros"><i class="fa fa-check"></i><b>2.5.3</b> Ordenar registros</a></li>
 <li class="chapter" data-level="2.5.4" data-path="introducción-a-python.html"><a href="introducción-a-python.html#agregar-modificar"><i class="fa fa-check"></i><b>2.5.4</b> Agregar / Modificar</a></li>
-<li class="chapter" data-level="2.5.5" data-path="introducción-a-python.html"><a href="introducción-a-python.html#resumen-estadístico"><i class="fa fa-check"></i><b>2.5.5</b> Resumen estadístico</a></li>
+<li class="chapter" data-level="2.5.5" data-path="08-ml-random-forest.html"><a href="#resumen-estad%C3%ADstico"><i class="fa fa-check"></i><b>2.5.5</b> Resumen estadístico</a></li>
 <li class="chapter" data-level="2.5.6" data-path="introducción-a-python.html"><a href="introducción-a-python.html#agrupamiento"><i class="fa fa-check"></i><b>2.5.6</b> Agrupamiento</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="visualización.html"><a href="visualización.html"><i class="fa fa-check"></i><b>3</b> Visualización</a>
+<li class="chapter" data-level="3" data-path="08-ml-random-forest.html"><a href="#visualizaci%C3%B3n"><i class="fa fa-check"></i><b>3</b> Visualización</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="visualización.html"><a href="visualización.html#eda-análisis-exploratorio-de-datos"><i class="fa fa-check"></i><b>3.1</b> EDA: Análisis Exploratorio de Datos</a></li>
-<li class="chapter" data-level="3.2" data-path="visualización.html"><a href="visualización.html#geda-análisis-exploratorio-de-datos-gráficos"><i class="fa fa-check"></i><b>3.2</b> GEDA: Análisis Exploratorio de Datos Gráficos</a>
+<li class="chapter" data-level="3.1" data-path="08-ml-random-forest.html"><a href="#eda-an%C3%A1lisis-exploratorio-de-datos"><i class="fa fa-check"></i><b>3.1</b> EDA: Análisis Exploratorio de Datos</a></li>
+<li class="chapter" data-level="3.2" data-path="08-ml-random-forest.html"><a href="#geda-an%C3%A1lisis-exploratorio-de-datos-gr%C3%A1ficos"><i class="fa fa-check"></i><b>3.2</b> GEDA: Análisis Exploratorio de Datos Gráficos</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="visualización.html"><a href="visualización.html#lo-que-no-se-debe-hacer"><i class="fa fa-check"></i><b>3.2.1</b> Lo que no se debe hacer…</a></li>
-<li class="chapter" data-level="3.2.2" data-path="visualización.html"><a href="visualización.html#principios-de-visualización"><i class="fa fa-check"></i><b>3.2.2</b> Principios de visualización</a></li>
+<li class="chapter" data-level="3.2.1" data-path="visualización.html"><a href="visualización.html"><i class="fa fa-check"></i><b>3.2.1</b> Lo que no se debe hacer…</a></li>
+<li class="chapter" data-level="3.2.2" data-path="08-ml-random-forest.html"><a href="#principios-de-visualizaci%C3%B3n"><i class="fa fa-check"></i><b>3.2.2</b> Principios de visualización</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="visualización.html"><a href="visualización.html#ggplot-plotnine"><i class="fa fa-check"></i><b>3.3</b> Ggplot / plotnine</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="visualización.html"><a href="visualización.html#capas-estéticas"><i class="fa fa-check"></i><b>3.3.1</b> Capas Estéticas</a></li>
-<li class="chapter" data-level="3.3.2" data-path="visualización.html"><a href="visualización.html#capas-geométricas"><i class="fa fa-check"></i><b>3.3.2</b> Capas geométricas</a></li>
+<li class="chapter" data-level="3.3.1" data-path="08-ml-random-forest.html"><a href="#capas-est%C3%A9ticas"><i class="fa fa-check"></i><b>3.3.1</b> Capas Estéticas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="08-ml-random-forest.html"><a href="#capas-geom%C3%A9tricas"><i class="fa fa-check"></i><b>3.3.2</b> Capas geométricas</a></li>
 <li class="chapter" data-level="3.3.3" data-path="visualización.html"><a href="visualización.html#facetas"><i class="fa fa-check"></i><b>3.3.3</b> Facetas</a></li>
-<li class="chapter" data-level="3.3.4" data-path="visualización.html"><a href="visualización.html#más-sobre-estéticas"><i class="fa fa-check"></i><b>3.3.4</b> Más sobre estéticas</a></li>
+<li class="chapter" data-level="3.3.4" data-path="08-ml-random-forest.html"><a href="#m%C3%A1s-sobre-est%C3%A9ticas"><i class="fa fa-check"></i><b>3.3.4</b> Más sobre estéticas</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="visualización.html"><a href="visualización.html#análisis-univariado"><i class="fa fa-check"></i><b>3.4</b> Análisis univariado</a>
+<li class="chapter" data-level="3.4" data-path="08-ml-random-forest.html"><a href="#an%C3%A1lisis-univariado"><i class="fa fa-check"></i><b>3.4</b> Análisis univariado</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="visualización.html"><a href="visualización.html#variables-numéricas"><i class="fa fa-check"></i><b>3.4.1</b> Variables numéricas</a></li>
-<li class="chapter" data-level="3.4.2" data-path="visualización.html"><a href="visualización.html#variables-nominalescategóricas"><i class="fa fa-check"></i><b>3.4.2</b> Variables nominales/categóricas</a></li>
+<li class="chapter" data-level="3.4.1" data-path="08-ml-random-forest.html"><a href="#variables-num%C3%A9ricas"><i class="fa fa-check"></i><b>3.4.1</b> Variables numéricas</a></li>
+<li class="chapter" data-level="3.4.2" data-path="08-ml-random-forest.html"><a href="#variables-nominalescateg%C3%B3ricas"><i class="fa fa-check"></i><b>3.4.2</b> Variables nominales/categóricas</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="visualización.html"><a href="visualización.html#análisis-multivariado"><i class="fa fa-check"></i><b>3.5</b> Análisis multivariado</a>
+<li class="chapter" data-level="3.5" data-path="08-ml-random-forest.html"><a href="#an%C3%A1lisis-multivariado"><i class="fa fa-check"></i><b>3.5</b> Análisis multivariado</a>
 <ul>
 <li class="chapter" data-level="" data-path="visualización.html"><a href="visualización.html#ejercicios"><i class="fa fa-check"></i>Ejercicios</a></li>
 <li class="chapter" data-level="" data-path="visualización.html"><a href="visualización.html#warning"><i class="fa fa-check"></i>¡ Warning !</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="visualización.html"><a href="visualización.html#reporte-interactivos"><i class="fa fa-check"></i><b>3.6</b> Reporte interactivos</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html"><i class="fa fa-check"></i><b>4</b> Introducción a Machine Learning</a>
+<li class="chapter" data-level="4" data-path="08-ml-random-forest.html"><a href="#introducci%C3%B3n-a-machine-learning"><i class="fa fa-check"></i><b>4</b> Introducción a Machine Learning</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#análisis-supervisado-vs-no-supervisado"><i class="fa fa-check"></i><b>4.1</b> Análisis Supervisado vs No supervisado</a>
+<li class="chapter" data-level="4.1" data-path="08-ml-random-forest.html"><a href="#an%C3%A1lisis-supervisado-vs-no-supervisado"><i class="fa fa-check"></i><b>4.1</b> Análisis Supervisado vs No supervisado</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#regresión-vs-clasificación"><i class="fa fa-check"></i><b>4.1.1</b> Regresión vs clasificación</a></li>
+<li class="chapter" data-level="4.1.1" data-path="08-ml-random-forest.html"><a href="#regresi%C3%B3n-vs-clasificaci%C3%B3n"><i class="fa fa-check"></i><b>4.1.1</b> Regresión vs clasificación</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#sesgo-vs-varianza"><i class="fa fa-check"></i><b>4.2</b> Sesgo vs varianza</a>
+<li class="chapter" data-level="4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html"><i class="fa fa-check"></i><b>4.2</b> Sesgo vs varianza</a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#balance-entre-sesgo-y-varianza-o-trade-off"><i class="fa fa-check"></i><b>4.2.1</b> Balance entre sesgo y varianza o Trade-off</a></li>
 <li class="chapter" data-level="4.2.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#error-total"><i class="fa fa-check"></i><b>4.2.2</b> Error total</a></li>
@@ -240,114 +242,114 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#underfitting"><i class="fa fa-check"></i><b>4.2.4</b> Underfitting</a></li>
 <li class="chapter" data-level="4.2.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#error-irreducible"><i class="fa fa-check"></i><b>4.2.5</b> Error irreducible</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#partición-de-datos"><i class="fa fa-check"></i><b>4.3</b> Partición de datos</a>
+<li class="chapter" data-level="4.3" data-path="08-ml-random-forest.html"><a href="#partici%C3%B3n-de-datos"><i class="fa fa-check"></i><b>4.3</b> Partición de datos</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#métodos-comunes-para-particionar-datos"><i class="fa fa-check"></i><b>4.3.1</b> Métodos comunes para particionar datos</a></li>
-<li class="chapter" data-level="4.3.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#conjunto-de-validación"><i class="fa fa-check"></i><b>4.3.2</b> Conjunto de validación</a></li>
+<li class="chapter" data-level="4.3.1" data-path="08-ml-random-forest.html"><a href="#m%C3%A9todos-comunes-para-particionar-datos"><i class="fa fa-check"></i><b>4.3.1</b> Métodos comunes para particionar datos</a></li>
+<li class="chapter" data-level="4.3.2" data-path="08-ml-random-forest.html"><a href="#conjunto-de-validaci%C3%B3n"><i class="fa fa-check"></i><b>4.3.2</b> Conjunto de validación</a></li>
 <li class="chapter" data-level="4.3.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#k-fold-cross-validation"><i class="fa fa-check"></i><b>4.3.3</b> K Fold Cross Validation</a></li>
-<li class="chapter" data-level="4.3.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#validación-cruzada-para-series-de-tiempo"><i class="fa fa-check"></i><b>4.3.4</b> Validación cruzada para series de tiempo</a></li>
+<li class="chapter" data-level="4.3.4" data-path="08-ml-random-forest.html"><a href="#validaci%C3%B3n-cruzada-para-series-de-tiempo"><i class="fa fa-check"></i><b>4.3.4</b> Validación cruzada para series de tiempo</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#feature-engineering"><i class="fa fa-check"></i><b>4.4</b> Feature engineering</a></li>
 <li class="chapter" data-level="4.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#pipeline"><i class="fa fa-check"></i><b>4.5</b> Pipeline</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#normalizar-columnas-numéricas"><i class="fa fa-check"></i><b>4.5.1</b> Normalizar columnas numéricas</a></li>
-<li class="chapter" data-level="4.5.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#dicotomización-de-categorías"><i class="fa fa-check"></i><b>4.5.2</b> Dicotomización de categorías</a></li>
-<li class="chapter" data-level="4.5.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#imputación-de-datos-faltantes"><i class="fa fa-check"></i><b>4.5.3</b> Imputación de datos faltantes</a></li>
+<li class="chapter" data-level="4.5.1" data-path="08-ml-random-forest.html"><a href="#normalizar-columnas-num%C3%A9ricas"><i class="fa fa-check"></i><b>4.5.1</b> Normalizar columnas numéricas</a></li>
+<li class="chapter" data-level="4.5.2" data-path="08-ml-random-forest.html"><a href="#dicotomizaci%C3%B3n-de-categor%C3%ADas"><i class="fa fa-check"></i><b>4.5.2</b> Dicotomización de categorías</a></li>
+<li class="chapter" data-level="4.5.3" data-path="08-ml-random-forest.html"><a href="#imputaci%C3%B3n-de-datos-faltantes"><i class="fa fa-check"></i><b>4.5.3</b> Imputación de datos faltantes</a></li>
 <li class="chapter" data-level="4.5.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#transformaciones-personalizadas"><i class="fa fa-check"></i><b>4.5.4</b> Transformaciones personalizadas</a></li>
 <li class="chapter" data-level="4.5.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#interacciones"><i class="fa fa-check"></i><b>4.5.5</b> Interacciones</a></li>
 <li class="chapter" data-level="4.5.6" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#renombramiento-de-nuevos-datos"><i class="fa fa-check"></i><b>4.5.6</b> Renombramiento de nuevos datos</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>5</b> Regresión Lineal</a>
+<li class="chapter" data-level="5" data-path="08-ml-random-forest.html"><a href="#regresi%C3%B3n-lineal"><i class="fa fa-check"></i><b>5</b> Regresión Lineal</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#regresión-lineal-simple"><i class="fa fa-check"></i><b>5.1</b> Regresión lineal simple</a>
+<li class="chapter" data-level="5.1" data-path="08-ml-random-forest.html"><a href="#regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i><b>5.1</b> Regresión lineal simple</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#interpretación"><i class="fa fa-check"></i><b>5.1.1</b> Interpretación</a></li>
+<li class="chapter" data-level="5.1.1" data-path="08-ml-random-forest.html"><a href="#interpretaci%C3%B3n"><i class="fa fa-check"></i><b>5.1.1</b> Interpretación</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#regresión-lineal-múltiple"><i class="fa fa-check"></i><b>5.2</b> Regresión lineal múltiple</a>
+<li class="chapter" data-level="5.2" data-path="08-ml-random-forest.html"><a href="#regresi%C3%B3n-lineal-m%C3%BAltiple"><i class="fa fa-check"></i><b>5.2</b> Regresión lineal múltiple</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#interpretación-1"><i class="fa fa-check"></i><b>5.2.1</b> Interpretación</a></li>
+<li class="chapter" data-level="5.2.1" data-path="08-ml-random-forest.html"><a href="#interpretaci%C3%B3n-1"><i class="fa fa-check"></i><b>5.2.1</b> Interpretación</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#ajuste-de-modelo"><i class="fa fa-check"></i><b>5.3</b> Ajuste de modelo</a>
+<li class="chapter" data-level="5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>5.3</b> Ajuste de modelo</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-simple"><i class="fa fa-check"></i><b>5.3.1</b> Estimación de parámetros: Regresión lineal simple</a></li>
-<li class="chapter" data-level="5.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-múltiple"><i class="fa fa-check"></i><b>5.3.2</b> Estimación de parámetros: Regresión lineal múltiple</a></li>
+<li class="chapter" data-level="5.3.1" data-path="08-ml-random-forest.html"><a href="#estimaci%C3%B3n-de-par%C3%A1metros-regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i><b>5.3.1</b> Estimación de parámetros: Regresión lineal simple</a></li>
+<li class="chapter" data-level="5.3.2" data-path="08-ml-random-forest.html"><a href="#estimaci%C3%B3n-de-par%C3%A1metros-regresi%C3%B3n-lineal-m%C3%BAltiple"><i class="fa fa-check"></i><b>5.3.2</b> Estimación de parámetros: Regresión lineal múltiple</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#residuos-del-modelo"><i class="fa fa-check"></i><b>5.4</b> Residuos del modelo</a>
 <ul>
-<li class="chapter" data-level="" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones-para-el-ajuste-de-una-regresión-lineal"><i class="fa fa-check"></i>Condiciones para el ajuste de una regresión lineal:</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#condiciones-para-el-ajuste-de-una-regresi%C3%B3n-lineal"><i class="fa fa-check"></i>Condiciones para el ajuste de una regresión lineal:</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#implementación-con-python"><i class="fa fa-check"></i><b>5.5</b> Implementación con Python</a>
+<li class="chapter" data-level="5.5" data-path="08-ml-random-forest.html"><a href="#implementaci%C3%B3n-con-python"><i class="fa fa-check"></i><b>5.5</b> Implementación con Python</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#carga-y-partición-de-datos"><i class="fa fa-check"></i><b>5.5.1</b> Carga y partición de datos</a></li>
-<li class="chapter" data-level="5.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#pipeline-de-transformación-de-datos"><i class="fa fa-check"></i><b>5.5.2</b> Pipeline de transformación de datos</a></li>
-<li class="chapter" data-level="5.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#creación-y-ajuste-de-modelo"><i class="fa fa-check"></i><b>5.5.3</b> Creación y ajuste de modelo</a></li>
-<li class="chapter" data-level="5.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-con-nuevos-datos"><i class="fa fa-check"></i><b>5.5.4</b> Predicción con nuevos datos</a></li>
-<li class="chapter" data-level="5.5.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#extracción-de-coeficientes"><i class="fa fa-check"></i><b>5.5.5</b> Extracción de coeficientes</a></li>
+<li class="chapter" data-level="5.5.1" data-path="08-ml-random-forest.html"><a href="#carga-y-partici%C3%B3n-de-datos"><i class="fa fa-check"></i><b>5.5.1</b> Carga y partición de datos</a></li>
+<li class="chapter" data-level="5.5.2" data-path="08-ml-random-forest.html"><a href="#pipeline-de-transformaci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>5.5.2</b> Pipeline de transformación de datos</a></li>
+<li class="chapter" data-level="5.5.3" data-path="08-ml-random-forest.html"><a href="#creaci%C3%B3n-y-ajuste-de-modelo"><i class="fa fa-check"></i><b>5.5.3</b> Creación y ajuste de modelo</a></li>
+<li class="chapter" data-level="5.5.4" data-path="08-ml-random-forest.html"><a href="#predicci%C3%B3n-con-nuevos-datos"><i class="fa fa-check"></i><b>5.5.4</b> Predicción con nuevos datos</a></li>
+<li class="chapter" data-level="5.5.5" data-path="08-ml-random-forest.html"><a href="#extracci%C3%B3n-de-coeficientes"><i class="fa fa-check"></i><b>5.5.5</b> Extracción de coeficientes</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métricas-de-desempeño"><i class="fa fa-check"></i><b>5.6</b> Métricas de desempeño</a>
+<li class="chapter" data-level="5.6" data-path="08-ml-random-forest.html"><a href="#m%C3%A9tricas-de-desempe%C3%B1o"><i class="fa fa-check"></i><b>5.6</b> Métricas de desempeño</a>
 <ul>
-<li class="chapter" data-level="5.6.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#implementación-con-python-1"><i class="fa fa-check"></i><b>5.6.1</b> Implementación con python</a></li>
+<li class="chapter" data-level="5.6.1" data-path="08-ml-random-forest.html"><a href="#implementaci%C3%B3n-con-python-1"><i class="fa fa-check"></i><b>5.6.1</b> Implementación con python</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#validación-cruzada"><i class="fa fa-check"></i><b>5.7</b> Validación cruzada</a></li>
-<li class="chapter" data-level="5.8" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métodos-se-selección-de-variables"><i class="fa fa-check"></i><b>5.8</b> Métodos se selección de variables</a>
+<li class="chapter" data-level="5.7" data-path="08-ml-random-forest.html"><a href="#validaci%C3%B3n-cruzada"><i class="fa fa-check"></i><b>5.7</b> Validación cruzada</a></li>
+<li class="chapter" data-level="5.8" data-path="08-ml-random-forest.html"><a href="#m%C3%A9todos-se-selecci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>5.8</b> Métodos se selección de variables</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#forward-selection-selección-hacia-adelante"><i class="fa fa-check"></i><b>5.8.1</b> Forward selection (selección hacia adelante)</a></li>
-<li class="chapter" data-level="5.8.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#backward-selection-selección-hacia-atrás"><i class="fa fa-check"></i><b>5.8.2</b> Backward selection (selección hacia atrás)</a></li>
+<li class="chapter" data-level="5.8.1" data-path="08-ml-random-forest.html"><a href="#forward-selection-selecci%C3%B3n-hacia-adelante"><i class="fa fa-check"></i><b>5.8.1</b> Forward selection (selección hacia adelante)</a></li>
+<li class="chapter" data-level="5.8.2" data-path="08-ml-random-forest.html"><a href="#backward-selection-selecci%C3%B3n-hacia-atr%C3%A1s"><i class="fa fa-check"></i><b>5.8.2</b> Backward selection (selección hacia atrás)</a></li>
 </ul></li>
 <li class="chapter" data-level="5.9" data-path="regresión-lineal.html"><a href="regresión-lineal.html#ejercicio"><i class="fa fa-check"></i><b>5.9</b> Ejercicio</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>6</b> Regresión Logística</a>
+<li class="chapter" data-level="6" data-path="08-ml-random-forest.html"><a href="#regresi%C3%B3n-log%C3%ADstica"><i class="fa fa-check"></i><b>6</b> Regresión Logística</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="regresión-logística.html"><a href="regresión-logística.html#función-sigmoide"><i class="fa fa-check"></i><b>6.1</b> Función sigmoide</a></li>
-<li class="chapter" data-level="6.2" data-path="regresión-logística.html"><a href="regresión-logística.html#ajuste-del-modelo"><i class="fa fa-check"></i><b>6.2</b> Ajuste del modelo</a></li>
-<li class="chapter" data-level="6.3" data-path="regresión-logística.html"><a href="regresión-logística.html#clasificación-2"><i class="fa fa-check"></i><b>6.3</b> Clasificación</a></li>
-<li class="chapter" data-level="6.4" data-path="regresión-logística.html"><a href="regresión-logística.html#implementación-en-python"><i class="fa fa-check"></i><b>6.4</b> Implementación en python</a>
+<li class="chapter" data-level="6.1" data-path="08-ml-random-forest.html"><a href="#funci%C3%B3n-sigmoide"><i class="fa fa-check"></i><b>6.1</b> Función sigmoide</a></li>
+<li class="chapter" data-level="6.2" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>6.2</b> Ajuste del modelo</a></li>
+<li class="chapter" data-level="6.3" data-path="08-ml-random-forest.html"><a href="#clasificaci%C3%B3n-2"><i class="fa fa-check"></i><b>6.3</b> Clasificación</a></li>
+<li class="chapter" data-level="6.4" data-path="08-ml-random-forest.html"><a href="#implementaci%C3%B3n-en-python"><i class="fa fa-check"></i><b>6.4</b> Implementación en python</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="regresión-logística.html"><a href="regresión-logística.html#pipeline-de-transformación-de-datos-1"><i class="fa fa-check"></i><b>6.4.1</b> Pipeline de transformación de datos</a></li>
-<li class="chapter" data-level="6.4.2" data-path="regresión-logística.html"><a href="regresión-logística.html#creación-y-ajuste-de-modelo-1"><i class="fa fa-check"></i><b>6.4.2</b> Creación y ajuste de modelo</a></li>
-<li class="chapter" data-level="6.4.3" data-path="regresión-logística.html"><a href="regresión-logística.html#predicción-con-nuevos-datos-1"><i class="fa fa-check"></i><b>6.4.3</b> Predicción con nuevos datos</a></li>
+<li class="chapter" data-level="6.4.1" data-path="08-ml-random-forest.html"><a href="#pipeline-de-transformaci%C3%B3n-de-datos-1"><i class="fa fa-check"></i><b>6.4.1</b> Pipeline de transformación de datos</a></li>
+<li class="chapter" data-level="6.4.2" data-path="08-ml-random-forest.html"><a href="#creaci%C3%B3n-y-ajuste-de-modelo-1"><i class="fa fa-check"></i><b>6.4.2</b> Creación y ajuste de modelo</a></li>
+<li class="chapter" data-level="6.4.3" data-path="08-ml-random-forest.html"><a href="#predicci%C3%B3n-con-nuevos-datos-1"><i class="fa fa-check"></i><b>6.4.3</b> Predicción con nuevos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="regresión-logística.html"><a href="regresión-logística.html#métricas-de-desempeño-1"><i class="fa fa-check"></i><b>6.5</b> Métricas de desempeño</a></li>
-<li class="chapter" data-level="6.6" data-path="regresión-logística.html"><a href="regresión-logística.html#estimación-de-probabilidades"><i class="fa fa-check"></i><b>6.6</b> Estimación de probabilidades</a></li>
-<li class="chapter" data-level="6.7" data-path="regresión-logística.html"><a href="regresión-logística.html#validación-cruzada-1"><i class="fa fa-check"></i><b>6.7</b> Validación cruzada</a></li>
+<li class="chapter" data-level="6.5" data-path="08-ml-random-forest.html"><a href="#m%C3%A9tricas-de-desempe%C3%B1o-1"><i class="fa fa-check"></i><b>6.5</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="6.6" data-path="08-ml-random-forest.html"><a href="#estimaci%C3%B3n-de-probabilidades"><i class="fa fa-check"></i><b>6.6</b> Estimación de probabilidades</a></li>
+<li class="chapter" data-level="6.7" data-path="08-ml-random-forest.html"><a href="#validaci%C3%B3n-cruzada-1"><i class="fa fa-check"></i><b>6.7</b> Validación cruzada</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html"><i class="fa fa-check"></i><b>7</b> K-Nearest-Neighbor</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#clasificación-3"><i class="fa fa-check"></i><b>7.1</b> Clasificación</a></li>
-<li class="chapter" data-level="7.2" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#regresión-2"><i class="fa fa-check"></i><b>7.2</b> Regresión</a></li>
+<li class="chapter" data-level="7.1" data-path="08-ml-random-forest.html"><a href="#clasificaci%C3%B3n-3"><i class="fa fa-check"></i><b>7.1</b> Clasificación</a></li>
+<li class="chapter" data-level="7.2" data-path="08-ml-random-forest.html"><a href="#regresi%C3%B3n-2"><i class="fa fa-check"></i><b>7.2</b> Regresión</a></li>
 <li class="chapter" data-level="7.3" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#ajuste-del-modelo-1"><i class="fa fa-check"></i><b>7.3</b> Ajuste del modelo</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#selección-de-hiper-parámetro-k"><i class="fa fa-check"></i><b>7.3.1</b> Selección de Hiper-parámetro K</a></li>
-<li class="chapter" data-level="7.3.2" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#métodos-de-cálculo-de-la-distancia-entre-observaciones"><i class="fa fa-check"></i><b>7.3.2</b> Métodos de cálculo de la distancia entre observaciones</a></li>
+<li class="chapter" data-level="7.3.1" data-path="08-ml-random-forest.html"><a href="#selecci%C3%B3n-de-hiper-par%C3%A1metro-k"><i class="fa fa-check"></i><b>7.3.1</b> Selección de Hiper-parámetro K</a></li>
+<li class="chapter" data-level="7.3.2" data-path="08-ml-random-forest.html"><a href="#m%C3%A9todos-de-c%C3%A1lculo-de-la-distancia-entre-observaciones"><i class="fa fa-check"></i><b>7.3.2</b> Métodos de cálculo de la distancia entre observaciones</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#implementación-en-python-1"><i class="fa fa-check"></i><b>7.4</b> Implementación en Python</a>
+<li class="chapter" data-level="7.4" data-path="08-ml-random-forest.html"><a href="#implementaci%C3%B3n-en-python-1"><i class="fa fa-check"></i><b>7.4</b> Implementación en Python</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#regresión-3"><i class="fa fa-check"></i><b>7.4.1</b> Regresión</a></li>
+<li class="chapter" data-level="7.4.1" data-path="08-ml-random-forest.html"><a href="#regresi%C3%B3n-3"><i class="fa fa-check"></i><b>7.4.1</b> Regresión</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html"><i class="fa fa-check"></i><b>8</b> Árboles de decisión</a>
+<li class="chapter" data-level="8" data-path="08-ml-random-forest.html"><a href="#%C3%A1rboles-de-decisi%C3%B3n"><i class="fa fa-check"></i><b>8</b> Árboles de decisión</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#ajuste-del-modelo-2"><i class="fa fa-check"></i><b>8.1</b> Ajuste del modelo</a>
+<li class="chapter" data-level="8.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html"><i class="fa fa-check"></i><b>8.1</b> Ajuste del modelo</a>
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#attribute-selective-measure-asm"><i class="fa fa-check"></i><b>8.1.1</b> Attribute Selective Measure (ASM)</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#regularización-de-árboles"><i class="fa fa-check"></i><b>8.2</b> Regularización de árboles</a>
+<li class="chapter" data-level="8.2" data-path="08-ml-random-forest.html"><a href="#regularizaci%C3%B3n-de-%C3%A1rboles"><i class="fa fa-check"></i><b>8.2</b> Regularización de árboles</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#nivel-de-profundidad-de-árbol"><i class="fa fa-check"></i><b>8.2.1</b> Nivel de profundidad de árbol</a></li>
+<li class="chapter" data-level="8.2.1" data-path="08-ml-random-forest.html"><a href="#nivel-de-profundidad-de-%C3%A1rbol"><i class="fa fa-check"></i><b>8.2.1</b> Nivel de profundidad de árbol</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#aprendizaje-conjunto"><i class="fa fa-check"></i><b>8.3</b> Aprendizaje conjunto</a></li>
 <li class="chapter" data-level="8.4" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#bagging"><i class="fa fa-check"></i><b>8.4</b> Bagging</a></li>
 <li class="chapter" data-level="8.5" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#random-forest"><i class="fa fa-check"></i><b>8.5</b> Random Forest</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#qué-es"><i class="fa fa-check"></i><b>8.5.1</b> ¿Qué es?</a></li>
-<li class="chapter" data-level="8.5.2" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#características-de-los-bosques-aleatorios"><i class="fa fa-check"></i><b>8.5.2</b> Características de los bosques aleatorios</a></li>
-<li class="chapter" data-level="8.5.3" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#aplicar-árboles-de-decisión-en-un-bosque-aleatorio"><i class="fa fa-check"></i><b>8.5.3</b> Aplicar árboles de decisión en un bosque aleatorio</a></li>
+<li class="chapter" data-level="8.5.1" data-path="08-ml-random-forest.html"><a href="#qu%C3%A9-es"><i class="fa fa-check"></i><b>8.5.1</b> ¿Qué es?</a></li>
+<li class="chapter" data-level="8.5.2" data-path="08-ml-random-forest.html"><a href="#caracter%C3%ADsticas-de-los-bosques-aleatorios"><i class="fa fa-check"></i><b>8.5.2</b> Características de los bosques aleatorios</a></li>
+<li class="chapter" data-level="8.5.3" data-path="08-ml-random-forest.html"><a href="#aplicar-%C3%A1rboles-de-decisi%C3%B3n-en-un-bosque-aleatorio"><i class="fa fa-check"></i><b>8.5.3</b> Aplicar árboles de decisión en un bosque aleatorio</a></li>
 <li class="chapter" data-level="8.5.4" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#ventajas-y-desventjas-de-bosques-aleatorios"><i class="fa fa-check"></i><b>8.5.4</b> Ventajas y desventjas de bosques aleatorios</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#implementación-en-python-2"><i class="fa fa-check"></i><b>8.6</b> Implementación en Python</a>
+<li class="chapter" data-level="8.6" data-path="08-ml-random-forest.html"><a href="#implementaci%C3%B3n-en-python-2"><i class="fa fa-check"></i><b>8.6</b> Implementación en Python</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#regresión-4"><i class="fa fa-check"></i><b>8.6.1</b> Regresión</a></li>
+<li class="chapter" data-level="8.6.1" data-path="08-ml-random-forest.html"><a href="#regresi%C3%B3n-4"><i class="fa fa-check"></i><b>8.6.1</b> Regresión</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -371,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="árboles-de-decisión" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">Capítulo 8</span> Árboles de decisión<a href="árboles-de-decisión.html#árboles-de-decisión" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Capítulo 8</span> Árboles de decisión<a href="#%C3%A1rboles-de-decisi%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><img src="img/08-ml-tree/0-meme-arbol.jpeg" width="500pt" height="600pt" style="display: block; margin: auto;" /></p>
 <p>Un árbol de decisiones es un algoritmo del aprendizaje supervisado que se puede utilizar tanto para problemas de <strong>clasificación</strong> como de <strong>regresión</strong>. Es un clasificador estructurado en árbol, donde los nodos internos representan las características de un conjunto de datos, las ramas representan las reglas de decisión y cada nodo hoja representa el resultado. La idea básica de los árboles es buscar puntos de cortes en las variables de entrada para hacer predicciones, ir dividiendo la muestra, y encontrar cortes sucesivos para refinar las predicciones.</p>
 <p>En un árbol de decisión, hay dos tipos nodos, el nodo de decisión o nodos internos (<em>Decision Node</em>) y el nodo hoja o nodo terminal (Leaf node). Los nodos de decisión se utilizan para tomar cualquier decisión y tienen múltiples ramas, mientras que los nodos hoja son el resultado de esas decisiones y no contienen más ramas.</p>
@@ -412,10 +414,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="regularización-de-árboles" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> Regularización de árboles<a href="árboles-de-decisión.html#regularización-de-árboles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">8.2</span> Regularización de árboles<a href="#regularizaci%C3%B3n-de-%C3%A1rboles" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Para asegurarse de que no exista sobre-ajuste en el modelo, es importante considerar algunas regularizaciones a los hiper-parámetros implementados. Posteriormente, se determinará cuál de las posibles combinaciones produce mejores resultados.</p>
 <div id="nivel-de-profundidad-de-árbol" class="section level3 hasAnchor" number="8.2.1">
-<h3><span class="header-section-number">8.2.1</span> Nivel de profundidad de árbol<a href="árboles-de-decisión.html#nivel-de-profundidad-de-árbol" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">8.2.1</span> Nivel de profundidad de árbol<a href="#nivel-de-profundidad-de-%C3%A1rbol" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Podríamos preguntarnos cuándo dejar de crecer un árbol. Pueden existir problemas que tengan un gran conjunto de variables y esto da como resultado una gran cantidad de divisiones, lo que a su vez genera un árbol de decisión muy grande. Estos árboles son complejos y pueden provocar un sobre-ajuste. Entonces, necesitamos saber cuándo parar.</p>
 <ol style="list-style-type: decimal">
 <li><p>Una forma de hacer esto, es establecer un número mínimo de entradas de entrenamiento para dividir un nodo (min_n).</p></li>
@@ -447,7 +449,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>También se señalan las ventajas y desventajas de este algoritmo.</p>
 <p><img src="img/08-ml-tree/bagging.jpeg" width="900pt" height="500pt" style="display: block; margin: auto;" /></p>
 <div id="qué-es" class="section level3 hasAnchor" number="8.5.1">
-<h3><span class="header-section-number">8.5.1</span> ¿Qué es?<a href="árboles-de-decisión.html#qué-es" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">8.5.1</span> ¿Qué es?<a href="#qu%C3%A9-es" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un bosque aleatorio es una técnica de aprendizaje automático que se utiliza para resolver problemas de regresión y clasificación. Utiliza el aprendizaje por conjuntos, que es una técnica que combina muchos clasificadores para proporcionar soluciones a problemas complejos.</p>
 <p>Este algoritmo consta de muchos árboles de decisión. El “bosque” generado se entrena
 mediante <strong>agregación de bootstrap (bagging)</strong>, el cual es es un meta-algoritmo
@@ -457,7 +459,7 @@ de conjunto que mejora la precisión de los algoritmos de aprendizaje automátic
 <p><img src="img/08-ml-tree/3-10-1-bosques-aleatorios.png" width="600pt" height="300pt" style="display: block; margin: auto;" /></p>
 </div>
 <div id="características-de-los-bosques-aleatorios" class="section level3 hasAnchor" number="8.5.2">
-<h3><span class="header-section-number">8.5.2</span> Características de los bosques aleatorios<a href="árboles-de-decisión.html#características-de-los-bosques-aleatorios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">8.5.2</span> Características de los bosques aleatorios<a href="#caracter%C3%ADsticas-de-los-bosques-aleatorios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>Es más preciso que el algoritmo árbol de decisiones.</p></li>
 <li><p>Proporciona una forma eficaz de gestionar los datos faltantes.</p></li>
@@ -468,7 +470,7 @@ de características en el punto de división del nodo.</p></li>
 </ul>
 </div>
 <div id="aplicar-árboles-de-decisión-en-un-bosque-aleatorio" class="section level3 hasAnchor" number="8.5.3">
-<h3><span class="header-section-number">8.5.3</span> Aplicar árboles de decisión en un bosque aleatorio<a href="árboles-de-decisión.html#aplicar-árboles-de-decisión-en-un-bosque-aleatorio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">8.5.3</span> Aplicar árboles de decisión en un bosque aleatorio<a href="#aplicar-%C3%A1rboles-de-decisi%C3%B3n-en-un-bosque-aleatorio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La principal diferencia entre el algoritmo de árbol de decisión y el algoritmo de bosque aleatorio es que el establecimiento de nodos raíz y la desagregación de nodos se realiza de forma aleatoria en este último. <strong>El bosque aleatorio emplea el método de bagging para generar la predicción requerida.</strong></p>
 <p><strong>El método bagging implica el uso de diferentes muestras de datos (datos de entrenamiento) en lugar de una sola muestra.</strong> Los árboles de decisión producen diferentes resultados, dependiendo de los datos de entrenamiento alimentados al algoritmo de bosque aleatorio.</p>
 <p>Nuestro primer ejemplo todavía se puede utilizar para explicar cómo funcionan los bosques aleatorios. Supongamos que solo tenemos cuatro árboles de decisión. En este caso, los datos de entrenamiento que comprenden las observaciones y características de estudio se dividirán en cuatro nodos raíz. Supongamos que queremos modelar si un cliente compra o no compra un teléfono.</p>
@@ -497,7 +499,7 @@ de características en el punto de división del nodo.</p></li>
 </div>
 </div>
 <div id="implementación-en-python-2" class="section level2 hasAnchor" number="8.6">
-<h2><span class="header-section-number">8.6</span> Implementación en Python<a href="árboles-de-decisión.html#implementación-en-python-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">8.6</span> Implementación en Python<a href="#implementaci%C3%B3n-en-python-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Usaremos los pipelines antes implementados para ajustar tanto el modelo de regresión como el de clasificación. Una ventaja que se explorará al usar KFCV es el conjunto de hiperparámetros para elegir el mejor modelo posible.</p>
 <p>Los pasos a seguir, son los siguientes:</p>
 <ol start="0" style="list-style-type: decimal">
@@ -514,7 +516,7 @@ de características en el punto de división del nodo.</p></li>
 <li>Validar poder predictivo con datos de prueba.</li>
 </ol>
 <div id="regresión-4" class="section level3 hasAnchor" number="8.6.1">
-<h3><span class="header-section-number">8.6.1</span> Regresión<a href="árboles-de-decisión.html#regresión-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">8.6.1</span> Regresión<a href="#regresi%C3%B3n-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Paso 0: Carga de librerías</strong></p>
 <div class="sourceCode" id="cb260"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb260-1"><a href="árboles-de-decisión.html#cb260-1" tabindex="-1"></a></span>
 <span id="cb260-2"><a href="árboles-de-decisión.html#cb260-2" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
@@ -734,7 +736,7 @@ de características en el punto de división del nodo.</p></li>
 ## [586 rows x 2 columns]</code></pre>
 <p>Estas son las predicciones logradas con el modelo inicial.</p>
 <div id="métricas-de-desempeño-3" class="section level4 hasAnchor" number="8.6.1.1">
-<h4><span class="header-section-number">8.6.1.1</span> Métricas de desempeño<a href="árboles-de-decisión.html#métricas-de-desempeño-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">8.6.1.1</span> Métricas de desempeño<a href="#m%C3%A9tricas-de-desempe%C3%B1o-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Se procede en el siguiente paso a cuantificar los errores producidos por la predicción.</p>
 <p><strong>Paso 4: Cálculo de métricas de desempeño</strong></p>
 <div class="sourceCode" id="cb270"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb270-1"><a href="árboles-de-decisión.html#cb270-1" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">&#39;</span><span class="sc">{:.2f}</span><span class="st">&#39;</span>.<span class="bu">format</span></span>
@@ -828,7 +830,7 @@ de características en el punto de división del nodo.</p></li>
 <p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-212-4.png" width="614" /></p>
 </div>
 <div id="validación-cruzada-3" class="section level4 hasAnchor" number="8.6.1.2">
-<h4><span class="header-section-number">8.6.1.2</span> Validación cruzada<a href="árboles-de-decisión.html#validación-cruzada-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">8.6.1.2</span> Validación cruzada<a href="#validaci%C3%B3n-cruzada-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Para determinar cuáles son los hiper-parámetros que funcionan mejor, es necesario realizar experimentos mediante <strong>ensayo-error</strong> hasta determinar la mejor solución. En cada partición del método de muestreo <em>KFCV</em> se implementan las distintas configuraciones y se calculan predicciones. Con las predicciones hechas en cada <em>fold</em>, se obtienen intervalos de confianza para conocer la variación asociada al modelo a través de los hiper-parámetros implementados.</p>
 <p>Usaremos las recetas antes implementadas para ajustar tanto el modelo de regresión como el de clasificación. Exploraremos un conjunto de hiperparámetros para elegir el mejor modelo, sin embargo, para realizar este proceso de forma ágil, se inicializará un flujo de trabajo que se encargue de realizar todos los experimentos deseados y elegir el modelo adecuado.</p>
 <p><strong>Paso 5: Creación de grid search y métricas de desempeño</strong></p>
@@ -894,19 +896,32 @@ de características en el punto de división del nodo.</p></li>
 ##        &#39;split2_test_neg_mean_squared_error&#39;,
 ##        &#39;split3_test_neg_mean_squared_error&#39;,
 ##        &#39;split4_test_neg_mean_squared_error&#39;,
+##        &#39;split5_test_neg_mean_squared_error&#39;,
+##        &#39;split6_test_neg_mean_squared_error&#39;,
+##        &#39;split7_test_neg_mean_squared_error&#39;,
+##        &#39;split8_test_neg_mean_squared_error&#39;,
+##        &#39;split9_test_neg_mean_squared_error&#39;,
 ##        &#39;mean_test_neg_mean_squared_error&#39;, &#39;std_test_neg_mean_squared_error&#39;,
 ##        &#39;rank_test_neg_mean_squared_error&#39;, &#39;split0_test_r2&#39;, &#39;split1_test_r2&#39;,
-##        &#39;split2_test_r2&#39;, &#39;split3_test_r2&#39;, &#39;split4_test_r2&#39;, &#39;mean_test_r2&#39;,
-##        &#39;std_test_r2&#39;, &#39;rank_test_r2&#39;, &#39;split0_test_neg_mean_absolute_error&#39;,
+##        &#39;split2_test_r2&#39;, &#39;split3_test_r2&#39;, &#39;split4_test_r2&#39;, &#39;split5_test_r2&#39;,
+##        &#39;split6_test_r2&#39;, &#39;split7_test_r2&#39;, &#39;split8_test_r2&#39;, &#39;split9_test_r2&#39;,
+##        &#39;mean_test_r2&#39;, &#39;std_test_r2&#39;, &#39;rank_test_r2&#39;,
+##        &#39;split0_test_neg_mean_absolute_error&#39;,
 ##        &#39;split1_test_neg_mean_absolute_error&#39;,
 ##        &#39;split2_test_neg_mean_absolute_error&#39;,
 ##        &#39;split3_test_neg_mean_absolute_error&#39;,
 ##        &#39;split4_test_neg_mean_absolute_error&#39;,
+##        &#39;split5_test_neg_mean_absolute_error&#39;,
+##        &#39;split6_test_neg_mean_absolute_error&#39;,
+##        &#39;split7_test_neg_mean_absolute_error&#39;,
+##        &#39;split8_test_neg_mean_absolute_error&#39;,
+##        &#39;split9_test_neg_mean_absolute_error&#39;,
 ##        &#39;mean_test_neg_mean_absolute_error&#39;, &#39;std_test_neg_mean_absolute_error&#39;,
 ##        &#39;rank_test_neg_mean_absolute_error&#39;, &#39;split0_test_mape&#39;,
 ##        &#39;split1_test_mape&#39;, &#39;split2_test_mape&#39;, &#39;split3_test_mape&#39;,
-##        &#39;split4_test_mape&#39;, &#39;mean_test_mape&#39;, &#39;std_test_mape&#39;,
-##        &#39;rank_test_mape&#39;],
+##        &#39;split4_test_mape&#39;, &#39;split5_test_mape&#39;, &#39;split6_test_mape&#39;,
+##        &#39;split7_test_mape&#39;, &#39;split8_test_mape&#39;, &#39;split9_test_mape&#39;,
+##        &#39;mean_test_mape&#39;, &#39;std_test_mape&#39;, &#39;rank_test_mape&#39;],
 ##       dtype=&#39;object&#39;)</code></pre>
 <div class="sourceCode" id="cb285"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb285-1"><a href="árboles-de-decisión.html#cb285-1" tabindex="-1"></a><span class="co"># Puedes seleccionar las columnas de interés, por ejemplo:</span></span>
 <span id="cb285-2"><a href="árboles-de-decisión.html#cb285-2" tabindex="-1"></a></span>
@@ -915,98 +930,98 @@ de características en el punto de división del nodo.</p></li>
 <span id="cb285-5"><a href="árboles-de-decisión.html#cb285-5" tabindex="-1"></a>  select(<span class="op">-</span>_.contains(<span class="st">&quot;split._&quot;</span>), <span class="op">-</span>_.contains(<span class="st">&quot;time&quot;</span>), <span class="op">-</span>_.params)</span>
 <span id="cb285-6"><a href="árboles-de-decisión.html#cb285-6" tabindex="-1"></a>)</span>
 <span id="cb285-7"><a href="árboles-de-decisión.html#cb285-7" tabindex="-1"></a>summary_df</span></code></pre></div>
-<pre><code>##     param_max_depth param_max_features param_min_samples_leaf  \
-## 0                 2                  1                      2   
-## 1                 2                  1                      2   
-## 2                 2                  1                      2   
-## 3                 2                  1                      2   
-## 4                 2                  1                      2   
-## ..              ...                ...                    ...   
-## 427               4                  4                      7   
-## 428               4                  4                      7   
-## 429               4                  4                      7   
-## 430               4                  4                      7   
-## 431               4                  4                      7   
+<pre><code>##      param_max_depth param_max_features param_min_samples_leaf  \
+## 0                  4                  4                      2   
+## 1                  4                  4                      2   
+## 2                  4                  4                      2   
+## 3                  4                  4                      2   
+## 4                  4                  4                      2   
+## ...              ...                ...                    ...   
+## 1291               9                  9                      7   
+## 1292               9                  9                      7   
+## 1293               9                  9                      7   
+## 1294               9                  9                      7   
+## 1295               9                  9                      7   
 ## 
-##     param_min_samples_split  mean_test_neg_mean_squared_error  \
-## 0                         2                    -5044984356.36   
-## 1                         3                    -4964923358.79   
-## 2                         4                    -4977753072.60   
-## 3                         5                    -5011018816.32   
-## 4                         6                    -4942837882.33   
-## ..                      ...                               ...   
-## 427                       3                    -3571977842.60   
-## 428                       4                    -3571812828.13   
-## 429                       5                    -3580596609.29   
-## 430                       6                    -3569684210.06   
-## 431                       7                    -3580123972.94   
+##      param_min_samples_split  mean_test_neg_mean_squared_error  \
+## 0                          2                    -3505678183.44   
+## 1                          3                    -3499928097.05   
+## 2                          4                    -3516024934.48   
+## 3                          5                    -3489352637.70   
+## 4                          6                    -3488043749.69   
+## ...                      ...                               ...   
+## 1291                       3                    -3237383934.30   
+## 1292                       4                    -3266832220.82   
+## 1293                       5                    -3246586145.64   
+## 1294                       6                    -3246767840.52   
+## 1295                       7                    -3242213704.81   
 ## 
-##      std_test_neg_mean_squared_error  rank_test_neg_mean_squared_error  \
-## 0                       515978383.45                               412   
-## 1                       439010353.10                               399   
-## 2                       492072530.90                               400   
-## 3                       515626488.83                               407   
-## 4                       515492840.10                               398   
-## ..                               ...                               ...   
-## 427                     418625699.94                                28   
-## 428                     414701391.54                                27   
-## 429                     417575688.88                                36   
-## 430                     429753717.14                                25   
-## 431                     425768322.01                                34   
+##       std_test_neg_mean_squared_error  rank_test_neg_mean_squared_error  \
+## 0                        548851543.66                              1164   
+## 1                        558421729.68                              1147   
+## 2                        541110433.29                              1192   
+## 3                        528072890.91                              1129   
+## 4                        548669616.41                              1128   
+## ...                               ...                               ...   
+## 1291                     538680160.59                               692   
+## 1292                     530414218.64                               832   
+## 1293                     528348623.53                               740   
+## 1294                     523629259.33                               742   
+## 1295                     521255736.83                               711   
 ## 
-##      mean_test_r2  std_test_r2  rank_test_r2  \
-## 0            0.20         0.02           413   
-## 1            0.21         0.03           400   
-## 2            0.21         0.01           401   
-## 3            0.21         0.02           406   
-## 4            0.22         0.02           398   
-## ..            ...          ...           ...   
-## 427          0.44         0.03            27   
-## 428          0.44         0.03            26   
-## 429          0.43         0.03            35   
-## 430          0.44         0.03            24   
-## 431          0.43         0.03            34   
+##       mean_test_r2  std_test_r2  rank_test_r2  \
+## 0             0.45         0.05          1161   
+## 1             0.45         0.05          1138   
+## 2             0.44         0.05          1192   
+## 3             0.45         0.05          1129   
+## 4             0.45         0.05          1124   
+## ...            ...          ...           ...   
+## 1291          0.49         0.06           686   
+## 1292          0.48         0.05           832   
+## 1293          0.49         0.05           739   
+## 1294          0.49         0.05           746   
+## 1295          0.49         0.05           718   
 ## 
-##      mean_test_neg_mean_absolute_error  std_test_neg_mean_absolute_error  \
-## 0                            -49811.42                           1291.14   
-## 1                            -49181.24                           1156.36   
-## 2                            -49369.74                           1069.75   
-## 3                            -49486.25                           1160.76   
-## 4                            -49131.49                           1515.19   
-## ..                                 ...                               ...   
-## 427                          -39764.29                           1245.78   
-## 428                          -39805.00                           1209.10   
-## 429                          -39814.77                           1130.23   
-## 430                          -39922.12                           1184.60   
-## 431                          -39856.36                           1206.31   
+##       mean_test_neg_mean_absolute_error  std_test_neg_mean_absolute_error  \
+## 0                             -39618.05                           2131.67   
+## 1                             -39579.12                           2191.17   
+## 2                             -39759.62                           2105.90   
+## 3                             -39527.82                           1978.87   
+## 4                             -39512.12                           2120.88   
+## ...                                 ...                               ...   
+## 1291                          -37487.00                           2171.95   
+## 1292                          -37569.33                           2156.76   
+## 1293                          -37563.58                           2112.10   
+## 1294                          -37496.31                           2144.99   
+## 1295                          -37520.87                           2075.79   
 ## 
-##      rank_test_neg_mean_absolute_error  mean_test_mape  std_test_mape  \
-## 0                                  415           -0.32           0.02   
-## 1                                  400           -0.31           0.02   
-## 2                                  402           -0.32           0.01   
-## 3                                  408           -0.32           0.01   
-## 4                                  398           -0.31           0.02   
-## ..                                 ...             ...            ...   
-## 427                                 11           -0.24           0.01   
-## 428                                 21           -0.24           0.01   
-## 429                                 26           -0.24           0.01   
-## 430                                 34           -0.24           0.01   
-## 431                                 30           -0.24           0.01   
+##       rank_test_neg_mean_absolute_error  mean_test_mape  std_test_mape  \
+## 0                                  1155           -0.24           0.02   
+## 1                                  1126           -0.24           0.02   
+## 2                                  1252           -0.24           0.02   
+## 3                                  1102           -0.24           0.02   
+## 4                                  1097           -0.24           0.02   
+## ...                                 ...             ...            ...   
+## 1291                                520           -0.22           0.02   
+## 1292                                610           -0.22           0.02   
+## 1293                                603           -0.22           0.02   
+## 1294                                529           -0.22           0.02   
+## 1295                                556           -0.22           0.02   
 ## 
-##      rank_test_mape  
-## 0               414  
-## 1               400  
-## 2               403  
-## 3               405  
-## 4               399  
-## ..              ...  
-## 427              11  
-## 428              23  
-## 429              17  
-## 430              34  
-## 431              33  
+##       rank_test_mape  
+## 0               1264  
+## 1               1266  
+## 2               1277  
+## 3               1247  
+## 4               1258  
+## ...              ...  
+## 1291             492  
+## 1292             551  
+## 1293             545  
+## 1294             463  
+## 1295             508  
 ## 
-## [432 rows x 16 columns]</code></pre>
+## [1296 rows x 16 columns]</code></pre>
 <p>En la siguiente gráfica observamos las distintas métricas de error asociados a los hiperparámetros elegidos:</p>
 <div class="sourceCode" id="cb287"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb287-1"><a href="árboles-de-decisión.html#cb287-1" tabindex="-1"></a>(</span>
 <span id="cb287-2"><a href="árboles-de-decisión.html#cb287-2" tabindex="-1"></a>  summary_df <span class="op">&gt;&gt;</span></span>
@@ -1049,12 +1064,12 @@ de características en el punto de división del nodo.</p></li>
 <p>Habiendo realizado un análisis de los hiperparámetros, se procede a elegir el mejor modelo. Esto a veces a muy evidente y otras no. En cualquier caso, puede automatizarse la extracción del mejor modelo:</p>
 <div class="sourceCode" id="cb291"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb291-1"><a href="árboles-de-decisión.html#cb291-1" tabindex="-1"></a>best_params <span class="op">=</span> pipeline.named_steps[<span class="st">&#39;regressor&#39;</span>].best_params_</span>
 <span id="cb291-2"><a href="árboles-de-decisión.html#cb291-2" tabindex="-1"></a>best_params</span></code></pre></div>
-<pre><code>## {&#39;max_depth&#39;: 4, &#39;max_features&#39;: 4, &#39;min_samples_leaf&#39;: 2, &#39;min_samples_split&#39;: 6}</code></pre>
+<pre><code>## {&#39;max_depth&#39;: 9, &#39;max_features&#39;: 5, &#39;min_samples_leaf&#39;: 2, &#39;min_samples_split&#39;: 4}</code></pre>
 <p>Sabiendo cuáles son los mejores hiperparámetros, se procede a extraer el modelo que <strong>DEBEREMOS AJUSTAR A TODOS LOS DATOS DE ENTRENAMIENTO</strong>.</p>
 <div class="sourceCode" id="cb293"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb293-1"><a href="árboles-de-decisión.html#cb293-1" tabindex="-1"></a>best_estimator <span class="op">=</span> pipeline.named_steps[<span class="st">&#39;regressor&#39;</span>].best_estimator_</span>
 <span id="cb293-2"><a href="árboles-de-decisión.html#cb293-2" tabindex="-1"></a>best_estimator</span></code></pre></div>
-<pre><code>## RandomForestRegressor(max_depth=4, max_features=4, min_samples_leaf=2,
-##                       min_samples_split=6)</code></pre>
+<pre><code>## RandomForestRegressor(max_depth=9, max_features=5, min_samples_leaf=2,
+##                       min_samples_split=4)</code></pre>
 <p><strong>Paso 9: Ajuste de modelo final con todos los datos (Vuelve al paso 2, si es necesario)</strong></p>
 <p>Ahora obtendremos el modelo que mejor desempeño tiene y haremos las predicciones del conjunto de prueba con este modelo.</p>
 <p>Es importante volver a hacer el ajuste con el modelo elegido.</p>
@@ -1076,9 +1091,9 @@ de características en el punto de división del nodo.</p></li>
 ##                                                   [&#39;Overall_Cond&#39;])],
 ##                                    verbose_feature_names_out=False)),
 ##                 (&#39;regressor&#39;,
-##                  RandomForestRegressor(max_depth=4, max_features=4,
+##                  RandomForestRegressor(max_depth=9, max_features=5,
 ##                                        min_samples_leaf=2,
-##                                        min_samples_split=6))])</code></pre>
+##                                        min_samples_split=4))])</code></pre>
 <p>Este último objeto creado es el modelo final entrenado, el cual contiene toda la información del pre-procesamiento de datos, por lo que en caso de ponerse en producción, sólo se necesita de los nuevos datos y de este último elemento para poder realizar nuevas predicciones.</p>
 <p><strong>Paso 10: Validar poder predictivo con datos de prueba</strong></p>
 <p>Imaginemos por un momento que pasa un mes de tiempo desde que hicimos nuestro modelo, es hora de ponerlo a prueba prediciendo valores de nuevos elementos:</p>
@@ -1092,17 +1107,17 @@ de características en el punto de división del nodo.</p></li>
 <span id="cb297-8"><a href="árboles-de-decisión.html#cb297-8" tabindex="-1"></a>)</span>
 <span id="cb297-9"><a href="árboles-de-decisión.html#cb297-9" tabindex="-1"></a>results_reg</span></code></pre></div>
 <pre><code>##       Sale_Price  final_rf_pred
-## 390       165000      216816.07
-## 1235      124000      170180.87
-## 2288       75000      152735.15
-## 107       206000      131173.78
-## 1861      190000      255080.89
+## 390       165000      225383.69
+## 1235      124000      190126.84
+## 2288       75000      114088.01
+## 107       206000      130409.08
+## 1861      190000      224589.34
 ## ...          ...            ...
-## 116       171000      151803.91
-## 398       120500      131173.78
-## 1253      146000      216816.07
-## 78        125000      135163.73
-## 714       110000      145309.23
+## 116       171000      161606.01
+## 398       120500      130409.08
+## 1253      146000      225383.69
+## 78        125000      129783.25
+## 714       110000      129573.85
 ## 
 ## [586 rows x 2 columns]</code></pre>
 <p><strong>Métricas de desempeño</strong></p>
@@ -1124,13 +1139,13 @@ de características en el punto de división del nodo.</p></li>
 <span id="cb299-15"><a href="árboles-de-decisión.html#cb299-15" tabindex="-1"></a>metrics_df <span class="op">=</span> pd.DataFrame(metrics_data)</span>
 <span id="cb299-16"><a href="árboles-de-decisión.html#cb299-16" tabindex="-1"></a>metrics_df</span></code></pre></div>
 <pre><code>##     Metric         Value
-## 0       ME       -402.30
-## 1      MAE      41919.72
-## 2     MAPE          0.25
-## 3      MSE 3830050859.00
-## 4     RMSE      61887.40
-## 5      R^2          0.42
-## 6  R^2 Adj          0.42</code></pre>
+## 0       ME      -1196.45
+## 1      MAE      37823.43
+## 2     MAPE          0.22
+## 3      MSE 3142098661.34
+## 4     RMSE      56054.43
+## 5      R^2          0.52
+## 6  R^2 Adj          0.52</code></pre>
 <div class="sourceCode" id="cb301"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb301-1"><a href="árboles-de-decisión.html#cb301-1" tabindex="-1"></a>(</span>
 <span id="cb301-2"><a href="árboles-de-decisión.html#cb301-2" tabindex="-1"></a>  results_reg <span class="op">&gt;&gt;</span></span>
 <span id="cb301-3"><a href="árboles-de-decisión.html#cb301-3" tabindex="-1"></a>    ggplot(aes(x <span class="op">=</span> <span class="st">&quot;final_rf_pred&quot;</span>, y <span class="op">=</span> <span class="st">&quot;Sale_Price&quot;</span>)) <span class="op">+</span></span>
@@ -1160,7 +1175,7 @@ de características en el punto de división del nodo.</p></li>
 <span id="cb303-12"><a href="árboles-de-decisión.html#cb303-12" tabindex="-1"></a><span class="co"># Calcula la importancia relativa</span></span>
 <span id="cb303-13"><a href="árboles-de-decisión.html#cb303-13" tabindex="-1"></a>importance <span class="op">=</span> importance <span class="op">/</span> importance.<span class="bu">sum</span>()</span>
 <span id="cb303-14"><a href="árboles-de-decisión.html#cb303-14" tabindex="-1"></a>importance</span></code></pre></div>
-<pre><code>## array([0.58874133, 0.11411826, 0.18607943, 0.11106098])</code></pre>
+<pre><code>## array([0.32751033, 0.2204636 , 0.34561044, 0.10641563])</code></pre>
 <div class="sourceCode" id="cb305"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb305-1"><a href="árboles-de-decisión.html#cb305-1" tabindex="-1"></a>importance_df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb305-2"><a href="árboles-de-decisión.html#cb305-2" tabindex="-1"></a>  <span class="st">&#39;Variable&#39;</span>: columnas_seleccionadas, </span>
 <span id="cb305-3"><a href="árboles-de-decisión.html#cb305-3" tabindex="-1"></a>  <span class="st">&#39;Importance&#39;</span>: importance</span>

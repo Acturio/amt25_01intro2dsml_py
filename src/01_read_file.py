@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from pandas import read_csv, read_excel
 
-import koalas as ko
+#import koalas as ko
 #### lectura de archivo .csv ####
 
 #ames_csv = pd.read_csv("~/Documents/Freelance/amat/amt23_01intro2dsml_py/data/ames.csv")
