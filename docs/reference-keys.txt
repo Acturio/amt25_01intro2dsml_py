@@ -10,8 +10,8 @@ aprendizaje-no-supervisado
 aprendizaje-por-refuerzo
 introducción-a-python
 cómo-obtener-python
-qué-es-rstudio
-uso-de-python-en-rstudio
+qué-es-positron
+uso-de-python-en-positron
 lectura-de-datos
 archivos-csv
 archivos-txt

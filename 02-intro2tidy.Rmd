@@ -28,9 +28,9 @@ Estas características hacen de Python una herramienta poderosa y popular para r
 
 Python puede ser fácilmente descargado de forma gratuita desde el sitio oficial <https://www.python.org/downloads/>. Python está disponible para las plataformas Windows, Mac y Linux.
 
-## ¿Qué es RStudio?
+## ¿Qué es Positron?
 
-*RStudio* es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) creado por Posit (antes Rstudio) para R y Python. Este permite y facilita el desarrollo y ejecución de sintaxis para código en *R* y *python*, incluye una consola y proporciona herramientas para la gestión del espacio de trabajo. *RStudio* está disponible para Windows, Mac y Linux o para navegadores conectados a *RStudio Server o RStudio Server Pro*.
+*Positron* es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) creado por Posit (antes Rstudio) para R y Python. Este permite y facilita el desarrollo y ejecución de sintaxis para código en *R* y *python*, incluye una consola y proporciona herramientas para la gestión del espacio de trabajo. *Positron* está disponible para Windows, Mac y Linux.
 
 Algunas de las principales características de Rstudio que lo hacen una gran herramienta para trabajar, son:
 
@@ -51,7 +51,7 @@ La siguiente imagen muestra la forma en la que está estructurado RStudio. El or
 knitr::include_graphics("img/02-intro2py/02_rstudio_py.png")
 ```
 
-## Uso de python en Rstudio
+## Uso de python en Positron
 
 
 ```{python, eval = F}

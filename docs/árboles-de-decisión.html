@@ -182,8 +182,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="08-ml-random-forest.html"><a href="#introducci%C3%B3n-a-python"><i class="fa fa-check"></i><b>2</b> Introducción a Python</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="08-ml-random-forest.html"><a href="#c%C3%B3mo-obtener-python"><i class="fa fa-check"></i><b>2.1</b> ¿Cómo obtener <em>Python</em>?</a></li>
-<li class="chapter" data-level="2.2" data-path="08-ml-random-forest.html"><a href="#qu%C3%A9-es-rstudio"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es RStudio?</a></li>
-<li class="chapter" data-level="2.3" data-path="introducción-a-python.html"><a href="introducción-a-python.html"><i class="fa fa-check"></i><b>2.3</b> Uso de python en Rstudio</a></li>
+<li class="chapter" data-level="2.2" data-path="08-ml-random-forest.html"><a href="#qu%C3%A9-es-positron"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es Positron?</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-python.html"><a href="introducción-a-python.html"><i class="fa fa-check"></i><b>2.3</b> Uso de python en Positron</a></li>
 <li class="chapter" data-level="2.4" data-path="introducción-a-python.html"><a href="introducción-a-python.html#lectura-de-datos"><i class="fa fa-check"></i><b>2.4</b> Lectura de datos</a>
 <ul>
 <li class="chapter" data-level="2.4.1" data-path="introducción-a-python.html"><a href="introducción-a-python.html#archivos-csv"><i class="fa fa-check"></i><b>2.4.1</b> Archivos <em>csv</em></a></li>
@@ -1107,17 +1107,17 @@ de características en el punto de división del nodo.</p></li>
 <span id="cb297-8"><a href="árboles-de-decisión.html#cb297-8" tabindex="-1"></a>)</span>
 <span id="cb297-9"><a href="árboles-de-decisión.html#cb297-9" tabindex="-1"></a>results_reg</span></code></pre></div>
 <pre><code>##       Sale_Price  final_rf_pred
-## 390       165000      225383.69
-## 1235      124000      190126.84
-## 2288       75000      114088.01
-## 107       206000      130409.08
-## 1861      190000      224589.34
+## 390       165000      224575.96
+## 1235      124000      190521.08
+## 2288       75000      108302.22
+## 107       206000      130741.95
+## 1861      190000      227514.16
 ## ...          ...            ...
-## 116       171000      161606.01
-## 398       120500      130409.08
-## 1253      146000      225383.69
-## 78        125000      129783.25
-## 714       110000      129573.85
+## 116       171000      159349.24
+## 398       120500      130741.95
+## 1253      146000      224575.96
+## 78        125000      130109.20
+## 714       110000      127834.64
 ## 
 ## [586 rows x 2 columns]</code></pre>
 <p><strong>Métricas de desempeño</strong></p>
@@ -1139,11 +1139,11 @@ de características en el punto de división del nodo.</p></li>
 <span id="cb299-15"><a href="árboles-de-decisión.html#cb299-15" tabindex="-1"></a>metrics_df <span class="op">=</span> pd.DataFrame(metrics_data)</span>
 <span id="cb299-16"><a href="árboles-de-decisión.html#cb299-16" tabindex="-1"></a>metrics_df</span></code></pre></div>
 <pre><code>##     Metric         Value
-## 0       ME      -1196.45
-## 1      MAE      37823.43
+## 0       ME      -1182.63
+## 1      MAE      37653.23
 ## 2     MAPE          0.22
-## 3      MSE 3142098661.34
-## 4     RMSE      56054.43
+## 3      MSE 3123566385.01
+## 4     RMSE      55888.88
 ## 5      R^2          0.52
 ## 6  R^2 Adj          0.52</code></pre>
 <div class="sourceCode" id="cb301"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb301-1"><a href="árboles-de-decisión.html#cb301-1" tabindex="-1"></a>(</span>
@@ -1175,7 +1175,7 @@ de características en el punto de división del nodo.</p></li>
 <span id="cb303-12"><a href="árboles-de-decisión.html#cb303-12" tabindex="-1"></a><span class="co"># Calcula la importancia relativa</span></span>
 <span id="cb303-13"><a href="árboles-de-decisión.html#cb303-13" tabindex="-1"></a>importance <span class="op">=</span> importance <span class="op">/</span> importance.<span class="bu">sum</span>()</span>
 <span id="cb303-14"><a href="árboles-de-decisión.html#cb303-14" tabindex="-1"></a>importance</span></code></pre></div>
-<pre><code>## array([0.32751033, 0.2204636 , 0.34561044, 0.10641563])</code></pre>
+<pre><code>## array([0.32834261, 0.21826625, 0.34978129, 0.10360985])</code></pre>
 <div class="sourceCode" id="cb305"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb305-1"><a href="árboles-de-decisión.html#cb305-1" tabindex="-1"></a>importance_df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb305-2"><a href="árboles-de-decisión.html#cb305-2" tabindex="-1"></a>  <span class="st">&#39;Variable&#39;</span>: columnas_seleccionadas, </span>
 <span id="cb305-3"><a href="árboles-de-decisión.html#cb305-3" tabindex="-1"></a>  <span class="st">&#39;Importance&#39;</span>: importance</span>
