@@ -162,6 +162,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path=""><a href="#duraci%C3%B3n-y-evaluaci%C3%B3n-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#recursos-y-din%C3%A1mica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#asesor%C3%ADas"><i class="fa fa-check"></i>Asesorías</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#bibliograf%C3%ADa"><i class="fa fa-check"></i>Bibliografía</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> Conceptos de Ciencia de Datos</a>
 <ul>
@@ -1107,17 +1108,17 @@ de características en el punto de división del nodo.</p></li>
 <span id="cb297-8"><a href="árboles-de-decisión.html#cb297-8" tabindex="-1"></a>)</span>
 <span id="cb297-9"><a href="árboles-de-decisión.html#cb297-9" tabindex="-1"></a>results_reg</span></code></pre></div>
 <pre><code>##       Sale_Price  final_rf_pred
-## 390       165000      224924.25
-## 1235      124000      189071.52
-## 2288       75000      110726.18
-## 107       206000      130904.78
-## 1861      190000      216136.83
+## 390       165000      224614.83
+## 1235      124000      190307.55
+## 2288       75000      111080.79
+## 107       206000      131338.56
+## 1861      190000      220776.81
 ## ...          ...            ...
-## 116       171000      164947.50
-## 398       120500      130904.78
-## 1253      146000      224924.25
-## 78        125000      130288.28
-## 714       110000      129563.32
+## 116       171000      159336.76
+## 398       120500      131338.56
+## 1253      146000      224614.83
+## 78        125000      130539.17
+## 714       110000      128992.04
 ## 
 ## [586 rows x 2 columns]</code></pre>
 <p><strong>Métricas de desempeño</strong></p>
@@ -1139,11 +1140,11 @@ de características en el punto de división del nodo.</p></li>
 <span id="cb299-15"><a href="árboles-de-decisión.html#cb299-15" tabindex="-1"></a>metrics_df <span class="op">=</span> pd.DataFrame(metrics_data)</span>
 <span id="cb299-16"><a href="árboles-de-decisión.html#cb299-16" tabindex="-1"></a>metrics_df</span></code></pre></div>
 <pre><code>##     Metric         Value
-## 0       ME      -1099.37
-## 1      MAE      37676.47
+## 0       ME      -1276.74
+## 1      MAE      37740.86
 ## 2     MAPE          0.22
-## 3      MSE 3132471295.49
-## 4     RMSE      55968.48
+## 3      MSE 3145919100.89
+## 4     RMSE      56088.49
 ## 5      R^2          0.52
 ## 6  R^2 Adj          0.52</code></pre>
 <div class="sourceCode" id="cb301"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb301-1"><a href="árboles-de-decisión.html#cb301-1" tabindex="-1"></a>(</span>
@@ -1175,7 +1176,7 @@ de características en el punto de división del nodo.</p></li>
 <span id="cb303-12"><a href="árboles-de-decisión.html#cb303-12" tabindex="-1"></a><span class="co"># Calcula la importancia relativa</span></span>
 <span id="cb303-13"><a href="árboles-de-decisión.html#cb303-13" tabindex="-1"></a>importance <span class="op">=</span> importance <span class="op">/</span> importance.<span class="bu">sum</span>()</span>
 <span id="cb303-14"><a href="árboles-de-decisión.html#cb303-14" tabindex="-1"></a>importance</span></code></pre></div>
-<pre><code>## array([0.33074818, 0.21699171, 0.34636855, 0.10589156])</code></pre>
+<pre><code>## array([0.31742366, 0.22468831, 0.35088836, 0.10699968])</code></pre>
 <div class="sourceCode" id="cb305"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb305-1"><a href="árboles-de-decisión.html#cb305-1" tabindex="-1"></a>importance_df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb305-2"><a href="árboles-de-decisión.html#cb305-2" tabindex="-1"></a>  <span class="st">&#39;Variable&#39;</span>: columnas_seleccionadas, </span>
 <span id="cb305-3"><a href="árboles-de-decisión.html#cb305-3" tabindex="-1"></a>  <span class="st">&#39;Importance&#39;</span>: importance</span>
