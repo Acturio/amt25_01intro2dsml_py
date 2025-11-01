@@ -8,13 +8,13 @@ from pandas import read_csv, read_excel
 
 #ames_csv = pd.read_csv("~/Documents/Freelance/amat/amt23_01intro2dsml_py/data/ames.csv")
 data_csv = pandas.read_csv("data/ames.csv")
-data_csv = pd.read_csv("data/ames.csv")
-data_csv = read_csv("data/ames.csv")
+data_csv1 = pd.read_csv("data/ames.csv")
+data_csv2 = read_csv("data/ames.csv")
 
 pd.read_csv
 ko.read_csv
 
-del data_csv
+del data_csv2
 data_csv
 
 data_csv.info()
@@ -28,7 +28,7 @@ data_csv.describe()
 
 #### lectura de archivo .txt ####
 
-ames_txt = pd.read_csv("data/ames.txt", delimiter = "")
+ames_txt = pd.read_csv("data/ames.txt", delimiter = ";")
 ames_txt.head(3)
 
 
@@ -44,5 +44,4 @@ data_csv.to_pickle("data/ames.pkl")
 
 ames_pkl = pd.read_pickle("data/ames.pkl")
 ames_pkl.head(5)
-
 

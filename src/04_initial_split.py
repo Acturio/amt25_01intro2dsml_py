@@ -10,12 +10,13 @@ print("Tamaño de conjunto completo: ", ames.shape)
 Y = select(ames, _.Sale_Price)
 Y = select(ames, "Sale_Price")
 X = select(ames, -_.Sale_Price)
+#X = select(ames, -"Sale_Price")
 
 X_train, X_test, y_train, y_test = train_test_split(
  X, Y, 
  test_size = 0.20, 
  #train_size = 0.80, 
- random_state = 12345
+ random_state = 54321
  )
 
 print("Tamaño de conjunto de entrenamiento: ", X_train.shape)
@@ -72,11 +73,11 @@ print("Tamaño de conjunto de validación: ", X_val.shape)
 y = ames["Sale_Price"]
 X = select(ames, _.Gr_Liv_Area)
 
+# Crea el objeto K-Fold Cross-Validation con K=5 (puedes cambiar el valor de K según tus necesidades)
+kf = KFold(n_splits = 100, shuffle = True, random_state = 42)
+
 # Crea el regresor lineal que deseas evaluar
 regressor = LinearRegression()
-
-# Crea el objeto K-Fold Cross-Validation con K=5 (puedes cambiar el valor de K según tus necesidades)
-kf = KFold(n_splits = 10, shuffle = True, random_state = 42)
 
 # Realiza la validación cruzada KFCV y obtén los scores de cada iteración
 scores = cross_val_score(
@@ -95,7 +96,7 @@ std_score = scores.std()
 print("Scores de cada iteración:", scores)
 
 
-
+np.sort(-scores)
 
 
 

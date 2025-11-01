@@ -19,7 +19,7 @@ diamonds
       y = "precio") +
  guides(color = guide_legend(title = "Calidad de corte")) +
  theme(axis_text_x=element_text(angle=20, size = 10)) +
- scale_y_continuous(labels=comma_format(), limits = np.array([0, 20000])) +
+ scale_y_continuous(labels=dollar_format(), limits = np.array([0, 20000])) +
  theme(plot_title = element_text(hjust = 0.5))
 )
 
@@ -91,10 +91,11 @@ diamonds >>
 
 (
 diamonds >> 
-  ggplot( aes( x = "clarity")) + 
+  ggplot( aes( x = "cut")) + 
   geom_bar( fill= "darkblue", color= "black", alpha= 0.7) +
   geom_text(
-   aes(label=after_stat('count'), group=1),
+   aes(x = "cut",
+     label=after_stat('count'), group=1),
      stat='count',
      nudge_x=0,
      nudge_y=5,
@@ -123,7 +124,7 @@ diamonds >>
      format_string='{:.1f}%') +
   scale_y_continuous(labels = comma_format()) +
   coord_flip() +
-  facet_wrap("cut", scales = "free_y", nrow = 3) +
+  facet_wrap("cut", scales = "free_x", nrow = 2) +
   ggtitle("Distribución claridad") #+
 )
 
@@ -172,7 +173,7 @@ diamonds >>
 diamonds >> 
   ggplot(aes(x= "price" ,fill = "cut"))  + 
   geom_histogram(position = 'identity', alpha = 0.5) +
-  facet_wrap("cut", ncol = 1)
+  facet_wrap("cut", ncol = 1, scales="free_y")
 )
 
 
@@ -189,7 +190,8 @@ diamonds >>
 
 
 (
-diamonds >> 
+diamonds >>
+#  filter(_.price >= 10000) >>
   ggplot( aes(x = "carat", y = "price")) +
   geom_point(aes(color = "clarity"), size = 0.3, alpha = 0.3 ) +
   facet_wrap("clarity")+

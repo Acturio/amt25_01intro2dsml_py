@@ -58,9 +58,9 @@ pipeline
 normalizar-columnas-numéricas
 dicotomización-de-categorías
 imputación-de-datos-faltantes
-transformaciones-personalizadas
 interacciones
 renombramiento-de-nuevos-datos
+transformaciones-personalizadas
 regresión-lineal
 regresión-lineal-simple
 interpretación

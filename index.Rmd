@@ -140,13 +140,13 @@ Los alumnos podrán hacer uso del canal de comunicación para externar sus dudas
 :::
 
 **Nota:** En caso de requerir consultoría especializada o particular a un tema de interés, se deberá contactar al área administrativa para solicitar la cotización por el servicio correspondiente.
-
+https://es.r4ds.hadley.nz/
 ## Bibliografía {-}
 
 <table>
   <tr>
     <td style="width:150px; vertical-align:top;">
-      <a href="http://14.139.161.31/OddSem-0822-1122/Hands-On_Machine_Learning_with_Scikit-Learn-Keras-and-TensorFlow-2nd-Edition-Aurelien-Geron.pdf" target="_blank">
+      <a href="https://www.clc.hcmus.edu.vn/wp-content/uploads/2017/11/Hands_On_Machine_Learning_with_Scikit_Learn_and_TensorFlow.pdf" target="_blank">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPovM-lxZnunzU7uUslndFIQpQmt0EIFSFeg&s" width="120"/>
       </a>
     </td>
@@ -231,6 +231,20 @@ Los alumnos podrán hacer uso del canal de comunicación para externar sus dudas
       Editorial: O´REILLY  
       Año: 2022  
       ISBN: 978-84-267-3443-3
+   </td>
+  </tr>  
+  
+  <tr>
+    <td style="width:150px; vertical-align:top;">
+      <a href="https://es.r4ds.hadley.nz/" target="_blank">
+        <img src="https://r4ds.had.co.nz/cover.png" width="120"/>
+      </a>
+    </td>
+    <td style="vertical-align:top; padding-left:15px;">
+      **R para Ciencia de Datos**  
+      Autor: Hadley Wickham & Garrett Grolemound  
+      Editorial: O´REILLY  
+      Año: 2023  
    </td>
   </tr>  
   

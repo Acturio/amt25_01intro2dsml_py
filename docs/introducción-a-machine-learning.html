@@ -162,7 +162,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path=""><a href="#duraci%C3%B3n-y-evaluaci%C3%B3n-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#recursos-y-din%C3%A1mica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
 <li class="chapter" data-level="" data-path=""><a href="#asesor%C3%ADas"><i class="fa fa-check"></i>Asesorías</a></li>
-<li class="chapter" data-level="" data-path=""><a href="#bibliograf%C3%ADa"><i class="fa fa-check"></i>Bibliografía</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> Conceptos de Ciencia de Datos</a>
 <ul>
@@ -256,9 +255,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5.1" data-path="04-intro2ml.html"><a href="#normalizar-columnas-num%C3%A9ricas"><i class="fa fa-check"></i><b>4.5.1</b> Normalizar columnas numéricas</a></li>
 <li class="chapter" data-level="4.5.2" data-path="04-intro2ml.html"><a href="#dicotomizaci%C3%B3n-de-categor%C3%ADas"><i class="fa fa-check"></i><b>4.5.2</b> Dicotomización de categorías</a></li>
 <li class="chapter" data-level="4.5.3" data-path="04-intro2ml.html"><a href="#imputaci%C3%B3n-de-datos-faltantes"><i class="fa fa-check"></i><b>4.5.3</b> Imputación de datos faltantes</a></li>
-<li class="chapter" data-level="4.5.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#transformaciones-personalizadas"><i class="fa fa-check"></i><b>4.5.4</b> Transformaciones personalizadas</a></li>
-<li class="chapter" data-level="4.5.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#interacciones"><i class="fa fa-check"></i><b>4.5.5</b> Interacciones</a></li>
-<li class="chapter" data-level="4.5.6" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#renombramiento-de-nuevos-datos"><i class="fa fa-check"></i><b>4.5.6</b> Renombramiento de nuevos datos</a></li>
+<li class="chapter" data-level="4.5.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#interacciones"><i class="fa fa-check"></i><b>4.5.4</b> Interacciones</a></li>
+<li class="chapter" data-level="4.5.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#renombramiento-de-nuevos-datos"><i class="fa fa-check"></i><b>4.5.5</b> Renombramiento de nuevos datos</a></li>
+<li class="chapter" data-level="4.5.6" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#transformaciones-personalizadas"><i class="fa fa-check"></i><b>4.5.6</b> Transformaciones personalizadas</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="04-intro2ml.html"><a href="#regresi%C3%B3n-lineal"><i class="fa fa-check"></i><b>5</b> Regresión Lineal</a>
@@ -1298,119 +1297,59 @@ columna.</p>
 ## 4                               B                          Z</code></pre>
 </div>
 </div>
-<div id="transformaciones-personalizadas" class="section level3 hasAnchor" number="4.5.4">
-<h3><span class="header-section-number">4.5.4</span> Transformaciones personalizadas<a href="introducción-a-machine-learning.html#transformaciones-personalizadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Podría pensarse en una infinidad de transformaciones a aplicar a los datos. Transformaciones de escala, de suavizamiento, estadísticas e incluso personalizadas. Existen métodos simples y métodos avanzados para realizar este proceso. A continuación, se muestra el método simple:</p>
+<div id="interacciones" class="section level3 hasAnchor" number="4.5.4">
+<h3><span class="header-section-number">4.5.4</span> Interacciones<a href="introducción-a-machine-learning.html#interacciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Entre las transformaciones más útiles que pueden implementarse en el proceso de ingeniería de datos se encuentran las interacciones.</p>
+<p>Estas se refieren a las relaciones combinadas entre dos o más variables que pueden afectar a la variable objetivo de un modelo. En otras palabras, <strong>una interacción ocurre cuando el efecto de una característica en la variable objetivo depende de los valores combinados de otra(s) característica(s).</strong></p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb135-1"><a href="introducción-a-machine-learning.html#cb135-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb135-2"><a href="introducción-a-machine-learning.html#cb135-2" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> FunctionTransformer, StandardScaler</span>
+<span id="cb135-2"><a href="introducción-a-machine-learning.html#cb135-2" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb135-3"><a href="introducción-a-machine-learning.html#cb135-3" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
 <span id="cb135-4"><a href="introducción-a-machine-learning.html#cb135-4" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
 <span id="cb135-5"><a href="introducción-a-machine-learning.html#cb135-5" tabindex="-1"></a></span>
-<span id="cb135-6"><a href="introducción-a-machine-learning.html#cb135-6" tabindex="-1"></a><span class="co"># Datos de ejemplo en forma de DataFrame</span></span>
-<span id="cb135-7"><a href="introducción-a-machine-learning.html#cb135-7" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb135-8"><a href="introducción-a-machine-learning.html#cb135-8" tabindex="-1"></a>    <span class="st">&#39;Column1&#39;</span>: [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>,   <span class="dv">0</span>,  <span class="dv">3</span>,  <span class="dv">7</span>],</span>
-<span id="cb135-9"><a href="introducción-a-machine-learning.html#cb135-9" tabindex="-1"></a>    <span class="st">&#39;Column2&#39;</span>: [ <span class="dv">2</span>,  <span class="dv">6</span>,  <span class="dv">10</span>, <span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">8</span>],</span>
-<span id="cb135-10"><a href="introducción-a-machine-learning.html#cb135-10" tabindex="-1"></a>    <span class="st">&#39;Column3&#39;</span>: [<span class="op">-</span><span class="dv">3</span>,  <span class="dv">7</span>, <span class="op">-</span><span class="dv">11</span>,  <span class="dv">5</span>, <span class="op">-</span><span class="dv">9</span>]</span>
-<span id="cb135-11"><a href="introducción-a-machine-learning.html#cb135-11" tabindex="-1"></a>})</span>
-<span id="cb135-12"><a href="introducción-a-machine-learning.html#cb135-12" tabindex="-1"></a></span>
-<span id="cb135-13"><a href="introducción-a-machine-learning.html#cb135-13" tabindex="-1"></a><span class="co"># Definir una función personalizada que suma dos columnas y divide por una tercera</span></span>
-<span id="cb135-14"><a href="introducción-a-machine-learning.html#cb135-14" tabindex="-1"></a><span class="kw">def</span> custom_function(X, c1, c2, feature_name):</span>
-<span id="cb135-15"><a href="introducción-a-machine-learning.html#cb135-15" tabindex="-1"></a> X[feature_name] <span class="op">=</span> X[c1]<span class="op">/</span> X[c2]</span>
-<span id="cb135-16"><a href="introducción-a-machine-learning.html#cb135-16" tabindex="-1"></a> <span class="cf">return</span> X</span>
-<span id="cb135-17"><a href="introducción-a-machine-learning.html#cb135-17" tabindex="-1"></a></span>
-<span id="cb135-18"><a href="introducción-a-machine-learning.html#cb135-18" tabindex="-1"></a></span>
-<span id="cb135-19"><a href="introducción-a-machine-learning.html#cb135-19" tabindex="-1"></a><span class="co"># Crear el transformador de función personalizada</span></span>
-<span id="cb135-20"><a href="introducción-a-machine-learning.html#cb135-20" tabindex="-1"></a>custom_transformer <span class="op">=</span> FunctionTransformer(</span>
-<span id="cb135-21"><a href="introducción-a-machine-learning.html#cb135-21" tabindex="-1"></a> custom_function,</span>
-<span id="cb135-22"><a href="introducción-a-machine-learning.html#cb135-22" tabindex="-1"></a> feature_names_out <span class="op">=</span> <span class="va">None</span>,</span>
-<span id="cb135-23"><a href="introducción-a-machine-learning.html#cb135-23" tabindex="-1"></a> kw_args<span class="op">=</span>{<span class="st">&#39;c1&#39;</span>: <span class="st">&#39;Column1&#39;</span>, <span class="st">&#39;c2&#39;</span>: <span class="st">&#39;Column2&#39;</span>, <span class="st">&#39;feature_name&#39;</span>: <span class="st">&#39;c1_over_c2&#39;</span>}</span>
-<span id="cb135-24"><a href="introducción-a-machine-learning.html#cb135-24" tabindex="-1"></a> )</span>
-<span id="cb135-25"><a href="introducción-a-machine-learning.html#cb135-25" tabindex="-1"></a></span>
-<span id="cb135-26"><a href="introducción-a-machine-learning.html#cb135-26" tabindex="-1"></a><span class="co"># Crear un ColumnTransformer para aplicar el transformador personalizado a las columnas</span></span>
-<span id="cb135-27"><a href="introducción-a-machine-learning.html#cb135-27" tabindex="-1"></a>column_transformer <span class="op">=</span> ColumnTransformer(</span>
-<span id="cb135-28"><a href="introducción-a-machine-learning.html#cb135-28" tabindex="-1"></a> transformers<span class="op">=</span>[</span>
-<span id="cb135-29"><a href="introducción-a-machine-learning.html#cb135-29" tabindex="-1"></a>    (<span class="st">&#39;custom&#39;</span>, custom_transformer, [<span class="st">&quot;Column1&quot;</span>, <span class="st">&quot;Column2&quot;</span>])],</span>
-<span id="cb135-30"><a href="introducción-a-machine-learning.html#cb135-30" tabindex="-1"></a> remainder<span class="op">=</span><span class="st">&#39;passthrough&#39;</span>,</span>
-<span id="cb135-31"><a href="introducción-a-machine-learning.html#cb135-31" tabindex="-1"></a> verbose_feature_names_out <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb135-32"><a href="introducción-a-machine-learning.html#cb135-32" tabindex="-1"></a> ).set_output(transform <span class="op">=</span><span class="st">&#39;pandas&#39;</span>)</span>
-<span id="cb135-33"><a href="introducción-a-machine-learning.html#cb135-33" tabindex="-1"></a></span>
-<span id="cb135-34"><a href="introducción-a-machine-learning.html#cb135-34" tabindex="-1"></a>transformed <span class="op">=</span> column_transformer.fit_transform(data)</span>
-<span id="cb135-35"><a href="introducción-a-machine-learning.html#cb135-35" tabindex="-1"></a>transformed</span></code></pre></div>
-<pre><code>##    Column1  Column2  c1_over_c2  Column3
-## 0       -1        2   -0.500000       -3
-## 1       -5        6   -0.833333        7
-## 2        0       10    0.000000      -11
-## 3        3       -4   -0.750000        5
-## 4        7       -8   -0.875000       -9</code></pre>
-<div class="sourceCode" id="cb137"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb137-1"><a href="introducción-a-machine-learning.html#cb137-1" tabindex="-1"></a>test <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb137-2"><a href="introducción-a-machine-learning.html#cb137-2" tabindex="-1"></a>    <span class="st">&#39;Column1&#39;</span>: [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>, <span class="dv">9</span>, <span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">7</span>],</span>
-<span id="cb137-3"><a href="introducción-a-machine-learning.html#cb137-3" tabindex="-1"></a>    <span class="st">&#39;Column2&#39;</span>: [<span class="dv">25</span>, <span class="dv">6</span>, <span class="op">-</span><span class="dv">10</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">8</span>],</span>
-<span id="cb137-4"><a href="introducción-a-machine-learning.html#cb137-4" tabindex="-1"></a>    <span class="st">&#39;Column3&#39;</span>: [<span class="dv">31</span>, <span class="op">-</span><span class="dv">7</span>, <span class="dv">11</span>, <span class="op">-</span><span class="dv">5</span>, <span class="dv">9</span>]</span>
-<span id="cb137-5"><a href="introducción-a-machine-learning.html#cb137-5" tabindex="-1"></a>})</span>
-<span id="cb137-6"><a href="introducción-a-machine-learning.html#cb137-6" tabindex="-1"></a></span>
-<span id="cb137-7"><a href="introducción-a-machine-learning.html#cb137-7" tabindex="-1"></a><span class="co"># Aplicar el pipeline a los datos de prueba</span></span>
-<span id="cb137-8"><a href="introducción-a-machine-learning.html#cb137-8" tabindex="-1"></a>X_test_transformed <span class="op">=</span> column_transformer.transform(test)</span>
-<span id="cb137-9"><a href="introducción-a-machine-learning.html#cb137-9" tabindex="-1"></a>X_test_transformed</span></code></pre></div>
-<pre><code>##    Column1  Column2  c1_over_c2  Column3
-## 0       -1       25   -0.040000       31
-## 1       -5        6   -0.833333       -7
-## 2        9      -10   -0.900000       11
-## 3       -3        4   -0.750000       -5
-## 4       -7       -8    0.875000        9</code></pre>
-</div>
-<div id="interacciones" class="section level3 hasAnchor" number="4.5.5">
-<h3><span class="header-section-number">4.5.5</span> Interacciones<a href="introducción-a-machine-learning.html#interacciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Entre las transformaciones más útiles que pueden implementarse en el proceso de ingeniería de datos se encuentran las interacciones.</p>
-<p>Estas se refieren a las relaciones combinadas entre dos o más variables que pueden afectar a la variable objetivo de un modelo. En otras palabras, <strong>una interacción ocurre cuando el efecto de una característica en la variable objetivo depende de los valores combinados de otra(s) característica(s).</strong></p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb139-1"><a href="introducción-a-machine-learning.html#cb139-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb139-2"><a href="introducción-a-machine-learning.html#cb139-2" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb139-3"><a href="introducción-a-machine-learning.html#cb139-3" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
-<span id="cb139-4"><a href="introducción-a-machine-learning.html#cb139-4" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb139-5"><a href="introducción-a-machine-learning.html#cb139-5" tabindex="-1"></a></span>
-<span id="cb139-6"><a href="introducción-a-machine-learning.html#cb139-6" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb139-7"><a href="introducción-a-machine-learning.html#cb139-7" tabindex="-1"></a><span class="im">from</span> mizani.formatters <span class="im">import</span> comma_format, dollar_format</span>
-<span id="cb139-8"><a href="introducción-a-machine-learning.html#cb139-8" tabindex="-1"></a></span>
-<span id="cb139-9"><a href="introducción-a-machine-learning.html#cb139-9" tabindex="-1"></a>(</span>
-<span id="cb139-10"><a href="introducción-a-machine-learning.html#cb139-10" tabindex="-1"></a>ggplot(ames, aes(x <span class="op">=</span> <span class="st">&quot;Gr_Liv_Area&quot;</span>, y <span class="op">=</span> <span class="st">&quot;Sale_Price&quot;</span>) ) <span class="op">+</span> </span>
-<span id="cb139-11"><a href="introducción-a-machine-learning.html#cb139-11" tabindex="-1"></a>  geom_point(alpha <span class="op">=</span> <span class="fl">.2</span>) <span class="op">+</span></span>
-<span id="cb139-12"><a href="introducción-a-machine-learning.html#cb139-12" tabindex="-1"></a>  facet_wrap(<span class="st">&quot;Bldg_Type&quot;</span>) <span class="op">+</span> </span>
-<span id="cb139-13"><a href="introducción-a-machine-learning.html#cb139-13" tabindex="-1"></a>  geom_smooth(method <span class="op">=</span> <span class="st">&quot;lm&quot;</span>, se <span class="op">=</span> <span class="va">False</span>, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>, alpha <span class="op">=</span> <span class="fl">0.1</span>)  <span class="op">+</span> </span>
-<span id="cb139-14"><a href="introducción-a-machine-learning.html#cb139-14" tabindex="-1"></a>  scale_x_log10(labels <span class="op">=</span> comma_format()) <span class="op">+</span> </span>
-<span id="cb139-15"><a href="introducción-a-machine-learning.html#cb139-15" tabindex="-1"></a>  scale_y_log10(labels <span class="op">=</span> dollar_format(prefix<span class="op">=</span><span class="st">&#39;$&#39;</span>, digits<span class="op">=</span><span class="dv">0</span>, big_mark<span class="op">=</span><span class="st">&#39;,&#39;</span>)) <span class="op">+</span> </span>
-<span id="cb139-16"><a href="introducción-a-machine-learning.html#cb139-16" tabindex="-1"></a>  labs(</span>
-<span id="cb139-17"><a href="introducción-a-machine-learning.html#cb139-17" tabindex="-1"></a>   title <span class="op">=</span> <span class="st">&quot;Relación entre precio y tamaño con tipo de vivienda&quot;</span>,</span>
-<span id="cb139-18"><a href="introducción-a-machine-learning.html#cb139-18" tabindex="-1"></a>   x <span class="op">=</span> <span class="st">&quot;Gross Living Area&quot;</span>, </span>
-<span id="cb139-19"><a href="introducción-a-machine-learning.html#cb139-19" tabindex="-1"></a>   y <span class="op">=</span> <span class="st">&quot;Sale Price (USD)&quot;</span>)</span>
-<span id="cb139-20"><a href="introducción-a-machine-learning.html#cb139-20" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb135-6"><a href="introducción-a-machine-learning.html#cb135-6" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb135-7"><a href="introducción-a-machine-learning.html#cb135-7" tabindex="-1"></a><span class="im">from</span> mizani.formatters <span class="im">import</span> comma_format, dollar_format</span>
+<span id="cb135-8"><a href="introducción-a-machine-learning.html#cb135-8" tabindex="-1"></a></span>
+<span id="cb135-9"><a href="introducción-a-machine-learning.html#cb135-9" tabindex="-1"></a>(</span>
+<span id="cb135-10"><a href="introducción-a-machine-learning.html#cb135-10" tabindex="-1"></a>ggplot(ames, aes(x <span class="op">=</span> <span class="st">&quot;Gr_Liv_Area&quot;</span>, y <span class="op">=</span> <span class="st">&quot;Sale_Price&quot;</span>) ) <span class="op">+</span> </span>
+<span id="cb135-11"><a href="introducción-a-machine-learning.html#cb135-11" tabindex="-1"></a>  geom_point(alpha <span class="op">=</span> <span class="fl">.2</span>) <span class="op">+</span></span>
+<span id="cb135-12"><a href="introducción-a-machine-learning.html#cb135-12" tabindex="-1"></a>  facet_wrap(<span class="st">&quot;Bldg_Type&quot;</span>) <span class="op">+</span> </span>
+<span id="cb135-13"><a href="introducción-a-machine-learning.html#cb135-13" tabindex="-1"></a>  geom_smooth(method <span class="op">=</span> <span class="st">&quot;lm&quot;</span>, se <span class="op">=</span> <span class="va">False</span>, color <span class="op">=</span> <span class="st">&quot;red&quot;</span>, alpha <span class="op">=</span> <span class="fl">0.1</span>)  <span class="op">+</span> </span>
+<span id="cb135-14"><a href="introducción-a-machine-learning.html#cb135-14" tabindex="-1"></a>  scale_x_log10(labels <span class="op">=</span> comma_format()) <span class="op">+</span> </span>
+<span id="cb135-15"><a href="introducción-a-machine-learning.html#cb135-15" tabindex="-1"></a>  scale_y_log10(labels <span class="op">=</span> dollar_format(prefix<span class="op">=</span><span class="st">&#39;$&#39;</span>, digits<span class="op">=</span><span class="dv">0</span>, big_mark<span class="op">=</span><span class="st">&#39;,&#39;</span>)) <span class="op">+</span> </span>
+<span id="cb135-16"><a href="introducción-a-machine-learning.html#cb135-16" tabindex="-1"></a>  labs(</span>
+<span id="cb135-17"><a href="introducción-a-machine-learning.html#cb135-17" tabindex="-1"></a>   title <span class="op">=</span> <span class="st">&quot;Relación entre precio y tamaño con tipo de vivienda&quot;</span>,</span>
+<span id="cb135-18"><a href="introducción-a-machine-learning.html#cb135-18" tabindex="-1"></a>   x <span class="op">=</span> <span class="st">&quot;Gross Living Area&quot;</span>, </span>
+<span id="cb135-19"><a href="introducción-a-machine-learning.html#cb135-19" tabindex="-1"></a>   y <span class="op">=</span> <span class="st">&quot;Sale Price (USD)&quot;</span>)</span>
+<span id="cb135-20"><a href="introducción-a-machine-learning.html#cb135-20" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
-<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-122-1.png" width="614" /></p>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-121-1.png" width="614" /></p>
 <p>Las interacciones son útiles porque muchas veces las relaciones entre características y la variable objetivo no son lineales ni independientes. La presencia de interacciones puede capturar patrones más complejos y proporcionar una mejor representación de los datos, lo que lleva a modelos más precisos y ajustados.</p>
 <p>Las interacciones pueden mejorar la calidad de las predicciones y el entendimiento de los factores que influyen en el resultado deseado.</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb141-1"><a href="introducción-a-machine-learning.html#cb141-1" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
-<span id="cb141-2"><a href="introducción-a-machine-learning.html#cb141-2" tabindex="-1"></a></span>
-<span id="cb141-3"><a href="introducción-a-machine-learning.html#cb141-3" tabindex="-1"></a><span class="co"># Ejemplo de datos</span></span>
-<span id="cb141-4"><a href="introducción-a-machine-learning.html#cb141-4" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb141-5"><a href="introducción-a-machine-learning.html#cb141-5" tabindex="-1"></a>    <span class="st">&#39;C1&#39;</span>: [<span class="dv">1</span>, <span class="dv">0</span>,  <span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>,  <span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>],</span>
-<span id="cb141-6"><a href="introducción-a-machine-learning.html#cb141-6" tabindex="-1"></a>    <span class="st">&#39;C2&#39;</span>: [<span class="dv">1</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">10</span>]</span>
-<span id="cb141-7"><a href="introducción-a-machine-learning.html#cb141-7" tabindex="-1"></a>})</span>
-<span id="cb141-8"><a href="introducción-a-machine-learning.html#cb141-8" tabindex="-1"></a></span>
-<span id="cb141-9"><a href="introducción-a-machine-learning.html#cb141-9" tabindex="-1"></a><span class="co"># Crear interacciones polinómicas</span></span>
-<span id="cb141-10"><a href="introducción-a-machine-learning.html#cb141-10" tabindex="-1"></a>interaction_transformer <span class="op">=</span> PolynomialFeatures(</span>
-<span id="cb141-11"><a href="introducción-a-machine-learning.html#cb141-11" tabindex="-1"></a> degree <span class="op">=</span> <span class="dv">2</span>, </span>
-<span id="cb141-12"><a href="introducción-a-machine-learning.html#cb141-12" tabindex="-1"></a> interaction_only <span class="op">=</span> <span class="va">True</span>, </span>
-<span id="cb141-13"><a href="introducción-a-machine-learning.html#cb141-13" tabindex="-1"></a> include_bias <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb141-14"><a href="introducción-a-machine-learning.html#cb141-14" tabindex="-1"></a> )</span>
-<span id="cb141-15"><a href="introducción-a-machine-learning.html#cb141-15" tabindex="-1"></a></span>
-<span id="cb141-16"><a href="introducción-a-machine-learning.html#cb141-16" tabindex="-1"></a><span class="co"># ColumnTransformer para aplicar transformaciones</span></span>
-<span id="cb141-17"><a href="introducción-a-machine-learning.html#cb141-17" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer(</span>
-<span id="cb141-18"><a href="introducción-a-machine-learning.html#cb141-18" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
-<span id="cb141-19"><a href="introducción-a-machine-learning.html#cb141-19" tabindex="-1"></a>        (<span class="st">&#39;interactions&#39;</span>, interaction_transformer, [<span class="st">&#39;C1&#39;</span>, <span class="st">&#39;C2&#39;</span>])</span>
-<span id="cb141-20"><a href="introducción-a-machine-learning.html#cb141-20" tabindex="-1"></a>    ],</span>
-<span id="cb141-21"><a href="introducción-a-machine-learning.html#cb141-21" tabindex="-1"></a>    remainder<span class="op">=</span><span class="st">&#39;passthrough&#39;</span>  <span class="co"># Mantener las columnas restantes sin cambios</span></span>
-<span id="cb141-22"><a href="introducción-a-machine-learning.html#cb141-22" tabindex="-1"></a>).set_output(transform <span class="op">=</span><span class="st">&#39;pandas&#39;</span>)</span>
-<span id="cb141-23"><a href="introducción-a-machine-learning.html#cb141-23" tabindex="-1"></a></span>
-<span id="cb141-24"><a href="introducción-a-machine-learning.html#cb141-24" tabindex="-1"></a><span class="co"># Ajustar el pipeline y transformar a los datos</span></span>
-<span id="cb141-25"><a href="introducción-a-machine-learning.html#cb141-25" tabindex="-1"></a>preprocessor.fit_transform(data)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb137-1"><a href="introducción-a-machine-learning.html#cb137-1" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
+<span id="cb137-2"><a href="introducción-a-machine-learning.html#cb137-2" tabindex="-1"></a></span>
+<span id="cb137-3"><a href="introducción-a-machine-learning.html#cb137-3" tabindex="-1"></a><span class="co"># Ejemplo de datos</span></span>
+<span id="cb137-4"><a href="introducción-a-machine-learning.html#cb137-4" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb137-5"><a href="introducción-a-machine-learning.html#cb137-5" tabindex="-1"></a>    <span class="st">&#39;C1&#39;</span>: [<span class="dv">1</span>, <span class="dv">0</span>,  <span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>,  <span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>],</span>
+<span id="cb137-6"><a href="introducción-a-machine-learning.html#cb137-6" tabindex="-1"></a>    <span class="st">&#39;C2&#39;</span>: [<span class="dv">1</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">5</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">10</span>]</span>
+<span id="cb137-7"><a href="introducción-a-machine-learning.html#cb137-7" tabindex="-1"></a>})</span>
+<span id="cb137-8"><a href="introducción-a-machine-learning.html#cb137-8" tabindex="-1"></a></span>
+<span id="cb137-9"><a href="introducción-a-machine-learning.html#cb137-9" tabindex="-1"></a><span class="co"># Crear interacciones polinómicas</span></span>
+<span id="cb137-10"><a href="introducción-a-machine-learning.html#cb137-10" tabindex="-1"></a>interaction_transformer <span class="op">=</span> PolynomialFeatures(</span>
+<span id="cb137-11"><a href="introducción-a-machine-learning.html#cb137-11" tabindex="-1"></a> degree <span class="op">=</span> <span class="dv">2</span>, </span>
+<span id="cb137-12"><a href="introducción-a-machine-learning.html#cb137-12" tabindex="-1"></a> interaction_only <span class="op">=</span> <span class="va">True</span>, </span>
+<span id="cb137-13"><a href="introducción-a-machine-learning.html#cb137-13" tabindex="-1"></a> include_bias <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb137-14"><a href="introducción-a-machine-learning.html#cb137-14" tabindex="-1"></a> )</span>
+<span id="cb137-15"><a href="introducción-a-machine-learning.html#cb137-15" tabindex="-1"></a></span>
+<span id="cb137-16"><a href="introducción-a-machine-learning.html#cb137-16" tabindex="-1"></a><span class="co"># ColumnTransformer para aplicar transformaciones</span></span>
+<span id="cb137-17"><a href="introducción-a-machine-learning.html#cb137-17" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb137-18"><a href="introducción-a-machine-learning.html#cb137-18" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
+<span id="cb137-19"><a href="introducción-a-machine-learning.html#cb137-19" tabindex="-1"></a>        (<span class="st">&#39;interactions&#39;</span>, interaction_transformer, [<span class="st">&#39;C1&#39;</span>, <span class="st">&#39;C2&#39;</span>])</span>
+<span id="cb137-20"><a href="introducción-a-machine-learning.html#cb137-20" tabindex="-1"></a>    ],</span>
+<span id="cb137-21"><a href="introducción-a-machine-learning.html#cb137-21" tabindex="-1"></a>    remainder<span class="op">=</span><span class="st">&#39;passthrough&#39;</span>  <span class="co"># Mantener las columnas restantes sin cambios</span></span>
+<span id="cb137-22"><a href="introducción-a-machine-learning.html#cb137-22" tabindex="-1"></a>).set_output(transform <span class="op">=</span><span class="st">&#39;pandas&#39;</span>)</span>
+<span id="cb137-23"><a href="introducción-a-machine-learning.html#cb137-23" tabindex="-1"></a></span>
+<span id="cb137-24"><a href="introducción-a-machine-learning.html#cb137-24" tabindex="-1"></a><span class="co"># Ajustar el pipeline y transformar a los datos</span></span>
+<span id="cb137-25"><a href="introducción-a-machine-learning.html#cb137-25" tabindex="-1"></a>preprocessor.fit_transform(data)</span></code></pre></div>
 <pre><code>##    interactions__C1  interactions__C2  interactions__C1 C2
 ## 0               1.0               1.0                  1.0
 ## 1               0.0               5.0                  0.0
@@ -1420,13 +1359,13 @@ columna.</p>
 ## 5               2.0               0.5                  1.0
 ## 6              -2.0               1.0                 -2.0
 ## 7               5.0              10.0                 50.0</code></pre>
-<div class="sourceCode" id="cb143"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb143-1"><a href="introducción-a-machine-learning.html#cb143-1" tabindex="-1"></a>test <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb143-2"><a href="introducción-a-machine-learning.html#cb143-2" tabindex="-1"></a>    <span class="st">&#39;C1&#39;</span>: [<span class="dv">1</span>,  <span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">5</span>],</span>
-<span id="cb143-3"><a href="introducción-a-machine-learning.html#cb143-3" tabindex="-1"></a>    <span class="st">&#39;C2&#39;</span>: [<span class="dv">5</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>]</span>
-<span id="cb143-4"><a href="introducción-a-machine-learning.html#cb143-4" tabindex="-1"></a>})</span>
-<span id="cb143-5"><a href="introducción-a-machine-learning.html#cb143-5" tabindex="-1"></a></span>
-<span id="cb143-6"><a href="introducción-a-machine-learning.html#cb143-6" tabindex="-1"></a><span class="co"># aplicar en el conjunto de prueba</span></span>
-<span id="cb143-7"><a href="introducción-a-machine-learning.html#cb143-7" tabindex="-1"></a>preprocessor.transform(test)</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb139-1"><a href="introducción-a-machine-learning.html#cb139-1" tabindex="-1"></a>test <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb139-2"><a href="introducción-a-machine-learning.html#cb139-2" tabindex="-1"></a>    <span class="st">&#39;C1&#39;</span>: [<span class="dv">1</span>,  <span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">5</span>],</span>
+<span id="cb139-3"><a href="introducción-a-machine-learning.html#cb139-3" tabindex="-1"></a>    <span class="st">&#39;C2&#39;</span>: [<span class="dv">5</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>]</span>
+<span id="cb139-4"><a href="introducción-a-machine-learning.html#cb139-4" tabindex="-1"></a>})</span>
+<span id="cb139-5"><a href="introducción-a-machine-learning.html#cb139-5" tabindex="-1"></a></span>
+<span id="cb139-6"><a href="introducción-a-machine-learning.html#cb139-6" tabindex="-1"></a><span class="co"># aplicar en el conjunto de prueba</span></span>
+<span id="cb139-7"><a href="introducción-a-machine-learning.html#cb139-7" tabindex="-1"></a>preprocessor.transform(test)</span></code></pre></div>
 <pre><code>##    interactions__C1  interactions__C2  interactions__C1 C2
 ## 0               1.0               5.0                  5.0
 ## 1               2.0              -4.0                 -8.0
@@ -1434,40 +1373,153 @@ columna.</p>
 ## 3              -4.0              -2.0                  8.0
 ## 4               5.0               1.0                  5.0</code></pre>
 </div>
-<div id="renombramiento-de-nuevos-datos" class="section level3 hasAnchor" number="4.5.6">
-<h3><span class="header-section-number">4.5.6</span> Renombramiento de nuevos datos<a href="introducción-a-machine-learning.html#renombramiento-de-nuevos-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="renombramiento-de-nuevos-datos" class="section level3 hasAnchor" number="4.5.5">
+<h3><span class="header-section-number">4.5.5</span> Renombramiento de nuevos datos<a href="introducción-a-machine-learning.html#renombramiento-de-nuevos-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para concluir el proceso de transformación de datos en un dataframe luego de haber sido procesados por un transformador de columnas, es importante obtener uno nuevo con sus respectivos nombres de columnas.</p>
 <p>Para lograrlo, se realiza lo siguiente:</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb145-1"><a href="introducción-a-machine-learning.html#cb145-1" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb145-2"><a href="introducción-a-machine-learning.html#cb145-2" tabindex="-1"></a> <span class="st">&#39;edad&#39;</span>: [<span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>], </span>
-<span id="cb145-3"><a href="introducción-a-machine-learning.html#cb145-3" tabindex="-1"></a> <span class="st">&#39;ingreso&#39;</span>: [<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">70000</span>],</span>
-<span id="cb145-4"><a href="introducción-a-machine-learning.html#cb145-4" tabindex="-1"></a> <span class="st">&#39;sexo&#39;</span>: [<span class="st">&#39;M&#39;</span>, <span class="st">&#39;F&#39;</span>, <span class="st">&#39;M&#39;</span>],</span>
-<span id="cb145-5"><a href="introducción-a-machine-learning.html#cb145-5" tabindex="-1"></a> <span class="st">&#39;educacion&#39;</span>: [<span class="st">&#39;secundaria&#39;</span>, <span class="st">&#39;universidad&#39;</span>, <span class="st">&#39;preparatoria&#39;</span>]</span>
-<span id="cb145-6"><a href="introducción-a-machine-learning.html#cb145-6" tabindex="-1"></a> })</span>
-<span id="cb145-7"><a href="introducción-a-machine-learning.html#cb145-7" tabindex="-1"></a></span>
-<span id="cb145-8"><a href="introducción-a-machine-learning.html#cb145-8" tabindex="-1"></a><span class="co"># ColumnTransformer para características numéricas y categóricas</span></span>
-<span id="cb145-9"><a href="introducción-a-machine-learning.html#cb145-9" tabindex="-1"></a>ct <span class="op">=</span> ColumnTransformer(</span>
-<span id="cb145-10"><a href="introducción-a-machine-learning.html#cb145-10" tabindex="-1"></a> transformers<span class="op">=</span>[ </span>
-<span id="cb145-11"><a href="introducción-a-machine-learning.html#cb145-11" tabindex="-1"></a>  (<span class="st">&#39;num&#39;</span>, StandardScaler(), [<span class="st">&#39;edad&#39;</span>, <span class="st">&#39;ingreso&#39;</span>]),</span>
-<span id="cb145-12"><a href="introducción-a-machine-learning.html#cb145-12" tabindex="-1"></a>  (<span class="st">&#39;cat&#39;</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">&#39;first&#39;</span>), [<span class="st">&#39;sexo&#39;</span>, <span class="st">&#39;educacion&#39;</span>])],</span>
-<span id="cb145-13"><a href="introducción-a-machine-learning.html#cb145-13" tabindex="-1"></a>  verbose_feature_names_out <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb145-14"><a href="introducción-a-machine-learning.html#cb145-14" tabindex="-1"></a>  ) </span>
-<span id="cb145-15"><a href="introducción-a-machine-learning.html#cb145-15" tabindex="-1"></a></span>
-<span id="cb145-16"><a href="introducción-a-machine-learning.html#cb145-16" tabindex="-1"></a><span class="co"># Ajuste y transformación en data</span></span>
-<span id="cb145-17"><a href="introducción-a-machine-learning.html#cb145-17" tabindex="-1"></a>transformed_data <span class="op">=</span> ct.fit_transform(data)</span>
-<span id="cb145-18"><a href="introducción-a-machine-learning.html#cb145-18" tabindex="-1"></a></span>
-<span id="cb145-19"><a href="introducción-a-machine-learning.html#cb145-19" tabindex="-1"></a><span class="co"># Abtener los nombres de las características de salida del transformador</span></span>
-<span id="cb145-20"><a href="introducción-a-machine-learning.html#cb145-20" tabindex="-1"></a>new_column_names <span class="op">=</span> ct.get_feature_names_out()</span>
-<span id="cb145-21"><a href="introducción-a-machine-learning.html#cb145-21" tabindex="-1"></a></span>
-<span id="cb145-22"><a href="introducción-a-machine-learning.html#cb145-22" tabindex="-1"></a><span class="co"># Crear un DataFrame con los datos transformados y los nuevos nombres de las columnas</span></span>
-<span id="cb145-23"><a href="introducción-a-machine-learning.html#cb145-23" tabindex="-1"></a>transformed_df <span class="op">=</span> pd.DataFrame(transformed_data, columns<span class="op">=</span>new_column_names)</span>
-<span id="cb145-24"><a href="introducción-a-machine-learning.html#cb145-24" tabindex="-1"></a></span>
-<span id="cb145-25"><a href="introducción-a-machine-learning.html#cb145-25" tabindex="-1"></a><span class="co"># Imprimir el DataFrame resultante</span></span>
-<span id="cb145-26"><a href="introducción-a-machine-learning.html#cb145-26" tabindex="-1"></a><span class="bu">print</span>(transformed_df)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb141-1"><a href="introducción-a-machine-learning.html#cb141-1" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb141-2"><a href="introducción-a-machine-learning.html#cb141-2" tabindex="-1"></a> <span class="st">&#39;edad&#39;</span>: [<span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>], </span>
+<span id="cb141-3"><a href="introducción-a-machine-learning.html#cb141-3" tabindex="-1"></a> <span class="st">&#39;ingreso&#39;</span>: [<span class="dv">50000</span>, <span class="dv">60000</span>, <span class="dv">70000</span>],</span>
+<span id="cb141-4"><a href="introducción-a-machine-learning.html#cb141-4" tabindex="-1"></a> <span class="st">&#39;sexo&#39;</span>: [<span class="st">&#39;M&#39;</span>, <span class="st">&#39;F&#39;</span>, <span class="st">&#39;M&#39;</span>],</span>
+<span id="cb141-5"><a href="introducción-a-machine-learning.html#cb141-5" tabindex="-1"></a> <span class="st">&#39;educacion&#39;</span>: [<span class="st">&#39;secundaria&#39;</span>, <span class="st">&#39;universidad&#39;</span>, <span class="st">&#39;preparatoria&#39;</span>]</span>
+<span id="cb141-6"><a href="introducción-a-machine-learning.html#cb141-6" tabindex="-1"></a> })</span>
+<span id="cb141-7"><a href="introducción-a-machine-learning.html#cb141-7" tabindex="-1"></a></span>
+<span id="cb141-8"><a href="introducción-a-machine-learning.html#cb141-8" tabindex="-1"></a><span class="co"># ColumnTransformer para características numéricas y categóricas</span></span>
+<span id="cb141-9"><a href="introducción-a-machine-learning.html#cb141-9" tabindex="-1"></a>ct <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb141-10"><a href="introducción-a-machine-learning.html#cb141-10" tabindex="-1"></a> transformers<span class="op">=</span>[ </span>
+<span id="cb141-11"><a href="introducción-a-machine-learning.html#cb141-11" tabindex="-1"></a>  (<span class="st">&#39;num&#39;</span>, StandardScaler(), [<span class="st">&#39;edad&#39;</span>, <span class="st">&#39;ingreso&#39;</span>]),</span>
+<span id="cb141-12"><a href="introducción-a-machine-learning.html#cb141-12" tabindex="-1"></a>  (<span class="st">&#39;cat&#39;</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">&#39;first&#39;</span>), [<span class="st">&#39;sexo&#39;</span>, <span class="st">&#39;educacion&#39;</span>])],</span>
+<span id="cb141-13"><a href="introducción-a-machine-learning.html#cb141-13" tabindex="-1"></a>  verbose_feature_names_out <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb141-14"><a href="introducción-a-machine-learning.html#cb141-14" tabindex="-1"></a>  ) </span>
+<span id="cb141-15"><a href="introducción-a-machine-learning.html#cb141-15" tabindex="-1"></a></span>
+<span id="cb141-16"><a href="introducción-a-machine-learning.html#cb141-16" tabindex="-1"></a><span class="co"># Ajuste y transformación en data</span></span>
+<span id="cb141-17"><a href="introducción-a-machine-learning.html#cb141-17" tabindex="-1"></a>transformed_data <span class="op">=</span> ct.fit_transform(data)</span>
+<span id="cb141-18"><a href="introducción-a-machine-learning.html#cb141-18" tabindex="-1"></a></span>
+<span id="cb141-19"><a href="introducción-a-machine-learning.html#cb141-19" tabindex="-1"></a><span class="co"># Abtener los nombres de las características de salida del transformador</span></span>
+<span id="cb141-20"><a href="introducción-a-machine-learning.html#cb141-20" tabindex="-1"></a>new_column_names <span class="op">=</span> ct.get_feature_names_out()</span>
+<span id="cb141-21"><a href="introducción-a-machine-learning.html#cb141-21" tabindex="-1"></a></span>
+<span id="cb141-22"><a href="introducción-a-machine-learning.html#cb141-22" tabindex="-1"></a><span class="co"># Crear un DataFrame con los datos transformados y los nuevos nombres de las columnas</span></span>
+<span id="cb141-23"><a href="introducción-a-machine-learning.html#cb141-23" tabindex="-1"></a>transformed_df <span class="op">=</span> pd.DataFrame(transformed_data, columns<span class="op">=</span>new_column_names)</span>
+<span id="cb141-24"><a href="introducción-a-machine-learning.html#cb141-24" tabindex="-1"></a></span>
+<span id="cb141-25"><a href="introducción-a-machine-learning.html#cb141-25" tabindex="-1"></a><span class="co"># Imprimir el DataFrame resultante</span></span>
+<span id="cb141-26"><a href="introducción-a-machine-learning.html#cb141-26" tabindex="-1"></a><span class="bu">print</span>(transformed_df)</span></code></pre></div>
 <pre><code>##        edad   ingreso  sexo_M  educacion_secundaria  educacion_universidad
 ## 0 -1.224745 -1.224745     1.0                   1.0                    0.0
 ## 1  0.000000  0.000000     0.0                   0.0                    1.0
 ## 2  1.224745  1.224745     1.0                   0.0                    0.0</code></pre>
+</div>
+<div id="transformaciones-personalizadas" class="section level3 hasAnchor" number="4.5.6">
+<h3><span class="header-section-number">4.5.6</span> Transformaciones personalizadas<a href="introducción-a-machine-learning.html#transformaciones-personalizadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Podría pensarse en una infinidad de transformaciones a aplicar a los datos. Transformaciones de escala, de suavizamiento, estadísticas e incluso personalizadas. Existen métodos simples y métodos avanzados para realizar este proceso. A continuación, se muestra el método simple:</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb143-1"><a href="introducción-a-machine-learning.html#cb143-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb143-2"><a href="introducción-a-machine-learning.html#cb143-2" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> FunctionTransformer, StandardScaler</span>
+<span id="cb143-3"><a href="introducción-a-machine-learning.html#cb143-3" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb143-4"><a href="introducción-a-machine-learning.html#cb143-4" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb143-5"><a href="introducción-a-machine-learning.html#cb143-5" tabindex="-1"></a></span>
+<span id="cb143-6"><a href="introducción-a-machine-learning.html#cb143-6" tabindex="-1"></a><span class="co"># Datos de ejemplo en forma de DataFrame</span></span>
+<span id="cb143-7"><a href="introducción-a-machine-learning.html#cb143-7" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb143-8"><a href="introducción-a-machine-learning.html#cb143-8" tabindex="-1"></a>    <span class="st">&#39;Column1&#39;</span>: [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>,   <span class="dv">0</span>,  <span class="dv">3</span>,  <span class="dv">7</span>],</span>
+<span id="cb143-9"><a href="introducción-a-machine-learning.html#cb143-9" tabindex="-1"></a>    <span class="st">&#39;Column2&#39;</span>: [ <span class="dv">2</span>,  <span class="dv">6</span>,  <span class="dv">10</span>, <span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">8</span>],</span>
+<span id="cb143-10"><a href="introducción-a-machine-learning.html#cb143-10" tabindex="-1"></a>    <span class="st">&#39;Column3&#39;</span>: [<span class="op">-</span><span class="dv">3</span>,  <span class="dv">7</span>, <span class="op">-</span><span class="dv">11</span>,  <span class="dv">5</span>, <span class="op">-</span><span class="dv">9</span>]</span>
+<span id="cb143-11"><a href="introducción-a-machine-learning.html#cb143-11" tabindex="-1"></a>})</span>
+<span id="cb143-12"><a href="introducción-a-machine-learning.html#cb143-12" tabindex="-1"></a></span>
+<span id="cb143-13"><a href="introducción-a-machine-learning.html#cb143-13" tabindex="-1"></a><span class="co"># Definir una función personalizada que suma dos columnas y divide por una tercera</span></span>
+<span id="cb143-14"><a href="introducción-a-machine-learning.html#cb143-14" tabindex="-1"></a><span class="kw">def</span> custom_function(X, c1, c2, feature_name):</span>
+<span id="cb143-15"><a href="introducción-a-machine-learning.html#cb143-15" tabindex="-1"></a> X[feature_name] <span class="op">=</span> X[c1]<span class="op">/</span> X[c2]</span>
+<span id="cb143-16"><a href="introducción-a-machine-learning.html#cb143-16" tabindex="-1"></a> <span class="cf">return</span> X</span>
+<span id="cb143-17"><a href="introducción-a-machine-learning.html#cb143-17" tabindex="-1"></a></span>
+<span id="cb143-18"><a href="introducción-a-machine-learning.html#cb143-18" tabindex="-1"></a></span>
+<span id="cb143-19"><a href="introducción-a-machine-learning.html#cb143-19" tabindex="-1"></a><span class="co"># Crear el transformador de función personalizada</span></span>
+<span id="cb143-20"><a href="introducción-a-machine-learning.html#cb143-20" tabindex="-1"></a>custom_transformer <span class="op">=</span> FunctionTransformer(</span>
+<span id="cb143-21"><a href="introducción-a-machine-learning.html#cb143-21" tabindex="-1"></a> custom_function,</span>
+<span id="cb143-22"><a href="introducción-a-machine-learning.html#cb143-22" tabindex="-1"></a> feature_names_out <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb143-23"><a href="introducción-a-machine-learning.html#cb143-23" tabindex="-1"></a> kw_args<span class="op">=</span>{<span class="st">&#39;c1&#39;</span>: <span class="st">&#39;Column1&#39;</span>, <span class="st">&#39;c2&#39;</span>: <span class="st">&#39;Column2&#39;</span>, <span class="st">&#39;feature_name&#39;</span>: <span class="st">&#39;c1_over_c2&#39;</span>}</span>
+<span id="cb143-24"><a href="introducción-a-machine-learning.html#cb143-24" tabindex="-1"></a> )</span>
+<span id="cb143-25"><a href="introducción-a-machine-learning.html#cb143-25" tabindex="-1"></a></span>
+<span id="cb143-26"><a href="introducción-a-machine-learning.html#cb143-26" tabindex="-1"></a><span class="co"># Crear un ColumnTransformer para aplicar el transformador personalizado a las columnas</span></span>
+<span id="cb143-27"><a href="introducción-a-machine-learning.html#cb143-27" tabindex="-1"></a>column_transformer <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb143-28"><a href="introducción-a-machine-learning.html#cb143-28" tabindex="-1"></a> transformers<span class="op">=</span>[</span>
+<span id="cb143-29"><a href="introducción-a-machine-learning.html#cb143-29" tabindex="-1"></a>    (<span class="st">&#39;custom&#39;</span>, custom_transformer, [<span class="st">&quot;Column1&quot;</span>, <span class="st">&quot;Column2&quot;</span>])],</span>
+<span id="cb143-30"><a href="introducción-a-machine-learning.html#cb143-30" tabindex="-1"></a> remainder<span class="op">=</span><span class="st">&#39;passthrough&#39;</span>,</span>
+<span id="cb143-31"><a href="introducción-a-machine-learning.html#cb143-31" tabindex="-1"></a> verbose_feature_names_out <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb143-32"><a href="introducción-a-machine-learning.html#cb143-32" tabindex="-1"></a> ).set_output(transform <span class="op">=</span><span class="st">&#39;pandas&#39;</span>)</span>
+<span id="cb143-33"><a href="introducción-a-machine-learning.html#cb143-33" tabindex="-1"></a></span>
+<span id="cb143-34"><a href="introducción-a-machine-learning.html#cb143-34" tabindex="-1"></a>transformed <span class="op">=</span> column_transformer.fit_transform(data)</span>
+<span id="cb143-35"><a href="introducción-a-machine-learning.html#cb143-35" tabindex="-1"></a>transformed</span></code></pre></div>
+<pre><code>##    Column1  Column2  c1_over_c2  Column3
+## 0       -1        2   -0.500000       -3
+## 1       -5        6   -0.833333        7
+## 2        0       10    0.000000      -11
+## 3        3       -4   -0.750000        5
+## 4        7       -8   -0.875000       -9</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb145-1"><a href="introducción-a-machine-learning.html#cb145-1" tabindex="-1"></a>test <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb145-2"><a href="introducción-a-machine-learning.html#cb145-2" tabindex="-1"></a>    <span class="st">&#39;Column1&#39;</span>: [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>, <span class="dv">9</span>, <span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">7</span>],</span>
+<span id="cb145-3"><a href="introducción-a-machine-learning.html#cb145-3" tabindex="-1"></a>    <span class="st">&#39;Column2&#39;</span>: [<span class="dv">25</span>, <span class="dv">6</span>, <span class="op">-</span><span class="dv">10</span>, <span class="dv">4</span>, <span class="op">-</span><span class="dv">8</span>],</span>
+<span id="cb145-4"><a href="introducción-a-machine-learning.html#cb145-4" tabindex="-1"></a>    <span class="st">&#39;Column3&#39;</span>: [<span class="dv">31</span>, <span class="op">-</span><span class="dv">7</span>, <span class="dv">11</span>, <span class="op">-</span><span class="dv">5</span>, <span class="dv">9</span>]</span>
+<span id="cb145-5"><a href="introducción-a-machine-learning.html#cb145-5" tabindex="-1"></a>})</span>
+<span id="cb145-6"><a href="introducción-a-machine-learning.html#cb145-6" tabindex="-1"></a></span>
+<span id="cb145-7"><a href="introducción-a-machine-learning.html#cb145-7" tabindex="-1"></a><span class="co"># Aplicar el pipeline a los datos de prueba</span></span>
+<span id="cb145-8"><a href="introducción-a-machine-learning.html#cb145-8" tabindex="-1"></a>X_test_transformed <span class="op">=</span> column_transformer.transform(test)</span>
+<span id="cb145-9"><a href="introducción-a-machine-learning.html#cb145-9" tabindex="-1"></a>X_test_transformed</span></code></pre></div>
+<pre><code>##    Column1  Column2  c1_over_c2  Column3
+## 0       -1       25   -0.040000       31
+## 1       -5        6   -0.833333       -7
+## 2        9      -10   -0.900000       11
+## 3       -3        4   -0.750000       -5
+## 4       -7       -8    0.875000        9</code></pre>
+<p>Una forma ligeramente más compleja pero que también permite una mejor estrucura de programación, escalabilidad y control de evolutivos, es hacer el proceso anterior usando Programación Orientada a Objetos (POO). El ejemplo quedaría programado de la siguiente forma:</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb147-1"><a href="introducción-a-machine-learning.html#cb147-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb147-2"><a href="introducción-a-machine-learning.html#cb147-2" tabindex="-1"></a><span class="im">from</span> sklearn.base <span class="im">import</span> BaseEstimator, TransformerMixin</span>
+<span id="cb147-3"><a href="introducción-a-machine-learning.html#cb147-3" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb147-4"><a href="introducción-a-machine-learning.html#cb147-4" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb147-5"><a href="introducción-a-machine-learning.html#cb147-5" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb147-6"><a href="introducción-a-machine-learning.html#cb147-6" tabindex="-1"></a></span>
+<span id="cb147-7"><a href="introducción-a-machine-learning.html#cb147-7" tabindex="-1"></a><span class="kw">class</span> RatioTransformer(BaseEstimator, TransformerMixin):</span>
+<span id="cb147-8"><a href="introducción-a-machine-learning.html#cb147-8" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, numerator, denominator, new_feature_name):</span>
+<span id="cb147-9"><a href="introducción-a-machine-learning.html#cb147-9" tabindex="-1"></a>        <span class="va">self</span>.numerator <span class="op">=</span> numerator</span>
+<span id="cb147-10"><a href="introducción-a-machine-learning.html#cb147-10" tabindex="-1"></a>        <span class="va">self</span>.denominator <span class="op">=</span> denominator</span>
+<span id="cb147-11"><a href="introducción-a-machine-learning.html#cb147-11" tabindex="-1"></a>        <span class="va">self</span>.new_feature_name <span class="op">=</span> new_feature_name</span>
+<span id="cb147-12"><a href="introducción-a-machine-learning.html#cb147-12" tabindex="-1"></a>        <span class="va">self</span>.feature_names_out_ <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb147-13"><a href="introducción-a-machine-learning.html#cb147-13" tabindex="-1"></a></span>
+<span id="cb147-14"><a href="introducción-a-machine-learning.html#cb147-14" tabindex="-1"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, X, y<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb147-15"><a href="introducción-a-machine-learning.html#cb147-15" tabindex="-1"></a>        <span class="va">self</span>.feature_names_out_ <span class="op">=</span> <span class="bu">list</span>(X.columns) <span class="op">+</span> [<span class="va">self</span>.new_feature_name]</span>
+<span id="cb147-16"><a href="introducción-a-machine-learning.html#cb147-16" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb147-17"><a href="introducción-a-machine-learning.html#cb147-17" tabindex="-1"></a></span>
+<span id="cb147-18"><a href="introducción-a-machine-learning.html#cb147-18" tabindex="-1"></a>    <span class="kw">def</span> transform(<span class="va">self</span>, X):</span>
+<span id="cb147-19"><a href="introducción-a-machine-learning.html#cb147-19" tabindex="-1"></a>        X <span class="op">=</span> X.copy()</span>
+<span id="cb147-20"><a href="introducción-a-machine-learning.html#cb147-20" tabindex="-1"></a>        X[<span class="va">self</span>.new_feature_name] <span class="op">=</span> X[<span class="va">self</span>.numerator] <span class="op">/</span> X[<span class="va">self</span>.denominator]</span>
+<span id="cb147-21"><a href="introducción-a-machine-learning.html#cb147-21" tabindex="-1"></a>        <span class="cf">return</span> X</span>
+<span id="cb147-22"><a href="introducción-a-machine-learning.html#cb147-22" tabindex="-1"></a></span>
+<span id="cb147-23"><a href="introducción-a-machine-learning.html#cb147-23" tabindex="-1"></a>    <span class="kw">def</span> get_feature_names_out(<span class="va">self</span>, input_features<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb147-24"><a href="introducción-a-machine-learning.html#cb147-24" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.feature_names_out_</span>
+<span id="cb147-25"><a href="introducción-a-machine-learning.html#cb147-25" tabindex="-1"></a></span>
+<span id="cb147-26"><a href="introducción-a-machine-learning.html#cb147-26" tabindex="-1"></a></span>
+<span id="cb147-27"><a href="introducción-a-machine-learning.html#cb147-27" tabindex="-1"></a><span class="co"># === Datos de ejemplo ===</span></span>
+<span id="cb147-28"><a href="introducción-a-machine-learning.html#cb147-28" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb147-29"><a href="introducción-a-machine-learning.html#cb147-29" tabindex="-1"></a>    <span class="st">&#39;Column1&#39;</span>: [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">7</span>],</span>
+<span id="cb147-30"><a href="introducción-a-machine-learning.html#cb147-30" tabindex="-1"></a>    <span class="st">&#39;Column2&#39;</span>: [<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">10</span>, <span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">8</span>],</span>
+<span id="cb147-31"><a href="introducción-a-machine-learning.html#cb147-31" tabindex="-1"></a>    <span class="st">&#39;Column3&#39;</span>: [<span class="op">-</span><span class="dv">3</span>, <span class="dv">7</span>, <span class="op">-</span><span class="dv">11</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">9</span>]</span>
+<span id="cb147-32"><a href="introducción-a-machine-learning.html#cb147-32" tabindex="-1"></a>})</span>
+<span id="cb147-33"><a href="introducción-a-machine-learning.html#cb147-33" tabindex="-1"></a></span>
+<span id="cb147-34"><a href="introducción-a-machine-learning.html#cb147-34" tabindex="-1"></a><span class="co"># === Crear el ColumnTransformer ===</span></span>
+<span id="cb147-35"><a href="introducción-a-machine-learning.html#cb147-35" tabindex="-1"></a>column_transformer <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb147-36"><a href="introducción-a-machine-learning.html#cb147-36" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
+<span id="cb147-37"><a href="introducción-a-machine-learning.html#cb147-37" tabindex="-1"></a>        (<span class="st">&#39;ratio&#39;</span>, RatioTransformer(<span class="st">&#39;Column1&#39;</span>, <span class="st">&#39;Column2&#39;</span>, <span class="st">&#39;c1_over_c2&#39;</span>),</span>
+<span id="cb147-38"><a href="introducción-a-machine-learning.html#cb147-38" tabindex="-1"></a>         [<span class="st">&#39;Column1&#39;</span>, <span class="st">&#39;Column2&#39;</span>])</span>
+<span id="cb147-39"><a href="introducción-a-machine-learning.html#cb147-39" tabindex="-1"></a>    ],</span>
+<span id="cb147-40"><a href="introducción-a-machine-learning.html#cb147-40" tabindex="-1"></a>    remainder<span class="op">=</span><span class="st">&#39;passthrough&#39;</span>,</span>
+<span id="cb147-41"><a href="introducción-a-machine-learning.html#cb147-41" tabindex="-1"></a>    verbose_feature_names_out<span class="op">=</span><span class="va">False</span></span>
+<span id="cb147-42"><a href="introducción-a-machine-learning.html#cb147-42" tabindex="-1"></a>).set_output(transform<span class="op">=</span><span class="st">&#39;pandas&#39;</span>)</span>
+<span id="cb147-43"><a href="introducción-a-machine-learning.html#cb147-43" tabindex="-1"></a></span>
+<span id="cb147-44"><a href="introducción-a-machine-learning.html#cb147-44" tabindex="-1"></a><span class="co"># === Fit-transform ===</span></span>
+<span id="cb147-45"><a href="introducción-a-machine-learning.html#cb147-45" tabindex="-1"></a>transformed <span class="op">=</span> column_transformer.fit_transform(data)</span>
+<span id="cb147-46"><a href="introducción-a-machine-learning.html#cb147-46" tabindex="-1"></a><span class="bu">print</span>(transformed)</span></code></pre></div>
+<pre><code>##    Column1  Column2  c1_over_c2  Column3
+## 0       -1        2   -0.500000       -3
+## 1       -5        6   -0.833333        7
+## 2        0       10    0.000000      -11
+## 3        3       -4   -0.750000        5
+## 4        7       -8   -0.875000       -9</code></pre>
 <!-- ### Actividad de refuerzo -->
 <!-- Al hacer un modelo de machine learning es importante tener un dominio del fenómeno que se está analizando. Ya sea un tema médico, bancario, asegurador, comercial, demográfico, etc.  -->
 <!-- Los mejores modelos de ML suelen tener diversas características e interacciones creadas en la ingeniería de variables. -->

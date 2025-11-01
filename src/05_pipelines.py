@@ -4,16 +4,32 @@ from sklearn.decomposition import PCA
 from sklearn.svm import SVC
 import pandas as pd
 
-# function(par1, par2, par3, .....)
+# Pipeline(steps, memory, verbose, .....):
+#     paso 1: z= par1 + par2
+#     paso2: w = z / par3
+#     return w 
+# 
+# x + y
+
+
+Pipeline()
+
 
 # par1: "texto" str
 # par2: 10  int
 # par3: 15.37   float
 # par4: [1, 2, 3, 4, 5] list
-# par4: [(clave1, valor1), (clave2, valor2), (clave3, valor3)] list
-# par4: [[clave1, valor1], [clave2, valor2], [clave3, valor3] list
+# par5: [(clave1, valor1), (clave2, valor2), (clave3, valor3)] list
+# par6: [[clave1, valor1], [clave2, valor2], [clave3, valor3]] list
 
-pipeline1 = Pipeline([
+[
+    ('standardscaler', StandardScaler()), 
+    ('pca', PCA(n_components=2)), 
+    ('svm', SVC())
+    ]
+
+
+pipeline1 = Pipeline(steps = [
     ('standardscaler', StandardScaler()),
     ('pca', PCA(n_components=2)),
     ('svm', SVC())
@@ -112,7 +128,7 @@ X_test_cat = pd.DataFrame({
 })
 
 # Transformar los datos de prueba utilizando el encoder ajustado
-X_test_encoded = encoder.transform(X_test_cat)
+X_test_encoded = X_train_encoded.transform(X_test_cat)
 X_test_encoded
 
 ######### IMPUTACIÓN ############
@@ -127,7 +143,7 @@ from sklearn.compose import ColumnTransformer
 data = np.array([[1, 1, 30, np.nan, 1],
                  [2, 2, np.nan, 100, 3],
                  [1, 5, 6, 15, np.nan],
-                 [1, 5, 6, 15, 8],
+                 [2, 5, 6, 15, 8],
                  [1, 5, 6, 15, 9],
                  [2, 3, 6, 50, -7],
                  [np.nan, 4, 19, 0, 5]])
@@ -145,10 +161,10 @@ imputer_knn2 = KNNImputer(n_neighbors=2)
 # Crear un ColumnTransformer para aplicar diferentes estrategias a diferentes columnas
 column_transformer2 = ColumnTransformer(
  transformers=[
-    ('mean_imputer', imputer_mean, [0]),
-    ('median_imputer', imputer_median, [1]),
-    ('mode_imputer', imputer_mode, [2]),
-    ('arbitrary_imputer', imputer_arbitrary, [3])
+    ('KNN_imputer', imputer_knn2, [0]),
+    ('median_imputer', imputer_median, [2]),
+    ('mode_imputer', imputer_mode, [3]),
+    ('arbitrary_imputer', imputer_arbitrary, [4])
 ]).set_output(transform ='pandas')
 
 # Crear el pipeline con el ColumnTransformer
@@ -162,15 +178,16 @@ pd.set_option('display.max_columns', 5)
 pipeline2.fit(data)
 pipeline2.transform(data)
 
-imputed_data = pipeline.fit_transform(data)
+imputed_data = pipeline2.fit_transform(data)
 imputed_data
 
-params = pipeline.fit(data)
+pipeline2.transform(new_data)
+
+
+
+params = pipeline2.fit(data)
 imputer = params.named_steps['column_transformer'].named_transformers_['median_imputer']
 imputer.statistics_
-
-imputer = params.named_steps['column_transformer'].named_transformers_['knn_imputer']
-imputer.
 
 imputed_data = pipeline.transform(data)
 imputed_data
@@ -179,6 +196,9 @@ imputed_data
 X = np.array([[1, 2, np.nan], [3, 4, 3], [np.nan, 6, 5], [8, 8, 7]])
 imputer = KNNImputer(n_neighbors=2)
 imputer.fit_transform(X)
+
+imputer = params.named_steps['column_transformer'].named_transformers_['KNN_imputer']
+imputer.weights
 
 
 # Caso categórico:

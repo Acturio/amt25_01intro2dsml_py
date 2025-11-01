@@ -1007,61 +1007,6 @@ imputed_data = column_transformer.fit_transform(data)
 imputed_data
 ```
 
-
-### Transformaciones personalizadas
-
-Podría pensarse en una infinidad de transformaciones a aplicar a los datos. Transformaciones de escala, de suavizamiento, estadísticas e incluso personalizadas. Existen métodos simples y métodos avanzados para realizar este proceso. A continuación, se muestra el método simple:
-
-```{python}
-import pandas as pd
-from sklearn.preprocessing import FunctionTransformer, StandardScaler
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-
-# Datos de ejemplo en forma de DataFrame
-data = pd.DataFrame({
-    'Column1': [-1, -5,   0,  3,  7],
-    'Column2': [ 2,  6,  10, -4, -8],
-    'Column3': [-3,  7, -11,  5, -9]
-})
-
-# Definir una función personalizada que suma dos columnas y divide por una tercera
-def custom_function(X, c1, c2, feature_name):
- X[feature_name] = X[c1]/ X[c2]
- return X
-
-
-# Crear el transformador de función personalizada
-custom_transformer = FunctionTransformer(
- custom_function,
- feature_names_out = None,
- kw_args={'c1': 'Column1', 'c2': 'Column2', 'feature_name': 'c1_over_c2'}
- )
-
-# Crear un ColumnTransformer para aplicar el transformador personalizado a las columnas
-column_transformer = ColumnTransformer(
- transformers=[
-    ('custom', custom_transformer, ["Column1", "Column2"])],
- remainder='passthrough',
- verbose_feature_names_out = False
- ).set_output(transform ='pandas')
-
-transformed = column_transformer.fit_transform(data)
-transformed
-
-
-test = pd.DataFrame({
-    'Column1': [-1, -5, 9, -3, -7],
-    'Column2': [25, 6, -10, 4, -8],
-    'Column3': [31, -7, 11, -5, 9]
-})
-
-# Aplicar el pipeline a los datos de prueba
-X_test_transformed = column_transformer.transform(test)
-X_test_transformed
-
-```
-
 ### Interacciones
 
 Entre las transformaciones más útiles que pueden implementarse en el proceso de ingeniería de datos se encuentran las interacciones. 
@@ -1169,6 +1114,113 @@ transformed_df = pd.DataFrame(transformed_data, columns=new_column_names)
 # Imprimir el DataFrame resultante
 print(transformed_df)
 ```
+
+### Transformaciones personalizadas
+
+Podría pensarse en una infinidad de transformaciones a aplicar a los datos. Transformaciones de escala, de suavizamiento, estadísticas e incluso personalizadas. Existen métodos simples y métodos avanzados para realizar este proceso. A continuación, se muestra el método simple:
+
+```{python}
+import pandas as pd
+from sklearn.preprocessing import FunctionTransformer, StandardScaler
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+
+# Datos de ejemplo en forma de DataFrame
+data = pd.DataFrame({
+    'Column1': [-1, -5,   0,  3,  7],
+    'Column2': [ 2,  6,  10, -4, -8],
+    'Column3': [-3,  7, -11,  5, -9]
+})
+
+# Definir una función personalizada que suma dos columnas y divide por una tercera
+def custom_function(X, c1, c2, feature_name):
+ X[feature_name] = X[c1]/ X[c2]
+ return X
+
+
+# Crear el transformador de función personalizada
+custom_transformer = FunctionTransformer(
+ custom_function,
+ feature_names_out = None,
+ kw_args={'c1': 'Column1', 'c2': 'Column2', 'feature_name': 'c1_over_c2'}
+ )
+
+# Crear un ColumnTransformer para aplicar el transformador personalizado a las columnas
+column_transformer = ColumnTransformer(
+ transformers=[
+    ('custom', custom_transformer, ["Column1", "Column2"])],
+ remainder='passthrough',
+ verbose_feature_names_out = False
+ ).set_output(transform ='pandas')
+
+transformed = column_transformer.fit_transform(data)
+transformed
+
+
+test = pd.DataFrame({
+    'Column1': [-1, -5, 9, -3, -7],
+    'Column2': [25, 6, -10, 4, -8],
+    'Column3': [31, -7, 11, -5, 9]
+})
+
+# Aplicar el pipeline a los datos de prueba
+X_test_transformed = column_transformer.transform(test)
+X_test_transformed
+
+```
+
+Una forma ligeramente más compleja pero que también permite una mejor estrucura de programación, escalabilidad y control de evolutivos, es hacer el proceso anterior usando Programación Orientada a Objetos (POO). El ejemplo quedaría programado de la siguiente forma:
+
+```{python}
+import pandas as pd
+from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+
+class RatioTransformer(BaseEstimator, TransformerMixin):
+    def __init__(self, numerator, denominator, new_feature_name):
+        self.numerator = numerator
+        self.denominator = denominator
+        self.new_feature_name = new_feature_name
+        self.feature_names_out_ = None
+
+    def fit(self, X, y=None):
+        self.feature_names_out_ = list(X.columns) + [self.new_feature_name]
+        return self
+
+    def transform(self, X):
+        X = X.copy()
+        X[self.new_feature_name] = X[self.numerator] / X[self.denominator]
+        return X
+
+    def get_feature_names_out(self, input_features=None):
+        return self.feature_names_out_
+
+
+# === Datos de ejemplo ===
+data = pd.DataFrame({
+    'Column1': [-1, -5, 0, 3, 7],
+    'Column2': [2, 6, 10, -4, -8],
+    'Column3': [-3, 7, -11, 5, -9]
+})
+
+# === Crear el ColumnTransformer ===
+column_transformer = ColumnTransformer(
+    transformers=[
+        ('ratio', RatioTransformer('Column1', 'Column2', 'c1_over_c2'),
+         ['Column1', 'Column2'])
+    ],
+    remainder='passthrough',
+    verbose_feature_names_out=False
+).set_output(transform='pandas')
+
+# === Fit-transform ===
+transformed = column_transformer.fit_transform(data)
+print(transformed)
+
+```
+
 
 <!-- ### Actividad de refuerzo -->
 

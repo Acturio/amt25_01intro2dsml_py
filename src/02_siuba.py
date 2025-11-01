@@ -16,12 +16,15 @@ ames_housing.describe()
 #ames_housing.Lot_Area
 
 ames_housing.Sale_Price
+ames_housing[["Lot_Area", "Neighborhood", "Year_Sold", "Sale_Price"]]
 
 select(ames_housing, _.Lot_Area, _.Neighborhood, _.Year_Sold, _.Sale_Price)
 #sa.select(ames_housing, _.Lot_Area, _.Neighborhood, _.Year_Sold, _.Sale_Price)
 
 5 + 1
 1 * 10
+
+#%>%
 
 (
 ames_housing >>
@@ -51,17 +54,22 @@ nueva_tabla
  select(_.contains("Area$"))
 )
 
+(
+ ames_housing >> 
+ select(_.contains(".Liv."))
+)
 
 ##### Filtrar observaciones ####
 
 ames_housing[['Sale_Condition', 'Sale_Price']]
 ames_housing['Sale_Condition'].value_counts()
+ames_housing['Misc_Feature'].value_counts()
 ames_housing['Misc_Feature'].value_counts(dropna=False)
 
 #ames_housing.Sale_Condition
 (
   ames_housing >> 
-  filter(_.Sale_Condition == "Partial") >>
+  filter(_.Sale_Condition == "Normal") >>
   select(_.Sale_Condition)
 )
 
@@ -69,7 +77,7 @@ ames_housing['Misc_Feature'].value_counts(dropna=False)
 (
   ames_housing >> 
   filter(_.Sale_Condition == "Partial") >>
-  select(_.Sale_Price, _.Longitude)
+  select(_.Sale_Price, _.Longitude, _.Sale_Condition)
 )
 
 ames_housing.columns
@@ -91,7 +99,13 @@ ames_housing.columns
 (
   ames_housing >> 
   filter((_.Lot_Area < 10000)| 
-         (_.Sale_Price <= 15000)) > >
+         (_.Sale_Price <= 15000)) >>
+  select(_.Lot_Area, _.Sale_Price) 
+)
+
+(
+  ames_housing >> 
+  filter(~(_.Sale_Price <= 15000)) >>
   select(_.Lot_Area, _.Sale_Price) 
 )
 
@@ -140,6 +154,13 @@ ejemplo_mutate >>
  mutate(Antique = _.Antique * 12)
 )
 
+(
+ejemplo_mutate >> 
+ mutate(
+  Antique = _.Antique * 12,
+  Init_year_build = _.Year_Remod_Add - 3)
+)
+
 
 #### Agregaciones ####
 
@@ -150,19 +171,11 @@ ames_housing >>
  arrange(_.Antique)
  )
 
-
 (
 ames_housing >> 
  select(_.Year_Sold, _.Year_Remod_Add) >>
  mutate(Antique = _.Year_Sold - _.Year_Remod_Add) >>
- arrange(_.Antique)
-)
-
-(
-ames_housing >> 
- select(_.Year_Sold, _.Year_Remod_Add) >>
- mutate(Antique = _.Year_Sold - _.Year_Remod_Add) >>
- arrange(_.Antique) >>
+# arrange(_.Antique) >>
  summarize(
   Mean_Antique = _.Antique.mean(),
   Median_Antique = _.Antique.median(),
@@ -219,12 +232,12 @@ ames_housing >>
 (
 ames_housing >> 
  mutate(Antique = _.Year_Sold - _.Year_Remod_Add) >> 
- group_by(_.Overall_Cond, _.Sale_Condition) >> 
+ group_by(_.Sale_Condition, _.Overall_Cond) >> 
  summarize(
   Mean_Sale_Price = _.Sale_Price.mean().round(0),
   Mean_Antique = _.Antique.mean().round(0)
   ) >>
- arrange(_.Mean_Sale_Price)
+ arrange(_.Sale_Condition, _.Mean_Sale_Price)
 )
 
 
