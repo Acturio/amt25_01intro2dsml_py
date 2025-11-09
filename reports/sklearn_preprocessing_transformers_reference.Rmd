@@ -1,0 +1,1042 @@
+---
+title: "Guía completa de transformaciones de preprocesamiento (scikit-learn)"
+author: "Generado para tus alumnos"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    df_print: paged
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{=html}
+<!--
+  Este RMarkdown contiene explicaciones detalladas de los transformadores mencionados,
+  ejemplos en Python (bloques `python`) y una hoja de referencia con inputs/outputs y
+  problemas comunes. Está pensado para usarse con RStudio + runtime Python/reticulate
+  o para exportar a HTML/PDF.
+-->
+```
+
+## Preprocessing Transformers
+
+Esta guía cubre **las transformaciones de preprocesamiento** más comunes
+y útiles cuando trabajamos con `scikit-learn` y librerías relacionadas
+(`category_encoders`, `feature_engine`, `imblearn`).
+
+Cada transformador incluye:
+
+-   Una explicación detallada de su propósito y funcionamiento.
+-   Dos ejemplos de uso mínimo reproducible en Python.
+-   Una entrada en la **hoja de referencia** con: inputs/outputs
+    esperados y problemas comunes.
+
+> Nota: los bloques de código están en Python (`python`) dentro del
+> RMarkdown y asumen que el kernel de Python tiene instaladas las
+> bibliotecas necesarias (`scikit-learn`, `pandas`, `numpy`,
+> `category_encoders`, `feature_engine`, `imbalanced-learn`).
+
+### A. Imputación / manejo de datos faltantes
+
+#### SimpleImputer
+
+**Descripción detallada**: `SimpleImputer` reemplaza valores faltantes
+por un valor establecido o por estadísticos simples calculados de la
+columna: media (`mean`), mediana (`median`), moda (`most_frequent`) o
+una constante (`constant`). Funciona columna a columna
+(independientemente entre columnas). No modela relaciones
+multivariantes.
+
+**Cuándo usarlo**: cuando la razón de los `NaN` es ignorada y un
+estadístico simple es suficiente; es rápido y reproducible.
+
+**Limitaciones / problemas**: pierde información multivariante; puede
+introducir sesgo si la ausencia no es aleatoria (MNAR). Para features
+categóricos, usar `most_frequent` o `constant`.
+
+```{python}
+# Ejemplo 1: imputar con la media
+import numpy as np
+from sklearn.impute import SimpleImputer
+X = np.array([[1.0, np.nan], [3.0, 4.0], [np.nan, 6.0]])
+imp = SimpleImputer(strategy='mean')
+X_imp = imp.fit_transform(X)
+print(X_imp)
+
+# Ejemplo 2: imputar categórico con la moda
+import pandas as pd
+Xc = pd.DataFrame({'city': ['A', None, 'B', 'A']})
+imp_cat = SimpleImputer(strategy='most_frequent')
+Xc_imp = imp_cat.fit_transform(Xc)
+print(Xc_imp)
+```
+
+------------------------------------------------------------------------
+
+#### KNNImputer
+
+**Descripción detallada**: `KNNImputer` imputa valores faltantes usando
+la media (por defecto) de los `k` vecinos más cercanos en el espacio de
+features. Utiliza una métrica de distancia (euclídea por defecto) y
+conserva relaciones multivariantes locales.
+
+**Cuándo usarlo**: cuando hay correlación entre columnas y la estructura
+local es informativa; preferible a `SimpleImputer` si la relación entre
+features importa.
+
+**Limitaciones / problemas**: costoso en memoria/tiempo para datasets
+grandes; requiere escalar features si hay diferencias de escala; no es
+ideal con muchas entradas faltantes por columna.
+
+```{python}
+from sklearn.impute import KNNImputer
+import numpy as np
+X = np.array([[1, 2], [np.nan, 3], [7, 6], [8, np.nan]])
+imp = KNNImputer(n_neighbors=2)
+X_knn = imp.fit_transform(X)
+print(X_knn)
+
+# En pipeline
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+pipe = Pipeline([('scaler', StandardScaler()), ('imputer', KNNImputer())])
+```
+
+------------------------------------------------------------------------
+
+#### IterativeImputer
+
+**Descripción detallada**: `IterativeImputer` realiza imputación
+multivariante usando una serie de modelos predictivos entrenados para
+estimar cada variable faltante a partir de las demás (por defecto usa
+Bayesiano o regresión). Itera hasta converger.
+
+**Cuándo usarlo**: cuando quieres imputación multivariante que aproveche
+relaciones complejas entre columnas.
+
+**Limitaciones / problemas**: costoso, sensible a especificación del
+estimador; puede filtrar información del target si se aplica
+incorrectamente (hacer fit sólo en train).
+
+```{python}
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
+from sklearn.linear_model import BayesianRidge
+import numpy as np
+X = np.array([[1, np.nan, 3], [4, 5, np.nan], [7, 8, 9]], dtype=float)
+imp = IterativeImputer(estimator=BayesianRidge(), max_iter=10, random_state=0)
+X_it = imp.fit_transform(X)
+print(X_it)
+```
+
+------------------------------------------------------------------------
+
+#### MissingIndicator
+
+**Descripción detallada**: `MissingIndicator` crea columnas binarias
+(0/1) que indican si un valor estaba ausente. Útil para mantener la
+señal de que un valor faltó, combinado con una imputación.
+
+**Cuándo usarlo**: cuando la ausencia de datos es informativa
+(missingness as signal).
+
+**Limitaciones / problemas**: aumenta dimensionalidad; usar con criterio
+en columnas muy esparsas.
+
+```{python}
+from sklearn.impute import MissingIndicator
+import numpy as np
+X = np.array([[1, np.nan], [np.nan, 2], [3, 4]])
+mi = MissingIndicator()
+mask = mi.fit_transform(X)
+print(mask)
+```
+
+### B. Escalado / normalización / transformaciones de varianza
+
+#### StandardScaler
+
+**Descripción detallada**: centra las features restando la media y
+divide por la desviación estándar. Produce features con media \~0 y
+varianza 1. Es un estándar para modelos que asumen simetría en escala
+(regresión, SVM, KNN).
+
+**Cuándo usarlo**: modelos sensibles a escala (SVM, regresiones, k-NN,
+redes).
+
+**Limitaciones / problemas**: afectado por outliers; si existen
+outliers, preferir `RobustScaler` o `QuantileTransformer`.
+
+```{python}
+from sklearn.preprocessing import StandardScaler
+import numpy as np
+X = np.array([[1, 100], [2, 200], [3, 300]], dtype=float)
+sc = StandardScaler()
+Xs = sc.fit_transform(X)
+print(Xs.mean(axis=0), Xs.std(axis=0))
+```
+
+------------------------------------------------------------------------
+
+#### MinMaxScaler
+
+**Descripción detallada**: escala linealmente cada feature al rango
+\[min, max\] (específicamente por defecto \[0,1\]). Mantiene la forma de
+la distribución pero la comprime.
+
+**Cuándo usarlo**: cuando se necesita un rango acotado (p. ej. entrada a
+redes) o para transformaciones que requieren límites.
+
+**Limitaciones / problemas**: sensible a outliers que fijan min/max;
+nuevas muestras fuera del rango entrenado producirán valores fuera del
+intervalo.
+
+```{python}
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+X = np.array([[1], [2], [3]])
+mm = MinMaxScaler(feature_range=(0,1))
+print(mm.fit_transform(X))
+```
+
+------------------------------------------------------------------------
+
+#### RobustScaler
+
+**Descripción detallada**: escala usando la mediana y el IQR
+(percentiles 25 y 75). Esto reduce la influencia de outliers sobre la
+escala.
+
+**Cuándo usarlo**: cuando existen outliers y queremos una normalización
+robusta.
+
+**Limitaciones / problemas**: no soluciona outliers si éstos alteran la
+relación entre features (se requiere capping/winsorizing si es necesario
+reducir su efecto en modelos).
+
+```{python}
+from sklearn.preprocessing import RobustScaler
+import numpy as np
+X = np.array([[1],[2],[1000]], dtype=float)
+rs = RobustScaler()
+print(rs.fit_transform(X))
+```
+
+------------------------------------------------------------------------
+
+#### Normalizer
+
+**Descripción detallada**: normaliza cada muestra (fila) a una norma (L1
+o L2). Es útil cuando la dirección del vector importa y no su magnitud
+(p. ej. texto TF-IDF).
+
+**Cuándo usarlo**: para convertir vectores de conteo o TF-IDF en
+vectores normalizados.
+
+**Limitaciones / problemas**: no centra columnas, actúa por fila; no
+reemplaza escalado cuando la magnitud importa.
+
+```{python}
+from sklearn.preprocessing import Normalizer
+import numpy as np
+X = np.array([[3,4],[1,0]])
+norm = Normalizer(norm='l2')
+print(norm.transform(X))
+```
+
+------------------------------------------------------------------------
+
+#### PowerTransformer (Yeo-Johnson / Box-Cox)
+
+**Descripción detallada**: transforma features para estabilizar varianza
+y acercar la distribución a una normal. `Box-Cox` requiere datos
+positivos, `Yeo-Johnson` acepta valores negativos.
+
+**Cuándo usarlo**: cuando se desea mejorar la normalidad para modelos
+que se benefician de ese supuesto (regresión lineal) o para estabilizar
+varianza.
+
+**Limitaciones / problemas**: parámetros aprendidos en fit; aplicar
+exactamente la misma transformación en train/test.
+
+```{python}
+from sklearn.preprocessing import PowerTransformer
+import numpy as np
+X = np.array([[1.], [10.], [100.]])
+pt = PowerTransformer(method='yeo-johnson')
+print(pt.fit_transform(X))
+```
+
+### C. Codificación de variables categóricas
+
+#### OneHotEncoder
+
+**Descripción detallada**: crea columnas binarias por cada nivel de la
+variable (un hot). Puede devolver matriz esparsa. Tiene opciones para
+ignorar unknowns y para drop='first' (para evitar multicolinealidad).
+
+**Cuándo usarlo**: cuando las categorías son nominales y la cardinalidad
+no es excesiva.
+
+**Limitaciones / problemas**: provoca alta dimensionalidad con
+cardinalidad alta; usar encoders alternativos (hashing, target) para
+cardinalidad grande.
+
+```{python}
+from sklearn.preprocessing import OneHotEncoder
+import pandas as pd
+X = pd.DataFrame({'color': ['red','blue','red']})
+ohe = OneHotEncoder(sparse=False, handle_unknown='ignore')
+print(ohe.fit_transform(X[['color']]))
+```
+
+------------------------------------------------------------------------
+
+#### OrdinalEncoder
+
+**Descripción detallada**: asigna enteros a categorías. No añade
+información de orden por sí mismo — si existe un orden real, entonces
+ordinal encoder es apropiado.
+
+**Cuándo usarlo**: cuando existe un orden intrínseco o cuando el
+estimador puede manejar codificación ordinal (árboles lo hacen
+naturalmente).
+
+**Limitaciones / problemas**: para variables nominales sin orden, la
+codificación ordinal puede inducir un orden artificial.
+
+```{python}
+from sklearn.preprocessing import OrdinalEncoder
+import pandas as pd
+X = pd.DataFrame({'size': ['S','M','L','M']})
+oe = OrdinalEncoder()
+print(oe.fit_transform(X))
+```
+
+------------------------------------------------------------------------
+
+#### LabelEncoder
+
+**Descripción detallada**: transforma etiquetas (y) a enteros. No es
+transformer para X en pipeline; está pensado para variable objetivo.
+
+**Cuándo usarlo**: cuando la variable objetivo es categórica y se
+necesitan enteros para el estimador.
+
+**Limitaciones / problemas**: no es seguro aplicar LabelEncoder a
+features (rompe información). Preferir Ordinal/OneHot para features.
+
+```{python}
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+y = ['cat','dog','cat']
+print(le.fit_transform(y))
+```
+
+------------------------------------------------------------------------
+
+#### TargetEncoder / LeaveOneOutEncoder (category_encoders)
+
+**Descripción detallada**: encoders supervisados que reemplazan cada
+categoría por un estadístico del target (media, media regulada). Captan
+señal del target y reducen dimensionalidad frente al one-hot.
+
+**Cuándo usarlo**: variables categóricas con muchas categorías y cuando
+hay suficiente información para estimar la relación con el target.
+
+**Limitaciones / problemas**: riesgo de leakage y overfitting si se
+aplica sin regularización o sin encajar sólo en train (usar
+CV/regularización y smoothing).
+
+```{python}
+import category_encoders as ce
+import pandas as pd
+X = pd.DataFrame({'city': ['A','B','A','C']})
+y = pd.Series([1,0,1,0])
+te = ce.TargetEncoder(cols=['city'])
+X_te = te.fit_transform(X, y)
+print(X_te)
+```
+
+------------------------------------------------------------------------
+
+#### BinaryEncoder / HashingEncoder / CountEncoder
+
+**Descripción detallada**: encoders alternativos para cardinalidad alta.
+`HashingEncoder` utiliza hashing (sin vocab persistente),
+`BinaryEncoder` codifica la representación entera en bits,
+`CountEncoder` reemplaza por frecuencias.
+
+**Cuándo usarlo**: cuando cardinalidad alta hace inviable OneHot.
+
+**Limitaciones / problemas**: hashing puede producir colisiones;
+target/count encoders pueden necesitar regularización para evitar
+overfitting.
+
+```{python}
+import category_encoders as ce
+X = pd.DataFrame({'user': ['u1','u2','u1000']})
+he = ce.HashingEncoder(cols=['user'], n_components=4)
+print(he.fit_transform(X))
+```
+
+### D. Extracción de texto / NLP
+
+#### CountVectorizer
+
+**Descripción detallada**: tokeniza texto y construye matriz de conteos
+(bag-of-words). Opciones: n-grams, stop_words, min_df, max_df.
+
+**Cuándo usarlo**: cuando quieres representación básica de texto para
+modelos lineales.
+
+**Limitaciones / problemas**: alta dimensionalidad; no conserva orden
+(salvo n-grams).
+
+```{python}
+from sklearn.feature_extraction.text import CountVectorizer
+corpus = ["hola mundo", "hola a ti"]
+cv = CountVectorizer(ngram_range=(1,2))
+Xcv = cv.fit_transform(corpus)
+print(Xcv.toarray(), cv.get_feature_names_out())
+```
+
+------------------------------------------------------------------------
+
+#### TfidfVectorizer / TfidfTransformer
+
+**Descripción detallada**: convierte conteos a pesos TF-IDF (frecuencia
+\* inversa de la frecuencia de documento). Reduce importancia de
+términos frecuentes no informativos.
+
+**Cuándo usarlo**: cuando queremos penalizar términos muy frecuentes y
+destacar términos más discriminativos.
+
+**Limitaciones / problemas**: requiere cuidado con preprocesamiento de
+tokens.
+
+```{python}
+from sklearn.feature_extraction.text import TfidfVectorizer
+corpus = ["texto ejemplo ejemplo", "otro texto"]
+tv = TfidfVectorizer()
+Xtf = tv.fit_transform(corpus)
+print(Xtf.toarray())
+```
+
+------------------------------------------------------------------------
+
+#### HashingVectorizer
+
+**Descripción detallada**: igual que CountVectorizer pero usa hashing
+para proyectar en espacio de dimensión fija sin almacenar vocabulario.
+
+**Cuándo usarlo**: cuando se necesita streaming o memoria limitada.
+
+**Limitaciones / problemas**: no es invertible; colisiones de hashes.
+
+```{python}
+from sklearn.feature_extraction.text import HashingVectorizer
+hv = HashingVectorizer(n_features=2**10)
+print(hv.transform(["uno dos tres"]).shape)
+```
+
+### E. Creación / generación de features
+
+#### PolynomialFeatures
+
+**Descripción detallada**: genera potencias e interacciones entre
+features (combinaciones polinomiales) hasta grado `d`. Suele expandir
+rápidamente la dimensionalidad.
+
+**Cuándo usarlo**: cuando sospechas relaciones polinómicas /
+interacciones y usarás regularización para controlar complejidad.
+
+**Limitaciones / problemas**: explosión de features; usar con
+regularizadores o selección.
+
+```{python}
+from sklearn.preprocessing import PolynomialFeatures
+import numpy as np
+X = np.array([[2,3]])
+pf = PolynomialFeatures(degree=2, include_bias=False)
+print(pf.fit_transform(X))
+```
+
+------------------------------------------------------------------------
+
+#### FunctionTransformer
+
+**Descripción detallada**: envuelve cualquier función (numpy/pandas o
+propia) como transformer con interfaz `fit/transform`. Esencial para
+crear transformaciones rapidas sin declarar una clase completa.
+
+**Cuándo usarlo**: para transformaciones sencillas (log, sqrt, custom)
+dentro de `Pipeline`.
+
+**Limitaciones / problemas**: cuidado con shape y con operaciones no
+vectorizadas; si necesitas lógica compleja, preferir `TransformerMixin`
+personalizado.
+
+```{python}
+from sklearn.preprocessing import FunctionTransformer
+import numpy as np
+log_tr = FunctionTransformer(np.log1p, validate=True)
+print(log_tr.transform([[0],[9]]))
+```
+
+------------------------------------------------------------------------
+
+#### Binarizer
+
+**Descripción detallada**: convierte valores continuos en 0/1 según un
+umbral.
+
+**Cuándo usarlo**: para crear flags (p.ej. riesgo alto si prob\>0.8).
+
+**Limitaciones / problemas**: elección arbitraria del umbral; pierde
+información de magnitud.
+
+```{python}
+from sklearn.preprocessing import Binarizer
+import numpy as np
+X = np.array([[0.2],[0.9]])
+bin = Binarizer(threshold=0.5)
+print(bin.transform(X))
+```
+
+### F. Discretización / binning
+
+#### KBinsDiscretizer
+
+**Descripción detallada**: discretiza features continuos en bins
+(uniformes, quantile-based, o por kmeans) y permite encoding en entero o
+one-hot.
+
+**Cuándo usarlo**: cuando quieres capturar no-linealidades simples o
+convertir a categorías para modelos ordinales.
+
+**Limitaciones / problemas**: elección del número de bins sensible;
+perder continuidad informativa.
+
+```{python}
+from sklearn.preprocessing import KBinsDiscretizer
+import numpy as np
+X = np.array([[18],[25],[70]])
+kbd = KBinsDiscretizer(n_bins=3, encode='onehot-dense', strategy='quantile')
+print(kbd.fit_transform(X))
+```
+
+### G. Selección de features
+
+#### VarianceThreshold
+
+**Descripción detallada**: elimina features cuya varianza es menor que
+un umbral (p.ej. constantes). Es una selección no supervisada y rápida.
+
+**Cuándo usarlo**: limpieza inicial para eliminar columnas sin
+variación.
+
+**Limitaciones / problemas**: no considera relación con target.
+
+```{python}
+from sklearn.feature_selection import VarianceThreshold
+import numpy as np
+X = np.array([[1,0,5],[1,0,6],[1,0,7]])
+vt = VarianceThreshold(threshold=0.0)
+print(vt.fit_transform(X))
+```
+
+------------------------------------------------------------------------
+
+#### SelectKBest / SelectPercentile
+
+**Descripción detallada**: selecciona features por tests estadísticos
+(ANOVA f, chi2, mutual_info). Supervisado (usa y).
+
+**Cuándo usarlo**: reducción dirigida al target para prefiltrar antes de
+modelos.
+
+**Limitaciones / problemas**: tests suponen condiciones (chi2 requiere
+no-negativos), puede desechar features útiles en multivariante.
+
+```{python}
+from sklearn.feature_selection import SelectKBest, f_classif
+skb = SelectKBest(score_func=f_classif, k=5)
+```
+
+------------------------------------------------------------------------
+
+#### SelectFromModel
+
+**Descripción detallada**: usa importancias/coeficientes de un modelo
+base (Lasso, RandomForest) para seleccionar features por umbral.
+
+**Cuándo usarlo**: cuando un estimador provee importancia estable y
+quieres un filtro basado en eso.
+
+**Limitaciones / problemas**: sesgo por el estimador elegido; la
+importancia puede no ser estable para pocos datos.
+
+```{python}
+from sklearn.feature_selection import SelectFromModel
+from sklearn.ensemble import RandomForestClassifier
+sfm = SelectFromModel(RandomForestClassifier(n_estimators=50), threshold='median')
+```
+
+------------------------------------------------------------------------
+
+#### RFE / RFECV
+
+**Descripción detallada**: elimina recursivamente features menos
+importantes por un estimador, opcionalmente con validación cruzada para
+elegir número óptimo.
+
+**Cuándo usarlo**: cuando hay razones para buscar subconjunto más
+pequeño y tienes capacidad computacional.
+
+**Limitaciones / problemas**: costoso; resultados dependen de estimador
+base.
+
+```{python}
+from sklearn.feature_selection import RFE
+from sklearn.linear_model import LogisticRegression
+rfe = RFE(LogisticRegression(max_iter=200), n_features_to_select=10)
+```
+
+### H. Reducción de dimensionalidad / decomposición
+
+## PCA
+
+**Descripción detallada**: proyecta los datos en componentes ortogonales
+que maximizan la varianza explicada. Entrenado sobre datos centrados.
+
+**Cuándo usarlo**: reducción lineal de dimensionalidad, visualización,
+ruido.
+
+**Limitaciones / problemas**: solo captura relaciones lineales; no es
+supervisado.
+
+```{python}
+from sklearn.decomposition import PCA
+import numpy as np
+X = np.random.rand(100, 20)
+pca = PCA(n_components=5)
+print(pca.fit_transform(X).shape)
+```
+
+------------------------------------------------------------------------
+
+#### TruncatedSVD
+
+**Descripción detallada**: SVD truncado eficiente para matrices esparsas
+(p.ej. TF-IDF). Equivalente a PCA en datos no centrados.
+
+**Cuándo usarlo**: reducción en texto (LSA).
+
+**Limitaciones / problemas**: requiere elegir n_components; componentes
+no son ortogonales en el espacio original si la matriz no está centrada.
+
+```{python}
+from sklearn.decomposition import TruncatedSVD
+svd = TruncatedSVD(n_components=50)
+```
+
+------------------------------------------------------------------------
+
+#### NMF
+
+**Descripción detallada**: factorización no-negativa que descompone
+$X \approx W H$. Es útil para interpretabilidad en dominios aditivos.
+
+**Cuándo usarlo**: factores interpretables (topics, partes de imágenes).
+
+**Limitaciones / problemas**: solo para datos no-negativos; requiere
+inicialización.
+
+```{python}
+from sklearn.decomposition import NMF
+nmf = NMF(n_components=10)
+```
+
+------------------------------------------------------------------------
+
+#### FastICA
+
+**Descripción detallada**: busca componentes estadísticamente
+independientes (separación ciega de fuentes). útil para separar señales
+mezcladas.
+
+**Cuándo usarlo**: cuando hay mezcla lineal de señales independientes
+(p.ej. ECG, señales audio).
+
+**Limitaciones / problemas**: sensible a preprocesamiento y ruido.
+
+```{python}
+from sklearn.decomposition import FastICA
+ica = FastICA(n_components=5)
+```
+
+### I. Manejo de outliers / capping / detección
+
+#### IsolationForest
+
+**Descripción detallada**: algoritmo de detección de anomalías basado en
+árboles aleatorios que aísla observaciones raras en menos pasos.
+Proporciona scores y etiquetas.
+
+**Cuándo usarlo**: detección de outliers en alto dimensionalidad sin
+supuestos gaussianos.
+
+**Limitaciones / problemas**: ajuste de `contamination` y `random_state`
+importante; puede marcar muestras inusuales pero legítimas.
+
+```{python}
+from sklearn.ensemble import IsolationForest
+iso = IsolationForest(contamination=0.01)
+```
+
+------------------------------------------------------------------------
+
+#### LocalOutlierFactor
+
+**Descripción detallada**: mide la densidad local comparada con vecinos;
+valores bajos indican outliers. Implementado como detector y como
+estimador de densidad local.
+
+**Cuándo usarlo**: anomalías locales; sensible a escala de features.
+
+**Limitaciones / problemas**: no es trivially pipelinable para predecir
+en nuevos datos sin usar `novelty=True` en versión adecuada.
+
+```{python}
+from sklearn.neighbors import LocalOutlierFactor
+lof = LocalOutlierFactor(n_neighbors=20, contamination=0.02)
+```
+
+------------------------------------------------------------------------
+
+#### Winsorizer / OutlierCapping (feature-engine)
+
+**Descripción detallada**: recorta valores extremos a percentiles (p.ej.
+1%–99%) para reducir impacto de outliers en media/varianza.
+Feature-engine ofrece transformadores listos para pandas.
+
+**Cuándo usarlo**: cuando quieres mantener observaciones pero limitar su
+influencia.
+
+**Limitaciones / problemas**: requiere elegir percentiles con criterio;
+puede distorsionar la interpretación de valores.
+
+```{python}
+# Ejemplo con feature-engine (instalar feature_engine)
+from feature_engine.outliers import Winsorizer
+win = Winsorizer(capping_method='quantiles', tail='both', fold=1.5)
+```
+
+### J. Muestreo para desequilibrio de clases
+
+> Nota: para integrar muestreo en pipeline usar
+> `imblearn.pipeline.Pipeline`.
+
+#### SMOTE
+
+**Descripción detallada**: sintetiza nuevos ejemplos de la clase
+minoritaria mediante interpolación en el espacio de características (k
+vecinos). Reduce el desequilibrio sin duplicar casos.
+
+**Cuándo usarlo**: datasets con clase minoritaria con pocos ejemplos.
+
+**Limitaciones / problemas**: puede crear muestras ambiguas si hay
+solapamiento; usar combinaciones con submuestreo/cleaning (TomekLinks).
+
+```{python}
+from imblearn.over_sampling import SMOTE
+sm = SMOTE(random_state=42)
+# X_res, y_res = sm.fit_resample(X_train, y_train)
+```
+
+------------------------------------------------------------------------
+
+#### RandomUnderSampler, ADASYN, TomekLinks
+
+**Descripción detallada**: variantes de re-sampling: submuestro
+aleatorio, sobremuestreo adaptativo (ADASYN) y limpieza de fronteras
+(TomekLinks).
+
+**Cuándo usarlo**: dependen del dataset; combinación frecuente: SMOTE +
+TomekLinks.
+
+**Limitaciones / problemas**: submuestreo pierde información al eliminar
+ejemplos; usar con precaución.
+
+```{python}
+from imblearn.under_sampling import RandomUnderSampler
+rus = RandomUnderSampler(random_state=0)
+```
+
+### K. Transformaciones de variable objetivo (y)
+
+#### TransformedTargetRegressor
+
+**Descripción detallada**: aplica una transformación (función) al target
+`y` durante el entrenamiento y aplica la inversa en las predicciones.
+Permite modelar targets sesgados (p. ej. log-transform).
+
+**Cuándo usarlo**: regresión con target sesgado o heterocedasticidad.
+
+**Limitaciones / problemas**: la función y su inversa deben ser
+definidas; puede impactar métricas si no se manejan correctamente.
+
+```{python}
+from sklearn.compose import TransformedTargetRegressor
+import numpy as np
+from sklearn.linear_model import Ridge
+reg = TransformedTargetRegressor(regressor=Ridge(), func=np.log1p, inverse_func=np.expm1)
+```
+
+### L. Transformaciones especiales y utilidades de pipeline
+
+#### ColumnTransformer
+
+**Descripción detallada**: permite aplicar distintos transformers a
+subconjuntos de columnas y concatenar el resultado. Es la base para
+datos heterogéneos (num + cat + text).
+
+**Cuándo usarlo**: siempre que tengas columnas de distinto tipo con
+pipelines separadas.
+
+**Limitaciones / problemas**: asegurarse de que los selectores de
+columnas coincidan con las columnas reales y manejar `remainder`
+apropiadamente.
+
+```{python}
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+num_cols = ['age','income']
+cat_cols = ['city']
+pre = ColumnTransformer([('num', StandardScaler(), num_cols), ('cat', OneHotEncoder(), cat_cols)])
+```
+
+------------------------------------------------------------------------
+
+#### FeatureUnion / make_union
+
+**Descripción detallada**: une transformaciones en paralelo (aplica
+varios transformadores sobre la misma matriz o sobre diferentes subsets
+y concatena resultados). Antes de ColumnTransformer era la opción común.
+
+**Cuándo usarlo**: cuando deseas combinar representaciones derivadas en
+paralelo.
+
+**Limitaciones / problemas**: gestión manual de columnas y dim final.
+
+```{python}
+from sklearn.pipeline import FeatureUnion
+from sklearn.decomposition import PCA
+from sklearn.feature_selection import SelectKBest
+fu = FeatureUnion([('pca', PCA(n_components=5)), ('select', SelectKBest(k=10))])
+```
+
+------------------------------------------------------------------------
+
+#### Pipeline / make_pipeline
+
+**Descripción detallada**: encadena una secuencia de pasos
+(`fit`/`transform`) donde los transformers preceden al estimador final.
+Facilita reproducibilidad y validación.
+
+**Cuándo usarlo**: siempre que encadenes transformaciones y estimador.
+
+**Limitaciones / problemas**: cuidado con pasos que alteren target
+(resampling) — usar `imblearn.pipeline.Pipeline` si incluyes muestreo.
+
+```{python}
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+pipe = Pipeline([('scaler', StandardScaler()), ('clf', LogisticRegression())])
+```
+
+### M. Transformaciones estadísticas y por rank / quantiles
+
+#### QuantileTransformer
+
+**Descripción detallada**: transforma la distribución de cada feature al
+espacio de quantiles; puede mapear a uniform o normal. Es robusto a
+outliers y elimina la escala original de la variable.
+
+**Cuándo usarlo**: cuando quieres normalizar distribuciones no
+gaussianas por quantiles.
+
+**Limitaciones / problemas**: transforma marginalmente cada feature
+independientemente; puede destruir relaciones locales si no se usa con
+cuidado.
+
+```{python}
+from sklearn.preprocessing import QuantileTransformer
+qt = QuantileTransformer(output_distribution='normal')
+```
+
+------------------------------------------------------------------------
+
+#### RankGauss / RankTransformer
+
+**Descripción detallada**: ranking seguido de mapeo a distribución
+normal. No incluido en sklearn core; se puede implementar con
+`FunctionTransformer` o usar librerías externas.
+
+**Cuándo usarlo**: para estabilizar distribuciones muy sesgadas.
+
+**Limitaciones / problemas**: implementaciones deben ser reproducibles y
+aplicarse con los mismos parámetros en test.
+
+### N. Feature hashing / sparse transforms
+
+#### FeatureHasher
+
+**Descripción detallada**: hasheador de features tipo dict/list para
+producir vectores esparsos de dimensión fija. Útil para features
+categóricos de alta cardinalidad.
+
+**Cuándo usarlo**: cuando la cardinalidad o memoria exige hashing.
+
+**Limitaciones / problemas**: colisiones; no invertible.
+
+```{python}
+from sklearn.feature_extraction import FeatureHasher
+fh = FeatureHasher(n_features=2**10, input_type='string')
+```
+
+### O. Transformaciones de fecha/hora (datetime features)
+
+#### Extraer características datetime (custom / feature-engine)
+
+**Descripción detallada**: extraer componentes (year, month, day, hour,
+dayofweek), ciclos (sin/cos) para hour/month, elapsed_time, y flags
+(is_weekend). Se implementa con pandas o con transformadores listos en
+`feature_engine`.
+
+**Cuándo usarlo**: siempre que tengas timestamps y quieras usar
+información temporal.
+
+**Limitaciones / problemas**: cuidado con zonas horarias y con features
+derivadas que requieren atención a drift temporal (train/test).
+
+```{python}
+import pandas as pd
+X = pd.DataFrame({'ts': ['2020-01-01 10:00', '2020-06-05 22:00']})
+X['ts'] = pd.to_datetime(X['ts'])
+X['hour'] = X['ts'].dt.hour
+X['dow'] = X['ts'].dt.dayofweek
+```
+
+### P. Transformaciones para imágenes / visión (breve)
+
+> Fuera del scope principal de `scikit-learn`. Para visión usar:
+> `torchvision.transforms`, `albumentations`, `opencv`, etc.
+> Normalización por canal, resize, augmentations.
+
+### Q. Librerías complementarias
+
+-   `feature-engine`: muchos transformers listos para pandas (imputación
+    avanzada, winsorizing, discretización, manejo de outliers, datetime
+    features).
+-   `category_encoders`: encoders supervisados y de alta cardinalidad.
+-   `imblearn`: re-sampling técnicas integrables en pipeline.
+
+### R. Ejemplo completo de pipeline (num + cat + text + sampler) — reproducible
+
+```{python}
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.feature_extraction.text import TfidfVectorizer
+from imblearn.pipeline import Pipeline as ImbPipeline
+from imblearn.over_sampling import SMOTE
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.impute import SimpleImputer
+
+# columnas de ejemplo
+num_cols = ['age','income']
+cat_cols = ['city','gender']
+text_col = 'review'
+
+num_pipe = Pipeline([('imputer', SimpleImputer(strategy='median')), ('scaler', StandardScaler())])
+cat_pipe = Pipeline([('imputer', SimpleImputer(strategy='most_frequent')), ('ohe', OneHotEncoder(handle_unknown='ignore'))])
+
+pre = ColumnTransformer([
+    ('num', num_pipe, num_cols),
+    ('cat', cat_pipe, cat_cols),
+    ('text', TfidfVectorizer(max_features=2000), text_col)
+], remainder='drop')
+
+pipe = ImbPipeline([
+    ('pre', pre),
+    ('smote', SMOTE(random_state=42)),
+    ('clf', RandomForestClassifier(n_estimators=100, random_state=42))
+])
+
+print('Pipeline definido correctamente')
+```
+
+### Hoja de referencia: inputs / outputs / problemas comunes
+
+A continuación se incluye una tabla por transformer con información
+concisa. Puedes copiar esta sección como hoja de referencia rápida.
+
+```{python}
+# Creamos una representación estructurada (pandas DataFrame) para la hoja de referencia
+import pandas as pd
+rows = [
+    ("SimpleImputer","X (n_samples,n_features) with NaNs","X (filled)","strategies: mean/median/most_frequent/constant; problema: puede introducir sesgo; usar por columna"),
+    ("KNNImputer","X with NaNs","X (filled)","usa vecinos; costoso en memoria; escalar antes"),
+    ("IterativeImputer","X with NaNs","X (filled)","imputación multivariante; costoso; evitar leakage"),
+    ("MissingIndicator","X with NaNs","binary mask columns","útil como flag; incrementa dimensionalidad"),
+    ("StandardScaler","numeric X","scaled X","sensible a outliers; usar con modelos que requieren escala"),
+    ("MinMaxScaler","numeric X","scaled X in [a,b]","sensible a outliers; nuevos valores pueden quedar fuera del rango"),
+    ("RobustScaler","numeric X","scaled X","robusto a outliers; no elimina outliers"),
+    ("Normalizer","X (rows as samples)","row-normalized X","actúa por fila; útil para texto/embeddings"),
+    ("PowerTransformer","numeric X","transformed X","mapea a normal aproximada; elegir método"),
+    ("OneHotEncoder","categorical column(s)","sparse/dense indicator matrix","alta dimensionalidad si cardinalidad alta"),
+    ("OrdinalEncoder","categorical column(s)","integer-coded columns","introduce orden si no existe"),
+    ("LabelEncoder","y labels","integer labels","usar solo para y (no X)"),
+    ("TargetEncoder","X cat + y","numeric encoded X","riesgo de leakage; encajar en train"),
+    ("HashingEncoder","categorical X","fixed-dimension matrix","colisiones; no invertible"),
+    ("CountVectorizer","raw text","count sparse matrix","alta dimensionalidad; requiere preprocesamiento"),
+    ("TfidfVectorizer","raw text","tfidf sparse matrix","mejora sobre conteos"),
+    ("HashingVectorizer","raw text","hashed sparse matrix","no invertible; colisiones"),
+    ("PolynomialFeatures","numeric X","expanded polynomial features","explosión dimensional; usar regularización"),
+    ("FunctionTransformer","X","transformed X","útil para funciones simples; validar shape"),
+    ("Binarizer","numeric X","0/1 features","pérdida de información de magnitud"),
+    ("KBinsDiscretizer","numeric X","binned encodings","elección de bins crítica"),
+    ("VarianceThreshold","X","reduced X","solo varianza, no target-aware"),
+    ("SelectKBest","X,y","reduced X","supervisado; tests con supuestos"),
+    ("SelectFromModel","X,y","selected features","depende de estabilidad del estimador"),
+    ("RFE","X,y","reduced X","costoso; dependiente de estimador"),
+    ("PCA","numeric X","components","lineal; no supervisado"),
+    ("TruncatedSVD","sparse X","components","eficiente en sparse; texto"),
+    ("NMF","nonnegative X","W,H","solo no-negativos; interpretabilidad"),
+    ("FastICA","numeric X","independent components","sensible a ruido"),
+    ("IsolationForest","numeric X","anomaly scores/labels","ajustar contamination"),
+    ("LocalOutlierFactor","numeric X","outlier labels","novelty detection requiere ajuste"),
+    ("Winsorizer","numeric X","capped X","elige percentiles con criterio"),
+    ("SMOTE","X_train, y_train","resampled X,y","usar solo en train; cuidado con overlap"),
+    ("RandomUnderSampler","X_train,y_train","resampled X,y","pierde datos al submuestrear"),
+    ("TransformedTargetRegressor","X,y","regressor with transformed predictions","función inversa necesaria"),
+    ("ColumnTransformer","X (DataFrame)","concatenated transformed matrix","gestionar columnas y remainder"),
+    ("FeatureUnion","X","concat of transforms","gestión manual de dimensiones"),
+    ("Pipeline","X,y","predictions","encadena transformaciones y estimador"),
+    ("QuantileTransformer","numeric X","quantile-normalized X","destruye escala original"),
+    ("FeatureHasher","dict/list features","hashed sparse matrix","colisiones; memoria fija"),
+    ("Datetime feature extraction","timestamp column","derived datetime features","atender timezone y drift temporal")
+]
+
+ref_df = pd.DataFrame(rows, columns=['transformer','input','output','nota'])
+import caas_jupyter_tools as cjt
+cjt.display_dataframe_to_user('Hoja de referencia: Transformers', ref_df)
+```
+
+------------------------------------------------------------------------

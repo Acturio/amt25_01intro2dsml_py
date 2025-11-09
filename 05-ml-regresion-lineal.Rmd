@@ -251,7 +251,7 @@ ggplot(iris2, aes(x = Sepal.Length, y = Petal.Length)) +
     geom_emoji(aes(image = ifelse(abs(Petal.Length-fitted) > 0.5, '1f622', '1f600')))
 ```
 
-![](img/06-ml-lineal/reg_lineal_errores.png)
+![](img/05-ml-lineal/reg_lineal_errores.png)
 
 
 

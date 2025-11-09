@@ -1221,6 +1221,69 @@ print(transformed)
 
 ```
 
+#### Otras transformaciones 
+
+Esta transformación permite eliminar categorías particulares de una variable categórica. Esto es útil porque no siempre todas las categorías son relevantes y al momento de usar *OneHotEncoder*, la dimensión de variables crece y no necesariamente todas las categorías aportan valor, por lo que sería mejor eliminarlas.
+
+```{python}
+from sklearn.base import BaseEstimator, TransformerMixin
+import pandas as pd
+import numpy as np
+
+class DropColumnsTransformer(BaseEstimator, TransformerMixin):
+    def __init__(self, columns_to_drop):
+        self.columns_to_drop = columns_to_drop
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        X_ = pd.DataFrame(X).copy()
+        cols = [c for c in X_.columns if c not in self.columns_to_drop]
+        return X_[cols]
+
+    def get_feature_names_out(self, input_features=None):
+        if input_features is None:
+            return []
+        return [c for c in input_features if c not in self.columns_to_drop]
+
+
+pipeline = Pipeline([
+    ("ohe", OneHotEncoder(sparse_output=False)),
+    ("drop_unwanted", DropColumnsTransformer(["color_red", "color_blue"]))
+])
+```
+
+
+Una transformación particular que resulta muy interesante y útil, es la recodificación de categorías. Esta transformación permite que el usuario pueda colapsar categorías originales en otras que resulten más útiles o valiosas para la predicción.
+
+```{python}
+class RecodeCategoryTransformer(BaseEstimator, TransformerMixin):
+    def __init__(self, mapping):
+        self.mapping = mapping
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        X = X.copy()
+        for col, map_dict in self.mapping.items():
+            X[col] = X[col].map(map_dict).fillna(X[col])
+        return X
+
+
+pipeline = Pipeline([
+    ("recode", RecodeCategoryTransformer({
+        "color": {"red": "warm", "orange": "warm", "blue": "cool"}
+    })),
+    ("ohe", OneHotEncoder())
+])
+
+```
+
+
+
+
 
 <!-- ### Actividad de refuerzo -->
 
@@ -1241,12 +1304,5 @@ print(transformed)
 <!-- 5. Revisar la documentación de los transformadores predefinidos en sklearn: [link](https://scikit-learn.org/stable/modules/preprocessing.html#). -->
 
 Revisar la documentación de los transformadores predefinidos en sklearn: [link](https://scikit-learn.org/stable/modules/preprocessing.html#).
-
-
-
-
-
-
-
 
 

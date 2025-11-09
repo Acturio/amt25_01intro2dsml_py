@@ -61,6 +61,7 @@ imputación-de-datos-faltantes
 interacciones
 renombramiento-de-nuevos-datos
 transformaciones-personalizadas
+otras-transformaciones
 regresión-lineal
 regresión-lineal-simple
 interpretación

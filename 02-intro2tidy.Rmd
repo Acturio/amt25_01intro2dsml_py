@@ -54,7 +54,7 @@ knitr::include_graphics("img/02-intro2py/02_rstudio_py.png")
 ## Uso de python en Positron
 
 
-```{python, eval = F}
+```{r, eval = F}
 library(reticulate)
 
 install_python(list = TRUE)
@@ -115,7 +115,7 @@ Veamos un ejemplo:
 ```{r, echo=FALSE}
 library(reticulate)
 
-use_virtualenv("venv_dsml_py3_11")
+use_virtualenv("venv_dsml_py3_10")
 ```
 
 
