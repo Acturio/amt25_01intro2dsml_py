@@ -1524,31 +1524,32 @@ columna.</p>
 <h4><span class="header-section-number">4.5.6.1</span> Otras transformaciones<a href="introducción-a-machine-learning.html#otras-transformaciones" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Esta transformación permite eliminar categorías particulares de una variable categórica. Esto es útil porque no siempre todas las categorías son relevantes y al momento de usar <em>OneHotEncoder</em>, la dimensión de variables crece y no necesariamente todas las categorías aportan valor, por lo que sería mejor eliminarlas.</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb149-1"><a href="introducción-a-machine-learning.html#cb149-1" tabindex="-1"></a><span class="im">from</span> sklearn.base <span class="im">import</span> BaseEstimator, TransformerMixin</span>
-<span id="cb149-2"><a href="introducción-a-machine-learning.html#cb149-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb149-3"><a href="introducción-a-machine-learning.html#cb149-3" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb149-4"><a href="introducción-a-machine-learning.html#cb149-4" tabindex="-1"></a></span>
-<span id="cb149-5"><a href="introducción-a-machine-learning.html#cb149-5" tabindex="-1"></a><span class="kw">class</span> DropColumnsTransformer(BaseEstimator, TransformerMixin):</span>
-<span id="cb149-6"><a href="introducción-a-machine-learning.html#cb149-6" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, columns_to_drop):</span>
-<span id="cb149-7"><a href="introducción-a-machine-learning.html#cb149-7" tabindex="-1"></a>        <span class="va">self</span>.columns_to_drop <span class="op">=</span> columns_to_drop</span>
-<span id="cb149-8"><a href="introducción-a-machine-learning.html#cb149-8" tabindex="-1"></a></span>
-<span id="cb149-9"><a href="introducción-a-machine-learning.html#cb149-9" tabindex="-1"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, X, y<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb149-10"><a href="introducción-a-machine-learning.html#cb149-10" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb149-2"><a href="introducción-a-machine-learning.html#cb149-2" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb149-3"><a href="introducción-a-machine-learning.html#cb149-3" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb149-4"><a href="introducción-a-machine-learning.html#cb149-4" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> OneHotEncoder</span>
+<span id="cb149-5"><a href="introducción-a-machine-learning.html#cb149-5" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb149-6"><a href="introducción-a-machine-learning.html#cb149-6" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb149-7"><a href="introducción-a-machine-learning.html#cb149-7" tabindex="-1"></a></span>
+<span id="cb149-8"><a href="introducción-a-machine-learning.html#cb149-8" tabindex="-1"></a><span class="kw">class</span> DropColumnsTransformer(BaseEstimator, TransformerMixin):</span>
+<span id="cb149-9"><a href="introducción-a-machine-learning.html#cb149-9" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, columns_to_drop):</span>
+<span id="cb149-10"><a href="introducción-a-machine-learning.html#cb149-10" tabindex="-1"></a>        <span class="va">self</span>.columns_to_drop <span class="op">=</span> columns_to_drop</span>
 <span id="cb149-11"><a href="introducción-a-machine-learning.html#cb149-11" tabindex="-1"></a></span>
-<span id="cb149-12"><a href="introducción-a-machine-learning.html#cb149-12" tabindex="-1"></a>    <span class="kw">def</span> transform(<span class="va">self</span>, X):</span>
-<span id="cb149-13"><a href="introducción-a-machine-learning.html#cb149-13" tabindex="-1"></a>        X_ <span class="op">=</span> pd.DataFrame(X).copy()</span>
-<span id="cb149-14"><a href="introducción-a-machine-learning.html#cb149-14" tabindex="-1"></a>        cols <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> X_.columns <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.columns_to_drop]</span>
-<span id="cb149-15"><a href="introducción-a-machine-learning.html#cb149-15" tabindex="-1"></a>        <span class="cf">return</span> X_[cols]</span>
-<span id="cb149-16"><a href="introducción-a-machine-learning.html#cb149-16" tabindex="-1"></a></span>
-<span id="cb149-17"><a href="introducción-a-machine-learning.html#cb149-17" tabindex="-1"></a>    <span class="kw">def</span> get_feature_names_out(<span class="va">self</span>, input_features<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb149-18"><a href="introducción-a-machine-learning.html#cb149-18" tabindex="-1"></a>        <span class="cf">if</span> input_features <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb149-19"><a href="introducción-a-machine-learning.html#cb149-19" tabindex="-1"></a>            <span class="cf">return</span> []</span>
-<span id="cb149-20"><a href="introducción-a-machine-learning.html#cb149-20" tabindex="-1"></a>        <span class="cf">return</span> [c <span class="cf">for</span> c <span class="kw">in</span> input_features <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.columns_to_drop]</span>
-<span id="cb149-21"><a href="introducción-a-machine-learning.html#cb149-21" tabindex="-1"></a></span>
-<span id="cb149-22"><a href="introducción-a-machine-learning.html#cb149-22" tabindex="-1"></a></span>
-<span id="cb149-23"><a href="introducción-a-machine-learning.html#cb149-23" tabindex="-1"></a>pipeline <span class="op">=</span> Pipeline([</span>
-<span id="cb149-24"><a href="introducción-a-machine-learning.html#cb149-24" tabindex="-1"></a>    (<span class="st">&quot;ohe&quot;</span>, OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>)),</span>
-<span id="cb149-25"><a href="introducción-a-machine-learning.html#cb149-25" tabindex="-1"></a>    (<span class="st">&quot;drop_unwanted&quot;</span>, DropColumnsTransformer([<span class="st">&quot;color_red&quot;</span>, <span class="st">&quot;color_blue&quot;</span>]))</span>
-<span id="cb149-26"><a href="introducción-a-machine-learning.html#cb149-26" tabindex="-1"></a>])</span></code></pre></div>
+<span id="cb149-12"><a href="introducción-a-machine-learning.html#cb149-12" tabindex="-1"></a>    <span class="kw">def</span> fit(<span class="va">self</span>, X, y<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb149-13"><a href="introducción-a-machine-learning.html#cb149-13" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb149-14"><a href="introducción-a-machine-learning.html#cb149-14" tabindex="-1"></a></span>
+<span id="cb149-15"><a href="introducción-a-machine-learning.html#cb149-15" tabindex="-1"></a>    <span class="kw">def</span> transform(<span class="va">self</span>, X):</span>
+<span id="cb149-16"><a href="introducción-a-machine-learning.html#cb149-16" tabindex="-1"></a>        X_ <span class="op">=</span> pd.DataFrame(X).copy()</span>
+<span id="cb149-17"><a href="introducción-a-machine-learning.html#cb149-17" tabindex="-1"></a>        cols <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> X_.columns <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.columns_to_drop]</span>
+<span id="cb149-18"><a href="introducción-a-machine-learning.html#cb149-18" tabindex="-1"></a>        <span class="cf">return</span> X_[cols]</span>
+<span id="cb149-19"><a href="introducción-a-machine-learning.html#cb149-19" tabindex="-1"></a>    </span>
+<span id="cb149-20"><a href="introducción-a-machine-learning.html#cb149-20" tabindex="-1"></a>    <span class="kw">def</span> set_output(<span class="va">self</span>, <span class="op">*</span>, transform<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb149-21"><a href="introducción-a-machine-learning.html#cb149-21" tabindex="-1"></a>        <span class="co"># para permitir set_output en ColumnTransformer</span></span>
+<span id="cb149-22"><a href="introducción-a-machine-learning.html#cb149-22" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb149-23"><a href="introducción-a-machine-learning.html#cb149-23" tabindex="-1"></a>       </span>
+<span id="cb149-24"><a href="introducción-a-machine-learning.html#cb149-24" tabindex="-1"></a>    <span class="kw">def</span> get_feature_names_out(<span class="va">self</span>, input_features<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb149-25"><a href="introducción-a-machine-learning.html#cb149-25" tabindex="-1"></a>        <span class="cf">if</span> input_features <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb149-26"><a href="introducción-a-machine-learning.html#cb149-26" tabindex="-1"></a>            <span class="cf">return</span> []</span>
+<span id="cb149-27"><a href="introducción-a-machine-learning.html#cb149-27" tabindex="-1"></a>        <span class="cf">return</span> [c <span class="cf">for</span> c <span class="kw">in</span> input_features <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.columns_to_drop]</span></code></pre></div>
 <p>Una transformación particular que resulta muy interesante y útil, es la recodificación de categorías. Esta transformación permite que el usuario pueda colapsar categorías originales en otras que resulten más útiles o valiosas para la predicción.</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb150-1"><a href="introducción-a-machine-learning.html#cb150-1" tabindex="-1"></a><span class="kw">class</span> RecodeCategoryTransformer(BaseEstimator, TransformerMixin):</span>
 <span id="cb150-2"><a href="introducción-a-machine-learning.html#cb150-2" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, mapping):</span>
@@ -1562,14 +1563,89 @@ columna.</p>
 <span id="cb150-10"><a href="introducción-a-machine-learning.html#cb150-10" tabindex="-1"></a>        <span class="cf">for</span> col, map_dict <span class="kw">in</span> <span class="va">self</span>.mapping.items():</span>
 <span id="cb150-11"><a href="introducción-a-machine-learning.html#cb150-11" tabindex="-1"></a>            X[col] <span class="op">=</span> X[col].<span class="bu">map</span>(map_dict).fillna(X[col])</span>
 <span id="cb150-12"><a href="introducción-a-machine-learning.html#cb150-12" tabindex="-1"></a>        <span class="cf">return</span> X</span>
-<span id="cb150-13"><a href="introducción-a-machine-learning.html#cb150-13" tabindex="-1"></a></span>
-<span id="cb150-14"><a href="introducción-a-machine-learning.html#cb150-14" tabindex="-1"></a></span>
-<span id="cb150-15"><a href="introducción-a-machine-learning.html#cb150-15" tabindex="-1"></a>pipeline <span class="op">=</span> Pipeline([</span>
-<span id="cb150-16"><a href="introducción-a-machine-learning.html#cb150-16" tabindex="-1"></a>    (<span class="st">&quot;recode&quot;</span>, RecodeCategoryTransformer({</span>
-<span id="cb150-17"><a href="introducción-a-machine-learning.html#cb150-17" tabindex="-1"></a>        <span class="st">&quot;color&quot;</span>: {<span class="st">&quot;red&quot;</span>: <span class="st">&quot;warm&quot;</span>, <span class="st">&quot;orange&quot;</span>: <span class="st">&quot;warm&quot;</span>, <span class="st">&quot;blue&quot;</span>: <span class="st">&quot;cool&quot;</span>}</span>
-<span id="cb150-18"><a href="introducción-a-machine-learning.html#cb150-18" tabindex="-1"></a>    })),</span>
-<span id="cb150-19"><a href="introducción-a-machine-learning.html#cb150-19" tabindex="-1"></a>    (<span class="st">&quot;ohe&quot;</span>, OneHotEncoder())</span>
-<span id="cb150-20"><a href="introducción-a-machine-learning.html#cb150-20" tabindex="-1"></a>])</span></code></pre></div>
+<span id="cb150-13"><a href="introducción-a-machine-learning.html#cb150-13" tabindex="-1"></a>       </span>
+<span id="cb150-14"><a href="introducción-a-machine-learning.html#cb150-14" tabindex="-1"></a>    <span class="kw">def</span> set_output(<span class="va">self</span>, <span class="op">*</span>, transform<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb150-15"><a href="introducción-a-machine-learning.html#cb150-15" tabindex="-1"></a>        <span class="co"># para permitir set_output en ColumnTransformer</span></span>
+<span id="cb150-16"><a href="introducción-a-machine-learning.html#cb150-16" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb150-17"><a href="introducción-a-machine-learning.html#cb150-17" tabindex="-1"></a>    </span>
+<span id="cb150-18"><a href="introducción-a-machine-learning.html#cb150-18" tabindex="-1"></a>    <span class="kw">def</span> get_feature_names_out(<span class="va">self</span>, input_features<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb150-19"><a href="introducción-a-machine-learning.html#cb150-19" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.feature_names_in_</span></code></pre></div>
+<p>Aplicando ambos ejemplos a un dataset dummy, se obtiene:</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb151-1"><a href="introducción-a-machine-learning.html#cb151-1" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb151-2"><a href="introducción-a-machine-learning.html#cb151-2" tabindex="-1"></a>    <span class="st">&#39;Color&#39;</span>: [<span class="st">&#39;rojo&#39;</span>,<span class="st">&#39;azul&#39;</span>,<span class="st">&#39;verde&#39;</span>,<span class="st">&#39;rojo&#39;</span>,<span class="st">&#39;azul&#39;</span>],</span>
+<span id="cb151-3"><a href="introducción-a-machine-learning.html#cb151-3" tabindex="-1"></a>    <span class="st">&#39;Talla&#39;</span>: [<span class="st">&#39;S&#39;</span>,<span class="st">&#39;M&#39;</span>,<span class="st">&#39;L&#39;</span>,<span class="st">&#39;XL&#39;</span>,<span class="st">&#39;S&#39;</span>],</span>
+<span id="cb151-4"><a href="introducción-a-machine-learning.html#cb151-4" tabindex="-1"></a>    <span class="st">&#39;Precio&#39;</span>: [<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">30</span>,<span class="dv">22</span>]</span>
+<span id="cb151-5"><a href="introducción-a-machine-learning.html#cb151-5" tabindex="-1"></a>})</span>
+<span id="cb151-6"><a href="introducción-a-machine-learning.html#cb151-6" tabindex="-1"></a></span>
+<span id="cb151-7"><a href="introducción-a-machine-learning.html#cb151-7" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##    Color Talla  Precio
+## 0   rojo     S      10
+## 1   azul     M      20
+## 2  verde     L      15
+## 3   rojo    XL      30
+## 4   azul     S      22</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb153-1"><a href="introducción-a-machine-learning.html#cb153-1" tabindex="-1"></a>recode_map <span class="op">=</span> {</span>
+<span id="cb153-2"><a href="introducción-a-machine-learning.html#cb153-2" tabindex="-1"></a>    <span class="st">&#39;Color&#39;</span>: {</span>
+<span id="cb153-3"><a href="introducción-a-machine-learning.html#cb153-3" tabindex="-1"></a>        <span class="st">&#39;rojo&#39;</span>: <span class="st">&#39;primario&#39;</span>,</span>
+<span id="cb153-4"><a href="introducción-a-machine-learning.html#cb153-4" tabindex="-1"></a>        <span class="st">&#39;azul&#39;</span>: <span class="st">&#39;primario&#39;</span>,</span>
+<span id="cb153-5"><a href="introducción-a-machine-learning.html#cb153-5" tabindex="-1"></a>        <span class="st">&#39;verde&#39;</span>: <span class="st">&#39;secundario&#39;</span></span>
+<span id="cb153-6"><a href="introducción-a-machine-learning.html#cb153-6" tabindex="-1"></a>    }</span>
+<span id="cb153-7"><a href="introducción-a-machine-learning.html#cb153-7" tabindex="-1"></a>}    </span>
+<span id="cb153-8"><a href="introducción-a-machine-learning.html#cb153-8" tabindex="-1"></a></span>
+<span id="cb153-9"><a href="introducción-a-machine-learning.html#cb153-9" tabindex="-1"></a>column_transformer <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb153-10"><a href="introducción-a-machine-learning.html#cb153-10" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
+<span id="cb153-11"><a href="introducción-a-machine-learning.html#cb153-11" tabindex="-1"></a>        <span class="co"># Paso 1 + 2: Recode + OneHotEncoder</span></span>
+<span id="cb153-12"><a href="introducción-a-machine-learning.html#cb153-12" tabindex="-1"></a>        (<span class="st">&#39;color_pipeline&#39;</span>,</span>
+<span id="cb153-13"><a href="introducción-a-machine-learning.html#cb153-13" tabindex="-1"></a>         Pipeline([</span>
+<span id="cb153-14"><a href="introducción-a-machine-learning.html#cb153-14" tabindex="-1"></a>             (<span class="st">&#39;recode&#39;</span>, RecodeCategoryTransformer(recode_map)),</span>
+<span id="cb153-15"><a href="introducción-a-machine-learning.html#cb153-15" tabindex="-1"></a>             (<span class="st">&#39;ohe&#39;</span>, OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>))<span class="co">#,</span></span>
+<span id="cb153-16"><a href="introducción-a-machine-learning.html#cb153-16" tabindex="-1"></a><span class="co">#             (&#39;drop&#39;, DropColumnsTransformer([&#39;Color_secundario&#39;]))</span></span>
+<span id="cb153-17"><a href="introducción-a-machine-learning.html#cb153-17" tabindex="-1"></a>         ]),</span>
+<span id="cb153-18"><a href="introducción-a-machine-learning.html#cb153-18" tabindex="-1"></a>         [<span class="st">&#39;Color&#39;</span>]</span>
+<span id="cb153-19"><a href="introducción-a-machine-learning.html#cb153-19" tabindex="-1"></a>        ),</span>
+<span id="cb153-20"><a href="introducción-a-machine-learning.html#cb153-20" tabindex="-1"></a></span>
+<span id="cb153-21"><a href="introducción-a-machine-learning.html#cb153-21" tabindex="-1"></a>        <span class="co"># Talla con OHE simple</span></span>
+<span id="cb153-22"><a href="introducción-a-machine-learning.html#cb153-22" tabindex="-1"></a>        (<span class="st">&#39;talla_ohe&#39;</span>, </span>
+<span id="cb153-23"><a href="introducción-a-machine-learning.html#cb153-23" tabindex="-1"></a>        Pipeline([</span>
+<span id="cb153-24"><a href="introducción-a-machine-learning.html#cb153-24" tabindex="-1"></a>         (<span class="st">&#39;ohe2&#39;</span>, OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>)),</span>
+<span id="cb153-25"><a href="introducción-a-machine-learning.html#cb153-25" tabindex="-1"></a>         (<span class="st">&#39;drop&#39;</span>, DropColumnsTransformer([<span class="st">&#39;Talla_S&#39;</span>, <span class="st">&#39;Talla_XL&#39;</span>]))</span>
+<span id="cb153-26"><a href="introducción-a-machine-learning.html#cb153-26" tabindex="-1"></a>         ]),</span>
+<span id="cb153-27"><a href="introducción-a-machine-learning.html#cb153-27" tabindex="-1"></a>         [<span class="st">&#39;Talla&#39;</span>]</span>
+<span id="cb153-28"><a href="introducción-a-machine-learning.html#cb153-28" tabindex="-1"></a>        )</span>
+<span id="cb153-29"><a href="introducción-a-machine-learning.html#cb153-29" tabindex="-1"></a>    ],</span>
+<span id="cb153-30"><a href="introducción-a-machine-learning.html#cb153-30" tabindex="-1"></a></span>
+<span id="cb153-31"><a href="introducción-a-machine-learning.html#cb153-31" tabindex="-1"></a>    remainder<span class="op">=</span><span class="st">&#39;passthrough&#39;</span>,     <span class="co"># deja Precio igual</span></span>
+<span id="cb153-32"><a href="introducción-a-machine-learning.html#cb153-32" tabindex="-1"></a>    verbose_feature_names_out<span class="op">=</span><span class="va">False</span></span>
+<span id="cb153-33"><a href="introducción-a-machine-learning.html#cb153-33" tabindex="-1"></a>).set_output(transform<span class="op">=</span><span class="st">&#39;pandas&#39;</span>)</span>
+<span id="cb153-34"><a href="introducción-a-machine-learning.html#cb153-34" tabindex="-1"></a></span>
+<span id="cb153-35"><a href="introducción-a-machine-learning.html#cb153-35" tabindex="-1"></a>X_trans <span class="op">=</span> column_transformer.fit_transform(df)</span>
+<span id="cb153-36"><a href="introducción-a-machine-learning.html#cb153-36" tabindex="-1"></a>X_trans</span></code></pre></div>
+<pre><code>##    Color_primario  Color_secundario  Talla_L  Talla_M  Precio
+## 0             1.0               0.0      0.0      0.0      10
+## 1             1.0               0.0      0.0      1.0      20
+## 2             0.0               1.0      1.0      0.0      15
+## 3             1.0               0.0      0.0      0.0      30
+## 4             1.0               0.0      0.0      0.0      22</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb155-1"><a href="introducción-a-machine-learning.html#cb155-1" tabindex="-1"></a>X_trans</span></code></pre></div>
+<pre><code>##    Color_primario  Color_secundario  Talla_L  Talla_M  Precio
+## 0             1.0               0.0      0.0      0.0      10
+## 1             1.0               0.0      0.0      1.0      20
+## 2             0.0               1.0      1.0      0.0      15
+## 3             1.0               0.0      0.0      0.0      30
+## 4             1.0               0.0      0.0      0.0      22</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb157-1"><a href="introducción-a-machine-learning.html#cb157-1" tabindex="-1"></a>df_test <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb157-2"><a href="introducción-a-machine-learning.html#cb157-2" tabindex="-1"></a>    <span class="st">&#39;Color&#39;</span>: [<span class="st">&#39;azul&#39;</span>,<span class="st">&#39;verde&#39;</span>,<span class="st">&#39;rojo&#39;</span>,<span class="st">&#39;verde&#39;</span>],</span>
+<span id="cb157-3"><a href="introducción-a-machine-learning.html#cb157-3" tabindex="-1"></a>    <span class="st">&#39;Talla&#39;</span>: [<span class="st">&#39;M&#39;</span>,<span class="st">&#39;XL&#39;</span>,<span class="st">&#39;S&#39;</span>,<span class="st">&#39;L&#39;</span>],</span>
+<span id="cb157-4"><a href="introducción-a-machine-learning.html#cb157-4" tabindex="-1"></a>    <span class="st">&#39;Precio&#39;</span>: [<span class="dv">50</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">38</span>]</span>
+<span id="cb157-5"><a href="introducción-a-machine-learning.html#cb157-5" tabindex="-1"></a>})</span>
+<span id="cb157-6"><a href="introducción-a-machine-learning.html#cb157-6" tabindex="-1"></a></span>
+<span id="cb157-7"><a href="introducción-a-machine-learning.html#cb157-7" tabindex="-1"></a>column_transformer.transform(df_test)</span></code></pre></div>
+<pre><code>##    Color_primario  Color_secundario  Talla_L  Talla_M  Precio
+## 0             1.0               0.0      0.0      1.0      50
+## 1             0.0               1.0      0.0      0.0      40
+## 2             1.0               0.0      0.0      0.0      45
+## 3             0.0               1.0      1.0      0.0      38</code></pre>
+<p>En este ejemplo se muestra cómo recodificar las categorías del color, creando un pipeline particular para la variable <em>Color</em> y paralelemante otro pipeline se encarga de dicotomizar las categorías del color y elegir manualmente cuáles son las categorías a eliminar.</p>
 <!-- ### Actividad de refuerzo -->
 <!-- Al hacer un modelo de machine learning es importante tener un dominio del fenómeno que se está analizando. Ya sea un tema médico, bancario, asegurador, comercial, demográfico, etc.  -->
 <!-- Los mejores modelos de ML suelen tener diversas características e interacciones creadas en la ingeniería de variables. -->

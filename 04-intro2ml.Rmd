@@ -1227,6 +1227,9 @@ Esta transformación permite eliminar categorías particulares de una variable c
 
 ```{python}
 from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 import numpy as np
 
@@ -1241,17 +1244,17 @@ class DropColumnsTransformer(BaseEstimator, TransformerMixin):
         X_ = pd.DataFrame(X).copy()
         cols = [c for c in X_.columns if c not in self.columns_to_drop]
         return X_[cols]
-
+    
+    def set_output(self, *, transform=None):
+        # para permitir set_output en ColumnTransformer
+        return self
+       
     def get_feature_names_out(self, input_features=None):
         if input_features is None:
             return []
         return [c for c in input_features if c not in self.columns_to_drop]
 
 
-pipeline = Pipeline([
-    ("ohe", OneHotEncoder(sparse_output=False)),
-    ("drop_unwanted", DropColumnsTransformer(["color_red", "color_blue"]))
-])
 ```
 
 
@@ -1270,20 +1273,76 @@ class RecodeCategoryTransformer(BaseEstimator, TransformerMixin):
         for col, map_dict in self.mapping.items():
             X[col] = X[col].map(map_dict).fillna(X[col])
         return X
+       
+    def set_output(self, *, transform=None):
+        # para permitir set_output en ColumnTransformer
+        return self
+    
+    def get_feature_names_out(self, input_features=None):
+        return self.feature_names_in_
 
-
-pipeline = Pipeline([
-    ("recode", RecodeCategoryTransformer({
-        "color": {"red": "warm", "orange": "warm", "blue": "cool"}
-    })),
-    ("ohe", OneHotEncoder())
-])
 
 ```
 
+Aplicando ambos ejemplos a un dataset dummy, se obtiene:
 
+```{python}
+df = pd.DataFrame({
+    'Color': ['rojo','azul','verde','rojo','azul'],
+    'Talla': ['S','M','L','XL','S'],
+    'Precio': [10,20,15,30,22]
+})
 
+df
 
+recode_map = {
+    'Color': {
+        'rojo': 'primario',
+        'azul': 'primario',
+        'verde': 'secundario'
+    }
+}    
+
+column_transformer = ColumnTransformer(
+    transformers=[
+        # Paso 1 + 2: Recode + OneHotEncoder
+        ('color_pipeline',
+         Pipeline([
+             ('recode', RecodeCategoryTransformer(recode_map)),
+             ('ohe', OneHotEncoder(sparse_output=False))#,
+#             ('drop', DropColumnsTransformer(['Color_secundario']))
+         ]),
+         ['Color']
+        ),
+
+        # Talla con OHE simple
+        ('talla_ohe', 
+        Pipeline([
+         ('ohe2', OneHotEncoder(sparse_output=False)),
+         ('drop', DropColumnsTransformer(['Talla_S', 'Talla_XL']))
+         ]),
+         ['Talla']
+        )
+    ],
+
+    remainder='passthrough',     # deja Precio igual
+    verbose_feature_names_out=False
+).set_output(transform='pandas')
+
+X_trans = column_transformer.fit_transform(df)
+X_trans
+X_trans
+
+df_test = pd.DataFrame({
+    'Color': ['azul','verde','rojo','verde'],
+    'Talla': ['M','XL','S','L'],
+    'Precio': [50,40,45,38]
+})
+
+column_transformer.transform(df_test)
+```
+
+En este ejemplo se muestra cómo recodificar las categorías del color, creando un pipeline particular para la variable *Color* y paralelemante otro pipeline se encarga de dicotomizar las categorías del color y elegir manualmente cuáles son las categorías a eliminar.
 
 <!-- ### Actividad de refuerzo -->
 
