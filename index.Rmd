@@ -48,6 +48,27 @@ Actualmente es *Data Scientist Senior Expert* en la fábrica de inteligencia art
 knitr::include_graphics("img/00-presentacion/arturo.jpeg")
 ```
 
+**ACT. KARINA LIZETTE GAMBOA** 
+
+**LinkedIn:** [KaLizzyGam ](https://www.linkedin.com/in/kalizzygam/)
+**Email:**  lizzygamboa@ciencias.unam.mx
+
+Actuaria egresada de la Facultad de Ciencias y candidata a Maestra en Ciencia de Datos por el ITAM, con una amplia experiencia en áreas de analítica predictiva e inteligencia empresarial. Ha ocupado roles de Manager y Senior Data Scientist en consultoría, trabajando en diversos sectores como tecnología, seguros, finanzas y banca.
+
+Su especialidad radica en comprender las necesidades del negocio para implementar algoritmos de análisis de datos de manera efectiva, abarcando desde la ingeniería y arquitectura de datos hasta Business Intelligence y modelos de Machine Learning.
+
+Cuenta con basta experiencia liderando equipos tecnológicos, incluyendo su papel más reciente como Data Analytics Manager para México, Chile y Colombia en Merama, una startup mexicana clasificada como uno de los nuevos unicornios de Latinoamérica. Actualmente, ocupa el cargo de Senior Manager Data Scientist en BBVA, centrado en banca corporativa.
+
+Además, participa en proyectos de consultoría como Senior Data Scientist, es profesora del diplomado de Metodología de la Investigación Social por la UNAM y ejerce como instructora de cursos de Ciencia de Datos en AMAT.
+
+Entre sus experiencias anteriores se encuentran empresas como GNP, Actinver Banco y Casa de Bolsa, PlayCity Casinos, RakenDataGroup Consulting, Closter, Merama, entre otras.
+
+
+```{r echo=FALSE,fig.align='center',  out.width='250pt'}
+knitr::include_graphics("img/00-presentacion/lizzy.png")
+```
+
+
 ## Alcances del curso {-}
 
 Al finalizar este curso, el participante será capaz de consumir, manipular y visualizar información para resolver problemas de propósito general asociados a los datos. Apenderá a implementar diferentes algoritmos de machine learning y mejorar su desempeño predictivo en problemas de clasificación, regresión y segmentación.
@@ -96,7 +117,7 @@ Requisitos:
 
 ## Duración y evaluación del curso {-}
 
-* El programa tiene una duración de 36 hrs.
+* El programa tiene una duración de 42 hrs.
 
 * Las clases serán impartidas los días sábado, de 9:00 am a 12:00 pm 
 
@@ -109,16 +130,10 @@ Requisitos:
 
 En esta clase estaremos usando: 
 
+* R [da click aquí si aún no lo descargas](https://cran.r-project.org/)
 * Python [da click aquí si aún no lo descargas](https://www.python.org/downloads/)
-* RStudio [da click aquí también](https://www.rstudio.com/products/rstudio/download/)
 * Positron [da click aquí si quieres descargar](https://positron.posit.co/)
 * VSCode [da click aquí si quieres descargar](https://code.visualstudio.com/download)
-* Anaconda [da click aquí si quieres descargar](https://www.anaconda.com/download)
-<!-- * R [da click para descargar](https://cran.itam.mx/) -->
-* Zoom [Clases](https://us02web.zoom.us/j/5055440751?pwd=SlEvdTBvazNndkxnd1lRSzFlNVp0Zz09)
-  - Pulgar arriba: Voy bien, estoy entendiendo! 
-  - Pulgar abajo: Eso no quedó muy claro
-  - Mano arriba: Quiero participar/preguntar ó Ya estoy listo para iniciar 
 * [Google Drive](https://drive.google.com/drive/folders/15oEAezXyAm-_c90iG0LJ-pbtSREywxIm?usp=sharing)
 * Notas de clase [Revisame si quieres aprender](https://acturio.github.io/amt25_01intro2dsml_py/) 
 
