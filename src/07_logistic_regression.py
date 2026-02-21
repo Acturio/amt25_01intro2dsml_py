@@ -249,6 +249,7 @@ average_precision_score(
 # Definir el objeto K-Fold Cross Validator
 kf = KFold(n_splits=10, shuffle=True, random_state=42)
 
+# Recordatorio de estructuras de datos
 ["oscar", "arturo", "karina", "lizette"]
 dicc = {
  'profesores': ["arturo", "lizz"],

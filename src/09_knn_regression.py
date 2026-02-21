@@ -36,10 +36,10 @@ ames_x_train, ames_x_test, ames_y_train, ames_y_test = train_test_split(
 ## SELECCIÓN DE VARIABLES
 
 # Seleccionamos las variales numéricas de interés
-num_cols = ["Full_Bath", "Half_Bath"]
+num_cols = ["Full_Bath", "Half_Bath", "Gr_Liv_Area"]
 
 # Seleccionamos las variables categóricas de interés
-cat_cols = ["Overall_Cond"]
+cat_cols = ["Overall_Cond", "Neighborhood"]
 
 # Juntamos todas las variables de interés
 columnas_seleccionadas = num_cols + cat_cols
@@ -78,7 +78,10 @@ transformed_df.info()
 # Crear el pipeline con la regresión KNN
 pipeline = Pipeline([
    ('preprocessor', preprocessor),
-   ('regressor', KNeighborsRegressor(n_neighbors=5))
+   ('regressor', KNeighborsRegressor(
+    n_neighbors=5,
+    weights='uniform',
+    metric='minkowski'))
 ])
 
 # Entrenar el pipeline
@@ -193,10 +196,10 @@ k = 10
 kf = KFold(n_splits=k, shuffle=True, random_state=42)
 
 param_grid = {
- 'n_neighbors': range(8, 100, 5),
+ 'n_neighbors': range(3, 50, 2),
  'weights': ['uniform', 'distance'],
- 'metric': ['euclidean', 'manhattan']
- #'p': [1, 2, 3, 5, 7]
+ 'metric': ['euclidean', 'manhattan']#,
+# 'p': [1, 2, 3, 5, 7]
 }
 
 # Algunas otras posibles distancias son:
@@ -227,7 +230,7 @@ pipeline = Pipeline([
       param_grid, 
       cv=kf, 
       scoring=scoring, 
-      refit='neg_mean_squared_error',
+      refit='mape',
       verbose=3, 
       n_jobs=7)
      )
@@ -252,7 +255,7 @@ summary_df
 
 (
   summary_df >>
-  ggplot(aes(x = "param_n_neighbors", y = "mean_test_r2", #size = "param_p",
+  ggplot(aes(x = "param_n_neighbors", y = "mean_test_mape", #size = "param_p",
              color = "param_metric", shape = "param_weights")) +
   geom_point(alpha = 0.65) +
   ggtitle("Parametrización de KNN vs R^2") +
@@ -267,13 +270,13 @@ summary_df
     #_.param_p == 1,
     _.param_metric == "manhattan") >>
   mutate(
-    ymin = np.maximum(0, _.mean_test_r2 - _.std_test_r2),
-    ymax = np.minimum(1, _.mean_test_r2 + _.std_test_r2)) >>
-  ggplot(aes(x = "param_n_neighbors", y = "mean_test_r2")) +
+    ymin = np.maximum(0, _.mean_test_mape - _.std_test_mape),
+    ymax = np.minimum(1, _.mean_test_mape + _.std_test_mape)) >>
+  ggplot(aes(x = "param_n_neighbors", y = "mean_test_mape")) +
   geom_errorbar(aes(ymin='ymin', ymax='ymax'),
     width=0.3, position=position_dodge(0.9)) +
   geom_point(alpha = 0.65) +
-  ggtitle("Parametrización de KNN vs R^2") +
+  ggtitle("Parametrización de KNN vs Mape") +
   xlab("Parámetro: Número de vecinos cercanos") +
   ylab("R^2 promedio")
 )

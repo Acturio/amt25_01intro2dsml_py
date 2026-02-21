@@ -9,7 +9,6 @@ from sklearn.model_selection import train_test_split, KFold
 from sklearn.model_selection import GridSearchCV
 from sklearn.utils import shuffle
 
-from plydata.tidy import pivot_longer
 from mizani.formatters import comma_format, dollar_format
 from plotnine import *
 from siuba import *
@@ -45,7 +44,7 @@ ames_x_train, ames_x_test, ames_y_train, ames_y_test = train_test_split(
 num_cols = ["Full_Bath", "Half_Bath", "Second_Flr_SF"]
 
 # Seleccionamos las variables categóricas de interés
-cat_cols = ["Overall_Cond"]
+cat_cols = ["Overall_Cond", "Neighborhood"]
 
 # Juntamos todas las variables de interés
 columnas_seleccionadas = num_cols + cat_cols
