@@ -213,6 +213,11 @@ Revisaremos algunas de sus funciones **más usadas** (*verbos*), así como el us
 
 
 Primero tenemos que instalar y cargar la paquetería:
+
+```{bash, message=FALSE, warning=FALSE, eval = F}
+#Shell
+pip install siuba
+```
  
 ```{r, message=FALSE, warning=FALSE, eval = F}
 #R

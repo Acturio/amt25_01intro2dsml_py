@@ -507,6 +507,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2           4.7          3.2           1.3          0.2      0.0      setosa
 ## 3           4.6          3.1           1.5          0.2      0.0      setosa
 ## 4           5.0          3.6           1.4          0.2      0.0      setosa</code></pre>
+<<<<<<< HEAD
 <pre><code>## &lt;Figure Size: (1280 x 960)&gt;</code></pre>
 <p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-59-1.png" width="614" /></p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb56-1"><a href="visualización.html#cb56-1" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -516,27 +517,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb56-5"><a href="visualización.html#cb56-5" aria-hidden="true" tabindex="-1"></a>  geom_smooth()</span>
 <span id="cb56-6"><a href="visualización.html#cb56-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (1280 x 960)&gt;</code></pre>
+=======
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-59-1.png" width="614" /></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="visualización.html#cb57-1" tabindex="-1"></a>(</span>
+<span id="cb57-2"><a href="visualización.html#cb57-2" tabindex="-1"></a> iris <span class="op">&gt;&gt;</span></span>
+<span id="cb57-3"><a href="visualización.html#cb57-3" tabindex="-1"></a>  ggplot(aes(x <span class="op">=</span> <span class="st">&quot;sepal_length&quot;</span>, y <span class="op">=</span> <span class="st">&quot;sepal_width&quot;</span>, color <span class="op">=</span> <span class="st">&quot;species_cat&quot;</span>)) <span class="op">+</span> </span>
+<span id="cb57-4"><a href="visualización.html#cb57-4" tabindex="-1"></a>  geom_point() <span class="op">+</span> </span>
+<span id="cb57-5"><a href="visualización.html#cb57-5" tabindex="-1"></a>  geom_smooth()</span>
+<span id="cb57-6"><a href="visualización.html#cb57-6" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+>>>>>>> 4c541ee (update)
 <p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-60-3.png" width="614" /></p>
 </div>
 <div id="facetas" class="section level3 hasAnchor" number="3.3.3">
 <h3><span class="header-section-number">3.3.3</span> Facetas<a href="visualización.html#facetas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Muchos de los gráficos que pueden generarse con los elementos anteriores pueden reproducirse usando los gráficos tradicionales de R, pero no los que usan facetas, que pueden permitirnos explorar las variables de diferente forma, por ejemplo:</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="visualización.html#cb58-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb58-2"><a href="visualización.html#cb58-2" aria-hidden="true" tabindex="-1"></a> ggplot(iris, aes(x <span class="op">=</span> <span class="st">&quot;sepal_length&quot;</span>, y <span class="op">=</span> <span class="st">&quot;sepal_width&quot;</span>, color <span class="op">=</span> <span class="st">&quot;species_cat&quot;</span>)) <span class="op">+</span> </span>
 <span id="cb58-3"><a href="visualización.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  geom_point() <span class="op">+</span> geom_smooth(method <span class="op">=</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span> </span>
 <span id="cb58-4"><a href="visualización.html#cb58-4" aria-hidden="true" tabindex="-1"></a>  facet_wrap(<span class="st">&quot;species_cat&quot;</span>)</span>
 <span id="cb58-5"><a href="visualización.html#cb58-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (1280 x 960)&gt;</code></pre>
+=======
+<div class="sourceCode" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="visualización.html#cb59-1" tabindex="-1"></a>(</span>
+<span id="cb59-2"><a href="visualización.html#cb59-2" tabindex="-1"></a> ggplot(iris, aes(x <span class="op">=</span> <span class="st">&quot;sepal_length&quot;</span>, y <span class="op">=</span> <span class="st">&quot;sepal_width&quot;</span>, color <span class="op">=</span> <span class="st">&quot;species_cat&quot;</span>)) <span class="op">+</span> </span>
+<span id="cb59-3"><a href="visualización.html#cb59-3" tabindex="-1"></a>  geom_point() <span class="op">+</span> geom_smooth(method <span class="op">=</span> <span class="st">&quot;lm&quot;</span>) <span class="op">+</span> </span>
+<span id="cb59-4"><a href="visualización.html#cb59-4" tabindex="-1"></a>  facet_wrap(<span class="st">&quot;species_cat&quot;</span>)</span>
+<span id="cb59-5"><a href="visualización.html#cb59-5" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+>>>>>>> 4c541ee (update)
 <p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-61-5.png" width="614" /></p>
 <p>crea tres gráficos dispuestos horizontalmente que comparan la relación entre la anchura y la longitud del pétalo de las tres especies de iris. Una característica de estos gráficos, que es crítica para poder hacer comparaciones adecuadas, es que comparten ejes.</p>
 </div>
 <div id="más-sobre-estéticas" class="section level3 hasAnchor" number="3.3.4">
 <h3><span class="header-section-number">3.3.4</span> Más sobre estéticas<a href="visualización.html#más-sobre-estéticas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para los ejercicios en clase utilizaremos el set de datos: Diamonds:</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="visualización.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> data <span class="im">as</span> p9d</span>
 <span id="cb60-2"><a href="visualización.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-3"><a href="visualización.html#cb60-3" aria-hidden="true" tabindex="-1"></a>diamonds <span class="op">=</span> p9d.diamonds</span>
 <span id="cb60-4"><a href="visualización.html#cb60-4" aria-hidden="true" tabindex="-1"></a>diamonds</span></code></pre></div>
+=======
+<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="visualización.html#cb61-1" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> data <span class="im">as</span> p9d</span>
+<span id="cb61-2"><a href="visualización.html#cb61-2" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="visualización.html#cb61-3" tabindex="-1"></a>diamonds <span class="op">=</span> p9d.diamonds</span>
+<span id="cb61-4"><a href="visualización.html#cb61-4" tabindex="-1"></a>diamonds</span></code></pre></div>
+>>>>>>> 4c541ee (update)
 <pre><code>##        carat        cut color  ...     x     y     z
 ## 0       0.23      Ideal     E  ...  3.95  3.98  2.43
 ## 1       0.21    Premium     E  ...  3.89  3.84  2.31
@@ -586,6 +614,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><strong>Tip:</strong> <em>El segmento que divide la caja en dos partes es la mediana (punto 3 del gráfico), que facilitará la comprensión de si la distribución es simétrica o asimétrica, si la mediana se sitúa en el centro de la caja entonces la distribución es simétrica y tanto la media, mediana y moda coinciden.</em></p>
 <p><strong>Precio</strong></p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="visualización.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mizani.formatters <span class="im">import</span> comma_format, dollar_format</span>
 <span id="cb62-2"><a href="visualización.html#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-3"><a href="visualización.html#cb62-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -627,11 +656,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb68-8"><a href="visualización.html#cb68-8" aria-hidden="true" tabindex="-1"></a> ggtitle(<span class="st">&quot;Distribución del peso de los diamantes&quot;</span>)</span>
 <span id="cb68-9"><a href="visualización.html#cb68-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (1280 x 960)&gt;</code></pre>
+=======
+<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="visualización.html#cb63-1" tabindex="-1"></a><span class="im">from</span> mizani.formatters <span class="im">import</span> comma_format, dollar_format</span>
+<span id="cb63-2"><a href="visualización.html#cb63-2" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="visualización.html#cb63-3" tabindex="-1"></a>(</span>
+<span id="cb63-4"><a href="visualización.html#cb63-4" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span></span>
+<span id="cb63-5"><a href="visualización.html#cb63-5" tabindex="-1"></a>  ggplot(aes(x <span class="op">=</span> <span class="st">&quot;price&quot;</span>)) <span class="op">+</span></span>
+<span id="cb63-6"><a href="visualización.html#cb63-6" tabindex="-1"></a>  geom_histogram(color <span class="op">=</span> <span class="st">&quot;pink&quot;</span>, fill <span class="op">=</span> <span class="st">&quot;purple&quot;</span>, bins<span class="op">=</span><span class="dv">30</span>) <span class="op">+</span></span>
+<span id="cb63-7"><a href="visualización.html#cb63-7" tabindex="-1"></a>  scale_x_continuous(labels<span class="op">=</span>dollar_format()) <span class="op">+</span> </span>
+<span id="cb63-8"><a href="visualización.html#cb63-8" tabindex="-1"></a>  scale_y_continuous(labels<span class="op">=</span>comma_format()) <span class="op">+</span> </span>
+<span id="cb63-9"><a href="visualización.html#cb63-9" tabindex="-1"></a>  ggtitle(<span class="st">&quot;Distribución d eprecio&quot;</span>)</span>
+<span id="cb63-10"><a href="visualización.html#cb63-10" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-64-1.png" width="614" /></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="visualización.html#cb65-1" tabindex="-1"></a>(</span>
+<span id="cb65-2"><a href="visualización.html#cb65-2" tabindex="-1"></a> diamonds <span class="op">&gt;&gt;</span></span>
+<span id="cb65-3"><a href="visualización.html#cb65-3" tabindex="-1"></a>  ggplot(aes(x <span class="op">=</span> <span class="st">&quot;price&quot;</span>)) <span class="op">+</span></span>
+<span id="cb65-4"><a href="visualización.html#cb65-4" tabindex="-1"></a>  geom_histogram(aes(y<span class="op">=</span><span class="st">&#39;stat(density)&#39;</span>), bins <span class="op">=</span> <span class="dv">30</span>, fill <span class="op">=</span> <span class="st">&#39;blue&#39;</span>, color <span class="op">=</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></span>
+<span id="cb65-5"><a href="visualización.html#cb65-5" tabindex="-1"></a>  geom_density(colour <span class="op">=</span> <span class="st">&quot;black&quot;</span>, size <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb65-6"><a href="visualización.html#cb65-6" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-65-3.png" width="614" /></p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="visualización.html#cb67-1" tabindex="-1"></a>(</span>
+<span id="cb67-2"><a href="visualización.html#cb67-2" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span></span>
+<span id="cb67-3"><a href="visualización.html#cb67-3" tabindex="-1"></a> ggplot() <span class="op">+</span></span>
+<span id="cb67-4"><a href="visualización.html#cb67-4" tabindex="-1"></a> geom_boxplot(aes(x <span class="op">=</span> <span class="dv">0</span>, y <span class="op">=</span> <span class="st">&quot;price&quot;</span>), color<span class="op">=</span> <span class="st">&quot;blue&quot;</span>, fill<span class="op">=</span> <span class="st">&quot;lightblue&quot;</span>) <span class="op">+</span></span>
+<span id="cb67-5"><a href="visualización.html#cb67-5" tabindex="-1"></a> scale_y_continuous(labels <span class="op">=</span> dollar_format(prefix<span class="op">=</span><span class="st">&#39;$&#39;</span>, digits<span class="op">=</span><span class="dv">0</span>, big_mark<span class="op">=</span><span class="st">&#39;,&#39;</span>)) <span class="op">+</span></span>
+<span id="cb67-6"><a href="visualización.html#cb67-6" tabindex="-1"></a> theme(axis_text_x<span class="op">=</span>element_blank()) <span class="op">+</span></span>
+<span id="cb67-7"><a href="visualización.html#cb67-7" tabindex="-1"></a> ggtitle(<span class="st">&quot;Distribución de precio&quot;</span>)</span>
+<span id="cb67-8"><a href="visualización.html#cb67-8" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-66-5.png" width="614" /></p>
+<p><strong>Peso del diamante</strong></p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="visualización.html#cb69-1" tabindex="-1"></a>(</span>
+<span id="cb69-2"><a href="visualización.html#cb69-2" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span></span>
+<span id="cb69-3"><a href="visualización.html#cb69-3" tabindex="-1"></a> ggplot(aes(x <span class="op">=</span> <span class="dv">0</span>, y <span class="op">=</span> <span class="st">&quot;carat&quot;</span>)) <span class="op">+</span></span>
+<span id="cb69-4"><a href="visualización.html#cb69-4" tabindex="-1"></a> geom_boxplot(color<span class="op">=</span> <span class="st">&quot;purple&quot;</span>, fill<span class="op">=</span> <span class="st">&quot;pink&quot;</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>) <span class="op">+</span></span>
+<span id="cb69-5"><a href="visualización.html#cb69-5" tabindex="-1"></a> scale_y_continuous(labels <span class="op">=</span> comma_format(digits<span class="op">=</span><span class="dv">1</span>)) <span class="op">+</span></span>
+<span id="cb69-6"><a href="visualización.html#cb69-6" tabindex="-1"></a> theme(axis_text_y<span class="op">=</span>element_blank()) <span class="op">+</span></span>
+<span id="cb69-7"><a href="visualización.html#cb69-7" tabindex="-1"></a> coord_flip() <span class="op">+</span></span>
+<span id="cb69-8"><a href="visualización.html#cb69-8" tabindex="-1"></a> ggtitle(<span class="st">&quot;Distribución del peso de los diamantes&quot;</span>)</span>
+<span id="cb69-9"><a href="visualización.html#cb69-9" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+>>>>>>> 4c541ee (update)
 <p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-67-7.png" width="614" /></p>
 </div>
 <div id="variables-nominalescategóricas" class="section level3 hasAnchor" number="3.4.2">
 <h3><span class="header-section-number">3.4.2</span> Variables nominales/categóricas<a href="visualización.html#variables-nominalescategóricas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Calidad de corte</strong></p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb70"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb70-1"><a href="visualización.html#cb70-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb70-2"><a href="visualización.html#cb70-2" aria-hidden="true" tabindex="-1"></a> diamonds <span class="op">&gt;&gt;</span> </span>
 <span id="cb70-3"><a href="visualización.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  ggplot( aes( x <span class="op">=</span> <span class="st">&quot;cut&quot;</span>)) <span class="op">+</span> </span>
@@ -675,6 +748,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb74-14"><a href="visualización.html#cb74-14" aria-hidden="true" tabindex="-1"></a>  coord_flip() </span>
 <span id="cb74-15"><a href="visualización.html#cb74-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (1280 x 960)&gt;</code></pre>
+=======
+<div class="sourceCode" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="visualización.html#cb71-1" tabindex="-1"></a>(</span>
+<span id="cb71-2"><a href="visualización.html#cb71-2" tabindex="-1"></a> diamonds <span class="op">&gt;&gt;</span> </span>
+<span id="cb71-3"><a href="visualización.html#cb71-3" tabindex="-1"></a>  ggplot( aes( x <span class="op">=</span> <span class="st">&quot;cut&quot;</span>)) <span class="op">+</span> </span>
+<span id="cb71-4"><a href="visualización.html#cb71-4" tabindex="-1"></a>  geom_bar( color<span class="op">=</span> <span class="st">&quot;darkblue&quot;</span>, fill<span class="op">=</span> <span class="st">&quot;cyan&quot;</span>, alpha<span class="op">=</span> <span class="fl">0.7</span>) <span class="op">+</span></span>
+<span id="cb71-5"><a href="visualización.html#cb71-5" tabindex="-1"></a>  scale_y_continuous(labels <span class="op">=</span> comma_format()) <span class="op">+</span></span>
+<span id="cb71-6"><a href="visualización.html#cb71-6" tabindex="-1"></a>  ggtitle(<span class="st">&quot;Distribución de calidad de corte&quot;</span>) <span class="op">+</span></span>
+<span id="cb71-7"><a href="visualización.html#cb71-7" tabindex="-1"></a>  theme_dark()</span>
+<span id="cb71-8"><a href="visualización.html#cb71-8" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-68-9.png" width="614" /></p>
+<p><strong>Claridad</strong></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="visualización.html#cb73-1" tabindex="-1"></a>(</span>
+<span id="cb73-2"><a href="visualización.html#cb73-2" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span> </span>
+<span id="cb73-3"><a href="visualización.html#cb73-3" tabindex="-1"></a>  ggplot( aes( x <span class="op">=</span> <span class="st">&quot;clarity&quot;</span>)) <span class="op">+</span> </span>
+<span id="cb73-4"><a href="visualización.html#cb73-4" tabindex="-1"></a>  geom_bar( fill<span class="op">=</span> <span class="st">&quot;darkblue&quot;</span>, color<span class="op">=</span> <span class="st">&quot;black&quot;</span>, alpha<span class="op">=</span> <span class="fl">0.7</span>) <span class="op">+</span></span>
+<span id="cb73-5"><a href="visualización.html#cb73-5" tabindex="-1"></a>  geom_text(</span>
+<span id="cb73-6"><a href="visualización.html#cb73-6" tabindex="-1"></a>   aes(label<span class="op">=</span>after_stat(<span class="st">&#39;count&#39;</span>), group<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb73-7"><a href="visualización.html#cb73-7" tabindex="-1"></a>     stat<span class="op">=</span><span class="st">&#39;count&#39;</span>,</span>
+<span id="cb73-8"><a href="visualización.html#cb73-8" tabindex="-1"></a>     nudge_x<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb73-9"><a href="visualización.html#cb73-9" tabindex="-1"></a>     nudge_y<span class="op">=</span><span class="fl">0.125</span>,</span>
+<span id="cb73-10"><a href="visualización.html#cb73-10" tabindex="-1"></a>     va<span class="op">=</span><span class="st">&#39;bottom&#39;</span>,</span>
+<span id="cb73-11"><a href="visualización.html#cb73-11" tabindex="-1"></a>     format_string<span class="op">=</span><span class="st">&#39;</span><span class="sc">{:,.0f}</span><span class="st">&#39;</span>) <span class="op">+</span></span>
+<span id="cb73-12"><a href="visualización.html#cb73-12" tabindex="-1"></a>  scale_y_continuous(labels <span class="op">=</span> comma_format()) <span class="op">+</span></span>
+<span id="cb73-13"><a href="visualización.html#cb73-13" tabindex="-1"></a>  ggtitle(<span class="st">&quot;Distribución claridad&quot;</span>) </span>
+<span id="cb73-14"><a href="visualización.html#cb73-14" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-69-11.png" width="614" /></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="visualización.html#cb75-1" tabindex="-1"></a>(</span>
+<span id="cb75-2"><a href="visualización.html#cb75-2" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span> </span>
+<span id="cb75-3"><a href="visualización.html#cb75-3" tabindex="-1"></a>  ggplot( aes( x <span class="op">=</span> <span class="st">&quot;clarity&quot;</span>)) <span class="op">+</span> </span>
+<span id="cb75-4"><a href="visualización.html#cb75-4" tabindex="-1"></a>  geom_bar( fill<span class="op">=</span> <span class="st">&quot;darkblue&quot;</span>, color<span class="op">=</span> <span class="st">&quot;black&quot;</span>, alpha<span class="op">=</span> <span class="fl">0.9</span>) <span class="op">+</span></span>
+<span id="cb75-5"><a href="visualización.html#cb75-5" tabindex="-1"></a>  geom_text(</span>
+<span id="cb75-6"><a href="visualización.html#cb75-6" tabindex="-1"></a>   aes(label<span class="op">=</span>after_stat(<span class="st">&#39;count / sum(count) * 100&#39;</span>), group<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb75-7"><a href="visualización.html#cb75-7" tabindex="-1"></a>     color <span class="op">=</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb75-8"><a href="visualización.html#cb75-8" tabindex="-1"></a>     stat<span class="op">=</span><span class="st">&#39;count&#39;</span>,</span>
+<span id="cb75-9"><a href="visualización.html#cb75-9" tabindex="-1"></a>     va<span class="op">=</span><span class="st">&#39;bottom&#39;</span>,</span>
+<span id="cb75-10"><a href="visualización.html#cb75-10" tabindex="-1"></a>     ha<span class="op">=</span><span class="st">&#39;right&#39;</span>,</span>
+<span id="cb75-11"><a href="visualización.html#cb75-11" tabindex="-1"></a>     format_string<span class="op">=</span><span class="st">&#39;</span><span class="sc">{:.1f}</span><span class="st">%&#39;</span>) <span class="op">+</span></span>
+<span id="cb75-12"><a href="visualización.html#cb75-12" tabindex="-1"></a>  scale_y_continuous(labels <span class="op">=</span> comma_format()) <span class="op">+</span></span>
+<span id="cb75-13"><a href="visualización.html#cb75-13" tabindex="-1"></a>  ggtitle(<span class="st">&quot;Distribución claridad&quot;</span>) <span class="op">+</span></span>
+<span id="cb75-14"><a href="visualización.html#cb75-14" tabindex="-1"></a>  coord_flip() </span>
+<span id="cb75-15"><a href="visualización.html#cb75-15" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+>>>>>>> 4c541ee (update)
 <p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-70-13.png" width="614" /></p>
 </div>
 </div>
@@ -683,6 +801,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Un buen análisis de datos, requiere del análisis conjunto de variables. Una sola variable es importante de analizar en cuanto a su distribución y calidad, no obstante, no dice mucho al analizarse por sí sola. Es por ello, que es indispensable analizar la covariabilidad y dependencia entre los distintos atributos de la información.</p>
 <p>En el análisis multivariado, se busca comparar la información haciendo contrastes de colores, formas, tamaños, paneles, etc.</p>
 <p><strong>Precio vs Calidad del corte</strong></p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb76-1"><a href="visualización.html#cb76-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb76-2"><a href="visualización.html#cb76-2" aria-hidden="true" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span> </span>
 <span id="cb76-3"><a href="visualización.html#cb76-3" aria-hidden="true" tabindex="-1"></a>  ggplot(aes(y <span class="op">=</span> <span class="st">&quot;price&quot;</span>, x <span class="op">=</span> <span class="st">&quot;cut&quot;</span>, color <span class="op">=</span> <span class="st">&quot;cut&quot;</span>))  <span class="op">+</span> </span>
@@ -730,6 +849,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb86-7"><a href="visualización.html#cb86-7" aria-hidden="true" tabindex="-1"></a>  ylim(<span class="dv">0</span>, <span class="dv">20000</span>)</span>
 <span id="cb86-8"><a href="visualización.html#cb86-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## &lt;Figure Size: (1280 x 960)&gt;</code></pre>
+=======
+<div class="sourceCode" id="cb77"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb77-1"><a href="visualización.html#cb77-1" tabindex="-1"></a>(</span>
+<span id="cb77-2"><a href="visualización.html#cb77-2" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span> </span>
+<span id="cb77-3"><a href="visualización.html#cb77-3" tabindex="-1"></a>  ggplot(aes(y <span class="op">=</span> <span class="st">&quot;price&quot;</span>, x <span class="op">=</span> <span class="st">&quot;cut&quot;</span>, color <span class="op">=</span> <span class="st">&quot;cut&quot;</span>))  <span class="op">+</span> </span>
+<span id="cb77-4"><a href="visualización.html#cb77-4" tabindex="-1"></a>  geom_jitter(size <span class="op">=</span> <span class="fl">0.3</span>, alpha <span class="op">=</span> <span class="fl">0.3</span>)</span>
+<span id="cb77-5"><a href="visualización.html#cb77-5" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-71-15.png" width="614" /></p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb79-1"><a href="visualización.html#cb79-1" tabindex="-1"></a>(</span>
+<span id="cb79-2"><a href="visualización.html#cb79-2" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span> </span>
+<span id="cb79-3"><a href="visualización.html#cb79-3" tabindex="-1"></a>  ggplot(aes(y <span class="op">=</span> <span class="st">&quot;price&quot;</span>, x <span class="op">=</span> <span class="st">&quot;cut&quot;</span>, color <span class="op">=</span> <span class="st">&quot;cut&quot;</span>))  <span class="op">+</span> </span>
+<span id="cb79-4"><a href="visualización.html#cb79-4" tabindex="-1"></a>  geom_boxplot(size<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span> <span class="fl">0.3</span>)</span>
+<span id="cb79-5"><a href="visualización.html#cb79-5" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-72-17.png" width="614" /></p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb81-1"><a href="visualización.html#cb81-1" tabindex="-1"></a>(</span>
+<span id="cb81-2"><a href="visualización.html#cb81-2" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span> </span>
+<span id="cb81-3"><a href="visualización.html#cb81-3" tabindex="-1"></a>  ggplot(aes(x <span class="op">=</span> <span class="st">&quot;price&quot;</span> ,fill <span class="op">=</span> <span class="st">&quot;cut&quot;</span>))  <span class="op">+</span> </span>
+<span id="cb81-4"><a href="visualización.html#cb81-4" tabindex="-1"></a>  geom_histogram(position <span class="op">=</span> <span class="st">&#39;identity&#39;</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb81-5"><a href="visualización.html#cb81-5" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-73-19.png" width="614" /></p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb83-1"><a href="visualización.html#cb83-1" tabindex="-1"></a>(</span>
+<span id="cb83-2"><a href="visualización.html#cb83-2" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span> </span>
+<span id="cb83-3"><a href="visualización.html#cb83-3" tabindex="-1"></a>  ggplot(aes(x<span class="op">=</span> <span class="st">&quot;price&quot;</span> ,fill <span class="op">=</span> <span class="st">&quot;cut&quot;</span>))  <span class="op">+</span> </span>
+<span id="cb83-4"><a href="visualización.html#cb83-4" tabindex="-1"></a>  geom_histogram(position <span class="op">=</span> <span class="st">&#39;identity&#39;</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
+<span id="cb83-5"><a href="visualización.html#cb83-5" tabindex="-1"></a>  facet_wrap(<span class="st">&quot;cut&quot;</span>, ncol <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb83-6"><a href="visualización.html#cb83-6" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-74-21.png" width="614" /></p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb85-1"><a href="visualización.html#cb85-1" tabindex="-1"></a>(</span>
+<span id="cb85-2"><a href="visualización.html#cb85-2" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span> </span>
+<span id="cb85-3"><a href="visualización.html#cb85-3" tabindex="-1"></a>  ggplot( aes(x <span class="op">=</span> <span class="st">&quot;carat&quot;</span>, y <span class="op">=</span> <span class="st">&quot;price&quot;</span>)) <span class="op">+</span></span>
+<span id="cb85-4"><a href="visualización.html#cb85-4" tabindex="-1"></a>  geom_point(aes(color <span class="op">=</span> <span class="st">&quot;clarity&quot;</span>), size <span class="op">=</span> <span class="fl">0.5</span>, alpha <span class="op">=</span> <span class="fl">0.3</span> ) <span class="op">+</span></span>
+<span id="cb85-5"><a href="visualización.html#cb85-5" tabindex="-1"></a>  geom_smooth() <span class="op">+</span></span>
+<span id="cb85-6"><a href="visualización.html#cb85-6" tabindex="-1"></a>  ylim(<span class="dv">0</span>, <span class="dv">20000</span>)</span>
+<span id="cb85-7"><a href="visualización.html#cb85-7" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+<p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-75-23.png" width="614" /></p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb87-1"><a href="visualización.html#cb87-1" tabindex="-1"></a>(</span>
+<span id="cb87-2"><a href="visualización.html#cb87-2" tabindex="-1"></a>diamonds <span class="op">&gt;&gt;</span> </span>
+<span id="cb87-3"><a href="visualización.html#cb87-3" tabindex="-1"></a>  ggplot( aes(x <span class="op">=</span> <span class="st">&quot;carat&quot;</span>, y <span class="op">=</span> <span class="st">&quot;price&quot;</span>)) <span class="op">+</span></span>
+<span id="cb87-4"><a href="visualización.html#cb87-4" tabindex="-1"></a>  geom_point(aes(color <span class="op">=</span> <span class="st">&quot;clarity&quot;</span>), size <span class="op">=</span> <span class="fl">0.3</span>, alpha <span class="op">=</span> <span class="fl">0.3</span> ) <span class="op">+</span></span>
+<span id="cb87-5"><a href="visualización.html#cb87-5" tabindex="-1"></a>  facet_wrap(<span class="st">&quot;clarity&quot;</span>)<span class="op">+</span></span>
+<span id="cb87-6"><a href="visualización.html#cb87-6" tabindex="-1"></a>  geom_smooth() <span class="op">+</span></span>
+<span id="cb87-7"><a href="visualización.html#cb87-7" tabindex="-1"></a>  ylim(<span class="dv">0</span>, <span class="dv">20000</span>)</span>
+<span id="cb87-8"><a href="visualización.html#cb87-8" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## &lt;Figure Size: (640 x 480)&gt;</code></pre>
+>>>>>>> 4c541ee (update)
 <p><img src="amt23_01intro2dsml_py_files/figure-html/unnamed-chunk-76-25.png" width="614" /></p>
 <div id="ejercicios" class="section level3 unnumbered hasAnchor">
 <h3>Ejercicios<a href="visualización.html#ejercicios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
