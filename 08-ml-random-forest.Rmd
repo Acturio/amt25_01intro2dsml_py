@@ -552,7 +552,7 @@ pipeline = Pipeline([
      )
 ])
 
-pipeline.fit(ames_train_selected, ames_y_train)
+pipeline.fit(ames_train_selected, ames_y_train.squeeze())
 
 pickle.dump(pipeline, open('models/grid_search_random_forest.pkl', 'wb'))
 ```

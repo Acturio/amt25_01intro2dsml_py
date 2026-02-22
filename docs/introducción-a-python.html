@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 2 Introducción a Python | Introducción a Ciencia de Datos y Machine Learning con Python</title>
   <meta name="description" content="Capítulo 2 Introducción a Python | Introducción a Ciencia de Datos y Machine Learning con Python" />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 2 Introducción a Python | Introducción a Ciencia de Datos y Machine Learning con Python" />
   <meta property="og:type" content="book" />
@@ -52,16 +52,18 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.12.0/plotly.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -99,7 +101,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -112,7 +114,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -126,6 +128,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -153,13 +159,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#temario"><i class="fa fa-check"></i>Temario:</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#duración-y-evaluación-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recursos-y-dinámica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#asesorías"><i class="fa fa-check"></i>Asesorías</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#duraci%C3%B3n-y-evaluaci%C3%B3n-del-curso"><i class="fa fa-check"></i>Duración y evaluación del curso</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#recursos-y-din%C3%A1mica-de-clase"><i class="fa fa-check"></i>Recursos y dinámica de clase</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#asesor%C3%ADas"><i class="fa fa-check"></i>Asesorías</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html"><i class="fa fa-check"></i><b>1</b> Conceptos de Ciencia de Datos</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#qué-es-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es Ciencia de Datos?</a>
+<li class="chapter" data-level="1.1" data-path="02-intro2tidy.html"><a href="#qu%C3%A9-es-ciencia-de-datos"><i class="fa fa-check"></i><b>1.1</b> ¿Qué es Ciencia de Datos?</a>
 <ul>
 <li class="chapter" data-level="" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#definiendo-conceptos"><i class="fa fa-check"></i>Definiendo conceptos:</a></li>
 </ul></li>
@@ -173,11 +179,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5.3" data-path="conceptos-de-ciencia-de-datos.html"><a href="conceptos-de-ciencia-de-datos.html#aprendizaje-por-refuerzo"><i class="fa fa-check"></i><b>1.5.3</b> Aprendizaje por refuerzo</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="introducción-a-python.html"><a href="introducción-a-python.html"><i class="fa fa-check"></i><b>2</b> Introducción a Python</a>
+<li class="chapter" data-level="2" data-path="02-intro2tidy.html"><a href="#introducci%C3%B3n-a-python"><i class="fa fa-check"></i><b>2</b> Introducción a Python</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="introducción-a-python.html"><a href="introducción-a-python.html#cómo-obtener-python"><i class="fa fa-check"></i><b>2.1</b> ¿Cómo obtener <em>Python</em>?</a></li>
-<li class="chapter" data-level="2.2" data-path="introducción-a-python.html"><a href="introducción-a-python.html#qué-es-positron"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es Positron?</a></li>
-<li class="chapter" data-level="2.3" data-path="introducción-a-python.html"><a href="introducción-a-python.html#uso-de-python-en-positron"><i class="fa fa-check"></i><b>2.3</b> Uso de python en Positron</a></li>
+<li class="chapter" data-level="2.1" data-path="02-intro2tidy.html"><a href="#c%C3%B3mo-obtener-python"><i class="fa fa-check"></i><b>2.1</b> ¿Cómo obtener <em>Python</em>?</a></li>
+<li class="chapter" data-level="2.2" data-path="02-intro2tidy.html"><a href="#qu%C3%A9-es-positron"><i class="fa fa-check"></i><b>2.2</b> ¿Qué es Positron?</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-python.html"><a href="introducción-a-python.html"><i class="fa fa-check"></i><b>2.3</b> Uso de python en Positron</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="introducción-a-python.html"><a href="introducción-a-python.html#instalar-ambiente-virtual-desde-bash"><i class="fa fa-check"></i><b>2.3.1</b> Instalar ambiente virtual desde bash</a></li>
+<li class="chapter" data-level="2.3.2" data-path="introducción-a-python.html"><a href="introducción-a-python.html#instalar-ambiente-virtual-desde-r"><i class="fa fa-check"></i><b>2.3.2</b> Instalar ambiente virtual desde R</a></li>
+</ul></li>
 <li class="chapter" data-level="2.4" data-path="introducción-a-python.html"><a href="introducción-a-python.html#lectura-de-datos"><i class="fa fa-check"></i><b>2.4</b> Lectura de datos</a>
 <ul>
 <li class="chapter" data-level="2.4.1" data-path="introducción-a-python.html"><a href="introducción-a-python.html#archivos-csv"><i class="fa fa-check"></i><b>2.4.1</b> Archivos <em>csv</em></a></li>
@@ -191,44 +201,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.2" data-path="introducción-a-python.html"><a href="introducción-a-python.html#filtrar-observaciones"><i class="fa fa-check"></i><b>2.5.2</b> Filtrar observaciones</a></li>
 <li class="chapter" data-level="2.5.3" data-path="introducción-a-python.html"><a href="introducción-a-python.html#ordenar-registros"><i class="fa fa-check"></i><b>2.5.3</b> Ordenar registros</a></li>
 <li class="chapter" data-level="2.5.4" data-path="introducción-a-python.html"><a href="introducción-a-python.html#agregar-modificar"><i class="fa fa-check"></i><b>2.5.4</b> Agregar / Modificar</a></li>
-<li class="chapter" data-level="2.5.5" data-path="introducción-a-python.html"><a href="introducción-a-python.html#resumen-estadístico"><i class="fa fa-check"></i><b>2.5.5</b> Resumen estadístico</a></li>
+<li class="chapter" data-level="2.5.5" data-path="02-intro2tidy.html"><a href="#resumen-estad%C3%ADstico"><i class="fa fa-check"></i><b>2.5.5</b> Resumen estadístico</a></li>
 <li class="chapter" data-level="2.5.6" data-path="introducción-a-python.html"><a href="introducción-a-python.html#agrupamiento"><i class="fa fa-check"></i><b>2.5.6</b> Agrupamiento</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="visualización.html"><a href="visualización.html"><i class="fa fa-check"></i><b>3</b> Visualización</a>
+<li class="chapter" data-level="3" data-path="02-intro2tidy.html"><a href="#visualizaci%C3%B3n"><i class="fa fa-check"></i><b>3</b> Visualización</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="visualización.html"><a href="visualización.html#eda-análisis-exploratorio-de-datos"><i class="fa fa-check"></i><b>3.1</b> EDA: Análisis Exploratorio de Datos</a></li>
-<li class="chapter" data-level="3.2" data-path="visualización.html"><a href="visualización.html#geda-análisis-exploratorio-de-datos-gráficos"><i class="fa fa-check"></i><b>3.2</b> GEDA: Análisis Exploratorio de Datos Gráficos</a>
+<li class="chapter" data-level="3.1" data-path="02-intro2tidy.html"><a href="#eda-an%C3%A1lisis-exploratorio-de-datos"><i class="fa fa-check"></i><b>3.1</b> EDA: Análisis Exploratorio de Datos</a></li>
+<li class="chapter" data-level="3.2" data-path="02-intro2tidy.html"><a href="#geda-an%C3%A1lisis-exploratorio-de-datos-gr%C3%A1ficos"><i class="fa fa-check"></i><b>3.2</b> GEDA: Análisis Exploratorio de Datos Gráficos</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="visualización.html"><a href="visualización.html#lo-que-no-se-debe-hacer"><i class="fa fa-check"></i><b>3.2.1</b> Lo que no se debe hacer…</a></li>
-<li class="chapter" data-level="3.2.2" data-path="visualización.html"><a href="visualización.html#principios-de-visualización"><i class="fa fa-check"></i><b>3.2.2</b> Principios de visualización</a></li>
+<li class="chapter" data-level="3.2.1" data-path="visualización.html"><a href="visualización.html"><i class="fa fa-check"></i><b>3.2.1</b> Lo que no se debe hacer…</a></li>
+<li class="chapter" data-level="3.2.2" data-path="02-intro2tidy.html"><a href="#principios-de-visualizaci%C3%B3n"><i class="fa fa-check"></i><b>3.2.2</b> Principios de visualización</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="visualización.html"><a href="visualización.html#ggplot-plotnine"><i class="fa fa-check"></i><b>3.3</b> Ggplot / plotnine</a>
 <ul>
-<li class="chapter" data-level="3.3.1" data-path="visualización.html"><a href="visualización.html#capas-estéticas"><i class="fa fa-check"></i><b>3.3.1</b> Capas Estéticas</a></li>
-<li class="chapter" data-level="3.3.2" data-path="visualización.html"><a href="visualización.html#capas-geométricas"><i class="fa fa-check"></i><b>3.3.2</b> Capas geométricas</a></li>
+<li class="chapter" data-level="3.3.1" data-path="02-intro2tidy.html"><a href="#capas-est%C3%A9ticas"><i class="fa fa-check"></i><b>3.3.1</b> Capas Estéticas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="02-intro2tidy.html"><a href="#capas-geom%C3%A9tricas"><i class="fa fa-check"></i><b>3.3.2</b> Capas geométricas</a></li>
 <li class="chapter" data-level="3.3.3" data-path="visualización.html"><a href="visualización.html#facetas"><i class="fa fa-check"></i><b>3.3.3</b> Facetas</a></li>
-<li class="chapter" data-level="3.3.4" data-path="visualización.html"><a href="visualización.html#más-sobre-estéticas"><i class="fa fa-check"></i><b>3.3.4</b> Más sobre estéticas</a></li>
+<li class="chapter" data-level="3.3.4" data-path="02-intro2tidy.html"><a href="#m%C3%A1s-sobre-est%C3%A9ticas"><i class="fa fa-check"></i><b>3.3.4</b> Más sobre estéticas</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="visualización.html"><a href="visualización.html#análisis-univariado"><i class="fa fa-check"></i><b>3.4</b> Análisis univariado</a>
+<li class="chapter" data-level="3.4" data-path="02-intro2tidy.html"><a href="#an%C3%A1lisis-univariado"><i class="fa fa-check"></i><b>3.4</b> Análisis univariado</a>
 <ul>
-<li class="chapter" data-level="3.4.1" data-path="visualización.html"><a href="visualización.html#variables-numéricas"><i class="fa fa-check"></i><b>3.4.1</b> Variables numéricas</a></li>
-<li class="chapter" data-level="3.4.2" data-path="visualización.html"><a href="visualización.html#variables-nominalescategóricas"><i class="fa fa-check"></i><b>3.4.2</b> Variables nominales/categóricas</a></li>
+<li class="chapter" data-level="3.4.1" data-path="02-intro2tidy.html"><a href="#variables-num%C3%A9ricas"><i class="fa fa-check"></i><b>3.4.1</b> Variables numéricas</a></li>
+<li class="chapter" data-level="3.4.2" data-path="02-intro2tidy.html"><a href="#variables-nominalescateg%C3%B3ricas"><i class="fa fa-check"></i><b>3.4.2</b> Variables nominales/categóricas</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="visualización.html"><a href="visualización.html#análisis-multivariado"><i class="fa fa-check"></i><b>3.5</b> Análisis multivariado</a>
+<li class="chapter" data-level="3.5" data-path="02-intro2tidy.html"><a href="#an%C3%A1lisis-multivariado"><i class="fa fa-check"></i><b>3.5</b> Análisis multivariado</a>
 <ul>
 <li class="chapter" data-level="" data-path="visualización.html"><a href="visualización.html#ejercicios"><i class="fa fa-check"></i>Ejercicios</a></li>
 <li class="chapter" data-level="" data-path="visualización.html"><a href="visualización.html#warning"><i class="fa fa-check"></i>¡ Warning !</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="visualización.html"><a href="visualización.html#reporte-interactivos"><i class="fa fa-check"></i><b>3.6</b> Reporte interactivos</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html"><i class="fa fa-check"></i><b>4</b> Introducción a Machine Learning</a>
+<li class="chapter" data-level="4" data-path="02-intro2tidy.html"><a href="#introducci%C3%B3n-a-machine-learning"><i class="fa fa-check"></i><b>4</b> Introducción a Machine Learning</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#análisis-supervisado-vs-no-supervisado"><i class="fa fa-check"></i><b>4.1</b> Análisis Supervisado vs No supervisado</a>
+<li class="chapter" data-level="4.1" data-path="02-intro2tidy.html"><a href="#an%C3%A1lisis-supervisado-vs-no-supervisado"><i class="fa fa-check"></i><b>4.1</b> Análisis Supervisado vs No supervisado</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#regresión-vs-clasificación"><i class="fa fa-check"></i><b>4.1.1</b> Regresión vs clasificación</a></li>
+<li class="chapter" data-level="4.1.1" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-vs-clasificaci%C3%B3n"><i class="fa fa-check"></i><b>4.1.1</b> Regresión vs clasificación</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#sesgo-vs-varianza"><i class="fa fa-check"></i><b>4.2</b> Sesgo vs varianza</a>
+<li class="chapter" data-level="4.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html"><i class="fa fa-check"></i><b>4.2</b> Sesgo vs varianza</a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#balance-entre-sesgo-y-varianza-o-trade-off"><i class="fa fa-check"></i><b>4.2.1</b> Balance entre sesgo y varianza o Trade-off</a></li>
 <li class="chapter" data-level="4.2.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#error-total"><i class="fa fa-check"></i><b>4.2.2</b> Error total</a></li>
@@ -236,114 +246,114 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#underfitting"><i class="fa fa-check"></i><b>4.2.4</b> Underfitting</a></li>
 <li class="chapter" data-level="4.2.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#error-irreducible"><i class="fa fa-check"></i><b>4.2.5</b> Error irreducible</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#partición-de-datos"><i class="fa fa-check"></i><b>4.3</b> Partición de datos</a>
+<li class="chapter" data-level="4.3" data-path="02-intro2tidy.html"><a href="#partici%C3%B3n-de-datos"><i class="fa fa-check"></i><b>4.3</b> Partición de datos</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#métodos-comunes-para-particionar-datos"><i class="fa fa-check"></i><b>4.3.1</b> Métodos comunes para particionar datos</a></li>
-<li class="chapter" data-level="4.3.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#conjunto-de-validación"><i class="fa fa-check"></i><b>4.3.2</b> Conjunto de validación</a></li>
+<li class="chapter" data-level="4.3.1" data-path="02-intro2tidy.html"><a href="#m%C3%A9todos-comunes-para-particionar-datos"><i class="fa fa-check"></i><b>4.3.1</b> Métodos comunes para particionar datos</a></li>
+<li class="chapter" data-level="4.3.2" data-path="02-intro2tidy.html"><a href="#conjunto-de-validaci%C3%B3n"><i class="fa fa-check"></i><b>4.3.2</b> Conjunto de validación</a></li>
 <li class="chapter" data-level="4.3.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#k-fold-cross-validation"><i class="fa fa-check"></i><b>4.3.3</b> K Fold Cross Validation</a></li>
-<li class="chapter" data-level="4.3.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#validación-cruzada-para-series-de-tiempo"><i class="fa fa-check"></i><b>4.3.4</b> Validación cruzada para series de tiempo</a></li>
+<li class="chapter" data-level="4.3.4" data-path="02-intro2tidy.html"><a href="#validaci%C3%B3n-cruzada-para-series-de-tiempo"><i class="fa fa-check"></i><b>4.3.4</b> Validación cruzada para series de tiempo</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#feature-engineering"><i class="fa fa-check"></i><b>4.4</b> Feature engineering</a></li>
 <li class="chapter" data-level="4.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#pipeline"><i class="fa fa-check"></i><b>4.5</b> Pipeline</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#normalizar-columnas-numéricas"><i class="fa fa-check"></i><b>4.5.1</b> Normalizar columnas numéricas</a></li>
-<li class="chapter" data-level="4.5.2" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#dicotomización-de-categorías"><i class="fa fa-check"></i><b>4.5.2</b> Dicotomización de categorías</a></li>
-<li class="chapter" data-level="4.5.3" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#imputación-de-datos-faltantes"><i class="fa fa-check"></i><b>4.5.3</b> Imputación de datos faltantes</a></li>
+<li class="chapter" data-level="4.5.1" data-path="02-intro2tidy.html"><a href="#normalizar-columnas-num%C3%A9ricas"><i class="fa fa-check"></i><b>4.5.1</b> Normalizar columnas numéricas</a></li>
+<li class="chapter" data-level="4.5.2" data-path="02-intro2tidy.html"><a href="#dicotomizaci%C3%B3n-de-categor%C3%ADas"><i class="fa fa-check"></i><b>4.5.2</b> Dicotomización de categorías</a></li>
+<li class="chapter" data-level="4.5.3" data-path="02-intro2tidy.html"><a href="#imputaci%C3%B3n-de-datos-faltantes"><i class="fa fa-check"></i><b>4.5.3</b> Imputación de datos faltantes</a></li>
 <li class="chapter" data-level="4.5.4" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#interacciones"><i class="fa fa-check"></i><b>4.5.4</b> Interacciones</a></li>
 <li class="chapter" data-level="4.5.5" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#renombramiento-de-nuevos-datos"><i class="fa fa-check"></i><b>4.5.5</b> Renombramiento de nuevos datos</a></li>
 <li class="chapter" data-level="4.5.6" data-path="introducción-a-machine-learning.html"><a href="introducción-a-machine-learning.html#transformaciones-personalizadas"><i class="fa fa-check"></i><b>4.5.6</b> Transformaciones personalizadas</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>5</b> Regresión Lineal</a>
+<li class="chapter" data-level="5" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-lineal"><i class="fa fa-check"></i><b>5</b> Regresión Lineal</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#regresión-lineal-simple"><i class="fa fa-check"></i><b>5.1</b> Regresión lineal simple</a>
+<li class="chapter" data-level="5.1" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i><b>5.1</b> Regresión lineal simple</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#interpretación"><i class="fa fa-check"></i><b>5.1.1</b> Interpretación</a></li>
+<li class="chapter" data-level="5.1.1" data-path="02-intro2tidy.html"><a href="#interpretaci%C3%B3n"><i class="fa fa-check"></i><b>5.1.1</b> Interpretación</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#regresión-lineal-múltiple"><i class="fa fa-check"></i><b>5.2</b> Regresión lineal múltiple</a>
+<li class="chapter" data-level="5.2" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-lineal-m%C3%BAltiple"><i class="fa fa-check"></i><b>5.2</b> Regresión lineal múltiple</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#interpretación-1"><i class="fa fa-check"></i><b>5.2.1</b> Interpretación</a></li>
+<li class="chapter" data-level="5.2.1" data-path="02-intro2tidy.html"><a href="#interpretaci%C3%B3n-1"><i class="fa fa-check"></i><b>5.2.1</b> Interpretación</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#ajuste-de-modelo"><i class="fa fa-check"></i><b>5.3</b> Ajuste de modelo</a>
+<li class="chapter" data-level="5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html"><i class="fa fa-check"></i><b>5.3</b> Ajuste de modelo</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-simple"><i class="fa fa-check"></i><b>5.3.1</b> Estimación de parámetros: Regresión lineal simple</a></li>
-<li class="chapter" data-level="5.3.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#estimación-de-parámetros-regresión-lineal-múltiple"><i class="fa fa-check"></i><b>5.3.2</b> Estimación de parámetros: Regresión lineal múltiple</a></li>
+<li class="chapter" data-level="5.3.1" data-path="02-intro2tidy.html"><a href="#estimaci%C3%B3n-de-par%C3%A1metros-regresi%C3%B3n-lineal-simple"><i class="fa fa-check"></i><b>5.3.1</b> Estimación de parámetros: Regresión lineal simple</a></li>
+<li class="chapter" data-level="5.3.2" data-path="02-intro2tidy.html"><a href="#estimaci%C3%B3n-de-par%C3%A1metros-regresi%C3%B3n-lineal-m%C3%BAltiple"><i class="fa fa-check"></i><b>5.3.2</b> Estimación de parámetros: Regresión lineal múltiple</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#residuos-del-modelo"><i class="fa fa-check"></i><b>5.4</b> Residuos del modelo</a>
 <ul>
-<li class="chapter" data-level="" data-path="regresión-lineal.html"><a href="regresión-lineal.html#condiciones-para-el-ajuste-de-una-regresión-lineal"><i class="fa fa-check"></i>Condiciones para el ajuste de una regresión lineal:</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#condiciones-para-el-ajuste-de-una-regresi%C3%B3n-lineal"><i class="fa fa-check"></i>Condiciones para el ajuste de una regresión lineal:</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#implementación-con-python"><i class="fa fa-check"></i><b>5.5</b> Implementación con Python</a>
+<li class="chapter" data-level="5.5" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-con-python"><i class="fa fa-check"></i><b>5.5</b> Implementación con Python</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#carga-y-partición-de-datos"><i class="fa fa-check"></i><b>5.5.1</b> Carga y partición de datos</a></li>
-<li class="chapter" data-level="5.5.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#pipeline-de-transformación-de-datos"><i class="fa fa-check"></i><b>5.5.2</b> Pipeline de transformación de datos</a></li>
-<li class="chapter" data-level="5.5.3" data-path="regresión-lineal.html"><a href="regresión-lineal.html#creación-y-ajuste-de-modelo"><i class="fa fa-check"></i><b>5.5.3</b> Creación y ajuste de modelo</a></li>
-<li class="chapter" data-level="5.5.4" data-path="regresión-lineal.html"><a href="regresión-lineal.html#predicción-con-nuevos-datos"><i class="fa fa-check"></i><b>5.5.4</b> Predicción con nuevos datos</a></li>
-<li class="chapter" data-level="5.5.5" data-path="regresión-lineal.html"><a href="regresión-lineal.html#extracción-de-coeficientes"><i class="fa fa-check"></i><b>5.5.5</b> Extracción de coeficientes</a></li>
+<li class="chapter" data-level="5.5.1" data-path="02-intro2tidy.html"><a href="#carga-y-partici%C3%B3n-de-datos"><i class="fa fa-check"></i><b>5.5.1</b> Carga y partición de datos</a></li>
+<li class="chapter" data-level="5.5.2" data-path="02-intro2tidy.html"><a href="#pipeline-de-transformaci%C3%B3n-de-datos"><i class="fa fa-check"></i><b>5.5.2</b> Pipeline de transformación de datos</a></li>
+<li class="chapter" data-level="5.5.3" data-path="02-intro2tidy.html"><a href="#creaci%C3%B3n-y-ajuste-de-modelo"><i class="fa fa-check"></i><b>5.5.3</b> Creación y ajuste de modelo</a></li>
+<li class="chapter" data-level="5.5.4" data-path="02-intro2tidy.html"><a href="#predicci%C3%B3n-con-nuevos-datos"><i class="fa fa-check"></i><b>5.5.4</b> Predicción con nuevos datos</a></li>
+<li class="chapter" data-level="5.5.5" data-path="02-intro2tidy.html"><a href="#extracci%C3%B3n-de-coeficientes"><i class="fa fa-check"></i><b>5.5.5</b> Extracción de coeficientes</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métricas-de-desempeño"><i class="fa fa-check"></i><b>5.6</b> Métricas de desempeño</a>
+<li class="chapter" data-level="5.6" data-path="02-intro2tidy.html"><a href="#m%C3%A9tricas-de-desempe%C3%B1o"><i class="fa fa-check"></i><b>5.6</b> Métricas de desempeño</a>
 <ul>
-<li class="chapter" data-level="5.6.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#implementación-con-python-1"><i class="fa fa-check"></i><b>5.6.1</b> Implementación con python</a></li>
+<li class="chapter" data-level="5.6.1" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-con-python-1"><i class="fa fa-check"></i><b>5.6.1</b> Implementación con python</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="regresión-lineal.html"><a href="regresión-lineal.html#validación-cruzada"><i class="fa fa-check"></i><b>5.7</b> Validación cruzada</a></li>
-<li class="chapter" data-level="5.8" data-path="regresión-lineal.html"><a href="regresión-lineal.html#métodos-se-selección-de-variables"><i class="fa fa-check"></i><b>5.8</b> Métodos se selección de variables</a>
+<li class="chapter" data-level="5.7" data-path="02-intro2tidy.html"><a href="#validaci%C3%B3n-cruzada"><i class="fa fa-check"></i><b>5.7</b> Validación cruzada</a></li>
+<li class="chapter" data-level="5.8" data-path="02-intro2tidy.html"><a href="#m%C3%A9todos-se-selecci%C3%B3n-de-variables"><i class="fa fa-check"></i><b>5.8</b> Métodos se selección de variables</a>
 <ul>
-<li class="chapter" data-level="5.8.1" data-path="regresión-lineal.html"><a href="regresión-lineal.html#forward-selection-selección-hacia-adelante"><i class="fa fa-check"></i><b>5.8.1</b> Forward selection (selección hacia adelante)</a></li>
-<li class="chapter" data-level="5.8.2" data-path="regresión-lineal.html"><a href="regresión-lineal.html#backward-selection-selección-hacia-atrás"><i class="fa fa-check"></i><b>5.8.2</b> Backward selection (selección hacia atrás)</a></li>
+<li class="chapter" data-level="5.8.1" data-path="02-intro2tidy.html"><a href="#forward-selection-selecci%C3%B3n-hacia-adelante"><i class="fa fa-check"></i><b>5.8.1</b> Forward selection (selección hacia adelante)</a></li>
+<li class="chapter" data-level="5.8.2" data-path="02-intro2tidy.html"><a href="#backward-selection-selecci%C3%B3n-hacia-atr%C3%A1s"><i class="fa fa-check"></i><b>5.8.2</b> Backward selection (selección hacia atrás)</a></li>
 </ul></li>
 <li class="chapter" data-level="5.9" data-path="regresión-lineal.html"><a href="regresión-lineal.html#ejercicio"><i class="fa fa-check"></i><b>5.9</b> Ejercicio</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>6</b> Regresión Logística</a>
+<li class="chapter" data-level="6" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-log%C3%ADstica"><i class="fa fa-check"></i><b>6</b> Regresión Logística</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="regresión-logística.html"><a href="regresión-logística.html#función-sigmoide"><i class="fa fa-check"></i><b>6.1</b> Función sigmoide</a></li>
-<li class="chapter" data-level="6.2" data-path="regresión-logística.html"><a href="regresión-logística.html#ajuste-del-modelo"><i class="fa fa-check"></i><b>6.2</b> Ajuste del modelo</a></li>
-<li class="chapter" data-level="6.3" data-path="regresión-logística.html"><a href="regresión-logística.html#clasificación-2"><i class="fa fa-check"></i><b>6.3</b> Clasificación</a></li>
-<li class="chapter" data-level="6.4" data-path="regresión-logística.html"><a href="regresión-logística.html#implementación-en-python"><i class="fa fa-check"></i><b>6.4</b> Implementación en python</a>
+<li class="chapter" data-level="6.1" data-path="02-intro2tidy.html"><a href="#funci%C3%B3n-sigmoide"><i class="fa fa-check"></i><b>6.1</b> Función sigmoide</a></li>
+<li class="chapter" data-level="6.2" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>6.2</b> Ajuste del modelo</a></li>
+<li class="chapter" data-level="6.3" data-path="02-intro2tidy.html"><a href="#clasificaci%C3%B3n-2"><i class="fa fa-check"></i><b>6.3</b> Clasificación</a></li>
+<li class="chapter" data-level="6.4" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-en-python"><i class="fa fa-check"></i><b>6.4</b> Implementación en python</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="regresión-logística.html"><a href="regresión-logística.html#pipeline-de-transformación-de-datos-1"><i class="fa fa-check"></i><b>6.4.1</b> Pipeline de transformación de datos</a></li>
-<li class="chapter" data-level="6.4.2" data-path="regresión-logística.html"><a href="regresión-logística.html#creación-y-ajuste-de-modelo-1"><i class="fa fa-check"></i><b>6.4.2</b> Creación y ajuste de modelo</a></li>
-<li class="chapter" data-level="6.4.3" data-path="regresión-logística.html"><a href="regresión-logística.html#predicción-con-nuevos-datos-1"><i class="fa fa-check"></i><b>6.4.3</b> Predicción con nuevos datos</a></li>
+<li class="chapter" data-level="6.4.1" data-path="02-intro2tidy.html"><a href="#pipeline-de-transformaci%C3%B3n-de-datos-1"><i class="fa fa-check"></i><b>6.4.1</b> Pipeline de transformación de datos</a></li>
+<li class="chapter" data-level="6.4.2" data-path="02-intro2tidy.html"><a href="#creaci%C3%B3n-y-ajuste-de-modelo-1"><i class="fa fa-check"></i><b>6.4.2</b> Creación y ajuste de modelo</a></li>
+<li class="chapter" data-level="6.4.3" data-path="02-intro2tidy.html"><a href="#predicci%C3%B3n-con-nuevos-datos-1"><i class="fa fa-check"></i><b>6.4.3</b> Predicción con nuevos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="regresión-logística.html"><a href="regresión-logística.html#métricas-de-desempeño-1"><i class="fa fa-check"></i><b>6.5</b> Métricas de desempeño</a></li>
-<li class="chapter" data-level="6.6" data-path="regresión-logística.html"><a href="regresión-logística.html#estimación-de-probabilidades"><i class="fa fa-check"></i><b>6.6</b> Estimación de probabilidades</a></li>
-<li class="chapter" data-level="6.7" data-path="regresión-logística.html"><a href="regresión-logística.html#validación-cruzada-1"><i class="fa fa-check"></i><b>6.7</b> Validación cruzada</a></li>
+<li class="chapter" data-level="6.5" data-path="02-intro2tidy.html"><a href="#m%C3%A9tricas-de-desempe%C3%B1o-1"><i class="fa fa-check"></i><b>6.5</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="6.6" data-path="02-intro2tidy.html"><a href="#estimaci%C3%B3n-de-probabilidades"><i class="fa fa-check"></i><b>6.6</b> Estimación de probabilidades</a></li>
+<li class="chapter" data-level="6.7" data-path="02-intro2tidy.html"><a href="#validaci%C3%B3n-cruzada-1"><i class="fa fa-check"></i><b>6.7</b> Validación cruzada</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html"><i class="fa fa-check"></i><b>7</b> K-Nearest-Neighbor</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#clasificación-3"><i class="fa fa-check"></i><b>7.1</b> Clasificación</a></li>
-<li class="chapter" data-level="7.2" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#regresión-2"><i class="fa fa-check"></i><b>7.2</b> Regresión</a></li>
+<li class="chapter" data-level="7.1" data-path="02-intro2tidy.html"><a href="#clasificaci%C3%B3n-3"><i class="fa fa-check"></i><b>7.1</b> Clasificación</a></li>
+<li class="chapter" data-level="7.2" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-2"><i class="fa fa-check"></i><b>7.2</b> Regresión</a></li>
 <li class="chapter" data-level="7.3" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#ajuste-del-modelo-1"><i class="fa fa-check"></i><b>7.3</b> Ajuste del modelo</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#selección-de-hiper-parámetro-k"><i class="fa fa-check"></i><b>7.3.1</b> Selección de Hiper-parámetro K</a></li>
-<li class="chapter" data-level="7.3.2" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#métodos-de-cálculo-de-la-distancia-entre-observaciones"><i class="fa fa-check"></i><b>7.3.2</b> Métodos de cálculo de la distancia entre observaciones</a></li>
+<li class="chapter" data-level="7.3.1" data-path="02-intro2tidy.html"><a href="#selecci%C3%B3n-de-hiper-par%C3%A1metro-k"><i class="fa fa-check"></i><b>7.3.1</b> Selección de Hiper-parámetro K</a></li>
+<li class="chapter" data-level="7.3.2" data-path="02-intro2tidy.html"><a href="#m%C3%A9todos-de-c%C3%A1lculo-de-la-distancia-entre-observaciones"><i class="fa fa-check"></i><b>7.3.2</b> Métodos de cálculo de la distancia entre observaciones</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#implementación-en-python-1"><i class="fa fa-check"></i><b>7.4</b> Implementación en Python</a>
+<li class="chapter" data-level="7.4" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-en-python-1"><i class="fa fa-check"></i><b>7.4</b> Implementación en Python</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="k-nearest-neighbor.html"><a href="k-nearest-neighbor.html#regresión-3"><i class="fa fa-check"></i><b>7.4.1</b> Regresión</a></li>
+<li class="chapter" data-level="7.4.1" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-3"><i class="fa fa-check"></i><b>7.4.1</b> Regresión</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html"><i class="fa fa-check"></i><b>8</b> Árboles de decisión</a>
+<li class="chapter" data-level="8" data-path="02-intro2tidy.html"><a href="#%C3%A1rboles-de-decisi%C3%B3n"><i class="fa fa-check"></i><b>8</b> Árboles de decisión</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#ajuste-del-modelo-2"><i class="fa fa-check"></i><b>8.1</b> Ajuste del modelo</a>
+<li class="chapter" data-level="8.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html"><i class="fa fa-check"></i><b>8.1</b> Ajuste del modelo</a>
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#attribute-selective-measure-asm"><i class="fa fa-check"></i><b>8.1.1</b> Attribute Selective Measure (ASM)</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#regularización-de-árboles"><i class="fa fa-check"></i><b>8.2</b> Regularización de árboles</a>
+<li class="chapter" data-level="8.2" data-path="02-intro2tidy.html"><a href="#regularizaci%C3%B3n-de-%C3%A1rboles"><i class="fa fa-check"></i><b>8.2</b> Regularización de árboles</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#nivel-de-profundidad-de-árbol"><i class="fa fa-check"></i><b>8.2.1</b> Nivel de profundidad de árbol</a></li>
+<li class="chapter" data-level="8.2.1" data-path="02-intro2tidy.html"><a href="#nivel-de-profundidad-de-%C3%A1rbol"><i class="fa fa-check"></i><b>8.2.1</b> Nivel de profundidad de árbol</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#aprendizaje-conjunto"><i class="fa fa-check"></i><b>8.3</b> Aprendizaje conjunto</a></li>
 <li class="chapter" data-level="8.4" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#bagging"><i class="fa fa-check"></i><b>8.4</b> Bagging</a></li>
 <li class="chapter" data-level="8.5" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#random-forest"><i class="fa fa-check"></i><b>8.5</b> Random Forest</a>
 <ul>
-<li class="chapter" data-level="8.5.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#qué-es"><i class="fa fa-check"></i><b>8.5.1</b> ¿Qué es?</a></li>
-<li class="chapter" data-level="8.5.2" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#características-de-los-bosques-aleatorios"><i class="fa fa-check"></i><b>8.5.2</b> Características de los bosques aleatorios</a></li>
-<li class="chapter" data-level="8.5.3" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#aplicar-árboles-de-decisión-en-un-bosque-aleatorio"><i class="fa fa-check"></i><b>8.5.3</b> Aplicar árboles de decisión en un bosque aleatorio</a></li>
+<li class="chapter" data-level="8.5.1" data-path="02-intro2tidy.html"><a href="#qu%C3%A9-es"><i class="fa fa-check"></i><b>8.5.1</b> ¿Qué es?</a></li>
+<li class="chapter" data-level="8.5.2" data-path="02-intro2tidy.html"><a href="#caracter%C3%ADsticas-de-los-bosques-aleatorios"><i class="fa fa-check"></i><b>8.5.2</b> Características de los bosques aleatorios</a></li>
+<li class="chapter" data-level="8.5.3" data-path="02-intro2tidy.html"><a href="#aplicar-%C3%A1rboles-de-decisi%C3%B3n-en-un-bosque-aleatorio"><i class="fa fa-check"></i><b>8.5.3</b> Aplicar árboles de decisión en un bosque aleatorio</a></li>
 <li class="chapter" data-level="8.5.4" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#ventajas-y-desventjas-de-bosques-aleatorios"><i class="fa fa-check"></i><b>8.5.4</b> Ventajas y desventjas de bosques aleatorios</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#implementación-en-python-2"><i class="fa fa-check"></i><b>8.6</b> Implementación en Python</a>
+<li class="chapter" data-level="8.6" data-path="02-intro2tidy.html"><a href="#implementaci%C3%B3n-en-python-2"><i class="fa fa-check"></i><b>8.6</b> Implementación en Python</a>
 <ul>
-<li class="chapter" data-level="8.6.1" data-path="árboles-de-decisión.html"><a href="árboles-de-decisión.html#regresión-4"><i class="fa fa-check"></i><b>8.6.1</b> Regresión</a></li>
+<li class="chapter" data-level="8.6.1" data-path="02-intro2tidy.html"><a href="#regresi%C3%B3n-4"><i class="fa fa-check"></i><b>8.6.1</b> Regresión</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -367,7 +377,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="introducción-a-python" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Capítulo 2</span> Introducción a Python<a href="introducción-a-python.html#introducción-a-python" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Capítulo 2</span> Introducción a Python<a href="#introducci%C3%B3n-a-python" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Python es un lenguaje de programación de alto nivel, interpretado y generalmente considerado como un lenguaje fácil de aprender y utilizar. Fue creado por <em>Guido van Rossum</em> y lanzado por primera vez en 1991. Python se destaca por su sintaxis clara y legible, lo que facilita la escritura y comprensión del código.</p>
 <p><img src="img/02-intro2py/01_ds_python.jpeg" style="display: block; margin: auto;" /></p>
 <p>Python se ha vuelto extremadamente popular en el campo de la ciencia de datos por varias razones:</p>
@@ -380,11 +390,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Estas características hacen de Python una herramienta poderosa y popular para realizar análisis de datos, desarrollar modelos de aprendizaje automático y abordar una amplia gama de problemas en la ciencia de datos.</p>
 <div id="cómo-obtener-python" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> ¿Cómo obtener <em>Python</em>?<a href="introducción-a-python.html#cómo-obtener-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.1</span> ¿Cómo obtener <em>Python</em>?<a href="#c%C3%B3mo-obtener-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Python puede ser fácilmente descargado de forma gratuita desde el sitio oficial <a href="https://www.python.org/downloads/" class="uri">https://www.python.org/downloads/</a>. Python está disponible para las plataformas Windows, Mac y Linux.</p>
 </div>
 <div id="qué-es-positron" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> ¿Qué es Positron?<a href="introducción-a-python.html#qué-es-positron" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.2</span> ¿Qué es Positron?<a href="#qu%C3%A9-es-positron" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><em>Positron</em> es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) creado por Posit (antes Rstudio) para R y Python. Este permite y facilita el desarrollo y ejecución de sintaxis para código en <em>R</em> y <em>python</em>, incluye una consola y proporciona herramientas para la gestión del espacio de trabajo. <em>Positron</em> está disponible para Windows, Mac y Linux.</p>
 <p>Algunas de las principales características de Positron que lo hacen una gran herramienta para trabajar, son:</p>
 <ul>
@@ -409,36 +419,60 @@ Figure 2.1: Páneles de trabajo de Positron
 </div>
 <div id="uso-de-python-en-positron" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Uso de python en Positron<a href="introducción-a-python.html#uso-de-python-en-positron" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introducción-a-python.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb4-2"><a href="introducción-a-python.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="introducción-a-python.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install_python</span>(<span class="at">list =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-4"><a href="introducción-a-python.html#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="introducción-a-python.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">use_python</span>(<span class="st">&quot;C:/Program Files/Python310/python.exe&quot;</span>)</span>
-<span id="cb4-6"><a href="introducción-a-python.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="introducción-a-python.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="do">#### Conda ####</span></span>
-<span id="cb4-8"><a href="introducción-a-python.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de ambiente virtual de python 3.10 con conda</span></span>
-<span id="cb4-9"><a href="introducción-a-python.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">conda_create</span>(<span class="at">envname =</span> <span class="st">&quot;conda_dsml_py3_10&quot;</span>)</span>
-<span id="cb4-10"><a href="introducción-a-python.html#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="introducción-a-python.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Consultar la lista de ambientes creados</span></span>
-<span id="cb4-12"><a href="introducción-a-python.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">conda_list</span>()</span>
-<span id="cb4-13"><a href="introducción-a-python.html#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="introducción-a-python.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">use_miniconda</span>(<span class="st">&quot;conda_dsml_py3_10&quot;</span>)</span>
-<span id="cb4-15"><a href="introducción-a-python.html#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="introducción-a-python.html#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># instalar pandas</span></span>
-<span id="cb4-17"><a href="introducción-a-python.html#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">conda_install</span>(<span class="st">&quot;conda_dsml_py3_10&quot;</span>, <span class="st">&quot;pandas&quot;</span>)</span>
-<span id="cb4-18"><a href="introducción-a-python.html#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="introducción-a-python.html#cb4-19" aria-hidden="true" tabindex="-1"></a>pandas <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;pandas&quot;</span>)</span>
-<span id="cb4-20"><a href="introducción-a-python.html#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="introducción-a-python.html#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="do">#### VirtualEnv ####</span></span>
-<span id="cb4-22"><a href="introducción-a-python.html#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de ambiente virtual de python 3.10 con virtualenv </span></span>
-<span id="cb4-23"><a href="introducción-a-python.html#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_create</span>(<span class="at">envname =</span> <span class="st">&quot;venv_dsml_py3_10&quot;</span>)</span>
-<span id="cb4-24"><a href="introducción-a-python.html#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="introducción-a-python.html#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_list</span>()</span>
-<span id="cb4-26"><a href="introducción-a-python.html#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="introducción-a-python.html#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">&quot;venv_dsml_py3_10&quot;</span>)</span>
-<span id="cb4-28"><a href="introducción-a-python.html#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="introducción-a-python.html#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co"># install pandas</span></span>
-<span id="cb4-30"><a href="introducción-a-python.html#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_install</span>(<span class="st">&quot;venv_dsml_py3_10&quot;</span>, <span class="st">&quot;pandas&quot;</span>)</span></code></pre></div>
+<div id="instalar-ambiente-virtual-desde-bash" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Instalar ambiente virtual desde bash<a href="introducción-a-python.html#instalar-ambiente-virtual-desde-bash" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El primer paso es instalar la librería virtualenv, la cual permite crear múltiples ambientes virtuales</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="introducción-a-python.html#cb4-1" tabindex="-1"></a><span class="ex">pip</span> install virtualenv</span>
+<span id="cb4-2"><a href="introducción-a-python.html#cb4-2" tabindex="-1"></a><span class="ex">virtualenv</span> <span class="at">--version</span></span></code></pre></div>
+<p>El segundo paso es crear el ambiente virtual seleccionando la versión de python que se desea usar</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="introducción-a-python.html#cb5-1" tabindex="-1"></a><span class="ex">virtualenv</span> <span class="at">-p</span> python3.11.8 nombre_ambiente</span></code></pre></div>
+<p>Una vez creado el ambiente, se carga el ambiente.</p>
+<p><strong>Windows (Powershell)</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="introducción-a-python.html#cb6-1" tabindex="-1"></a><span class="ex">Set-ExecutionPolicy</span> <span class="at">-ExecutionPolicy</span> RemoteSigned <span class="at">-Scope</span> CurrentUser </span>
+<span id="cb6-2"><a href="introducción-a-python.html#cb6-2" tabindex="-1"></a><span class="ex">Y</span></span>
+<span id="cb6-3"><a href="introducción-a-python.html#cb6-3" tabindex="-1"></a><span class="bu">.</span><span class="dt">\n</span>ombre_ambiente<span class="dt">\S</span>cripts<span class="dt">\A</span>ctivate.ps1</span></code></pre></div>
+<p><strong>Mac / Linux</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="introducción-a-python.html#cb7-1" tabindex="-1"></a><span class="bu">source</span> nombre_ambiente/bin/activate</span></code></pre></div>
+<p>Es importante estar situado en la carpeta del proyecto. Esto permite acceder al ambiente con los comandos anteriores.
+El último paso es instalar las librerías desde un archivo .txt:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="introducción-a-python.html#cb8-1" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div>
+<p>y listo! Podemos comenzar a trabajar</p>
+<p>Para desacrtivar el ambiente, se usa:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="introducción-a-python.html#cb9-1" tabindex="-1"></a><span class="ex">deactivate</span></span></code></pre></div>
+</div>
+<div id="instalar-ambiente-virtual-desde-r" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Instalar ambiente virtual desde R<a href="introducción-a-python.html#instalar-ambiente-virtual-desde-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="introducción-a-python.html#cb10-1" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb10-2"><a href="introducción-a-python.html#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="introducción-a-python.html#cb10-3" tabindex="-1"></a><span class="fu">install_python</span>(<span class="at">list =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-4"><a href="introducción-a-python.html#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="introducción-a-python.html#cb10-5" tabindex="-1"></a><span class="fu">use_python</span>(<span class="st">&quot;C:/Program Files/Python310/python.exe&quot;</span>)</span>
+<span id="cb10-6"><a href="introducción-a-python.html#cb10-6" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="introducción-a-python.html#cb10-7" tabindex="-1"></a><span class="do">#### Conda ####</span></span>
+<span id="cb10-8"><a href="introducción-a-python.html#cb10-8" tabindex="-1"></a><span class="co"># Creación de ambiente virtual de python 3.10 con conda</span></span>
+<span id="cb10-9"><a href="introducción-a-python.html#cb10-9" tabindex="-1"></a><span class="fu">conda_create</span>(<span class="at">envname =</span> <span class="st">&quot;conda_dsml_py3_10&quot;</span>)</span>
+<span id="cb10-10"><a href="introducción-a-python.html#cb10-10" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="introducción-a-python.html#cb10-11" tabindex="-1"></a><span class="co"># Consultar la lista de ambientes creados</span></span>
+<span id="cb10-12"><a href="introducción-a-python.html#cb10-12" tabindex="-1"></a><span class="fu">conda_list</span>()</span>
+<span id="cb10-13"><a href="introducción-a-python.html#cb10-13" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="introducción-a-python.html#cb10-14" tabindex="-1"></a><span class="fu">use_miniconda</span>(<span class="st">&quot;conda_dsml_py3_10&quot;</span>)</span>
+<span id="cb10-15"><a href="introducción-a-python.html#cb10-15" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="introducción-a-python.html#cb10-16" tabindex="-1"></a><span class="co"># instalar pandas</span></span>
+<span id="cb10-17"><a href="introducción-a-python.html#cb10-17" tabindex="-1"></a><span class="fu">conda_install</span>(<span class="st">&quot;conda_dsml_py3_10&quot;</span>, <span class="st">&quot;pandas&quot;</span>)</span>
+<span id="cb10-18"><a href="introducción-a-python.html#cb10-18" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="introducción-a-python.html#cb10-19" tabindex="-1"></a>pandas <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;pandas&quot;</span>)</span>
+<span id="cb10-20"><a href="introducción-a-python.html#cb10-20" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="introducción-a-python.html#cb10-21" tabindex="-1"></a><span class="do">#### VirtualEnv ####</span></span>
+<span id="cb10-22"><a href="introducción-a-python.html#cb10-22" tabindex="-1"></a><span class="co"># Creación de ambiente virtual de python 3.10 con virtualenv </span></span>
+<span id="cb10-23"><a href="introducción-a-python.html#cb10-23" tabindex="-1"></a><span class="fu">virtualenv_create</span>(<span class="at">envname =</span> <span class="st">&quot;venv_dsml_py3_10&quot;</span>)</span>
+<span id="cb10-24"><a href="introducción-a-python.html#cb10-24" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="introducción-a-python.html#cb10-25" tabindex="-1"></a><span class="fu">virtualenv_list</span>()</span>
+<span id="cb10-26"><a href="introducción-a-python.html#cb10-26" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="introducción-a-python.html#cb10-27" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">&quot;venv_dsml_py3_10&quot;</span>)</span>
+<span id="cb10-28"><a href="introducción-a-python.html#cb10-28" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="introducción-a-python.html#cb10-29" tabindex="-1"></a><span class="co"># install pandas</span></span>
+<span id="cb10-30"><a href="introducción-a-python.html#cb10-30" tabindex="-1"></a><span class="fu">virtualenv_install</span>(<span class="st">&quot;venv_dsml_py3_10&quot;</span>, <span class="st">&quot;pandas&quot;</span>)</span></code></pre></div>
+</div>
 </div>
 <div id="lectura-de-datos" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Lectura de datos<a href="introducción-a-python.html#lectura-de-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -453,11 +487,11 @@ Figure 2.1: Páneles de trabajo de Positron
 <p>El único argumento que debemos de pasar a esta función de manera obligatoria, es <code>file</code>, el nombre o la ruta completa del archivo que pretendemos importar.</p>
 <p>La paquetería <em>pandas</em> fue desarrollada para lidiar con la lectura de archivos grandes rápidamente.</p>
 <p>Veamos un ejemplo:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="introducción-a-python.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a href="introducción-a-python.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="introducción-a-python.html#cb5-3" aria-hidden="true" tabindex="-1"></a>data_csv <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/ames.csv&quot;</span>)</span>
-<span id="cb5-4"><a href="introducción-a-python.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="introducción-a-python.html#cb5-5" aria-hidden="true" tabindex="-1"></a>data_csv.info()</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="introducción-a-python.html#cb11-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-2"><a href="introducción-a-python.html#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="introducción-a-python.html#cb11-3" tabindex="-1"></a>data_csv <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/ames.csv&quot;</span>)</span>
+<span id="cb11-4"><a href="introducción-a-python.html#cb11-4" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="introducción-a-python.html#cb11-5" tabindex="-1"></a>data_csv.info()</span></code></pre></div>
 <pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 ## RangeIndex: 2930 entries, 0 to 2929
 ## Data columns (total 74 columns):
@@ -539,8 +573,8 @@ Figure 2.1: Páneles de trabajo de Positron
 ##  73  Latitude            2930 non-null   float64
 ## dtypes: float64(2), int64(32), object(40)
 ## memory usage: 1.7+ MB</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="introducción-a-python.html#cb7-1" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">&#39;display.max_columns&#39;</span>, <span class="dv">6</span>)</span>
-<span id="cb7-2"><a href="introducción-a-python.html#cb7-2" aria-hidden="true" tabindex="-1"></a>data_csv.head(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="introducción-a-python.html#cb13-1" tabindex="-1"></a>pd.set_option(<span class="st">&#39;display.max_columns&#39;</span>, <span class="dv">6</span>)</span>
+<span id="cb13-2"><a href="introducción-a-python.html#cb13-2" tabindex="-1"></a>data_csv.head(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##                            MS_SubClass                 MS_Zoning  \
 ## 0  One_Story_1946_and_Newer_All_Styles   Residential_Low_Density   
 ## 1  One_Story_1946_and_Newer_All_Styles  Residential_High_Density   
@@ -556,7 +590,7 @@ Figure 2.1: Páneles de trabajo de Positron
 ## 4            74  ...      189900 -93.638933  42.060899  
 ## 
 ## [5 rows x 74 columns]</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="introducción-a-python.html#cb9-1" aria-hidden="true" tabindex="-1"></a>data_csv.describe()</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="introducción-a-python.html#cb15-1" tabindex="-1"></a>data_csv.describe()</span></code></pre></div>
 <pre><code>##        Lot_Frontage       Lot_Area   Year_Built  ...     Sale_Price  \
 ## count   2930.000000    2930.000000  2930.000000  ...    2930.000000   
 ## mean      57.647782   10147.921843  1971.356314  ...  180796.060068   
@@ -585,8 +619,8 @@ Figure 2.1: Páneles de trabajo de Positron
 <div id="archivos-txt" class="section level3 hasAnchor" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> Archivos txt<a href="introducción-a-python.html#archivos-txt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Uno de los archivos más comunes es el <em>.txt</em>. La librería <em>pandas</em> también cuenta con parámetros en la función <em>read_csv</em> que permiten leer fácilmente los datos contenidos en formato tabular.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="introducción-a-python.html#cb11-1" aria-hidden="true" tabindex="-1"></a>ames_txt <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/ames.txt&quot;</span>, delimiter <span class="op">=</span> <span class="st">&quot;;&quot;</span>)</span>
-<span id="cb11-2"><a href="introducción-a-python.html#cb11-2" aria-hidden="true" tabindex="-1"></a>ames_txt.head(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="introducción-a-python.html#cb17-1" tabindex="-1"></a>ames_txt <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/ames.txt&quot;</span>, delimiter <span class="op">=</span> <span class="st">&quot;;&quot;</span>)</span>
+<span id="cb17-2"><a href="introducción-a-python.html#cb17-2" tabindex="-1"></a>ames_txt.head(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##                            MS_SubClass                 MS_Zoning  \
 ## 0  One_Story_1946_and_Newer_All_Styles   Residential_Low_Density   
 ## 1  One_Story_1946_and_Newer_All_Styles  Residential_High_Density   
@@ -604,8 +638,8 @@ Figure 2.1: Páneles de trabajo de Positron
 <div id="archivos-xls-y-xlsx" class="section level3 hasAnchor" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> Archivos <em>xls</em> y <em>xlsx</em><a href="introducción-a-python.html#archivos-xls-y-xlsx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La paquetería <em>pandas</em> facilita la obtención de datos tabulares de archivos de <em>Excel</em>. Admite tanto el formato <em>.xls</em> heredado como el formato <em>.xlsx</em> moderno basado en <em>XML</em>. Es importante mencionar que es necesario instalar una dependencia para que funcione. Se requiere de la librería <em>openpyxl</em></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="introducción-a-python.html#cb13-1" aria-hidden="true" tabindex="-1"></a>ames_xlsx <span class="op">=</span> pd.read_excel(<span class="st">&quot;data/ames.xlsx&quot;</span>)</span>
-<span id="cb13-2"><a href="introducción-a-python.html#cb13-2" aria-hidden="true" tabindex="-1"></a>ames_xlsx.head(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="introducción-a-python.html#cb19-1" tabindex="-1"></a>ames_xlsx <span class="op">=</span> pd.read_excel(<span class="st">&quot;data/ames.xlsx&quot;</span>)</span>
+<span id="cb19-2"><a href="introducción-a-python.html#cb19-2" tabindex="-1"></a>ames_xlsx.head(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##                            MS_SubClass                 MS_Zoning  \
 ## 0  One_Story_1946_and_Newer_All_Styles   Residential_Low_Density   
 ## 1  One_Story_1946_and_Newer_All_Styles  Residential_High_Density   
@@ -621,12 +655,12 @@ Figure 2.1: Páneles de trabajo de Positron
 <div id="archivos-pickle" class="section level3 hasAnchor" number="2.4.4">
 <h3><span class="header-section-number">2.4.4</span> Archivos pickle<a href="introducción-a-python.html#archivos-pickle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Un tipo de archivo que resulta de particular interés, es el <em>.pkl</em>. Este archivo comprime cualquier objeto o resultado que sea usado o producido en <em>python</em>. Uno puede almacenar el objeto de interés de la siguiente manera:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="introducción-a-python.html#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-2"><a href="introducción-a-python.html#cb15-2" aria-hidden="true" tabindex="-1"></a>ames_xlsx.to_pickle(<span class="st">&#39;data/ames.pkl&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="introducción-a-python.html#cb21-1" tabindex="-1"></a></span>
+<span id="cb21-2"><a href="introducción-a-python.html#cb21-2" tabindex="-1"></a>ames_xlsx.to_pickle(<span class="st">&#39;data/ames.pkl&#39;</span>)</span></code></pre></div>
 <p>Puede observarse que en el explorador de archivos se encuentra ahora el nuevo archivo con extensión <em>.pkl</em>, el cual puede ser posteriormente incorporado a una sesión de <em>python</em> para seguir trabajando con él.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="introducción-a-python.html#cb16-1" aria-hidden="true" tabindex="-1"></a>ames_pkl <span class="op">=</span> pd.read_pickle(<span class="st">&#39;data/ames.pkl&#39;</span>)</span>
-<span id="cb16-2"><a href="introducción-a-python.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="introducción-a-python.html#cb16-3" aria-hidden="true" tabindex="-1"></a>ames_pkl.head(<span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="introducción-a-python.html#cb22-1" tabindex="-1"></a>ames_pkl <span class="op">=</span> pd.read_pickle(<span class="st">&#39;data/ames.pkl&#39;</span>)</span>
+<span id="cb22-2"><a href="introducción-a-python.html#cb22-2" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="introducción-a-python.html#cb22-3" tabindex="-1"></a>ames_pkl.head(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##                            MS_SubClass                 MS_Zoning  \
 ## 0  One_Story_1946_and_Newer_All_Styles   Residential_Low_Density   
 ## 1  One_Story_1946_and_Newer_All_Styles  Residential_High_Density   
@@ -661,27 +695,16 @@ Figure 2.1: Páneles de trabajo de Positron
 <li><p>group_by()</p></li>
 </ul>
 <p>Primero tenemos que instalar y cargar la paquetería:</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introducción-a-python.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#R</span></span>
-<span id="cb18-2"><a href="introducción-a-python.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_install</span>(<span class="st">&quot;venv_dsml_py3_10&quot;</span>, <span class="st">&quot;siuba&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="introducción-a-python.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python</span></span>
-<span id="cb19-2"><a href="introducción-a-python.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> siuba <span class="im">import</span> <span class="op">*</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="introducción-a-python.html#cb24-1" tabindex="-1"></a><span class="co">#Shell</span></span>
+<span id="cb24-2"><a href="introducción-a-python.html#cb24-2" tabindex="-1"></a><span class="ex">pip</span> install siuba</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="introducción-a-python.html#cb25-1" tabindex="-1"></a><span class="co">#R</span></span>
+<span id="cb25-2"><a href="introducción-a-python.html#cb25-2" tabindex="-1"></a><span class="fu">virtualenv_install</span>(<span class="st">&quot;venv_dsml_py3_10&quot;</span>, <span class="st">&quot;siuba&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="introducción-a-python.html#cb26-1" tabindex="-1"></a><span class="co"># python</span></span>
+<span id="cb26-2"><a href="introducción-a-python.html#cb26-2" tabindex="-1"></a><span class="im">from</span> siuba <span class="im">import</span> <span class="op">*</span></span></code></pre></div>
 <p>Usaremos el dataset <em>AmesHousing</em> que se proporcionó en el capítulo anterior (el alumno puede hacer el ejercicio con datos propios, si así lo desea)</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="introducción-a-python.html#cb20-1" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/ames.csv&quot;</span>)</span>
-<span id="cb20-2"><a href="introducción-a-python.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="introducción-a-python.html#cb20-3" aria-hidden="true" tabindex="-1"></a>ames_housing.info()</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="introducción-a-python.html#cb18-1" tabindex="-1"></a><span class="co">#Shell</span></span>
-<span id="cb18-2"><a href="introducción-a-python.html#cb18-2" tabindex="-1"></a><span class="ex">pip</span> install siuba</span></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introducción-a-python.html#cb19-1" tabindex="-1"></a><span class="co">#R</span></span>
-<span id="cb19-2"><a href="introducción-a-python.html#cb19-2" tabindex="-1"></a><span class="fu">virtualenv_install</span>(<span class="st">&quot;venv_dsml_py3_10&quot;</span>, <span class="st">&quot;siuba&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="introducción-a-python.html#cb20-1" tabindex="-1"></a><span class="co"># python</span></span>
-<span id="cb20-2"><a href="introducción-a-python.html#cb20-2" tabindex="-1"></a><span class="im">from</span> siuba <span class="im">import</span> <span class="op">*</span></span></code></pre></div>
-<p>Usaremos el dataset <em>AmesHousing</em> que se proporcionó en el capítulo anterior (el alumno puede hacer el ejercicio con datos propios, si así lo desea)</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="introducción-a-python.html#cb21-1" tabindex="-1"></a>ames_housing <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/ames.csv&quot;</span>)</span>
-<span id="cb21-2"><a href="introducción-a-python.html#cb21-2" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="introducción-a-python.html#cb21-3" tabindex="-1"></a>ames_housing.info()</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="introducción-a-python.html#cb27-1" tabindex="-1"></a>ames_housing <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/ames.csv&quot;</span>)</span>
+<span id="cb27-2"><a href="introducción-a-python.html#cb27-2" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="introducción-a-python.html#cb27-3" tabindex="-1"></a>ames_housing.info()</span></code></pre></div>
 <pre><code>## &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 ## RangeIndex: 2930 entries, 0 to 2929
 ## Data columns (total 74 columns):
@@ -763,11 +786,7 @@ Figure 2.1: Páneles de trabajo de Positron
 ##  73  Latitude            2930 non-null   float64
 ## dtypes: float64(2), int64(32), object(40)
 ## memory usage: 1.7+ MB</code></pre>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="introducción-a-python.html#cb22-1" aria-hidden="true" tabindex="-1"></a>ames_housing.describe()</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="introducción-a-python.html#cb23-1" tabindex="-1"></a>ames_housing.describe()</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="introducción-a-python.html#cb29-1" tabindex="-1"></a>ames_housing.describe()</span></code></pre></div>
 <pre><code>##        Lot_Frontage       Lot_Area   Year_Built  ...     Sale_Price  \
 ## count   2930.000000    2930.000000  2930.000000  ...    2930.000000   
 ## mean      57.647782   10147.921843  1971.356314  ...  180796.060068   
@@ -792,17 +811,10 @@ Figure 2.1: Páneles de trabajo de Positron
 <div id="seleccionar-columnas" class="section level3 hasAnchor" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Seleccionar columnas<a href="introducción-a-python.html#seleccionar-columnas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Observamos que nuestros datos tienen 2,930 observaciones y 74 variables, con <em>select()</em> podemos seleccionar las variables que se indiquen.</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="introducción-a-python.html#cb24-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb24-2"><a href="introducción-a-python.html#cb24-2" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span></span>
-<span id="cb24-3"><a href="introducción-a-python.html#cb24-3" aria-hidden="true" tabindex="-1"></a>  select(_.Lot_Area, _.Neighborhood, _.Year_Sold, _.Sale_Price)</span>
-<span id="cb24-4"><a href="introducción-a-python.html#cb24-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="introducción-a-python.html#cb25-1" tabindex="-1"></a>(</span>
-<span id="cb25-2"><a href="introducción-a-python.html#cb25-2" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span></span>
-<span id="cb25-3"><a href="introducción-a-python.html#cb25-3" tabindex="-1"></a>  select(_.Lot_Area, _.Neighborhood, _.Year_Sold, _.Sale_Price)</span>
-<span id="cb25-4"><a href="introducción-a-python.html#cb25-4" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="introducción-a-python.html#cb31-1" tabindex="-1"></a>(</span>
+<span id="cb31-2"><a href="introducción-a-python.html#cb31-2" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span></span>
+<span id="cb31-3"><a href="introducción-a-python.html#cb31-3" tabindex="-1"></a>  select(_.Lot_Area, _.Neighborhood, _.Year_Sold, _.Sale_Price)</span>
+<span id="cb31-4"><a href="introducción-a-python.html#cb31-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##       Lot_Area Neighborhood  Year_Sold  Sale_Price
 ## 0        31770   North_Ames       2010      215000
 ## 1        11622   North_Ames       2010      105000
@@ -826,17 +838,10 @@ Figure 2.1: Páneles de trabajo de Positron
 </ul>
 </div>
 <p>Con <em>select()</em> y <em>contains()</em> podemos seleccionar variables con alguna cadena de texto.</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="introducción-a-python.html#cb26-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb26-2"><a href="introducción-a-python.html#cb26-2" aria-hidden="true" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb26-3"><a href="introducción-a-python.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  select(_.contains(<span class="st">&quot;Area&quot;</span>))</span>
-<span id="cb26-4"><a href="introducción-a-python.html#cb26-4" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="introducción-a-python.html#cb27-1" tabindex="-1"></a>(</span>
-<span id="cb27-2"><a href="introducción-a-python.html#cb27-2" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb27-3"><a href="introducción-a-python.html#cb27-3" tabindex="-1"></a>  select(_.contains(<span class="st">&quot;Area&quot;</span>))</span>
-<span id="cb27-4"><a href="introducción-a-python.html#cb27-4" tabindex="-1"></a> )</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="introducción-a-python.html#cb33-1" tabindex="-1"></a>(</span>
+<span id="cb33-2"><a href="introducción-a-python.html#cb33-2" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
+<span id="cb33-3"><a href="introducción-a-python.html#cb33-3" tabindex="-1"></a>  select(_.contains(<span class="st">&quot;Area&quot;</span>))</span>
+<span id="cb33-4"><a href="introducción-a-python.html#cb33-4" tabindex="-1"></a> )</span></code></pre></div>
 <pre><code>##       Lot_Area  Mas_Vnr_Area  Gr_Liv_Area  Garage_Area  Pool_Area
 ## 0        31770           112         1656          528          0
 ## 1        11622             0          896          730          0
@@ -852,17 +857,10 @@ Figure 2.1: Páneles de trabajo de Positron
 ## 
 ## [2930 rows x 5 columns]</code></pre>
 <p>De igual manera, con <em>select()</em>, <em>contains()</em> podemos seleccionar que inicien o terminen con alguna cadena de texto.</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="introducción-a-python.html#cb28-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb28-2"><a href="introducción-a-python.html#cb28-2" aria-hidden="true" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb28-3"><a href="introducción-a-python.html#cb28-3" aria-hidden="true" tabindex="-1"></a> select(_.contains(<span class="st">&quot;^Garage&quot;</span>))</span>
-<span id="cb28-4"><a href="introducción-a-python.html#cb28-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="introducción-a-python.html#cb29-1" tabindex="-1"></a>(</span>
-<span id="cb29-2"><a href="introducción-a-python.html#cb29-2" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb29-3"><a href="introducción-a-python.html#cb29-3" tabindex="-1"></a> select(_.contains(<span class="st">&quot;^Garage&quot;</span>))</span>
-<span id="cb29-4"><a href="introducción-a-python.html#cb29-4" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="introducción-a-python.html#cb35-1" tabindex="-1"></a>(</span>
+<span id="cb35-2"><a href="introducción-a-python.html#cb35-2" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
+<span id="cb35-3"><a href="introducción-a-python.html#cb35-3" tabindex="-1"></a> select(_.contains(<span class="st">&quot;^Garage&quot;</span>))</span>
+<span id="cb35-4"><a href="introducción-a-python.html#cb35-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##      Garage_Type Garage_Finish  Garage_Cars  Garage_Area Garage_Cond
 ## 0         Attchd           Fin            2          528     Typical
 ## 1         Attchd           Unf            1          730     Typical
@@ -877,17 +875,10 @@ Figure 2.1: Páneles de trabajo de Positron
 ## 2929      Attchd           Fin            3          650     Typical
 ## 
 ## [2930 rows x 5 columns]</code></pre>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="introducción-a-python.html#cb30-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb30-2"><a href="introducción-a-python.html#cb30-2" aria-hidden="true" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb30-3"><a href="introducción-a-python.html#cb30-3" aria-hidden="true" tabindex="-1"></a> select(_.contains(<span class="st">&quot;Area$&quot;</span>))</span>
-<span id="cb30-4"><a href="introducción-a-python.html#cb30-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="introducción-a-python.html#cb31-1" tabindex="-1"></a>(</span>
-<span id="cb31-2"><a href="introducción-a-python.html#cb31-2" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb31-3"><a href="introducción-a-python.html#cb31-3" tabindex="-1"></a> select(_.contains(<span class="st">&quot;Area$&quot;</span>))</span>
-<span id="cb31-4"><a href="introducción-a-python.html#cb31-4" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="introducción-a-python.html#cb37-1" tabindex="-1"></a>(</span>
+<span id="cb37-2"><a href="introducción-a-python.html#cb37-2" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
+<span id="cb37-3"><a href="introducción-a-python.html#cb37-3" tabindex="-1"></a> select(_.contains(<span class="st">&quot;Area$&quot;</span>))</span>
+<span id="cb37-4"><a href="introducción-a-python.html#cb37-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##       Lot_Area  Mas_Vnr_Area  Gr_Liv_Area  Garage_Area  Pool_Area
 ## 0        31770           112         1656          528          0
 ## 1        11622             0          896          730          0
@@ -906,11 +897,7 @@ Figure 2.1: Páneles de trabajo de Positron
 <div id="filtrar-observaciones" class="section level3 hasAnchor" number="2.5.2">
 <h3><span class="header-section-number">2.5.2</span> Filtrar observaciones<a href="introducción-a-python.html#filtrar-observaciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La función <em>filter()</em> nos permite filtrar filas según una condición, primero notemos que la variable <em>Sale_Condition</em> tiene distintas categorías.</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="introducción-a-python.html#cb32-1" aria-hidden="true" tabindex="-1"></a>ames_housing[<span class="st">&#39;Sale_Condition&#39;</span>].value_counts()</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="introducción-a-python.html#cb33-1" tabindex="-1"></a>ames_housing[<span class="st">&#39;Sale_Condition&#39;</span>].value_counts()</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="introducción-a-python.html#cb39-1" tabindex="-1"></a>ames_housing[<span class="st">&#39;Sale_Condition&#39;</span>].value_counts()</span></code></pre></div>
 <pre><code>## Sale_Condition
 ## Normal     2413
 ## Partial     245
@@ -924,17 +911,10 @@ Figure 2.1: Páneles de trabajo de Positron
 <p>En un modelo predictivo de Machine Learning, <strong>no es correcto</strong> agregar columnas cuyo valor es conocido hasta el momento de la observación. Es decir, no deben agregarse variables que no se conozca su valor al momento de la predicción, como es el caso de <em>condición de venta</em>.</p>
 </div>
 <p>Ahora usaremos la función <em>filter</em> para quedarnos solo con las observaciones con condición de venta “normal”.</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="introducción-a-python.html#cb34-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb34-2"><a href="introducción-a-python.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb34-3"><a href="introducción-a-python.html#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(_.Sale_Condition <span class="op">==</span> <span class="st">&quot;Normal&quot;</span>)</span>
-<span id="cb34-4"><a href="introducción-a-python.html#cb34-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="introducción-a-python.html#cb35-1" tabindex="-1"></a>(</span>
-<span id="cb35-2"><a href="introducción-a-python.html#cb35-2" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb35-3"><a href="introducción-a-python.html#cb35-3" tabindex="-1"></a>  <span class="bu">filter</span>(_.Sale_Condition <span class="op">==</span> <span class="st">&quot;Normal&quot;</span>)</span>
-<span id="cb35-4"><a href="introducción-a-python.html#cb35-4" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="introducción-a-python.html#cb41-1" tabindex="-1"></a>(</span>
+<span id="cb41-2"><a href="introducción-a-python.html#cb41-2" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
+<span id="cb41-3"><a href="introducción-a-python.html#cb41-3" tabindex="-1"></a>  <span class="bu">filter</span>(_.Sale_Condition <span class="op">==</span> <span class="st">&quot;Normal&quot;</span>)</span>
+<span id="cb41-4"><a href="introducción-a-python.html#cb41-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##                               MS_SubClass                 MS_Zoning  \
 ## 0     One_Story_1946_and_Newer_All_Styles   Residential_Low_Density   
 ## 1     One_Story_1946_and_Newer_All_Styles  Residential_High_Density   
@@ -963,17 +943,10 @@ Figure 2.1: Páneles de trabajo de Positron
 ## 
 ## [2413 rows x 74 columns]</code></pre>
 <p>También se puede usar para filtrar variables numéricas:</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="introducción-a-python.html#cb36-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb36-2"><a href="introducción-a-python.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb36-3"><a href="introducción-a-python.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>( (_.Lot_Area <span class="op">&gt;</span> <span class="dv">1000</span>) <span class="op">&amp;</span> (_.Sale_Price <span class="op">&gt;=</span> <span class="dv">150000</span>) )</span>
-<span id="cb36-4"><a href="introducción-a-python.html#cb36-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="introducción-a-python.html#cb37-1" tabindex="-1"></a>(</span>
-<span id="cb37-2"><a href="introducción-a-python.html#cb37-2" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb37-3"><a href="introducción-a-python.html#cb37-3" tabindex="-1"></a>  <span class="bu">filter</span>( (_.Lot_Area <span class="op">&gt;</span> <span class="dv">1000</span>) <span class="op">&amp;</span> (_.Sale_Price <span class="op">&gt;=</span> <span class="dv">150000</span>) )</span>
-<span id="cb37-4"><a href="introducción-a-python.html#cb37-4" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="introducción-a-python.html#cb43-1" tabindex="-1"></a>(</span>
+<span id="cb43-2"><a href="introducción-a-python.html#cb43-2" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
+<span id="cb43-3"><a href="introducción-a-python.html#cb43-3" tabindex="-1"></a>  <span class="bu">filter</span>( (_.Lot_Area <span class="op">&gt;</span> <span class="dv">1000</span>) <span class="op">&amp;</span> (_.Sale_Price <span class="op">&gt;=</span> <span class="dv">150000</span>) )</span>
+<span id="cb43-4"><a href="introducción-a-python.html#cb43-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##                               MS_SubClass                MS_Zoning  \
 ## 0     One_Story_1946_and_Newer_All_Styles  Residential_Low_Density   
 ## 2     One_Story_1946_and_Newer_All_Styles  Residential_Low_Density   
@@ -1003,17 +976,10 @@ Figure 2.1: Páneles de trabajo de Positron
 ## [1677 rows x 74 columns]</code></pre>
 <p>Notemos que en el ejemplo anterior se usa <em>&amp;</em>, que ayuda a filtrar por dos condiciones.</p>
 <p>También puede usarse <em>|</em> para filtrar por alguna de las dos condiciones.</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="introducción-a-python.html#cb38-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb38-2"><a href="introducción-a-python.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb38-3"><a href="introducción-a-python.html#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>((_.Lot_Area <span class="op">&lt;</span> <span class="dv">1000</span>) <span class="op">|</span> (_.Sale_Price <span class="op">&lt;=</span> <span class="dv">150000</span>))</span>
-<span id="cb38-4"><a href="introducción-a-python.html#cb38-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="introducción-a-python.html#cb39-1" tabindex="-1"></a>(</span>
-<span id="cb39-2"><a href="introducción-a-python.html#cb39-2" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb39-3"><a href="introducción-a-python.html#cb39-3" tabindex="-1"></a>  <span class="bu">filter</span>((_.Lot_Area <span class="op">&lt;</span> <span class="dv">1000</span>) <span class="op">|</span> (_.Sale_Price <span class="op">&lt;=</span> <span class="dv">150000</span>))</span>
-<span id="cb39-4"><a href="introducción-a-python.html#cb39-4" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="introducción-a-python.html#cb45-1" tabindex="-1"></a>(</span>
+<span id="cb45-2"><a href="introducción-a-python.html#cb45-2" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
+<span id="cb45-3"><a href="introducción-a-python.html#cb45-3" tabindex="-1"></a>  <span class="bu">filter</span>((_.Lot_Area <span class="op">&lt;</span> <span class="dv">1000</span>) <span class="op">|</span> (_.Sale_Price <span class="op">&lt;=</span> <span class="dv">150000</span>))</span>
+<span id="cb45-4"><a href="introducción-a-python.html#cb45-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##                               MS_SubClass                   MS_Zoning  \
 ## 1     One_Story_1946_and_Newer_All_Styles    Residential_High_Density   
 ## 18    One_Story_1946_and_Newer_All_Styles     Residential_Low_Density   
@@ -1062,17 +1028,10 @@ Figure 2.1: Páneles de trabajo de Positron
 <h3><span class="header-section-number">2.5.3</span> Ordenar registros<a href="introducción-a-python.html#ordenar-registros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La función <em>arrange()</em> se utiliza para ordenar las filas de un data frame de acuerdo a una o varias variables. Este ordenamiento puede ser ascendente o descendente.</p>
 <p>Por defecto <em>arrange()</em> ordena las filas por orden ascendente:</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="introducción-a-python.html#cb40-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb40-2"><a href="introducción-a-python.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  ames_housing </span>
-<span id="cb40-3"><a href="introducción-a-python.html#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;&gt;</span> arrange(_.Sale_Price)</span>
-<span id="cb40-4"><a href="introducción-a-python.html#cb40-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb41"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="introducción-a-python.html#cb41-1" tabindex="-1"></a>(</span>
-<span id="cb41-2"><a href="introducción-a-python.html#cb41-2" tabindex="-1"></a>  ames_housing </span>
-<span id="cb41-3"><a href="introducción-a-python.html#cb41-3" tabindex="-1"></a>  <span class="op">&gt;&gt;</span> arrange(_.Sale_Price)</span>
-<span id="cb41-4"><a href="introducción-a-python.html#cb41-4" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="introducción-a-python.html#cb47-1" tabindex="-1"></a>(</span>
+<span id="cb47-2"><a href="introducción-a-python.html#cb47-2" tabindex="-1"></a>  ames_housing </span>
+<span id="cb47-3"><a href="introducción-a-python.html#cb47-3" tabindex="-1"></a>  <span class="op">&gt;&gt;</span> arrange(_.Sale_Price)</span>
+<span id="cb47-4"><a href="introducción-a-python.html#cb47-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##                               MS_SubClass                   MS_Zoning  \
 ## 181              One_Story_1945_and_Older  Residential_Medium_Density   
 ## 1553  One_Story_1946_and_Newer_All_Styles                       A_agr   
@@ -1102,17 +1061,10 @@ Figure 2.1: Páneles de trabajo de Positron
 ## [2930 rows x 74 columns]</code></pre>
 <p><br> <br></p>
 <p>Si las queremos ordenar de forma ascendente, lo haremos del siguiente modo:</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="introducción-a-python.html#cb42-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb42-2"><a href="introducción-a-python.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb42-3"><a href="introducción-a-python.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  arrange(<span class="op">-</span>_.Sale_Price)</span>
-<span id="cb42-4"><a href="introducción-a-python.html#cb42-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="introducción-a-python.html#cb43-1" tabindex="-1"></a>(</span>
-<span id="cb43-2"><a href="introducción-a-python.html#cb43-2" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb43-3"><a href="introducción-a-python.html#cb43-3" tabindex="-1"></a>  arrange(<span class="op">-</span>_.Sale_Price)</span>
-<span id="cb43-4"><a href="introducción-a-python.html#cb43-4" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="introducción-a-python.html#cb49-1" tabindex="-1"></a>(</span>
+<span id="cb49-2"><a href="introducción-a-python.html#cb49-2" tabindex="-1"></a>  ames_housing <span class="op">&gt;&gt;</span> </span>
+<span id="cb49-3"><a href="introducción-a-python.html#cb49-3" tabindex="-1"></a>  arrange(<span class="op">-</span>_.Sale_Price)</span>
+<span id="cb49-4"><a href="introducción-a-python.html#cb49-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##                               MS_SubClass                   MS_Zoning  \
 ## 1767             Two_Story_1946_and_Newer     Residential_Low_Density   
 ## 1760             Two_Story_1946_and_Newer     Residential_Low_Density   
@@ -1141,19 +1093,11 @@ Figure 2.1: Páneles de trabajo de Positron
 ## 
 ## [2930 rows x 74 columns]</code></pre>
 <p>Si se desea usar dos o más columnas para realizar el ordenamiento, deben separarse por comas cada una de las características</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="introducción-a-python.html#cb44-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb44-2"><a href="introducción-a-python.html#cb44-2" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb44-3"><a href="introducción-a-python.html#cb44-3" aria-hidden="true" tabindex="-1"></a> arrange(_.Sale_Condition, <span class="op">-</span>_.Sale_Price, _.Lot_Area) <span class="op">&gt;&gt;</span></span>
-<span id="cb44-4"><a href="introducción-a-python.html#cb44-4" aria-hidden="true" tabindex="-1"></a> select(_.Sale_Condition, _.Sale_Price, _.Lot_Area)</span>
-<span id="cb44-5"><a href="introducción-a-python.html#cb44-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb45"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="introducción-a-python.html#cb45-1" tabindex="-1"></a>(</span>
-<span id="cb45-2"><a href="introducción-a-python.html#cb45-2" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb45-3"><a href="introducción-a-python.html#cb45-3" tabindex="-1"></a> arrange(_.Sale_Condition, <span class="op">-</span>_.Sale_Price, _.Lot_Area) <span class="op">&gt;&gt;</span></span>
-<span id="cb45-4"><a href="introducción-a-python.html#cb45-4" tabindex="-1"></a> select(_.Sale_Condition, _.Sale_Price, _.Lot_Area)</span>
-<span id="cb45-5"><a href="introducción-a-python.html#cb45-5" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="introducción-a-python.html#cb51-1" tabindex="-1"></a>(</span>
+<span id="cb51-2"><a href="introducción-a-python.html#cb51-2" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span> </span>
+<span id="cb51-3"><a href="introducción-a-python.html#cb51-3" tabindex="-1"></a> arrange(_.Sale_Condition, <span class="op">-</span>_.Sale_Price, _.Lot_Area) <span class="op">&gt;&gt;</span></span>
+<span id="cb51-4"><a href="introducción-a-python.html#cb51-4" tabindex="-1"></a> select(_.Sale_Condition, _.Sale_Price, _.Lot_Area)</span>
+<span id="cb51-5"><a href="introducción-a-python.html#cb51-5" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##      Sale_Condition  Sale_Price  Lot_Area
 ## 1760        Abnorml      745000     15623
 ## 456         Abnorml      552000     14836
@@ -1174,23 +1118,13 @@ Figure 2.1: Páneles de trabajo de Positron
 <h3><span class="header-section-number">2.5.4</span> Agregar / Modificar<a href="introducción-a-python.html#agregar-modificar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Con la función <em>mutate()</em> podemos computar transformaciones de variables en un data frame. A menudo, tendremos la necesidad de crear nuevas variables que se calculan a partir de variables existentes. La función <em>mutate()</em> proporciona una interfaz clara para realizar este tipo de operaciones.</p>
 <p>Por ejemplo, haremos el cálculo de la antigüedad del inmueble a partir de las variables <em>Year_Sold</em> y <em>Year_Remod_Add</em>:</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="introducción-a-python.html#cb46-1" aria-hidden="true" tabindex="-1"></a>ejemplo_mutate <span class="op">=</span> (</span>
-<span id="cb46-2"><a href="introducción-a-python.html#cb46-2" aria-hidden="true" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb46-3"><a href="introducción-a-python.html#cb46-3" aria-hidden="true" tabindex="-1"></a>   select(_.Year_Sold, _.Year_Remod_Add) <span class="op">&gt;&gt;</span></span>
-<span id="cb46-4"><a href="introducción-a-python.html#cb46-4" aria-hidden="true" tabindex="-1"></a>   mutate(Antique <span class="op">=</span> _.Year_Sold <span class="op">-</span> _.Year_Remod_Add)</span>
-<span id="cb46-5"><a href="introducción-a-python.html#cb46-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb46-6"><a href="introducción-a-python.html#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-7"><a href="introducción-a-python.html#cb46-7" aria-hidden="true" tabindex="-1"></a>ejemplo_mutate</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="introducción-a-python.html#cb47-1" tabindex="-1"></a>ejemplo_mutate <span class="op">=</span> (</span>
-<span id="cb47-2"><a href="introducción-a-python.html#cb47-2" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb47-3"><a href="introducción-a-python.html#cb47-3" tabindex="-1"></a>   select(_.Year_Sold, _.Year_Remod_Add) <span class="op">&gt;&gt;</span></span>
-<span id="cb47-4"><a href="introducción-a-python.html#cb47-4" tabindex="-1"></a>   mutate(Antique <span class="op">=</span> _.Year_Sold <span class="op">-</span> _.Year_Remod_Add)</span>
-<span id="cb47-5"><a href="introducción-a-python.html#cb47-5" tabindex="-1"></a>)</span>
-<span id="cb47-6"><a href="introducción-a-python.html#cb47-6" tabindex="-1"></a></span>
-<span id="cb47-7"><a href="introducción-a-python.html#cb47-7" tabindex="-1"></a>ejemplo_mutate</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="introducción-a-python.html#cb53-1" tabindex="-1"></a>ejemplo_mutate <span class="op">=</span> (</span>
+<span id="cb53-2"><a href="introducción-a-python.html#cb53-2" tabindex="-1"></a> ames_housing <span class="op">&gt;&gt;</span> </span>
+<span id="cb53-3"><a href="introducción-a-python.html#cb53-3" tabindex="-1"></a>   select(_.Year_Sold, _.Year_Remod_Add) <span class="op">&gt;&gt;</span></span>
+<span id="cb53-4"><a href="introducción-a-python.html#cb53-4" tabindex="-1"></a>   mutate(Antique <span class="op">=</span> _.Year_Sold <span class="op">-</span> _.Year_Remod_Add)</span>
+<span id="cb53-5"><a href="introducción-a-python.html#cb53-5" tabindex="-1"></a>)</span>
+<span id="cb53-6"><a href="introducción-a-python.html#cb53-6" tabindex="-1"></a></span>
+<span id="cb53-7"><a href="introducción-a-python.html#cb53-7" tabindex="-1"></a>ejemplo_mutate</span></code></pre></div>
 <pre><code>##       Year_Sold  Year_Remod_Add  Antique
 ## 0          2010            1960       50
 ## 1          2010            1961       49
@@ -1206,17 +1140,10 @@ Figure 2.1: Páneles de trabajo de Positron
 ## 
 ## [2930 rows x 3 columns]</code></pre>
 <p>El ejemplo anterior crea una nueva variable. Ahora se presenta otro ejemplo en donde se modifica una variable ya creada.</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="introducción-a-python.html#cb48-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb48-2"><a href="introducción-a-python.html#cb48-2" aria-hidden="true" tabindex="-1"></a>ejemplo_mutate <span class="op">&gt;&gt;</span> </span>
-<span id="cb48-3"><a href="introducción-a-python.html#cb48-3" aria-hidden="true" tabindex="-1"></a> mutate(Antique <span class="op">=</span> _.Antique <span class="op">*</span> <span class="dv">12</span>)</span>
-<span id="cb48-4"><a href="introducción-a-python.html#cb48-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="introducción-a-python.html#cb49-1" tabindex="-1"></a>(</span>
-<span id="cb49-2"><a href="introducción-a-python.html#cb49-2" tabindex="-1"></a>ejemplo_mutate <span class="op">&gt;&gt;</span> </span>
-<span id="cb49-3"><a href="introducción-a-python.html#cb49-3" tabindex="-1"></a> mutate(Antique <span class="op">=</span> _.Antique <span class="op">*</span> <span class="dv">12</span>)</span>
-<span id="cb49-4"><a href="introducción-a-python.html#cb49-4" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="introducción-a-python.html#cb55-1" tabindex="-1"></a>(</span>
+<span id="cb55-2"><a href="introducción-a-python.html#cb55-2" tabindex="-1"></a>ejemplo_mutate <span class="op">&gt;&gt;</span> </span>
+<span id="cb55-3"><a href="introducción-a-python.html#cb55-3" tabindex="-1"></a> mutate(Antique <span class="op">=</span> _.Antique <span class="op">*</span> <span class="dv">12</span>)</span>
+<span id="cb55-4"><a href="introducción-a-python.html#cb55-4" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##       Year_Sold  Year_Remod_Add  Antique
 ## 0          2010            1960      600
 ## 1          2010            1961      588
@@ -1234,34 +1161,20 @@ Figure 2.1: Páneles de trabajo de Positron
 <p>En este segundo ejemplo, se modifica el número de años de antigüedad y se multiplica por un factor de 12 para modificar el tiempo en una escala de meses.</p>
 </div>
 <div id="resumen-estadístico" class="section level3 hasAnchor" number="2.5.5">
-<h3><span class="header-section-number">2.5.5</span> Resumen estadístico<a href="introducción-a-python.html#resumen-estadístico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">2.5.5</span> Resumen estadístico<a href="#resumen-estad%C3%ADstico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La función <em>summarize()</em> se comporta de forma análoga a la función <em>mutate()</em>, excepto que en lugar de añadir nuevas columnas crea un nuevo data frame que resumen el valor de los renglones a través de un estadístico.</p>
 <p>Podemos usar el ejemplo anterior y calcular la media de la variable creada <em>Antique</em>:</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="introducción-a-python.html#cb50-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb50-2"><a href="introducción-a-python.html#cb50-2" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb50-3"><a href="introducción-a-python.html#cb50-3" aria-hidden="true" tabindex="-1"></a> select(_.Year_Sold, _.Year_Remod_Add) <span class="op">&gt;&gt;</span></span>
-<span id="cb50-4"><a href="introducción-a-python.html#cb50-4" aria-hidden="true" tabindex="-1"></a> mutate(Antique <span class="op">=</span> _.Year_Sold <span class="op">-</span> _.Year_Remod_Add) <span class="op">&gt;&gt;</span></span>
-<span id="cb50-5"><a href="introducción-a-python.html#cb50-5" aria-hidden="true" tabindex="-1"></a> summarize(</span>
-<span id="cb50-6"><a href="introducción-a-python.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  Mean_Antique <span class="op">=</span> _.Antique.mean(),</span>
-<span id="cb50-7"><a href="introducción-a-python.html#cb50-7" aria-hidden="true" tabindex="-1"></a>  Median_Antique <span class="op">=</span> _.Antique.median(),</span>
-<span id="cb50-8"><a href="introducción-a-python.html#cb50-8" aria-hidden="true" tabindex="-1"></a>  First_Antique <span class="op">=</span> _.Antique.iloc[<span class="dv">0</span>],</span>
-<span id="cb50-9"><a href="introducción-a-python.html#cb50-9" aria-hidden="true" tabindex="-1"></a>  Last_Antique <span class="op">=</span> _.Antique.iloc[<span class="op">-</span><span class="dv">1</span>],</span>
-<span id="cb50-10"><a href="introducción-a-python.html#cb50-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb50-11"><a href="introducción-a-python.html#cb50-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="introducción-a-python.html#cb51-1" tabindex="-1"></a>(</span>
-<span id="cb51-2"><a href="introducción-a-python.html#cb51-2" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb51-3"><a href="introducción-a-python.html#cb51-3" tabindex="-1"></a> select(_.Year_Sold, _.Year_Remod_Add) <span class="op">&gt;&gt;</span></span>
-<span id="cb51-4"><a href="introducción-a-python.html#cb51-4" tabindex="-1"></a> mutate(Antique <span class="op">=</span> _.Year_Sold <span class="op">-</span> _.Year_Remod_Add) <span class="op">&gt;&gt;</span></span>
-<span id="cb51-5"><a href="introducción-a-python.html#cb51-5" tabindex="-1"></a> summarize(</span>
-<span id="cb51-6"><a href="introducción-a-python.html#cb51-6" tabindex="-1"></a>  Mean_Antique <span class="op">=</span> _.Antique.mean(),</span>
-<span id="cb51-7"><a href="introducción-a-python.html#cb51-7" tabindex="-1"></a>  Median_Antique <span class="op">=</span> _.Antique.median(),</span>
-<span id="cb51-8"><a href="introducción-a-python.html#cb51-8" tabindex="-1"></a>  First_Antique <span class="op">=</span> _.Antique.iloc[<span class="dv">0</span>],</span>
-<span id="cb51-9"><a href="introducción-a-python.html#cb51-9" tabindex="-1"></a>  Last_Antique <span class="op">=</span> _.Antique.iloc[<span class="op">-</span><span class="dv">1</span>],</span>
-<span id="cb51-10"><a href="introducción-a-python.html#cb51-10" tabindex="-1"></a>  )</span>
-<span id="cb51-11"><a href="introducción-a-python.html#cb51-11" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="introducción-a-python.html#cb57-1" tabindex="-1"></a>(</span>
+<span id="cb57-2"><a href="introducción-a-python.html#cb57-2" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span> </span>
+<span id="cb57-3"><a href="introducción-a-python.html#cb57-3" tabindex="-1"></a> select(_.Year_Sold, _.Year_Remod_Add) <span class="op">&gt;&gt;</span></span>
+<span id="cb57-4"><a href="introducción-a-python.html#cb57-4" tabindex="-1"></a> mutate(Antique <span class="op">=</span> _.Year_Sold <span class="op">-</span> _.Year_Remod_Add) <span class="op">&gt;&gt;</span></span>
+<span id="cb57-5"><a href="introducción-a-python.html#cb57-5" tabindex="-1"></a> summarize(</span>
+<span id="cb57-6"><a href="introducción-a-python.html#cb57-6" tabindex="-1"></a>  Mean_Antique <span class="op">=</span> _.Antique.mean(),</span>
+<span id="cb57-7"><a href="introducción-a-python.html#cb57-7" tabindex="-1"></a>  Median_Antique <span class="op">=</span> _.Antique.median(),</span>
+<span id="cb57-8"><a href="introducción-a-python.html#cb57-8" tabindex="-1"></a>  First_Antique <span class="op">=</span> _.Antique.iloc[<span class="dv">0</span>],</span>
+<span id="cb57-9"><a href="introducción-a-python.html#cb57-9" tabindex="-1"></a>  Last_Antique <span class="op">=</span> _.Antique.iloc[<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb57-10"><a href="introducción-a-python.html#cb57-10" tabindex="-1"></a>  )</span>
+<span id="cb57-11"><a href="introducción-a-python.html#cb57-11" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##    Mean_Antique  Median_Antique  First_Antique  Last_Antique
 ## 0     23.523891            15.0             50            12</code></pre>
 <p>Solo fue necesario agregar un <em>pipe</em>, especificar el nombre de la variable creada y la operación a realizar.</p>
@@ -1285,21 +1198,12 @@ Figure 2.1: Páneles de trabajo de Positron
 <h3><span class="header-section-number">2.5.6</span> Agrupamiento<a href="introducción-a-python.html#agrupamiento" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La función <em>group_by()</em> agrupa un conjunto de filas de acuerdo con los valores de una o más columnas o expresiones.</p>
 <p>Usaremos el ejemplo anterior. Primero creamos nuestra nueva variable <em>Antique</em>, después agrupamos por vecindario y al final calculamos la media de la variable <em>Antique</em>. Gracias al agrupamiento, nos regresara una media por cada grupo creado, es decir, nos regresara el promedio de la antigüedad por vecindario.</p>
-<<<<<<< HEAD
-<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="introducción-a-python.html#cb52-1" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb52-2"><a href="introducción-a-python.html#cb52-2" aria-hidden="true" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb52-3"><a href="introducción-a-python.html#cb52-3" aria-hidden="true" tabindex="-1"></a> mutate(Antique <span class="op">=</span> _.Year_Sold <span class="op">-</span> _.Year_Remod_Add) <span class="op">&gt;&gt;</span> </span>
-<span id="cb52-4"><a href="introducción-a-python.html#cb52-4" aria-hidden="true" tabindex="-1"></a> group_by(_.Neighborhood) <span class="op">&gt;&gt;</span> </span>
-<span id="cb52-5"><a href="introducción-a-python.html#cb52-5" aria-hidden="true" tabindex="-1"></a> summarize(Mean_Antique <span class="op">=</span> _.Antique.mean().<span class="bu">round</span>(<span class="dv">0</span>) )</span>
-<span id="cb52-6"><a href="introducción-a-python.html#cb52-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-=======
-<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="introducción-a-python.html#cb53-1" tabindex="-1"></a>(</span>
-<span id="cb53-2"><a href="introducción-a-python.html#cb53-2" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span> </span>
-<span id="cb53-3"><a href="introducción-a-python.html#cb53-3" tabindex="-1"></a> mutate(Antique <span class="op">=</span> _.Year_Sold <span class="op">-</span> _.Year_Remod_Add) <span class="op">&gt;&gt;</span> </span>
-<span id="cb53-4"><a href="introducción-a-python.html#cb53-4" tabindex="-1"></a> group_by(_.Neighborhood) <span class="op">&gt;&gt;</span> </span>
-<span id="cb53-5"><a href="introducción-a-python.html#cb53-5" tabindex="-1"></a> summarize(Mean_Antique <span class="op">=</span> _.Antique.mean().<span class="bu">round</span>(<span class="dv">0</span>) )</span>
-<span id="cb53-6"><a href="introducción-a-python.html#cb53-6" tabindex="-1"></a>)</span></code></pre></div>
->>>>>>> 4c541ee (update)
+<div class="sourceCode" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="introducción-a-python.html#cb59-1" tabindex="-1"></a>(</span>
+<span id="cb59-2"><a href="introducción-a-python.html#cb59-2" tabindex="-1"></a>ames_housing <span class="op">&gt;&gt;</span> </span>
+<span id="cb59-3"><a href="introducción-a-python.html#cb59-3" tabindex="-1"></a> mutate(Antique <span class="op">=</span> _.Year_Sold <span class="op">-</span> _.Year_Remod_Add) <span class="op">&gt;&gt;</span> </span>
+<span id="cb59-4"><a href="introducción-a-python.html#cb59-4" tabindex="-1"></a> group_by(_.Neighborhood) <span class="op">&gt;&gt;</span> </span>
+<span id="cb59-5"><a href="introducción-a-python.html#cb59-5" tabindex="-1"></a> summarize(Mean_Antique <span class="op">=</span> _.Antique.mean().<span class="bu">round</span>(<span class="dv">0</span>) )</span>
+<span id="cb59-6"><a href="introducción-a-python.html#cb59-6" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>##                                Neighborhood  Mean_Antique
 ## 0                       Bloomington_Heights           2.0
 ## 1                                   Blueste          25.0
@@ -1382,42 +1286,42 @@ $('.pipehover_select_one_row tr').hover(function() {
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["amt23_01intro2dsml_py.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["amt23_01intro2dsml_py.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

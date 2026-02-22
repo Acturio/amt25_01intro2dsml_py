@@ -12,6 +12,8 @@ introducción-a-python
 cómo-obtener-python
 qué-es-positron
 uso-de-python-en-positron
+instalar-ambiente-virtual-desde-bash
+instalar-ambiente-virtual-desde-r
 lectura-de-datos
 archivos-csv
 archivos-txt
