@@ -18,22 +18,22 @@ ames_housing.describe()
 ames_housing.Sale_Price
 ames_housing[["Lot_Area", "Neighborhood", "Year_Sold", "Sale_Price"]]
 
-select(ames_housing, _.Lot_Area, _.Neighborhood, _.Year_Sold, _.Sale_Price)
+select(ames_housing, "Lot_Area", "Neighborhood", "Year_Sold", "Sale_Price")
 #sa.select(ames_housing, _.Lot_Area, _.Neighborhood, _.Year_Sold, _.Sale_Price)
 
 5 + 1
 1 * 10
 
-#%>%
+#%>% = |>
 
 (
 ames_housing >>
-  select(_.Sale_Price, _.Lot_Area, _.Neighborhood, _.Year_Sold)
+  select("Sale_Price", "Lot_Area", "Neighborhood", "Year_Sold")
 )
 
 nueva_tabla = (
   ames_housing >>
-    select(_.Longitude, _.Latitude)
+    select("Longitude", "Latitude")
 )
 
 nueva_tabla

@@ -29,7 +29,7 @@ nest-asyncio==1.5.8
 numba==0.58.1
 numpy==1.26.1
 openpyxl==3.1.2
-packaging==23.1
+packaging==24.0
 pandas==2.0.3
 parso==0.8.3
 patchworklib==0.6.3
@@ -40,7 +40,7 @@ Pillow==9.5.0
 platformdirs==3.11.0
 plotnine==0.12.1
 plydata==0.4.3
-pmdarima==1.8.5
+pmdarima==2.0.4
 prompt-toolkit==3.0.39
 psutil==5.9.5
 ptyprocess==0.7.0

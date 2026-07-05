@@ -24,7 +24,8 @@ Pipeline()
 
 [
     ('standardscaler', StandardScaler()), 
-    ('pca', PCA(n_components=2)), 
+    ('pca1', PCA(n_components=2)), 
+    ('pca2', PCA(n_components=2)), 
     ('svm', SVC())
     ]
 

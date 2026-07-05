@@ -134,8 +134,7 @@ En esta clase estaremos usando:
 * Python [da click aquí si aún no lo descargas](https://www.python.org/downloads/)
 * Positron [da click aquí si quieres descargar](https://positron.posit.co/)
 * VSCode [da click aquí si quieres descargar](https://code.visualstudio.com/download)
-* [Google Drive](https://drive.google.com/drive/folders/15oEAezXyAm-_c90iG0LJ-pbtSREywxIm?usp=sharing)
-* Notas de clase [Revisame si quieres aprender](https://acturio.github.io/amt25_01intro2dsml_py/) 
+* [Google Drive](https://drive.google.com/drive/folders/1cFGoEvdPcyFSweUSKibZNde1GEosOSly?usp=drive_link)
 
 
 

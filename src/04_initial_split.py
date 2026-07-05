@@ -10,12 +10,12 @@ print("Tamaño de conjunto completo: ", ames.shape)
 Y = select(ames, _.Sale_Price)
 Y = select(ames, "Sale_Price")
 X = select(ames, -_.Sale_Price)
-#X = select(ames, -"Sale_Price")
+#X = select(ames, -"Sale_Price") # No Funciona
 
 X_train, X_test, y_train, y_test = train_test_split(
  X, Y, 
- test_size = 0.20, 
- #train_size = 0.80, 
+ #test_size = 0.20, 
+ train_size = 0.80, 
  random_state = 54321
  )
 
@@ -59,12 +59,31 @@ X_test, X_val, y_test, y_val = train_test_split(
  random_state = 42
  )
 
-# Training (60%), testing (15%), validation (25%)
+# Training (60%), validation (25%), testing (15%)
 
 # Imprimir los tamaños de los conjuntos resultantes
 print("Tamaño de conjunto de entrenamiento: ", X_train.shape)
 print("Tamaño de conjunto de prueba: ", X_test.shape)
 print("Tamaño de conjunto de validación: ", X_val.shape)
+
+
+# Dividir los datos en entrenamiento (60%) y el resto (40%)
+X_temp, X_test, y_temp, y_test = train_test_split(
+ X, Y, 
+ train_size= 0.8, 
+ random_state = 12345
+ )
+
+# Dividir el resto en conjuntos de prueba (15%) y validación (25%)
+X_train, X_val, y_train, y_val = train_test_split(
+ X_temp, y_temp, 
+ train_size = 0.75, 
+ random_state = 42
+ )
+
+
+
+
 
 
 ################################################################################
@@ -74,7 +93,7 @@ y = ames["Sale_Price"]
 X = select(ames, _.Gr_Liv_Area)
 
 # Crea el objeto K-Fold Cross-Validation con K=5 (puedes cambiar el valor de K según tus necesidades)
-kf = KFold(n_splits = 100, shuffle = True, random_state = 42)
+kf = KFold(n_splits = 20, shuffle = True, random_state = 42)
 
 # Crea el regresor lineal que deseas evaluar
 regressor = LinearRegression()

@@ -1,7 +1,8 @@
-import pandas
+#import pandas
 import pandas as pd
 import numpy as np
 from pandas import read_csv, read_excel
+from pandas import *
 
 #import koalas as ko
 #### lectura de archivo .csv ####
@@ -11,15 +12,12 @@ data_csv = pandas.read_csv("data/ames.csv")
 data_csv1 = pd.read_csv("data/ames.csv")
 data_csv2 = read_csv("data/ames.csv")
 
-pd.read_csv
-ko.read_csv
-
 del data_csv2
-data_csv
+data_csv2
 
 data_csv.info()
 
-pd.set_option('display.max_columns', 6)
+pd.set_option('display.max_columns', 10)
 data_csv.head(5)
 data_csv.tail(5)
 
@@ -45,3 +43,8 @@ data_csv.to_pickle("data/ames.pkl")
 ames_pkl = pd.read_pickle("data/ames.pkl")
 ames_pkl.head(5)
 
+
+locs = pd.read_pickle("data/loc_mun_cdmx.pkl")
+locs
+
+# Ejercicio: Cómo leer un archivo json
